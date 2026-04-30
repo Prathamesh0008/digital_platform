@@ -27,43 +27,71 @@ export default function AboutHero() {
     <section className="relative h-screen w-full overflow-hidden">
 
       {/* 🔥 PANELS */}
-      <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 z-20">
+      <motion.div
+  initial="hidden"
+  animate="visible"
+  variants={{
+    visible: {
+      transition: {
+        staggerChildren: 0.25, // 👈 slower stagger
+      },
+    },
+  }}
+  className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 z-20"
+>
 
-        {items.map((item, i) => (
-          <div
-            key={i}
-            onClick={() => scrollToSection(item.id)}
-            className="relative group overflow-hidden cursor-pointer"
-          >
+  {items.map((item, i) => (
+    <motion.div
+      key={i}
+      onClick={() => scrollToSection(item.id)}
+      variants={{
+        hidden: {
+          y: -300,            // 👈 bigger distance (important)
+          opacity: 0,
+          scale: 0.95,
+          filter: "blur(10px)", // 👈 cinematic entry
+        },
+        visible: {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+        },
+      }}
+      transition={{
+        duration: 1.8, // 👈 slower animation
+        ease: [0.16, 1, 0.3, 1], // 👈 cinematic easing
+      }}
+      className="relative group overflow-hidden cursor-pointer"
+    >
 
-            {/* IMAGE */}
-            <motion.img
-              src={item.img}
-              alt={item.label}
-              className="w-full h-full object-cover"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.6 }}
-            />
+      {/* IMAGE */}
+      <motion.img
+        src={item.img}
+        alt={item.label}
+        className="w-full h-full object-cover"
+        whileHover={{ scale: 1.06 }}
+        transition={{ duration: 0.6 }}
+      />
 
-            {/* DARK OVERLAY */}
-            <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition" />
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition" />
 
-            {/* BLUE HOVER */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-40 
-              bg-gradient-to-t from-[#5A7EFF] to-transparent transition duration-500"
-            />
+      {/* BLUE HOVER */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-40 
+        bg-gradient-to-t from-[#5A7EFF] to-transparent transition duration-500"
+      />
 
-          
-  {/* 🔥 HORIZONTAL TEXT (BOTTOM) */}
-<div className="absolute bottom-6 left-6 text-white z-10">
-  <h3 className="text-lg md:text-2xl lg:text-3xl font-semibold tracking-wide drop-shadow-lg">
-    {item.label}
-  </h3>
-</div>
-
-          </div>
-        ))}
+      {/* TEXT */}
+      <div className="absolute bottom-6 left-6 text-white z-10">
+        <h3 className="text-sm md:text-lg font-medium tracking-wide">
+          {item.label}
+        </h3>
       </div>
+
+    </motion.div>
+  ))}
+</motion.div>
 
       {/* 🔥 DIVIDER LINES */}
       <div className="absolute inset-0 flex z-30 pointer-events-none">
@@ -79,14 +107,14 @@ export default function AboutHero() {
       {/* 🔥 GLOBAL OVERLAY */}
       <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
 
-      {/* 🔥 CENTER TEXT */}
+      {/* 🔥 CENTER TEXT (REDUCED SIZE) */}
       <div className="relative z-40 h-full flex flex-col justify-center items-center text-center text-white px-6 pointer-events-none">
 
         <motion.h1
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold"
+          className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight"
         >
           We Build <br /> Digital Experiences
         </motion.h1>
@@ -95,7 +123,7 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-6 text-white/80 max-w-xl"
+          className="mt-4 text-white/80 max-w-md text-sm md:text-base"
         >
           Strategy, creativity, and technology combined to create
           impactful digital growth.
