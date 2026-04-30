@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import NextSection from "@/components/NextSection";
 // import PortfolioHero from  "@/components/PortfolioHero";
 
-import PortfolioHeroLight from "@/components/PortfolioHeroLight";
+// import PortfolioHeroLight from "@/components/PortfolioHeroLight";
 import ClientsAndTestimonials from "@/components/ClientsAndTestimonials";
 import ContactSection from "@/components/ContactSection";
 // import ScrollWire from "@/components/ScrollWire";
@@ -18,7 +18,7 @@ export default function Home() {
       <NextSection />
       
       {/* <PortfolioHero/> */}
-      <PortfolioHeroLight/>
+      {/* <PortfolioHeroLight/> */}
       <SplitMarqueeSection/>
       <ClientsAndTestimonials/>
       <ContactSection/>

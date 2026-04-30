@@ -1,7 +1,67 @@
 //marketing-website\components\ClientsAndTestimonials.jsx
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+
+/* 🔥 SINGLE LOGO ITEM WITH REPLAY ANIMATION */
+function LogoItem({ src, i }) {
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, {
+    amount: 0.4,
+  });
+
+  const controls = useAnimation();
+
+  const isTopRow = i < 3;
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden"); // 👈 reset when out
+    }
+  }, [isInView, controls]);
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={{
+        hidden: {
+          opacity: 0,
+          x: isTopRow ? -160 : 160,
+          scale: 0.92,
+          filter: "blur(6px)",
+        },
+        visible: {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          filter: "blur(0px)",
+        },
+      }}
+      initial="hidden"
+      animate={controls}
+      transition={{
+        delay: isTopRow ? i * 0.18 : (i - 3) * 0.22 + 0.3,
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      whileHover={{ scale: 1.08, y: -4 }}
+      className={`flex items-center justify-center h-[180px]
+        ${i % 3 !== 2 ? "border-r" : ""}
+        ${i < 3 ? "border-b" : ""}
+        border-black/20`}
+    >
+      <img
+        src={src}
+        className="max-h-[140px] md:max-h-[170px] w-auto object-contain
+          opacity-70 hover:opacity-100 transition duration-300"
+      />
+    </motion.div>
+  );
+}
 
 export default function ClientsAndTestimonials() {
   return (
@@ -27,8 +87,8 @@ export default function ClientsAndTestimonials() {
             </h2>
           </motion.div>
 
-          {/* RIGHT GRID */}
-          <div className="md:col-span-3 grid grid-cols-3">
+          {/* 🔥 RIGHT LOGO GRID */}
+          <div className="md:col-span-3 grid grid-cols-3 overflow-hidden">
 
             {[
               "/Travelo.avif",
@@ -37,29 +97,13 @@ export default function ClientsAndTestimonials() {
               "/Fiber Box.avif",
               "/Arena.avif",
             ].map((src, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                className={`flex items-center justify-center h-[180px]
-                  ${i % 3 !== 2 ? "border-r" : ""}
-                  ${i < 3 ? "border-b" : ""}
-                  border-black/20`}
-              >
-                <img
-                  src={src}
-                  className="max-h-[140px] md:max-h-[170px] w-auto object-contain
-                    opacity-70 hover:opacity-100 hover:scale-105
-                    transition duration-300"
-                />
-              </motion.div>
+              <LogoItem key={i} src={src} i={i} />
             ))}
 
             {/* EMPTY CELL */}
             <div className="h-[180px]" />
           </div>
+
         </div>
       </div>
 
@@ -155,6 +199,7 @@ export default function ClientsAndTestimonials() {
 
         </div>
       </div>
+
     </section>
   );
 }
