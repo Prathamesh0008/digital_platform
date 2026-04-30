@@ -1,12 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
-
-      {/* 🔥 SPLINE (REAL CONTROL ENABLED) */}
       <div className="absolute inset-0 z-0">
         <iframe
           src="https://my.spline.design/nexbotrobotcharacterconcept-gr7nouhE7TXWGE9GLpmKbqhE/"
@@ -18,21 +16,12 @@ export default function Hero() {
         />
       </div>
 
-      {/* 🔥 LIGHT OVERLAY */}
-     
-
-      {/* 🔥 CONTENT */}
-      {/* <div className="relative z-20 h-full flex justify-center items-center text-white">
-
-        <motion.button
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="px-6 py-2 rounded-full border border-white/50"
-        >
-          TALK TO US
-        </motion.button>
-
-      </div> */}
+      <Link
+        href="/"
+        className="absolute bottom-4 right-4 z-20 rounded-full border border-white/20 bg-[#090512]/96 px-6 py-3 text-base font-semibold tracking-wide text-white shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition hover:bg-[#120a24]"
+      >
+        NovaTech Science
+      </Link>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 //marketing-website\app\page.tsx
 
 import Hero from "@/components/Hero";
-import NextSection from "@/components/NextSection";
+import Services from "@/components/Services";
 // import PortfolioHero from  "@/components/PortfolioHero";
 
 // import PortfolioHeroLight from "@/components/PortfolioHeroLight";
@@ -15,7 +15,7 @@ export default function Home() {
     <main>
      {/* <ScrollWire /> */}
       <Hero />
-      <NextSection />
+      <Services />
       
       {/* <PortfolioHero/> */}
       {/* <PortfolioHeroLight/> */}
