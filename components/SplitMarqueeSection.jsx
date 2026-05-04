@@ -17,7 +17,7 @@ export default function SplitMarqueeSection() {
       {/* 🔥 SOFT MARQUEE */}
       <div className="bg-[#EAEBDB] border-b border-black/10 overflow-hidden">
         <motion.div
-          className="flex whitespace-nowrap py-4 text-[#0d2d47] font-medium text-lg"
+          className="flex whitespace-nowrap py-3 sm:py-4 text-[#0d2d47] font-medium text-base sm:text-lg"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             duration: 25,
@@ -26,7 +26,7 @@ export default function SplitMarqueeSection() {
           }}
         >
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
-            <span key={i} className="mx-8 flex items-center gap-3">
+            <span key={i} className="mx-5 sm:mx-8 flex items-center gap-3">
               ✦ {item}
             </span>
           ))}
@@ -43,13 +43,13 @@ export default function SplitMarqueeSection() {
       >
 
         {/* 🔥 LEFT */}
-        <div className="flex flex-col justify-center items-center text-center px-10 py-20 text-[#0d2d47]">
+        <div className="flex flex-col justify-center items-center text-center px-5 sm:px-8 md:px-10 py-14 sm:py-20 text-[#0d2d47]">
 
           <motion.h2
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-[50px] md:text-[80px] lg:text-[90px] leading-[1.1] font-medium"
+            className="text-4xl sm:text-5xl md:text-[80px] lg:text-[90px] leading-[1.1] font-medium"
           >
             Empowering <br /> Growth
           </motion.h2>
@@ -75,13 +75,13 @@ export default function SplitMarqueeSection() {
         </div>
 
         {/* 🔥 RIGHT */}
-        <div className="flex items-center justify-center px-10 py-20">
+        <div className="flex items-center justify-center px-5 sm:px-8 md:px-10 py-14 sm:py-20">
 
           <motion.p
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="text-[#0d2d47] text-lg md:text-xl max-w-xl text-center leading-relaxed"
+            className="text-[#0d2d47] text-base sm:text-lg md:text-xl max-w-xl text-center leading-relaxed"
           >
             From strategy to execution, we empower brands with innovative
             marketing solutions, creative storytelling, and data-driven

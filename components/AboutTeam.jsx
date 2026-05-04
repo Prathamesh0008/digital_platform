@@ -27,7 +27,7 @@ export default function AboutTeam() {
   ];
 
   return (
-    <section className="relative w-full bg-[#EAEBDB] px-10 py-40 overflow-hidden">
+    <section className="relative w-full bg-[#EAEBDB] px-4 sm:px-6 md:px-10 py-20 sm:py-28 md:py-40 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* 🔥 HEADER */}
@@ -36,14 +36,14 @@ export default function AboutTeam() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-14 sm:mb-20 md:mb-24"
         >
           <p className="uppercase text-sm text-black/50 mb-4 tracking-[0.2em]">
             The Minds Behind The Magic
           </p>
 
           <h2 className="uppercase tracking-tight leading-[0.9] 
-            text-[60px] md:text-[100px] lg:text-[120px] font-medium">
+            text-4xl sm:text-6xl md:text-[100px] lg:text-[120px] font-medium">
             Meet Our <br />
             <span className="text-[#5A7EFF]">Team</span>
           </h2>

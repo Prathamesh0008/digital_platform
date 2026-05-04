@@ -6,12 +6,12 @@ export default function AboutStory() {
   return (
     <section
       id="story"
-      className="relative min-h-screen px-10 py-40 overflow-hidden bg-[#EAEBDB]"
+      className="relative min-h-screen px-4 sm:px-6 md:px-10 py-20 sm:py-28 md:py-40 overflow-hidden bg-[#EAEBDB]"
     >
 
       {/* 🔥 SOFT GLOW */}
       <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 
-        w-[600px] h-[600px] bg-[#5A7EFF]/10 blur-[140px] rounded-full" />
+        w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] bg-[#5A7EFF]/10 blur-[120px] md:blur-[140px] rounded-full" />
 
       <div className="relative max-w-7xl mx-auto">
 
@@ -21,21 +21,21 @@ export default function AboutStory() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ amount: 0.4 }}
-          className="mb-32 max-w-4xl"
+          className="mb-16 sm:mb-24 md:mb-32 max-w-4xl"
         >
           <p className="uppercase text-black/50 text-sm tracking-[0.3em] mb-6">
             Our Story
           </p>
 
           <h1 className="uppercase leading-[0.9]
-            text-[60px] md:text-[100px] lg:text-[120px] font-medium">
+            text-4xl sm:text-6xl md:text-[100px] lg:text-[120px] font-medium">
             From Vision <br />
             To Impact
           </h1>
         </motion.div>
 
         {/* 🔥 MAIN GRID */}
-        <div className="grid md:grid-cols-2 gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-10 sm:gap-14 md:gap-20 items-center">
 
           {/* 🔥 IMAGE (SLIDE FROM LEFT) */}
           <motion.div
@@ -52,7 +52,7 @@ export default function AboutStory() {
               <motion.img
                 src="/about1.jpg"
                 alt="Story"
-                className="w-full h-[550px] object-cover"
+                className="w-full h-[360px] sm:h-[450px] md:h-[550px] object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
               />
@@ -63,7 +63,7 @@ export default function AboutStory() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="absolute -bottom-10 -right-10 
+              className="absolute -bottom-6 sm:-bottom-10 -right-2 sm:-right-10
                 bg-white px-8 py-6 rounded-2xl shadow-xl"
             >
               <p className="text-xs uppercase text-black/40 mb-1">
@@ -91,7 +91,7 @@ export default function AboutStory() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-2xl leading-relaxed font-medium"
+              className="text-xl sm:text-2xl leading-relaxed font-medium"
             >
               NovaTech started with a simple belief —  
               brands deserve more than visibility.
@@ -132,9 +132,9 @@ export default function AboutStory() {
             ease: [0.22, 1, 0.36, 1],
           }}
           viewport={{ amount: 0.4 }}
-          className="mt-40 max-w-5xl"
+          className="mt-16 sm:mt-24 md:mt-40 max-w-5xl"
         >
-          <h2 className="text-4xl md:text-6xl leading-tight font-medium">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl leading-tight font-medium">
             We don’t just build campaigns —  
             <br />
             we build <span className="text-[#5A7EFF]">long-term brand value.</span>

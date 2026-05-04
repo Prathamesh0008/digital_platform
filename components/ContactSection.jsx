@@ -1,6 +1,7 @@
 //marketing-website\components\ContactSection.jsx
 "use client";
 
+import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -42,7 +43,7 @@ export default function ContactSection() {
       <div className="absolute inset-0 bg-black/60" />
 
       {/* CONTENT */}
-      <div className="relative z-10 grid md:grid-cols-2 h-full px-10 py-24 text-white">
+      <div className="relative z-10 grid md:grid-cols-2 h-full px-4 sm:px-6 md:px-10 py-16 sm:py-24 text-white gap-10 md:gap-12">
 
         {/* LEFT TEXT */}
         <motion.div
@@ -55,13 +56,23 @@ export default function ContactSection() {
           transition={{ duration: 1 }}
           className="flex flex-col justify-center"
         >
+          <div className="mb-6">
+            <Image
+              src="/logo.png"
+              alt="NovaTech logo"
+              width={180}
+              height={72}
+              className="h-auto w-auto"
+            />
+          </div>
+
           <p className="uppercase text-sm mb-6 text-white/80">
             Ready to elevate your brand? <br />
             Let’s start today
           </p>
 
           <h1 className="uppercase leading-[0.9] font-medium
-            text-[60px] md:text-[100px] lg:text-[130px]">
+            text-4xl sm:text-5xl md:text-[100px] lg:text-[130px]">
             Contact <br /> Us
           </h1>
         </motion.div>
@@ -77,10 +88,10 @@ export default function ContactSection() {
           transition={{ duration: 1 }}
           className="flex items-center"
         >
-          <form className="w-full max-w-2xl ml-auto space-y-10">
+          <form className="w-full max-w-2xl ml-auto space-y-7 sm:space-y-10">
 
             {/* NAME ROW */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
 
               <div className="group">
                 <label className="text-sm text-white/70 group-focus-within:text-white transition">

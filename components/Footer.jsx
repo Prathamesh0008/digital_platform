@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#EAEBDB] text-black px-10 py-20">
+    <footer className="bg-[#EAEBDB] text-black px-4 sm:px-6 md:px-10 py-14 sm:py-20">
 
       {/* TOP SECTION */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 sm:gap-16">
 
         {/* LEFT CONTACT */}
         <div>
@@ -73,7 +73,7 @@ export default function Footer() {
   viewport={{ once: false, amount: 0.6 }} // 👈 important
   transition={{ duration: 1, ease: "easeOut" }}
   className="uppercase font-bold tracking-tight leading-[0.8]
-    text-[80px] md:text-[140px] lg:text-[200px] mt-16"
+    text-4xl sm:text-6xl md:text-[140px] lg:text-[200px] mt-12 sm:mt-16"
 >
   Novatech Marketing
 </motion.h1>

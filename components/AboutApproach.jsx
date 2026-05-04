@@ -48,9 +48,32 @@ export default function AboutApproach() {
     <section 
       ref={ref} 
       className="relative bg-[#EAEBDB]"
-      style={{ height: `${approaches.length * 100}vh` }}
     >
+      <div className="md:hidden">
+        {approaches.map((item, i) => (
+          <div
+            key={item.title}
+            className={`px-4 sm:px-6 py-16 ${
+              i === 0
+                ? "bg-[#5A7EFF]"
+                : i === 1
+                ? "bg-[#7392FB]"
+                : i === 2
+                ? "bg-[#8EA5F1]"
+                : "bg-[#C4CFE3]"
+            }`}
+          >
+            <div className="max-w-3xl text-white">
+              <h2 className="text-4xl sm:text-5xl leading-[0.95] mb-6">{item.title}</h2>
+              <p className="text-base text-white/90 leading-relaxed mb-5">{item.description}</p>
+              <p className="text-sm text-white/75 leading-relaxed">{item.extra}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* STICKY CONTAINER */}
+      <div className="hidden md:block" style={{ height: `${approaches.length * 100}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden">
         
         {/* HORIZONTAL WRAPPER */}
@@ -105,6 +128,7 @@ export default function AboutApproach() {
             </div>
           ))}
         </motion.div>
+      </div>
       </div>
     </section>
   );

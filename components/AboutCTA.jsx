@@ -38,8 +38,8 @@ export default function AboutValues() {
       <div className="absolute inset-0 bg-black/75" />
 
       {/* 🔥 CONTENT */}
-      <div className="relative z-20 px-10 py-32">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-32 md:gap-40">
+      <div className="relative z-20 px-4 sm:px-6 md:px-10 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 sm:gap-20 md:gap-40">
 
           {/* 🔥 LEFT SECTION - SLIDING FROM LEFT */}
           <motion.div
@@ -55,7 +55,7 @@ export default function AboutValues() {
 
             <h2
               className="uppercase leading-[0.9]
-              text-[50px] md:text-[90px] lg:text-[110px] 
+              text-4xl sm:text-6xl md:text-[90px] lg:text-[110px] 
               text-white font-medium max-w-[600px]"
             >
               What Drives <br />
@@ -70,7 +70,7 @@ export default function AboutValues() {
           </motion.div>
 
           {/* 🔥 RIGHT SECTION - SLIDING FROM RIGHT TO LEFT */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {values.map((item, i) => (
               <motion.div
                 key={i}

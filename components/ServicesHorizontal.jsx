@@ -67,14 +67,14 @@ export default function ServicesStacked() {
   });
 
   return (
-    <section ref={containerRef} className="relative h-[600vh] bg-[#FFF8F5]">
+    <section ref={containerRef} className="relative h-[450vh] md:h-[600vh] bg-[#FFF8F5]">
 
       {/* STICKY */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
 
         {/* TITLE */}
-        <div className="absolute left-10 top-20 z-20">
-          <h2 className="text-5xl font-medium text-[#0d2d47]">
+        <div className="absolute left-4 sm:left-6 md:left-10 top-12 md:top-20 z-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#0d2d47]">
             Case Studies
           </h2>
         </div>
@@ -88,7 +88,7 @@ export default function ServicesStacked() {
             return (
               <motion.div
                 key={i}
-                className="absolute w-[650px] md:w-[900px] h-[420px] rounded-3xl p-10 flex flex-col justify-between shadow-2xl text-white"
+                className="absolute w-[92vw] max-w-[900px] h-[360px] md:h-[420px] rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl text-white"
                 style={{
                   background: card.color,
                   zIndex: i, // stack order
@@ -111,11 +111,11 @@ export default function ServicesStacked() {
 
                 {/* CONTENT */}
                 <div>
-                  <h3 className="text-3xl font-semibold mb-4">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4">
                     {card.title}
                   </h3>
 
-                  <p className="text-white/70 max-w-md">
+                  <p className="text-white/70 max-w-md text-sm md:text-base">
                     {card.desc}
                   </p>
                 </div>

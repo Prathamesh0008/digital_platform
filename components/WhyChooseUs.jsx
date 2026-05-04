@@ -22,11 +22,11 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 bg-[#EAEBDB]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-24 bg-[#EAEBDB]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-3xl font-medium text-[#0d2d47]">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-medium text-[#0d2d47]">
             Why Choose Us?
           </h2>
 
