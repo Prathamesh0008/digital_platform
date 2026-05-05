@@ -141,7 +141,7 @@ export default function ClientsAndTestimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1 }}
             viewport={{ once: true }}
-            className="flex items-start md:items-end md:justify-center"
+         lo    className="flex items-start md:items-end md:justify-center"
           >
             <AnimatedLogoMerge
               topImageSrc="/Toppart.png"

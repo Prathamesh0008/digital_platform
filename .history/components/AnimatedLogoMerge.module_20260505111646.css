@@ -73,6 +73,7 @@
 
 .imagePiece img {
   object-fit: fill;
+  filter: brightness(0.22) saturate(100%) contrast(120%);
   opacity: 1;
 }
 
@@ -81,7 +82,6 @@
   left: 8.5%;
   width: 53%;
   height: 58%;
-  filter: brightness(0.62) contrast(1.12) !important;
 }
 
 .bottomImagePiece {
@@ -111,14 +111,14 @@
 .topPiece {
   margin-top: calc(var(--logo-piece-gap) );
   clip-path: polygon(
-    0 0,
-    39% 0,
-    61% 23%,
-    61% 52%,
-    42% 34%,
-    22% 34%,
-    22% 71%,
-    0 71%
+    41% 37%,
+    61% 56%,
+    78% 56%,
+    78% 23%,
+    100% 23%,
+    100% 100%,
+    62% 100%,
+    41% 80%
   );
 }
 

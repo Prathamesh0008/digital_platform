@@ -119,22 +119,20 @@ export default function ClientsAndTestimonials() {
             "linear-gradient(to bottom, #EAEBDB, #E1E4DD, #BEC9E7, #6988FB, #5A7EFF)",
         }}
       >
-        <div className="grid items-start gap-5 md:grid-cols-2 md:min-h-[140vh]">
-          <div className="self-start md:sticky md:top-24 md:h-[calc(100vh-6rem)] md:flex md:items-start md:pt-2">
-            <motion.h1
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="uppercase tracking-tight leading-[1.0]
-                text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-medium"
-            >
-              Driven by innovation, <br />
-              Fueled by strategy — <br />
-              Redefining success in <br />
-              Every campaign!
-            </motion.h1>
-          </div>
+        <div className="grid items-center gap-5 md:grid-cols-2">
+          <motion.h1
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="uppercase tracking-tight leading-[1.0]
+              text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-medium"
+          >
+            Driven by innovation, <br />
+            Fueled by strategy — <br />
+            Redefining success in <br />
+            Every campaign!
+          </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -407,5 +405,4 @@ export default function ClientsAndTestimonials() {
 //     </section>
 //   );
 // }
-
 

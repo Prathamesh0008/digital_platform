@@ -2,44 +2,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  BarChart,
-  Megaphone,
-  Search,
-  Globe,
-  Laptop,
-  Rocket
-} from "lucide-react";
+
+function Icon({ path }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">
+      <path d={path} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function ServicesSlider() {
   const services = [
   {
-    icon: <BarChart />,
+    icon: <Icon path="M4 20V10M10 20V4M16 20v-7M22 20H2" />,
     title: "Brand Strategy",
     desc: "Building powerful brand identities...",
   },
   {
-    icon: <Megaphone />,
+    icon: <Icon path="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1ZM14 9a4 4 0 0 1 0 6" />,
     title: "Digital Marketing",
     desc: "Data-driven campaigns...",
   },
   {
-    icon: <Search />,
+    icon: <Icon path="M11 19a8 8 0 1 1 5.3-14M21 21l-4.3-4.3M9.5 12l1.8 1.8L15 10" />,
     title: "SEO Optimization",
     desc: "Rank higher...",
   },
   {
-    icon: <Globe />,
+    icon: <Icon path="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20" />,
     title: "Social Media",
     desc: "Engaging content...",
   },
   {
-    icon: <Rocket />,
+    icon: <Icon path="M6 15c-1.5 1.5-2 4-2 4s2.5-.5 4-2l2-2-2-2-2 2Zm5-5 3-3a6 6 0 0 1 8-2 6 6 0 0 1-2 8l-3 3-6-6Z" />,
     title: "Performance Ads",
     desc: "Maximize ROI...",
   },
   {
-    icon: <Laptop />,
+    icon: <Icon path="M4 6h16v10H4zM2 20h20" />,
     title: "Web Design",
     desc: "Modern websites...",
   },
