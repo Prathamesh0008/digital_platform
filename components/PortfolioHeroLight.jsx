@@ -34,7 +34,7 @@ export default function PortfolioHeroLight() {
             transition={{ delay: 0.2 }}
             className="mb-4 text-xs uppercase tracking-[0.2em] text-white/70 sm:text-sm"
           >
-            Branding • Product • 2026
+            Branding â€¢ Product â€¢ 2026
           </motion.p>
 
           <motion.h1
