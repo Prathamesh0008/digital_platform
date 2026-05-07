@@ -7,6 +7,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 export default function ServicesStacked() {
   const containerRef = useRef(null);
@@ -55,7 +56,6 @@ export default function ServicesStacked() {
     },
   ];
 
-  // map scroll → index
   const index = useTransform(
     scrollYProgress,
     [0, 1],
@@ -68,20 +68,14 @@ export default function ServicesStacked() {
 
   return (
     <section ref={containerRef} className="relative h-[450vh] md:h-[600vh] bg-[#FFF8F5]">
-
-      {/* STICKY */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-
-        {/* TITLE */}
         <div className="absolute left-4 sm:left-6 md:left-10 top-12 md:top-20 z-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#0d2d47]">
             Case Studies
           </h2>
         </div>
 
-        {/* STACK */}
         <div className="relative w-full flex justify-center items-center">
-
           {cards.map((card, i) => {
             const isActive = i <= activeIndex;
 
@@ -91,10 +85,10 @@ export default function ServicesStacked() {
                 className="absolute w-[92vw] max-w-[900px] h-[360px] md:h-[420px] rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-2xl text-white"
                 style={{
                   background: card.color,
-                  zIndex: i, // stack order
+                  zIndex: i,
                 }}
                 animate={{
-                  y: isActive ? (activeIndex - i) * 20 : 100, 
+                  y: isActive ? (activeIndex - i) * 20 : 100,
                   scale: isActive ? 1 - (activeIndex - i) * 0.04 : 0.9,
                   opacity: isActive ? 1 : 0,
                 }}
@@ -103,13 +97,8 @@ export default function ServicesStacked() {
                   ease: "easeInOut",
                 }}
               >
+                <div className="text-white/50 text-lg">0{i + 1}</div>
 
-                {/* NUMBER */}
-                <div className="text-white/50 text-lg">
-                  0{i + 1}
-                </div>
-
-                {/* CONTENT */}
                 <div>
                   <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4">
                     {card.title}
@@ -120,15 +109,12 @@ export default function ServicesStacked() {
                   </p>
                 </div>
 
-                {/* BUTTON */}
-                <button className="bg-white text-black px-6 py-3 rounded-full text-sm w-fit">
-                  View Case Study →
-                </button>
-
+                <Link href="/case-studies" className="bg-white text-black px-6 py-3 rounded-full text-sm w-fit">
+                  View Case Study ?
+                </Link>
               </motion.div>
             );
           })}
-
         </div>
       </div>
     </section>

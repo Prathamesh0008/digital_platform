@@ -1,99 +1,185 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function PortfolioHero() {
-  const sideVideos = [
-    { src: "/file(5).mp4", title: "Brand Evolution" },
-    { src: "/file (2).mp4", title: "Creative Campaign" },
-    { src: "/file.mp4", title: "Brand Management" },
+  const projects = [
+    {
+      name: "Nova Tech Sciences",
+      category: "Corporate Website",
+      url: "https://www.novatechsciences.com/",
+      domain: "novatechsciences.com",
+      accent: "from-cyan-500 to-blue-600",
+      tint: "from-slate-50 via-cyan-50 to-blue-100",
+      logo: "/www.novatechsciences.com.webp",
+    },
+    {
+      name: "Ivexia Pharma",
+      category: "Pharma Website",
+      url: "https://www.ivexiapharma.com/",
+      domain: "ivexiapharma.com",
+      accent: "from-indigo-500 to-blue-500",
+      tint: "from-slate-50 via-indigo-50 to-blue-100",
+      logo: "/Ivexia.svg",
+    },
+    {
+      name: "ED Pharma",
+      category: "Healthcare Website",
+      url: "https://www.edpharma.co/",
+      domain: "edpharma.co",
+      accent: "from-sky-500 to-cyan-500",
+      tint: "from-slate-50 via-sky-50 to-cyan-100",
+      logo: "/ED_p.svg",
+    },
+    {
+      name: "Bio-Peptides",
+      category: "Biotech Website",
+      url: "https://www.bio-peptides.com/",
+      domain: "bio-peptides.com",
+      accent: "from-cyan-500 to-teal-500",
+      tint: "from-slate-50 via-teal-50 to-emerald-100",
+      logo: "/bio-peptide.webp",
+    },
+    {
+      name: "Larksois Pharma",
+      category: "Pharma Brand Site",
+      url: "https://www.larksoispharma.com/",
+      domain: "larksoispharma.com",
+      accent: "from-orange-500 to-rose-500",
+      tint: "from-slate-50 via-orange-50 to-rose-100",
+      logo: "/larkosis.webp",
+    },
+    {
+      name: "KVA Logistics",
+      category: "Logistics Website",
+      url: "https://www.kvalogistics.nl/",
+      domain: "kvalogistics.nl",
+      accent: "from-amber-500 to-orange-500",
+      tint: "from-slate-50 via-amber-50 to-orange-100",
+      logo: "/kvs.png",
+    },
+    {
+      name: "AS Blogi",
+      category: "Blog Platform",
+      url: "https://asblogi.com/",
+      domain: "asblogi.com",
+      accent: "from-violet-500 to-indigo-500",
+      tint: "from-slate-50 via-violet-50 to-indigo-100",
+      logo: "/ASB-logo.webp",
+    },
   ];
 
   return (
-    <section className="w-full bg-[#EAEBDB] px-10 py-20">
+    <section className="relative w-full overflow-hidden bg-[#eef1e6] px-6 py-20 md:px-10">
+      <div className="pointer-events-none absolute -left-24 top-14 h-64 w-64 rounded-full bg-[#5A7EFF]/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-cyan-400/15 blur-3xl" />
 
-      {/* 🔥 HEADER */}
-      <div className="max-w-7xl mx-auto mb-16 text-center">
-        <p className="uppercase text-sm text-black/50 mb-4 tracking-[0.2em]">
-          Our Work
-        </p>
+      <div className="mx-auto mb-14 max-w-7xl text-center">
+        <p className="mb-4 text-sm uppercase tracking-[0.2em] text-black/50">Our Work</p>
 
-        <h2 className="text-[40px] md:text-[60px] lg:text-[70px] font-medium text-black">
+        <h2 className="text-[40px] font-medium text-black md:text-[60px] lg:text-[70px]">
           Featured <span className="text-[#5A7EFF]">Projects</span>
         </h2>
 
-        <div className="w-20 h-[2px] bg-[#5A7EFF] mx-auto mt-6" />
+        <div className="mx-auto mt-6 h-[2px] w-20 bg-[#5A7EFF]" />
       </div>
 
-      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-
-        {/* 🔥 MAIN VIDEO (YOUR HERO VIDEO) */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:col-span-2 relative h-[80vh] rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <video
-            src="/file(3).mp4"   
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-          />
-
-          {/* overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-          {/* content */}
-          <div className="absolute bottom-10 left-10 max-w-lg">
-            <h1 className="text-[50px] md:text-[80px] leading-[0.9] font-medium text-white">
-              Product Story
-            </h1>
-
-            <p className="mt-3 text-white/80">
-              A cinematic showcase of design, motion, and storytelling.
-            </p>
+      <div className="relative z-10 mx-auto mb-10 flex max-w-7xl flex-wrap items-center gap-3">
+        {projects.map((project) => (
+          <div
+            key={`${project.url}-chip`}
+            className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-2 backdrop-blur"
+          >
+            <div className="relative h-5 w-5 overflow-hidden rounded-full">
+              <Image src={project.logo} alt={`${project.name} mark`} fill className="object-contain" />
+            </div>
+            <p className="text-xs font-medium text-black/70">{project.name}</p>
           </div>
-        </motion.div>
+        ))}
+      </div>
 
-        {/* 🔥 SIDE VIDEOS */}
-        <div className="flex flex-col gap-4 h-[80vh]">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, i) => {
+          const initials = project.name
+            .split(" ")
+            .slice(0, 2)
+            .map((word) => word[0])
+            .join("")
+            .toUpperCase();
 
-          {sideVideos.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.2 }}
-              whileHover={{ scale: 1.04 }}
-              className="group relative flex-1 rounded-xl overflow-hidden cursor-pointer shadow-lg"
+          return (
+            <motion.article
+              key={project.url}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.06 }}
+              whileHover={{ y: -8 }}
+              className="group overflow-hidden rounded-3xl border border-white/70 bg-white shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)] transition"
             >
+              <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${project.tint}`}>
+                <div
+                  className={`absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br ${project.accent} opacity-20 blur-2xl transition duration-500 group-hover:scale-110`}
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgba(255,255,255,0.85),transparent_40%)]" />
 
-              <video
-                src={item.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              />
+                <div className="absolute left-5 top-5">
+                  <p className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-black/70">
+                    {project.category}
+                  </p>
+                </div>
 
-              {/* overlay */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-300" />
-
-              {/* title */}
-              <div className="absolute bottom-3 left-4 text-sm font-medium text-white">
-                {item.title}
+                <div className="absolute inset-x-5 bottom-5 rounded-2xl border border-white/70 bg-white/90 p-3 backdrop-blur">
+                  <div className="mb-2 h-10">
+                    <Image
+                      src={project.logo}
+                      alt={`${project.name} logo`}
+                      width={180}
+                      height={40}
+                      className="h-full w-auto object-contain"
+                    />
+                  </div>
+                  <p className="truncate text-xs text-black/55">https://{project.domain}</p>
+                  <p className="mt-1 text-base font-semibold leading-tight text-black">{project.name}</p>
+                </div>
               </div>
 
-            </motion.div>
-          ))}
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-lg font-semibold text-black">{project.name}</h3>
+                    <p className="mt-1 text-sm text-black/60">{project.domain}</p>
+                  </div>
+                  <div className={`rounded-xl bg-gradient-to-br ${project.accent} p-[1.5px]`}>
+                    <div className="rounded-[11px] bg-white p-2">
+                      <Image
+                        src={project.logo}
+                        alt={`${project.name} logo`}
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 rounded-md object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-        </div>
-
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-[0.16em] text-black/45">{initials} Project</span>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center rounded-full bg-gradient-to-r ${project.accent} px-4 py-2 text-sm font-medium text-white transition hover:opacity-90`}
+                  >
+                    Visit Live Site
+                  </a>
+                </div>
+              </div>
+            </motion.article>
+          );
+        })}
       </div>
-
     </section>
   );
 }
