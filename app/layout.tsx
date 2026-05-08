@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import NovaTechAssistant from "@/components/NovaTechAssistant";
+import AppShell from "@/components/AppShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,15 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Navbar />
-
-        <main className="flex-1">
-          {children}
-        </main>
-
-        <NovaTechAssistant />
-
-        <Footer />
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
