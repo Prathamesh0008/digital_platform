@@ -1,26 +1,32 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function LeadsPanel() {
   const [q, setQ] = useState("");
+  const [temperature, setTemperature] = useState("all");
   const [leads, setLeads] = useState([]);
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
 
-  useEffect(() => {
-    loadLeads();
-  }, [q]);
-
-  async function loadLeads() {
+  const loadLeads = useCallback(async () => {
     const params = new URLSearchParams();
     if (q) params.set("q", q);
+    if (temperature !== "all") params.set("temperature", temperature);
 
     const response = await fetch(`/api/live-chat/leads?${params}`);
     const data = await response.json();
 
     if (data.success) setLeads(data.leads || []);
-  }
+  }, [q, temperature]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      loadLeads();
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [loadLeads]);
 
   const csv = useMemo(() => {
     const header = [
@@ -71,6 +77,17 @@ export default function LeadsPanel() {
         </div>
 
         <div className="flex gap-2">
+          <select
+            value={temperature}
+            onChange={(event) => setTemperature(event.target.value)}
+            className="h-11 rounded-xl border border-gray-200 px-3 text-sm outline-none focus:border-black"
+          >
+            <option value="all">All Leads</option>
+            <option value="hot">Hot</option>
+            <option value="warm">Warm</option>
+            <option value="cold">Cold</option>
+          </select>
+
           <input
             value={q}
             onChange={(event) => setQ(event.target.value)}
@@ -114,6 +131,22 @@ Start Time: ${lead.startTime || "-"}
                   <p className="mt-1 text-sm text-gray-500">
                     {lead.contact || "-"}
                   </p>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span
+                      className={`rounded-full px-2 py-1 text-[11px] font-bold uppercase ${
+                        lead.leadTemperature === "hot"
+                          ? "bg-rose-100 text-rose-700"
+                          : lead.leadTemperature === "warm"
+                          ? "bg-amber-100 text-amber-700"
+                          : "bg-slate-200 text-slate-600"
+                      }`}
+                    >
+                      {(lead.leadTemperature || "cold").toUpperCase()}
+                    </span>
+                    <span className="text-xs font-semibold text-gray-600">
+                      Score: {lead.leadScore ?? 0}/100
+                    </span>
+                  </div>
                 </div>
 
                 <a
@@ -138,6 +171,13 @@ Start Time: ${lead.startTime || "-"}
                 </p>
                 <p>
                   <strong>Start:</strong> {lead.startTime || "-"}
+                </p>
+                <p>
+                  <strong>Reason:</strong>{" "}
+                  {Array.isArray(lead.leadScoreReasons) &&
+                  lead.leadScoreReasons.length > 0
+                    ? lead.leadScoreReasons.join(", ")
+                    : "-"}
                 </p>
               </div>
             </div>

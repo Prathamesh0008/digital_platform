@@ -2,6 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import ChatMessage from "@/models/ChatMessage";
 import ChatSession from "@/models/ChatSession";
 import { pusherServer } from "@/lib/pusherServer";
+import { detectUnsafeMessage } from "@/lib/chatSafety";
 
 async function triggerDashboard() {
   try {
@@ -79,6 +80,20 @@ export async function POST(request) {
         },
         { status: 400 }
       );
+    }
+
+    if (messageType === "text" && senderType === "visitor") {
+      const unsafeCheck = detectUnsafeMessage(message);
+      if (unsafeCheck.blocked) {
+        return Response.json(
+          {
+            success: false,
+            message:
+              "Please keep the message clear and respectful. Then I will forward it to our live agent.",
+          },
+          { status: 400 }
+        );
+      }
     }
 
     if (messageType === "attachment" && !attachment?.fileUrl) {

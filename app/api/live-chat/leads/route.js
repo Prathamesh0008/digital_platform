@@ -14,6 +14,7 @@ export async function GET(request) {
 
     const { searchParams } = new URL(request.url);
     const q = searchParams.get("q") || "";
+    const temperature = searchParams.get("temperature") || "";
 
     const filter = {};
 
@@ -26,8 +27,12 @@ export async function GET(request) {
       ];
     }
 
+    if (["hot", "warm", "cold"].includes(temperature)) {
+      filter.leadTemperature = temperature;
+    }
+
     const leads = await VisitorLead.find(filter)
-      .sort({ createdAt: -1 })
+      .sort({ leadScore: -1, createdAt: -1 })
       .limit(300)
       .lean();
 

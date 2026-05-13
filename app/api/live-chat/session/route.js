@@ -6,6 +6,8 @@ import ChatSession from "@/models/ChatSession";
 import ChatMessage from "@/models/ChatMessage";
 import VisitorLead from "@/models/VisitorLead";
 import { pusherServer, CHANNELS } from "@/lib/pusherServer";
+import { computeLeadScore } from "@/lib/leadScoring";
+import { detectUnsafeMessage } from "@/lib/chatSafety";
 
 async function safeTrigger(channel, event, payload) {
   try {
@@ -71,6 +73,18 @@ export async function POST(request) {
     const pageUrl = String(body.pageUrl || "");
     const userAgent = String(body.userAgent || "");
 
+    const unsafeCheck = detectUnsafeMessage(visitorRequirement);
+    if (unsafeCheck.blocked) {
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Please share your requirement in a respectful and clear way so we can connect you with our team.",
+        },
+        { status: 400 }
+      );
+    }
+
     if (!visitorName || !visitorContact) {
       return Response.json(
         {
@@ -130,6 +144,14 @@ export async function POST(request) {
       unreadForAgent: visitorRequirement ? 1 : 0,
     });
 
+    const leadScoreData = computeLeadScore({
+      contact: visitorContact,
+      service: selectedService,
+      requirement: visitorRequirement,
+      budget: body.budget || "",
+      startTime: body.startTime || "",
+    });
+
     await VisitorLead.create({
       sessionId,
       visitorId,
@@ -145,6 +167,10 @@ export async function POST(request) {
       pageUrl,
       userAgent,
       source: "website-chatbot",
+      leadScore: leadScoreData.score,
+      leadTemperature: leadScoreData.temperature,
+      leadScoreReasons: leadScoreData.reasons,
+      riskFlags: [],
     });
 
     const systemMessage = await ChatMessage.create({

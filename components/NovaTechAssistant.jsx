@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useRef, useState, useEffect } from "react";
 import Image from "next/image";
@@ -15,7 +15,6 @@ import {
   MicOff,
   HelpCircle,
   Paperclip,
-  Smile,
 } from "lucide-react";
 
 import {
@@ -32,7 +31,6 @@ const AGENCY_WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919999999999";
 
 const BOT_LOGO = "/N.png";
-const EMOJIS = ["😀", "😃", "😊", "👍", "🙏", "❤️", "🚀", "✅", "📞", "💬"];
 
 function normalizeText(text) {
   return String(text || "").toLowerCase().trim();
@@ -93,6 +91,28 @@ function isLiveAgentIntent(text) {
   ].some((word) => value.includes(word));
 }
 
+function getPageContextQuickReplies(pathname = "") {
+  const path = String(pathname || "").toLowerCase();
+
+  if (path.startsWith("/services/details")) {
+    return ["Website Development", "SEO Services", "Request a Quote"];
+  }
+
+  if (path.startsWith("/services")) {
+    return ["SEO Services", "Paid Ads", "Social Media Marketing"];
+  }
+
+  if (path.startsWith("/portfolio") || path.startsWith("/case-studies")) {
+    return ["Website Development", "Branding", "Request a Quote"];
+  }
+
+  if (path.startsWith("/contact")) {
+    return ["Talk to Live Agent", "Request a Quote", "View FAQs"];
+  }
+
+  return ["Website Development", "SEO Services", "Talk to Live Agent"];
+}
+
 function createWhatsAppMessage(leadData) {
   return encodeURIComponent(`
 New Lead from Nova Website Chatbot
@@ -107,35 +127,76 @@ Start Time: ${leadData.startTime || "-"}
 `);
 }
 
+function isUnsafeInput(text) {
+  const value = normalizeText(text);
+  if (!value) return false;
+
+  const blockedPatterns = [
+    /\b(fuck|bitch|madarchod|bhenchod|gandu|slut)\b/i,
+    /\b(free money|casino|crypto signal)\b/i,
+  ];
+
+  if (value.length > 900) return true;
+  if (/(.)\1{7,}/i.test(value)) return true;
+  return blockedPatterns.some((pattern) => pattern.test(value));
+}
+
 export default function NovaTechAssistant() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const safeFaqs = Array.isArray(FAQS) ? FAQS : [];
-  const safeServices = Array.isArray(SERVICES) ? SERVICES : [];
-  const safeLeadFields = Array.isArray(LEAD_FIELDS) ? LEAD_FIELDS : [];
-  const safeQuickReplies = Array.isArray(QUICK_REPLIES) ? QUICK_REPLIES : [];
-  const safeServiceMenus = SERVICE_MENUS || {};
+  const safeFaqs = useMemo(() => (Array.isArray(FAQS) ? FAQS : []), []);
+  const safeServices = useMemo(
+    () => (Array.isArray(SERVICES) ? SERVICES : []),
+    []
+  );
+  const safeLeadFields = useMemo(
+    () => (Array.isArray(LEAD_FIELDS) ? LEAD_FIELDS : []),
+    []
+  );
+  const safeQuickReplies = useMemo(
+    () => (Array.isArray(QUICK_REPLIES) ? QUICK_REPLIES : []),
+    []
+  );
+  const safeServiceMenus = useMemo(() => SERVICE_MENUS || {}, []);
 
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   const [isListening, setIsListening] = useState(false);
-  const [speechSupported, setSpeechSupported] = useState(false);
+  const [speechSupported] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
+  });
 
   const [leadMode, setLeadMode] = useState(false);
   const [leadStep, setLeadStep] = useState(0);
   const [leadData, setLeadData] = useState({});
 
-  const [visitorId, setVisitorId] = useState("");
+  const [visitorId] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return getOrCreateVisitorId();
+  });
   const [liveSession, setLiveSession] = useState(null);
   const [liveMode, setLiveMode] = useState(false);
   const [agentConnected, setAgentConnected] = useState(false);
+  const [agentDisplayName, setAgentDisplayName] = useState("Nova Agent");
   const [isRestoringLiveChat, setIsRestoringLiveChat] = useState(false);
+  const [ratingSubmission, setRatingSubmission] = useState({
+    sessionId: "",
+    value: 0,
+    isSubmitting: false,
+    isSubmitted: false,
+  });
 
   const [agentTyping, setAgentTyping] = useState(false);
   
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [selectedAttachment, setSelectedAttachment] = useState(null);
+  const [customFaqs, setCustomFaqs] = useState([]);
+  const [contextQuickReplies] = useState(() => {
+    if (typeof window === "undefined") return [];
+    return getPageContextQuickReplies(window.location.pathname);
+  });
+  const [hasProactivePrompted, setHasProactivePrompted] = useState(false);
 
   const [liveForm, setLiveForm] = useState({
     name: "",
@@ -166,12 +227,26 @@ export default function NovaTechAssistant() {
 
   const fileInputRef = useRef(null);
   const typingTimerRef = useRef(null);
+  const visitorTypingTimerRef = useRef(null);
+  const lastVisitorTypingSentAtRef = useRef(0);
   const notificationAudioRef = useRef(null);
   const userInteractedRef = useRef(false);
+  const promptedRatingSessionIdsRef = useRef(new Set());
+  const notifiedSessionStatusRef = useRef(new Set());
 
   const currentLeadField = useMemo(() => {
     return safeLeadFields?.[leadStep] || null;
   }, [leadStep, safeLeadFields]);
+
+  const mergedFaqs = useMemo(() => {
+    const mappedCustomFaqs = (customFaqs || []).map((faq) => ({
+      question: faq.question,
+      answer: faq.answer,
+      keywords: Array.isArray(faq.keywords) ? faq.keywords : [],
+    }));
+
+    return [...mappedCustomFaqs, ...safeFaqs];
+  }, [customFaqs, safeFaqs]);
 
   useEffect(() => {
     handleSendRef.current = handleSend;
@@ -191,15 +266,60 @@ export default function NovaTechAssistant() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const storedVisitorId = getOrCreateVisitorId();
-    setVisitorId(storedVisitorId);
-
     const storedSessionId = localStorage.getItem("nova_live_session_id");
 
     if (storedSessionId) {
       restoreLiveSession(storedSessionId);
     }
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadCustomFaqs() {
+      try {
+        const response = await fetch("/api/chatbot/faqs");
+        const data = await response.json();
+
+        if (!cancelled && data.success) {
+          setCustomFaqs(data.faqs || []);
+        }
+      } catch (error) {
+        console.error("Load custom FAQs error:", error);
+      }
+    }
+
+    loadCustomFaqs();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (hasProactivePrompted || isOpen || userInteractedRef.current) return;
+
+    const timer = setTimeout(() => {
+      if (userInteractedRef.current || hasProactivePrompted) return;
+
+      const contextualPrompt = contextQuickReplies.includes("Request a Quote")
+        ? "Need a quote quickly? I can collect your requirement in 1 minute."
+        : "Need help choosing the right service? I can guide you in a few steps.";
+
+      addMessage("bot", contextualPrompt);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "bot",
+          type: "contextQuickReplies",
+          text: JSON.stringify({ replies: contextQuickReplies }),
+        },
+      ]);
+      setHasProactivePrompted(true);
+    }, 20000);
+
+    return () => clearTimeout(timer);
+  }, [contextQuickReplies, hasProactivePrompted, isOpen]);
 
   useEffect(() => {
     if (!visitorId) return;
@@ -250,8 +370,6 @@ export default function NovaTechAssistant() {
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) return;
-
-    setSpeechSupported(true);
 
     const recognition = new SpeechRecognition();
     recognition.lang = "en-IN";
@@ -323,7 +441,7 @@ export default function NovaTechAssistant() {
     });
 
     const channel = pusher.subscribe(`nova-chat-${liveSession.sessionId}`);
-    console.log("✅ Bot subscribed to channel:", `nova-chat-${liveSession.sessionId}`);
+    console.log("âœ… Bot subscribed to channel:", `nova-chat-${liveSession.sessionId}`);
 
     channel.bind("new-message", (data) => {
       const message = data?.message;
@@ -352,65 +470,25 @@ export default function NovaTechAssistant() {
         playNotificationSound();
       }
     });
-channel.bind("typing", (data) => {
-  console.log("✅ Bot received typing event:", data);
+    function handleTypingEvent(data) {
+      if (data?.senderType !== "agent") return;
 
-  if (data?.senderType !== "agent") return;
+      const isAgentTyping = Boolean(data.isTyping);
+      setAgentTyping(isAgentTyping);
 
-  const isAgentTyping = Boolean(data.isTyping);
+      if (typingTimerRef.current) {
+        clearTimeout(typingTimerRef.current);
+      }
 
-  setAgentTyping(isAgentTyping);
+      if (isAgentTyping) {
+        typingTimerRef.current = setTimeout(() => {
+          setAgentTyping(false);
+        }, 3000);
+      }
+    }
 
-  if (typingTimerRef.current) {
-    clearTimeout(typingTimerRef.current);
-  }
-
-  if (isAgentTyping) {
-    typingTimerRef.current = setTimeout(() => {
-      setAgentTyping(false);
-    }, 3000);
-  }
-});
-
-channel.bind("typing", (data) => {
-  console.log("✅ Bot received typing event:", data);
-
-  if (data?.senderType !== "agent") return;
-
-  const isAgentTyping = Boolean(data.isTyping);
-
-  setAgentTyping(isAgentTyping);
-
-  if (typingTimerRef.current) {
-    clearTimeout(typingTimerRef.current);
-  }
-
-  if (isAgentTyping) {
-    typingTimerRef.current = setTimeout(() => {
-      setAgentTyping(false);
-    }, 3000);
-  }
-});
-
-channel.bind("agent-typing", (data) => {
-  console.log("✅ Bot received agent-typing event:", data);
-
-  if (data?.senderType !== "agent") return;
-
-  const isAgentTyping = Boolean(data.isTyping);
-
-  setAgentTyping(isAgentTyping);
-
-  if (typingTimerRef.current) {
-    clearTimeout(typingTimerRef.current);
-  }
-
-  if (isAgentTyping) {
-    typingTimerRef.current = setTimeout(() => {
-      setAgentTyping(false);
-    }, 3000);
-  }
-});
+    channel.bind("typing", handleTypingEvent);
+    channel.bind("agent-typing", handleTypingEvent);
 
     channel.bind("agent-connected", (data) => {
       const agentName =
@@ -420,6 +498,7 @@ channel.bind("agent-typing", (data) => {
 
       setAgentConnected(true);
       setAgentTyping(false);
+      setAgentDisplayName(agentName);
 
       if (data?.session) {
         setLiveSession(data.session);
@@ -433,7 +512,7 @@ channel.bind("agent-typing", (data) => {
         addMessage(
           "bot",
           data?.visitorText ||
-            `Agent connected. You are now chatting with ${agentName}.`
+            "This is Nova How may i help You"
         );
 
         playNotificationSound();
@@ -441,7 +520,7 @@ channel.bind("agent-typing", (data) => {
         addMessage(
           "bot",
           data?.visitorText ||
-            `Agent connected. You are now chatting with ${agentName}.`
+            "This is Nova How may i help You"
         );
 
         playNotificationSound();
@@ -450,22 +529,39 @@ channel.bind("agent-typing", (data) => {
       refreshLiveSessionMessages(liveSession.sessionId);
     });
 
-    channel.bind("session-closed", () => {
+    channel.bind("session-closed", (data) => {
+      const closedSession = liveSession;
+      const closeStatus = String(data?.status || "closed");
+      const closeSessionId = String(
+        data?.session?.sessionId || closedSession?.sessionId || ""
+      );
+      const statusKey = `${closeSessionId}:${closeStatus}`;
+
+      if (notifiedSessionStatusRef.current.has(statusKey)) {
+        return;
+      }
+
+      notifiedSessionStatusRef.current.add(statusKey);
+
       setLiveMode(false);
       setAgentConnected(false);
       setAgentTyping(false);
       setLiveSession(null);
+      setAgentDisplayName("Nova Agent");
 
       if (typeof window !== "undefined") {
         localStorage.removeItem("nova_live_session_id");
       }
 
-      addMessage(
-        "bot",
-        "Live chat has ended. You can continue with Nova AI assistant."
-      );
+      const closeText =
+        closeStatus === "resolved"
+          ? "Your live chat has been marked as resolved by our support team."
+          : "Live chat has ended. You can continue with Nova AI assistant.";
 
-      addMainMenu();
+      addMessage("bot", closeText);
+
+      maybePromptForRating(closedSession);
+      addPostChatActions();
       playNotificationSound();
     });
 
@@ -526,7 +622,7 @@ channel.bind("agent-typing", (data) => {
       {
         role: "bot",
         type: "faqList",
-        text: "Here are the most common questions visitors ask us:",
+        text: "Here are common questions visitors ask us:",
       },
     ]);
   }
@@ -538,6 +634,36 @@ channel.bind("agent-typing", (data) => {
         role: "bot",
         type: "quickReplies",
         text: "Here are some quick options:",
+      },
+    ]);
+  }
+
+  function addPostChatActions() {
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "bot",
+        type: "postChatActions",
+        text: "You can start a new chat whenever you need more help.",
+      },
+    ]);
+  }
+
+  function maybePromptForRating(session) {
+    const sessionId = String(session?.sessionId || "");
+    const alreadyRated = Boolean(session?.rating?.value);
+
+    if (!sessionId || alreadyRated) return;
+    if (promptedRatingSessionIdsRef.current.has(sessionId)) return;
+
+    promptedRatingSessionIdsRef.current.add(sessionId);
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "bot",
+        type: "liveChatRating",
+        text: JSON.stringify({ sessionId }),
       },
     ]);
   }
@@ -561,8 +687,25 @@ channel.bind("agent-typing", (data) => {
       setLiveSession(session);
       setLiveMode(["pending", "active", "offline"].includes(session.status));
       setAgentConnected(session.status === "active");
+      setAgentDisplayName(session.assignedAgentName || "Nova Agent");
 
       if (!["pending", "active", "offline"].includes(session.status)) {
+        const statusKey = `${session.sessionId}:${session.status}`;
+
+        if (!notifiedSessionStatusRef.current.has(statusKey)) {
+          notifiedSessionStatusRef.current.add(statusKey);
+
+          const closeText =
+            session.status === "resolved"
+              ? "Your live chat has been marked as resolved by our support team."
+              : "Live chat has ended. You can continue with Nova AI assistant.";
+
+          addMessage("bot", closeText);
+          maybePromptForRating(session);
+          addPostChatActions();
+          playNotificationSound();
+        }
+
         setLiveMode(false);
         setAgentConnected(false);
         setAgentTyping(false);
@@ -610,8 +753,8 @@ channel.bind("agent-typing", (data) => {
       addMessage(
         "bot",
         agentConnected
-          ? "You are already connected with Upasana."
-          : "Hiii....\nUpasana is connecting with you shortly."
+          ? `You are already connected with ${agentDisplayName}.`
+          : `Hiii....\n${agentDisplayName} is connecting with you shortly.`
       );
       addMainMenu();
       return;
@@ -633,7 +776,7 @@ channel.bind("agent-typing", (data) => {
     if (!service) {
       addMessage(
         "bot",
-        "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
+        "Iâ€™ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
       );
       addMainMenu();
       return;
@@ -713,7 +856,7 @@ channel.bind("agent-typing", (data) => {
       return OPENING_MESSAGE;
     }
 
-    const faqMatch = safeFaqs.find((faq) =>
+    const faqMatch = mergedFaqs.find((faq) =>
       faq.keywords?.some((keyword) => value.includes(keyword))
     );
 
@@ -819,6 +962,7 @@ channel.bind("agent-typing", (data) => {
       setLiveSession(session);
       setLiveMode(true);
       setAgentConnected(session.status === "active");
+      setAgentDisplayName(session.assignedAgentName || "Nova Agent");
 
       setLiveForm((prev) => ({
         ...prev,
@@ -893,7 +1037,7 @@ channel.bind("agent-typing", (data) => {
       if (!response.ok) {
         addMessage(
           "bot",
-          "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
+          "I will need a few more details to guide you properly. Please share your requirement, and our team will assist you."
         );
         return;
       }
@@ -906,38 +1050,46 @@ channel.bind("agent-typing", (data) => {
         addMessage(
           "bot",
           data?.answer ||
-            "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
+            "I will need a few more details to guide you properly. Please share your requirement, and our team will assist you."
         );
+
+        const fallbackReplies = Array.isArray(data?.fallback?.quickReplies)
+          ? data.fallback.quickReplies
+          : [];
+
+        if (fallbackReplies.length > 0) {
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "bot",
+              type: "contextQuickReplies",
+              text: JSON.stringify({ replies: fallbackReplies.slice(0, 4) }),
+            },
+          ]);
+        }
 
         return;
       }
 
       if (!response.body) {
         const text = await response.text();
-
         addMessage(
           "bot",
           text ||
-            "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
+            "I will need a few more details to guide you properly. Please share your requirement, and our team will assist you."
         );
-
         return;
       }
 
       addMessage("bot", "", "text");
-
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
-
       let finalAnswer = "";
 
       while (true) {
         const { done, value } = await reader.read();
-
         if (done) break;
-
         const chunk = decoder.decode(value, { stream: true });
-
         if (chunk) {
           finalAnswer += chunk;
           appendToLastBotMessage(chunk);
@@ -946,18 +1098,29 @@ channel.bind("agent-typing", (data) => {
 
       if (!finalAnswer.trim()) {
         appendToLastBotMessage(
-          "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
+          "I will need a few more details to guide you properly. Please share your requirement, and our team will assist you."
         );
       }
     } catch (error) {
       console.error("AI chatbot error:", error);
-
       setIsTyping(false);
-
       addMessage(
         "bot",
-        "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you."
+        "I could not process that right now. You can continue with a quick option below."
       );
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "bot",
+          type: "contextQuickReplies",
+          text: JSON.stringify({
+            replies:
+              contextQuickReplies.length > 0
+                ? contextQuickReplies
+                : ["Website Development", "SEO Services", "Talk to Live Agent"],
+          }),
+        },
+      ]);
     }
   }
 
@@ -969,12 +1132,16 @@ channel.bind("agent-typing", (data) => {
       return;
     }
 
+    if (isUnsafeInput(liveForm.requirement || "")) {
+      addMessage(
+        "bot",
+        "Please keep your requirement message respectful and clear."
+      );
+      return;
+    }
+
     try {
       const activeVisitorId = visitorId || getOrCreateVisitorId();
-
-      if (!visitorId && activeVisitorId) {
-        setVisitorId(activeVisitorId);
-      }
 
       setLeadData((prev) => ({
         ...prev,
@@ -986,10 +1153,7 @@ channel.bind("agent-typing", (data) => {
         requirement: liveForm.requirement,
       }));
 
-      addMessage(
-        "user",
-        liveForm.requirement || "Live agent request submitted."
-      );
+      addMessage("user", liveForm.requirement || "Live agent request submitted.");
 
       if (typeof window !== "undefined") {
         localStorage.removeItem("nova_live_session_id");
@@ -1024,12 +1188,8 @@ channel.bind("agent-typing", (data) => {
         return;
       }
 
-      if (data.visitorId) {
-        setVisitorId(data.visitorId);
-
-        if (typeof window !== "undefined") {
-          localStorage.setItem("nova_visitor_id", data.visitorId);
-        }
+      if (data.visitorId && typeof window !== "undefined") {
+        localStorage.setItem("nova_visitor_id", data.visitorId);
       }
 
       setLiveSession(data.session);
@@ -1040,15 +1200,12 @@ channel.bind("agent-typing", (data) => {
         localStorage.setItem("nova_live_session_id", data.session.sessionId);
       }
 
-      if (Array.isArray(data.messages)) {
-        data.messages.forEach((message) => {
-          if (message?._id) {
-            seenLiveMessageIdsRef.current.add(String(message._id));
-          }
-        });
-      }
-
-      addMessage("bot", "Hiii....\nUpasana is connecting with you shortly.");
+      addMessage(
+        "bot",
+        `Hiii....\n${
+          data?.session?.assignedAgentName || "Our agent"
+        } is connecting with you shortly.`
+      );
 
       if (data.offlineMessage) {
         addMessage("bot", data.offlineMessage);
@@ -1057,7 +1214,6 @@ channel.bind("agent-typing", (data) => {
       addMainMenu();
     } catch (error) {
       console.error("Submit live agent request error:", error);
-
       addMessage("bot", "Could not connect you right now. Please try again.");
     }
   }
@@ -1076,7 +1232,6 @@ channel.bind("agent-typing", (data) => {
         "bot",
         "Live chat session not found. Returning to Nova assistant."
       );
-
       addMainMenu();
       return;
     }
@@ -1097,13 +1252,20 @@ channel.bind("agent-typing", (data) => {
       });
 
       const data = await response.json();
+      if (!data?.success) {
+        addMessage(
+          "bot",
+          data?.message ||
+            "Your message could not be sent to the live agent. Please try again."
+        );
+        return;
+      }
 
       if (data?.message?._id) {
         seenLiveMessageIdsRef.current.add(String(data.message._id));
       }
     } catch (error) {
       console.error("Send live message error:", error);
-
       addMessage(
         "bot",
         "Your message could not be sent to the live agent. Please try again."
@@ -1113,11 +1275,13 @@ channel.bind("agent-typing", (data) => {
 
   async function endLiveChat() {
     const sessionId = liveSession?.sessionId;
+    const currentSession = liveSession;
 
     setLiveMode(false);
     setAgentConnected(false);
     setAgentTyping(false);
     setLiveSession(null);
+    setAgentDisplayName("Nova Agent");
 
     if (typeof window !== "undefined") {
       localStorage.removeItem("nova_live_session_id");
@@ -1125,7 +1289,8 @@ channel.bind("agent-typing", (data) => {
 
     addMessage("user", "End Live Chat");
     addMessage("bot", "Live chat ended. Nova AI assistant is active again.");
-    addMainMenu();
+    maybePromptForRating(currentSession);
+    addPostChatActions();
 
     if (!sessionId) return;
 
@@ -1142,6 +1307,90 @@ channel.bind("agent-typing", (data) => {
       });
     } catch (error) {
       console.error("End live chat error:", error);
+    }
+  }
+
+  async function sendVisitorTypingStatus(isTyping = true) {
+    if (!liveSession?.sessionId || !liveMode) return;
+
+    const now = Date.now();
+    if (isTyping && now - lastVisitorTypingSentAtRef.current < 700) {
+      return;
+    }
+    lastVisitorTypingSentAtRef.current = now;
+
+    try {
+      await fetch("/api/live-chat/typing", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId: liveSession.sessionId,
+          senderType: "visitor",
+          senderName: liveForm.name || leadData?.name || "Website Visitor",
+          isTyping,
+        }),
+      });
+    } catch (error) {
+      console.error("Visitor typing status error:", error);
+    }
+  }
+
+  async function submitLiveChatRating(sessionId, ratingValue) {
+    if (!sessionId || !ratingValue || ratingValue < 1 || ratingValue > 5) {
+      return;
+    }
+
+    if (ratingSubmission.isSubmitting) return;
+
+    setRatingSubmission({
+      sessionId,
+      value: ratingValue,
+      isSubmitting: true,
+      isSubmitted: false,
+    });
+
+    try {
+      const response = await fetch("/api/live-chat/rating", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId,
+          visitorId,
+          visitorName: liveForm.name || leadData?.name || "Website Visitor",
+          rating: ratingValue,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!data?.success) {
+        throw new Error(data?.message || "Could not submit rating.");
+      }
+
+      setRatingSubmission({
+        sessionId,
+        value: ratingValue,
+        isSubmitting: false,
+        isSubmitted: true,
+      });
+
+      addMessage("bot", "Thanks for your feedback. It helps us improve.");
+    } catch (error) {
+      console.error("Submit rating error:", error);
+      setRatingSubmission({
+        sessionId,
+        value: ratingValue,
+        isSubmitting: false,
+        isSubmitted: false,
+      });
+      addMessage(
+        "bot",
+        "We could not save your rating right now. Please try once again."
+      );
     }
   }
 
@@ -1186,11 +1435,24 @@ channel.bind("agent-typing", (data) => {
 
     userInteractedRef.current = true;
 
+    if (isUnsafeInput(userMessage)) {
+      addMessage("user", userMessage);
+      addMessage(
+        "bot",
+        "Please keep your message respectful and specific. Share your requirement and I will help right away."
+      );
+      setInput("");
+      return;
+    }
+
     addMessage("user", userMessage);
     setInput("");
-    setShowEmojiPicker(false);
+    if (selectedAttachment) {
+      setSelectedAttachment(null);
+    }
 
     if (liveMode) {
+      sendVisitorTypingStatus(false);
       await sendLiveAgentMessage(userMessage);
       return;
     }
@@ -1264,14 +1526,9 @@ channel.bind("agent-typing", (data) => {
     userInteractedRef.current = true;
     setSelectedAttachment(file);
     addMessage("user", `Attached file: ${file.name}`, "attachmentPreview");
+    setSelectedAttachment(null);
 
     event.target.value = "";
-  }
-
-  function insertEmoji(emoji) {
-    userInteractedRef.current = true;
-    setInput((prev) => `${prev}${emoji}`);
-    setShowEmojiPicker(false);
   }
 
   function renderQuickReplyButton(reply) {
@@ -1331,9 +1588,58 @@ channel.bind("agent-typing", (data) => {
       return (
         <div>
           <p className="mb-1 text-[11px] font-semibold text-gray-400">
-            Upasana
+            {agentDisplayName}
           </p>
           <p>{message.text}</p>
+        </div>
+      );
+    }
+
+    if (message.type === "liveChatRating") {
+      let sessionId = "";
+      try {
+        sessionId = JSON.parse(message.text || "{}")?.sessionId || "";
+      } catch {
+        sessionId = "";
+      }
+
+      const isThisSessionSubmitting =
+        ratingSubmission.sessionId === sessionId && ratingSubmission.isSubmitting;
+      const isThisSessionSubmitted =
+        ratingSubmission.sessionId === sessionId && ratingSubmission.isSubmitted;
+
+      return (
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-gray-900">
+            Rate your live chat experience
+          </p>
+          <p className="text-xs text-gray-600">
+            Your feedback helps us improve support quality.
+          </p>
+          <div className="flex items-center gap-2">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                key={star}
+                type="button"
+                onClick={() => submitLiveChatRating(sessionId, star)}
+                disabled={isThisSessionSubmitting || isThisSessionSubmitted}
+                className={`cursor-pointer text-2xl leading-none transition ${
+                  star <= ratingSubmission.value ? "text-amber-500" : "text-gray-300"
+                } ${isThisSessionSubmitted ? "cursor-default" : "hover:scale-110"}`}
+                aria-label={`Rate ${star} star`}
+              >
+                â˜…
+              </button>
+            ))}
+          </div>
+          {isThisSessionSubmitting && (
+            <p className="text-xs font-medium text-gray-500">Submitting rating...</p>
+          )}
+          {isThisSessionSubmitted && (
+            <p className="text-xs font-medium text-green-600">
+              Thanks. Your rating was submitted.
+            </p>
+          )}
         </div>
       );
     }
@@ -1424,29 +1730,53 @@ channel.bind("agent-typing", (data) => {
         <div className="space-y-3">
           <p className="text-sm font-medium text-gray-800">{message.text}</p>
 
-          {liveMode && (
-            <div className="rounded-2xl border border-red-100 bg-red-50 p-3">
-              <p className="mb-2 text-xs font-medium text-red-700">
-                {agentConnected
-                  ? "Live agent is connected."
-                  : "Waiting for live agent..."}
-              </p>
-
-              <button
-                type="button"
-                onClick={endLiveChat}
-                className="cursor-pointer rounded-full bg-red-100 px-4 py-2 text-xs font-semibold text-red-700 transition hover:bg-red-200"
-              >
-                End Live Chat
-              </button>
-            </div>
-          )}
-
           {!liveMode && (
             <div className="flex flex-wrap gap-2">
               {safeQuickReplies.map((reply) => renderQuickReplyButton(reply))}
             </div>
           )}
+        </div>
+      );
+    }
+
+    if (message.type === "contextQuickReplies") {
+      let replies = [];
+      try {
+        replies = JSON.parse(message.text || "{}")?.replies || [];
+      } catch {
+        replies = [];
+      }
+
+      return (
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-gray-800">
+            Quick actions for this page:
+          </p>
+          {!liveMode && (
+            <div className="flex flex-wrap gap-2">
+              {replies.slice(0, 4).map((reply) => renderQuickReplyButton(reply))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    if (message.type === "postChatActions") {
+      return (
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-gray-800">{message.text}</p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                addMessage("user", "Start New Chat");
+                addMainMenu();
+              }}
+              className="cursor-pointer rounded-full bg-black px-4 py-2 text-xs font-semibold text-white transition hover:scale-105"
+            >
+              Start New Chat
+            </button>
+          </div>
         </div>
       );
     }
@@ -1458,7 +1788,7 @@ channel.bind("agent-typing", (data) => {
         return (
           <div className="space-y-3">
             <p>
-              I’ll need a few more details to guide you properly. Please share
+              Iâ€™ll need a few more details to guide you properly. Please share
               your requirement, and our team will assist you.
             </p>
 
@@ -1470,7 +1800,7 @@ channel.bind("agent-typing", (data) => {
               }}
               className="cursor-pointer rounded-full bg-black px-4 py-2 text-xs font-medium text-white"
             >
-              ← Back to Main Menu
+              â† Back to Main Menu
             </button>
           </div>
         );
@@ -1509,7 +1839,7 @@ channel.bind("agent-typing", (data) => {
             }}
             className="cursor-pointer rounded-full bg-black px-4 py-2 text-xs font-medium text-white transition hover:scale-105"
           >
-            ← Back to Main Menu
+            â† Back to Main Menu
           </button>
         </div>
       );
@@ -1561,7 +1891,7 @@ channel.bind("agent-typing", (data) => {
               }}
               className="w-fit cursor-pointer rounded-full border border-[#d0bfae] bg-[#eadfd2] px-5 py-2.5 text-xs font-medium text-[#493421] shadow-sm transition hover:bg-[#ded0bf] hover:text-black"
             >
-              ← Back to {payload.serviceName}
+              â† Back to {payload.serviceName}
             </button>
           </div>
         </div>
@@ -1574,7 +1904,7 @@ channel.bind("agent-typing", (data) => {
           <p className="font-medium">{message.text}</p>
 
           <div className="space-y-2">
-            {safeFaqs.map((faq, faqIndex) => (
+            {mergedFaqs.map((faq, faqIndex) => (
               <details
                 key={faqIndex}
                 className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2"
@@ -1606,7 +1936,7 @@ channel.bind("agent-typing", (data) => {
             }}
             className="cursor-pointer rounded-full bg-black px-4 py-2 text-xs font-medium text-white"
           >
-            ← Back to Main Menu
+            â† Back to Main Menu
           </button>
         </div>
       );
@@ -1686,6 +2016,11 @@ channel.bind("agent-typing", (data) => {
     return message.text;
   }
 
+  const lastQuickRepliesIndex = messages
+    .map((m, i) => ({ type: m.type, i }))
+    .filter((m) => m.type === "quickReplies")
+    .slice(-1)[0]?.i;
+
   return (
     <>
       {!isOpen && (
@@ -1709,9 +2044,10 @@ channel.bind("agent-typing", (data) => {
 
       {isOpen && (
         <div className="fixed bottom-6 right-6 z-50 flex h-[620px] w-[360px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-3xl border border-white/20 bg-white shadow-2xl">
-          <div className="flex items-center justify-between bg-black px-5 py-4 text-white">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white p-1">
+          <div className="bg-black px-4 py-2.5 text-white">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white p-1">
                 <Image
                   src={BOT_LOGO}
                   alt="Nova logo"
@@ -1721,8 +2057,8 @@ channel.bind("agent-typing", (data) => {
                 />
               </div>
 
-              <div>
-                <h3 className="text-sm font-semibold">{BOT_NAME}</h3>
+                <div>
+                  <h3 className="text-sm font-semibold">{BOT_NAME}</h3>
                 <p className="text-xs text-white/70">
                   {isRestoringLiveChat
                     ? "Restoring live chat..."
@@ -1732,18 +2068,39 @@ channel.bind("agent-typing", (data) => {
                     ? "Waiting for Live Agent"
                     : "Digital Growth Assistant"}
                 </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="cursor-pointer rounded-full p-1 text-white/80 transition hover:bg-white/10 hover:text-white"
+                aria-label="Close chatbot"
+              >
+                <X size={20} />
+              </button>
+            </div>
+          </div>
+
+          {liveMode && (
+            <div className="border-b border-red-100 bg-white px-4 py-2">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-xs font-medium text-red-700">
+                  {agentConnected
+                    ? "Live agent is connected."
+                    : "Waiting for live agent..."}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={endLiveChat}
+                  className="cursor-pointer rounded-full bg-red-100 px-3 py-1 text-[11px] font-semibold text-red-700 transition hover:bg-red-200"
+                >
+                  End Live Chat
+                </button>
               </div>
             </div>
-
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="cursor-pointer rounded-full p-1 text-white/80 transition hover:bg-white/10 hover:text-white"
-              aria-label="Close chatbot"
-            >
-              <X size={20} />
-            </button>
-          </div>
+          )}
 
           <div className="flex-1 overflow-y-auto bg-[#f7f7f7] px-4 py-4">
             <div className="space-y-3">
@@ -1785,7 +2142,11 @@ channel.bind("agent-typing", (data) => {
                           : "bg-white text-gray-800 shadow-sm"
                       }`}
                     >
-                      {renderMessageContent(message)}
+                      {renderMessageContent(
+                        message,
+                        message.type === "quickReplies" &&
+                          index === lastQuickRepliesIndex
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1829,7 +2190,7 @@ channel.bind("agent-typing", (data) => {
             <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400 [animation-delay:240ms]" />
           </span>
 
-          <span>Upasana is typing...</span>
+          <span>Typing...</span>
         </div>
       </div>
     </div>
@@ -1861,21 +2222,6 @@ channel.bind("agent-typing", (data) => {
                 >
                   Remove
                 </button>
-              </div>
-            )}
-
-            {showEmojiPicker && (
-              <div className="absolute bottom-[62px] left-[96px] z-10 grid grid-cols-5 gap-2 rounded-2xl border border-gray-100 bg-white p-3 shadow-xl">
-                {EMOJIS.map((emoji) => (
-                  <button
-                    key={emoji}
-                    type="button"
-                    onClick={() => insertEmoji(emoji)}
-                    className="cursor-pointer rounded-lg p-2 text-lg transition hover:bg-gray-100"
-                  >
-                    {emoji}
-                  </button>
-                ))}
               </div>
             )}
 
@@ -1912,23 +2258,23 @@ channel.bind("agent-typing", (data) => {
                 <Paperclip size={17} />
               </button>
 
-              <button
-                type="button"
-                onClick={() => {
-                  userInteractedRef.current = true;
-                  setShowEmojiPicker((prev) => !prev);
-                }}
-                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition hover:border-black hover:text-black"
-                aria-label="Emoji"
-              >
-                <Smile size={17} />
-              </button>
-
               <input
                 value={input}
                 onChange={(event) => {
                   userInteractedRef.current = true;
                   setInput(event.target.value);
+
+                  if (!liveMode) return;
+
+                  sendVisitorTypingStatus(true);
+
+                  if (visitorTypingTimerRef.current) {
+                    clearTimeout(visitorTypingTimerRef.current);
+                  }
+
+                  visitorTypingTimerRef.current = setTimeout(() => {
+                    sendVisitorTypingStatus(false);
+                  }, 1800);
                 }}
                 placeholder={
                   liveMode
@@ -1956,3 +2302,5 @@ channel.bind("agent-typing", (data) => {
     </>
   );
 }
+
+

@@ -1,5 +1,8 @@
 import OpenAI from "openai";
 import { buildKnowledgePrompt } from "@/data/chatbotKnowledge";
+import dbConnect from "@/lib/dbConnect";
+import ChatbotFaq from "@/models/ChatbotFaq";
+import { detectUnsafeMessage, SAFE_FALLBACK_MESSAGE } from "@/lib/chatSafety";
 
 export const dynamic = "force-dynamic";
 
@@ -8,6 +11,13 @@ const client = process.env.OPENAI_API_KEY
       apiKey: process.env.OPENAI_API_KEY,
     })
   : null;
+
+const DEFAULT_FALLBACK_REPLIES = [
+  "Website Development",
+  "SEO Services",
+  "Request a Quote",
+  "Talk to Live Agent",
+];
 
 export async function POST(request) {
   try {
@@ -18,16 +28,39 @@ export async function POST(request) {
       return Response.json(
         {
           answer:
-            "Please share your requirement, and I’ll guide you with the right digital marketing solution.",
+            "Please share your requirement, and I will guide you with the right digital marketing solution.",
+          fallback: { quickReplies: DEFAULT_FALLBACK_REPLIES },
         },
         { status: 400 }
       );
     }
 
-    if (!client) {
+    const unsafeCheck = detectUnsafeMessage(userMessage);
+    if (unsafeCheck.blocked) {
       return Response.json({
         answer:
-          "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you.",
+          "Please keep your message respectful and specific. Share your requirement and I will help right away.",
+        fallback: { quickReplies: DEFAULT_FALLBACK_REPLIES },
+      });
+    }
+
+    await dbConnect();
+    const customFaqs = await ChatbotFaq.find({ isActive: true })
+      .sort({ updatedAt: -1 })
+      .limit(120)
+      .lean();
+
+    const dynamicFaqPrompt =
+      customFaqs.length > 0
+        ? `\nLatest trained FAQs:\n${customFaqs
+            .map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`)
+            .join("\n\n")}\n`
+        : "";
+
+    if (!client) {
+      return Response.json({
+        answer: SAFE_FALLBACK_MESSAGE,
+        fallback: { quickReplies: DEFAULT_FALLBACK_REPLIES },
       });
     }
 
@@ -35,6 +68,7 @@ export async function POST(request) {
       model: "gpt-4.1-mini",
       input: `
 ${buildKnowledgePrompt()}
+${dynamicFaqPrompt}
 
 Visitor question:
 ${userMessage}
@@ -44,9 +78,8 @@ Reply as NovaTech Assistant. Keep the answer short, helpful, and professional.
     });
 
     return Response.json({
-      answer:
-        response.output_text ||
-        "I’ll need a few more details to guide you properly. Please share your requirement, and our team will assist you.",
+      answer: response.output_text || SAFE_FALLBACK_MESSAGE,
+      fallback: { quickReplies: DEFAULT_FALLBACK_REPLIES },
     });
   } catch (error) {
     console.error("Chatbot API Error:", error);
@@ -54,7 +87,8 @@ Reply as NovaTech Assistant. Keep the answer short, helpful, and professional.
     return Response.json(
       {
         answer:
-          "Sorry, I’m unable to generate an answer right now. Please share your requirement, and our team will assist you.",
+          "I could not process that right now. You can continue with a quick option below or connect to a live agent.",
+        fallback: { quickReplies: DEFAULT_FALLBACK_REPLIES },
       },
       { status: 500 }
     );

@@ -73,6 +73,31 @@ const VisitorLeadSchema = new mongoose.Schema(
       type: String,
       default: "website-chatbot",
     },
+
+    leadScore: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 100,
+      index: true,
+    },
+
+    leadTemperature: {
+      type: String,
+      enum: ["hot", "warm", "cold"],
+      default: "cold",
+      index: true,
+    },
+
+    leadScoreReasons: {
+      type: [String],
+      default: [],
+    },
+
+    riskFlags: {
+      type: [String],
+      default: [],
+    },
   },
   {
     timestamps: true,

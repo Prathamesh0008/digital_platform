@@ -33,6 +33,7 @@ export default function ChatWindow({
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
+  const [visitorTyping, setVisitorTyping] = useState(false);
 
   const [speechSupported, setSpeechSupported] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -44,6 +45,7 @@ export default function ChatWindow({
   // Typing indicator refs
   const typingTimerRef = useRef(null);
   const lastTypingSentAtRef = useRef(0);
+  const visitorTypingTimerRef = useRef(null);
 
   const canReply = session?.status === "active";
 
@@ -139,6 +141,23 @@ export default function ChatWindow({
       onRefresh?.();
     });
 
+    channel.bind("typing", (data) => {
+      if (data?.senderType !== "visitor") return;
+
+      const isVisitorTyping = Boolean(data?.isTyping);
+      setVisitorTyping(isVisitorTyping);
+
+      if (visitorTypingTimerRef.current) {
+        clearTimeout(visitorTypingTimerRef.current);
+      }
+
+      if (isVisitorTyping) {
+        visitorTypingTimerRef.current = setTimeout(() => {
+          setVisitorTyping(false);
+        }, 2500);
+      }
+    });
+
     return () => {
       clearInterval(refreshInterval);
       channel.unbind_all();
@@ -149,12 +168,15 @@ export default function ChatWindow({
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, visitorTyping]);
 
   useEffect(() => {
     return () => {
       if (typingTimerRef.current) {
         clearTimeout(typingTimerRef.current);
+      }
+      if (visitorTypingTimerRef.current) {
+        clearTimeout(visitorTypingTimerRef.current);
       }
     };
   }, []);
@@ -211,10 +233,25 @@ export default function ChatWindow({
         }),
       });
 
-      const data = await response.json();
+      let data = null;
 
-      if (!data.success) {
-        console.error("Typing API failed:", data);
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
+      }
+
+      if (!response.ok || !data?.success) {
+        // Avoid noisy console spam for transient typing events,
+        // but keep one concise diagnostic.
+        const status = response.status;
+        const message =
+          data?.message ||
+          (data && Object.keys(data).length > 0
+            ? JSON.stringify(data)
+            : "Empty typing API response");
+
+        console.warn(`Typing API issue (${status}): ${message}`);
       }
     } catch (error) {
       console.error("Typing status error:", error);
@@ -328,8 +365,8 @@ export default function ChatWindow({
 
   if (!session) {
     return (
-      <section className="flex h-full min-h-0 w-full items-center justify-center bg-white">
-        <div className="rounded-2xl border border-slate-200 bg-[#f8fbff] px-8 py-7 text-center shadow-sm">
+      <section className="flex h-full min-h-0 w-full items-center justify-center bg-[linear-gradient(180deg,#f9fbfe_0%,#eaf0f8_100%)]">
+        <div className="rounded-2xl border border-white/70 bg-[linear-gradient(150deg,#ffffff_0%,#edf2f8_100%)] px-8 py-7 text-center shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
           <h2 className="text-lg font-bold text-slate-950">Select a chat</h2>
           <p className="mt-2 text-sm text-slate-500">
             Choose a visitor chat from the left panel.
@@ -341,12 +378,12 @@ export default function ChatWindow({
 
   return (
     <section
-      className={`flex min-h-0 w-full min-w-0 flex-col overflow-hidden bg-white ${
+      className={`flex min-h-0 w-full min-w-0 flex-col overflow-hidden bg-[linear-gradient(180deg,#f9fbfe_0%,#eaf0f8_100%)] ${
         isFullscreen ? "h-screen" : "h-full"
       }`}
     >
       {/* Header */}
-      <div className="shrink-0 border-b border-slate-100 bg-white px-5 py-3">
+      <div className="shrink-0 border-b border-slate-300/40 bg-[linear-gradient(180deg,#f8fbfe_0%,#e9eff8_100%)] px-5 py-3">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
@@ -357,12 +394,12 @@ export default function ChatWindow({
               <span
                 className={`rounded-full px-2.5 py-1 text-[10px] font-bold capitalize ${
                   session.status === "active"
-                    ? "bg-blue-100 text-blue-700"
+                    ? "border border-blue-200 bg-blue-100 text-blue-800"
                     : session.status === "pending"
-                    ? "bg-amber-100 text-amber-700"
+                    ? "border border-amber-200 bg-amber-100 text-amber-800"
                     : session.status === "resolved"
-                    ? "bg-emerald-100 text-emerald-700"
-                    : "bg-slate-200 text-slate-700"
+                    ? "border border-emerald-200 bg-emerald-100 text-emerald-800"
+                    : "border border-slate-300 bg-slate-200 text-slate-700"
                 }`}
               >
                 {session.status}
@@ -383,7 +420,7 @@ export default function ChatWindow({
               <button
                 type="button"
                 onClick={() => onFullscreenChange?.(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-full bg-[#eaf4ff] px-3 py-2 text-xs font-bold text-[#0d2d47] transition hover:bg-[#dcecff]"
+                className="flex cursor-pointer items-center gap-1 rounded-full border border-slate-300 bg-[linear-gradient(150deg,#f4f8fd_0%,#dfe8f5_100%)] px-3 py-2 text-xs font-bold text-slate-800 transition hover:brightness-105"
               >
                 <Maximize2 size={14} />
                 Fullscreen
@@ -392,7 +429,7 @@ export default function ChatWindow({
               <button
                 type="button"
                 onClick={() => onFullscreenChange?.(false)}
-                className="flex cursor-pointer items-center gap-1 rounded-full bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-200"
+                className="flex cursor-pointer items-center gap-1 rounded-full border border-slate-300 bg-[linear-gradient(150deg,#f1f4f8_0%,#dde3ec_100%)] px-3 py-2 text-xs font-bold text-slate-700 transition hover:brightness-105"
               >
                 <Minimize2 size={14} />
                 Minimize
@@ -403,7 +440,7 @@ export default function ChatWindow({
               <button
                 type="button"
                 onClick={joinChat}
-                className="cursor-pointer rounded-full bg-[#dcecff] px-4 py-2 text-xs font-bold text-[#0d2d47] transition hover:bg-[#c8e1ff]"
+                className="cursor-pointer rounded-full border border-slate-300 bg-[linear-gradient(150deg,#f4f8fd_0%,#dfe8f5_100%)] px-4 py-2 text-xs font-bold text-slate-800 transition hover:brightness-105"
               >
                 Join Chat
               </button>
@@ -412,7 +449,7 @@ export default function ChatWindow({
             <button
               type="button"
               onClick={() => closeChat("resolved")}
-              className="cursor-pointer rounded-full bg-emerald-100 px-4 py-2 text-xs font-bold text-emerald-700 transition hover:bg-emerald-200"
+              className="cursor-pointer rounded-full border border-emerald-300 bg-emerald-100 px-4 py-2 text-xs font-bold text-emerald-800 transition hover:bg-emerald-200"
             >
               Mark Resolved
             </button>
@@ -420,7 +457,7 @@ export default function ChatWindow({
             <button
               type="button"
               onClick={() => closeChat("closed")}
-              className="cursor-pointer rounded-full bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-300"
+              className="cursor-pointer rounded-full border border-slate-300 bg-slate-200 px-4 py-2 text-xs font-bold text-slate-700 transition hover:bg-slate-300"
             >
               Close
             </button>
@@ -428,7 +465,7 @@ export default function ChatWindow({
         </div>
 
         {session.visitorRequirement && (
-          <div className="mt-3 rounded-xl bg-[#eaf4ff] px-4 py-2.5 text-sm text-[#0d2d47]">
+          <div className="mt-3 rounded-xl border border-slate-200/70 bg-white/85 px-4 py-2.5 text-sm text-slate-800">
             <p className="text-[10px] font-bold uppercase tracking-wide text-[#426286]">
               Requirement
             </p>
@@ -440,7 +477,7 @@ export default function ChatWindow({
       </div>
 
       {/* Messages */}
-      <div className="min-h-0 flex-1 overflow-y-auto bg-[#f8fbff] px-5 py-4">
+      <div className="min-h-0 flex-1 overflow-y-auto bg-[linear-gradient(180deg,#f8fbfe_0%,#ebf1f9_100%)] px-5 py-4">
         <div className="space-y-2">
           {messages.map((message) => {
             const isAgent = message.senderType === "agent";
@@ -450,7 +487,7 @@ export default function ChatWindow({
             if (isSystem) {
               return (
                 <div key={message._id} className="flex justify-center">
-                  <div className="rounded-full border border-amber-100 bg-amber-50 px-3 py-1 text-[10px] font-bold text-amber-700 shadow-sm">
+                  <div className="rounded-full border border-slate-300 bg-[linear-gradient(150deg,#f8fafd_0%,#e6ecf5_100%)] px-3 py-1 text-[10px] font-bold text-slate-700 shadow-sm">
                     {message.message}
                   </div>
                 </div>
@@ -473,8 +510,8 @@ export default function ChatWindow({
                 <div
                   className={`max-w-[240px] px-2.5 py-1.5 text-xs shadow-sm ${
                     isAgent
-                      ? "rounded-lg rounded-br-none bg-[#0d2d47] text-white"
-                      : "rounded-lg rounded-bl-none bg-white text-slate-950"
+                      ? "rounded-lg rounded-br-none border border-slate-600 bg-[linear-gradient(160deg,#3f4754_0%,#262d37_58%,#171c25_100%)] text-slate-100"
+                      : "rounded-lg rounded-bl-none border border-slate-200 bg-white/90 text-slate-950"
                   }`}
                 >
                   <p className="mt-0.5 text-[11px] leading-snug">
@@ -491,13 +528,24 @@ export default function ChatWindow({
                 </div>
 
                 {isAgent && (
-                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-[9px] font-bold text-white shadow">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-slate-500 bg-[linear-gradient(160deg,#3f4754_0%,#262d37_58%,#171c25_100%)] text-[9px] font-bold text-slate-100 shadow">
                     N
                   </div>
                 )}
               </div>
             );
           })}
+
+          {visitorTyping && (
+            <div className="flex items-end gap-1.5 justify-start">
+              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[9px] font-bold text-slate-700 shadow">
+                {(session.visitorName || "U").charAt(0).toUpperCase()}
+              </div>
+              <div className="rounded-lg rounded-bl-none border border-slate-200 bg-white px-2.5 py-1.5 text-[11px] font-medium text-slate-600 shadow-sm">
+                Visitor is typing...
+              </div>
+            </div>
+          )}
 
           <div ref={bottomRef} />
         </div>
@@ -506,14 +554,14 @@ export default function ChatWindow({
       {/* Input */}
       <form
         onSubmit={sendMessage}
-        className="shrink-0 border-t border-slate-100 bg-white px-5 py-3"
+        className="shrink-0 border-t border-slate-300/40 bg-[linear-gradient(180deg,#f8fbfe_0%,#e9eff8_100%)] px-5 py-3"
       >
         <div className="flex items-center gap-2">
           <input
             value={input}
             onChange={handleInputChange}
             disabled={!canReply}
-            className="h-10 flex-1 rounded-full border border-slate-200 bg-[#f8fbff] px-5 text-sm outline-none transition focus:border-[#9cc8ff] focus:bg-white disabled:bg-slate-100"
+            className="h-10 flex-1 rounded-full border border-slate-300/70 bg-white/80 px-5 text-sm outline-none transition focus:border-slate-500 focus:bg-white disabled:bg-slate-100"
             placeholder={
               canReply ? "Reply to visitor..." : "Join chat to reply..."
             }
@@ -526,7 +574,7 @@ export default function ChatWindow({
             className={`flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border transition disabled:cursor-not-allowed disabled:opacity-50 ${
               isListening
                 ? "border-red-200 bg-red-50 text-red-600"
-                : "border-slate-200 bg-[#f8fbff] text-slate-600 hover:border-[#9cc8ff] hover:bg-white"
+                : "border-slate-300 bg-white/80 text-slate-600 hover:border-slate-500 hover:bg-white"
             }`}
             title={
               speechSupported ? "Speak message" : "Voice input not supported"
@@ -538,7 +586,7 @@ export default function ChatWindow({
           <button
             type="submit"
             disabled={sending || !canReply}
-            className="h-10 cursor-pointer rounded-full bg-[#0d2d47] px-6 text-sm font-bold text-white transition hover:bg-[#123b5d] disabled:cursor-not-allowed disabled:opacity-50"
+            className="h-10 cursor-pointer rounded-full border border-slate-500 bg-[linear-gradient(160deg,#3f4754_0%,#262d37_58%,#171c25_100%)] px-6 text-sm font-bold text-slate-100 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Send
           </button>

@@ -10,13 +10,14 @@ import StatsCards from "./StatsCards";
 import VisitorsPanel from "./VisitorsPanel";
 import LeadsPanel from "./LeadsPanel";
 import ResolvedPanel from "./ResolvedPanel";
+import FaqTrainingPanel from "./FaqTrainingPanel";
 
 const tabs = ["Live Chats", "Visitors", "Leads", "Resolved", "Settings"];
 
 function StatBox({ label, value }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-      <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+    <div className="rounded-2xl border border-white/70 bg-[linear-gradient(150deg,#ffffff_0%,#edf2f8_55%,#dbe2ec_100%)] px-4 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
         {label}
       </p>
       <p className="mt-1 text-xl font-bold text-slate-950">{value ?? 0}</p>
@@ -29,8 +30,8 @@ function StatusBadge({ isOnline }) {
     <span
       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-bold ${
         isOnline
-          ? "bg-emerald-100 text-emerald-700"
-          : "bg-slate-200 text-slate-600"
+          ? "border border-emerald-200 bg-emerald-100 text-emerald-800"
+          : "border border-slate-300 bg-slate-200 text-slate-700"
       }`}
     >
       <span
@@ -226,7 +227,7 @@ export default function AgentDashboard() {
 
   if (checkingAuth) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#eef5f9]">
+      <div className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,#f7f9fc_0%,#d8dee7_48%,#bac2ce_100%)]">
         <p className="text-sm text-slate-500">Loading agent portal...</p>
       </div>
     );
@@ -239,7 +240,7 @@ export default function AgentDashboard() {
   return (
     <>
       {isChatFullscreen && selectedSession && (
-        <div className="fixed inset-0 z-[9999] bg-white">
+        <div className="fixed inset-0 z-[9999] bg-[radial-gradient(circle_at_top,#f7f9fc_0%,#d9e0ea_60%,#b9c3d0_100%)]">
           <ChatWindow
             session={selectedSession}
             agent={agent}
@@ -250,8 +251,8 @@ export default function AgentDashboard() {
         </div>
       )}
 
-      <div className="flex h-screen w-screen overflow-hidden bg-[#eef5f9] text-slate-950">
-        <aside className="hidden h-full w-[270px] shrink-0 border-r border-slate-200 bg-white/90 p-5 shadow-sm lg:flex lg:flex-col">
+      <div className="flex h-screen w-screen overflow-hidden bg-[radial-gradient(circle_at_top,#f6f9fc_0%,#d9e0ea_58%,#b7c1cd_100%)] text-slate-950">
+        <aside className="hidden h-full w-[270px] shrink-0 border-r border-slate-300/50 bg-[linear-gradient(180deg,#f4f7fb_0%,#e2e8f1_52%,#d2dae6_100%)] p-5 shadow-[0_14px_34px_rgba(15,23,42,0.18)] lg:flex lg:flex-col">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.28em] text-slate-400">
               Nova
@@ -261,7 +262,7 @@ export default function AgentDashboard() {
             </h1>
           </div>
 
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-[#f7fbff] p-4 shadow-sm">
+          <div className="mt-8 rounded-3xl border border-white/70 bg-[linear-gradient(155deg,#ffffff_0%,#eef3f9_48%,#d9e0ea_100%)] p-4 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-bold text-slate-950">
@@ -278,8 +279,8 @@ export default function AgentDashboard() {
               onClick={toggleOnline}
               className={`mt-4 w-full cursor-pointer rounded-full px-4 py-2.5 text-xs font-bold transition ${
                 agent.isOnline
-                  ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
-                  : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                  ? "border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-emerald-200"
+                  : "border border-slate-300 bg-slate-200 text-slate-800 hover:bg-slate-300"
               }`}
             >
               Set {agent.isOnline ? "Offline" : "Online"}
@@ -294,8 +295,8 @@ export default function AgentDashboard() {
                 onClick={() => setActiveTab(tab)}
                 className={`w-full cursor-pointer rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
                   activeTab === tab
-                    ? "bg-[#dcecff] text-[#0d2d47] shadow-sm"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                    ? "border border-slate-300/70 bg-[linear-gradient(140deg,#f7fbff_0%,#e5edf8_100%)] text-slate-900 shadow"
+                    : "text-slate-700 hover:bg-white/70 hover:text-slate-950"
                 }`}
               >
                 {tab}
@@ -306,14 +307,14 @@ export default function AgentDashboard() {
           <button
             type="button"
             onClick={logout}
-            className="mt-auto cursor-pointer rounded-full bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+            className="mt-auto cursor-pointer rounded-full border border-slate-500 bg-[linear-gradient(160deg,#3f4753_0%,#262c36_58%,#171c25_100%)] px-4 py-3 text-sm font-bold text-slate-100 shadow-[0_10px_24px_rgba(15,23,42,0.35)] transition hover:brightness-110"
           >
             Logout
           </button>
         </aside>
 
         <main className="flex h-full min-w-0 flex-1 flex-col overflow-hidden">
-          <header className="shrink-0 border-b border-slate-200 bg-white/90 px-5 py-4 backdrop-blur">
+          <header className="shrink-0 border-b border-slate-300/40 bg-[linear-gradient(180deg,#f9fbfe_0%,#eaf0f8_100%)] px-5 py-4 backdrop-blur">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h2 className="text-xl font-bold text-slate-950">
@@ -346,7 +347,7 @@ export default function AgentDashboard() {
                   setStatus={setStatus}
                 />
 
-                <div className="min-h-0 min-w-0 flex-1 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                <div className="min-h-0 min-w-0 flex-1 overflow-hidden rounded-3xl border border-white/70 bg-[linear-gradient(180deg,#ffffff_0%,#edf2f8_100%)] shadow-[0_14px_34px_rgba(15,23,42,0.15)]">
                   <ChatWindow
                     session={selectedSession}
                     agent={agent}
@@ -362,7 +363,7 @@ export default function AgentDashboard() {
               <div className="h-full overflow-y-auto p-5">
                 <StatsCards stats={stats} />
 
-                <div className="mt-5 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="mt-5 rounded-3xl border border-white/70 bg-[linear-gradient(165deg,#ffffff_0%,#eef2f7_55%,#dbe2ec_100%)] p-5 shadow-[0_12px_30px_rgba(15,23,42,0.14)]">
                   <h2 className="text-lg font-bold text-slate-950">
                     Live Visitors
                   </h2>
@@ -375,7 +376,7 @@ export default function AgentDashboard() {
                       onlineVisitorsList.map((visitor) => (
                         <div
                           key={visitor.visitorId}
-                          className="rounded-2xl border border-slate-200 bg-[#f8fbff] p-4"
+                          className="rounded-2xl border border-slate-200/70 bg-white/85 p-4"
                         >
                           <div className="flex items-center justify-between gap-3">
                             <p className="font-bold text-slate-950">
@@ -395,7 +396,7 @@ export default function AgentDashboard() {
                         </div>
                       ))
                     ) : (
-                      <p className="rounded-2xl bg-[#f8fbff] p-4 text-sm text-slate-500">
+                      <p className="rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-sm text-slate-500">
                         No live visitors right now.
                       </p>
                     )}
@@ -431,7 +432,7 @@ export default function AgentDashboard() {
             {activeTab === "Settings" && (
               <div className="h-full overflow-y-auto p-5">
                 <div className="grid gap-5 xl:grid-cols-[1fr_360px]">
-                  <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-3xl border border-white/70 bg-[linear-gradient(165deg,#ffffff_0%,#edf2f8_55%,#dbe2ec_100%)] p-6 shadow-[0_12px_30px_rgba(15,23,42,0.14)]">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                       <div>
                         <h2 className="text-xl font-bold text-slate-950">
@@ -447,7 +448,7 @@ export default function AgentDashboard() {
                     </div>
 
                     <div className="mt-6 grid gap-4 md:grid-cols-2">
-                      <div className="rounded-2xl bg-[#f8fbff] p-4">
+                      <div className="rounded-2xl border border-slate-200/70 bg-white/85 p-4">
                         <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
                           Agent Name
                         </p>
@@ -456,7 +457,7 @@ export default function AgentDashboard() {
                         </p>
                       </div>
 
-                      <div className="rounded-2xl bg-[#f8fbff] p-4">
+                      <div className="rounded-2xl border border-slate-200/70 bg-white/85 p-4">
                         <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
                           Agent Email
                         </p>
@@ -465,7 +466,7 @@ export default function AgentDashboard() {
                         </p>
                       </div>
 
-                      <div className="rounded-2xl bg-[#f8fbff] p-4">
+                      <div className="rounded-2xl border border-slate-200/70 bg-white/85 p-4">
                         <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
                           Current Status
                         </p>
@@ -474,7 +475,7 @@ export default function AgentDashboard() {
                         </p>
                       </div>
 
-                      <div className="rounded-2xl bg-[#f8fbff] p-4">
+                      <div className="rounded-2xl border border-slate-200/70 bg-white/85 p-4">
                         <p className="text-xs font-bold uppercase tracking-wide text-slate-400">
                           Last Updated
                         </p>
@@ -491,15 +492,15 @@ export default function AgentDashboard() {
                       onClick={toggleOnline}
                       className={`mt-6 cursor-pointer rounded-full px-6 py-3 text-sm font-bold transition ${
                         agent.isOnline
-                          ? "bg-slate-200 text-slate-800 hover:bg-slate-300"
-                          : "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+                          ? "border border-slate-300 bg-slate-200 text-slate-800 hover:bg-slate-300"
+                          : "border border-emerald-300 bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
                       }`}
                     >
                       Set Agent {agent.isOnline ? "Offline" : "Online"}
                     </button>
                   </div>
 
-                  <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div className="rounded-3xl border border-white/70 bg-[linear-gradient(165deg,#ffffff_0%,#edf2f8_55%,#dbe2ec_100%)] p-5 shadow-[0_12px_30px_rgba(15,23,42,0.14)]">
                     <h3 className="text-lg font-bold text-slate-950">
                       Live Visitors
                     </h3>
@@ -512,7 +513,7 @@ export default function AgentDashboard() {
                         onlineVisitorsList.slice(0, 6).map((visitor) => (
                           <div
                             key={visitor.visitorId}
-                            className="rounded-2xl bg-[#f8fbff] p-3"
+                            className="rounded-2xl border border-slate-200/70 bg-white/85 p-3"
                           >
                             <div className="flex items-center justify-between gap-3">
                               <p className="text-sm font-bold text-slate-950">
@@ -526,12 +527,16 @@ export default function AgentDashboard() {
                           </div>
                         ))
                       ) : (
-                        <p className="rounded-2xl bg-[#f8fbff] p-4 text-sm text-slate-500">
+                        <p className="rounded-2xl border border-slate-200/70 bg-white/85 p-4 text-sm text-slate-500">
                           No online visitors.
                         </p>
                       )}
                     </div>
                   </div>
+                </div>
+
+                <div className="mt-5">
+                  <FaqTrainingPanel />
                 </div>
               </div>
             )}

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NovaTechAssistant from "@/components/NovaTechAssistant";
+import NovaLogoPreloader from "@/components/NovaLogoPreloader";
 
 export default function AppShell({ children }) {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ export default function AppShell({ children }) {
 
   return (
     <>
+      <NovaLogoPreloader key={pathname} />
       <Navbar />
 
       <main className="flex-1">

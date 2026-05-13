@@ -52,7 +52,7 @@ export async function POST(request) {
       );
     }
 const agentName = agent.name || "Nova Agent";
-const systemText = `Agent connected. You are now chatting with ${agentName}.`;
+const systemText = "This is Nova How may i help You";
 
 const session = await ChatSession.findOneAndUpdate(
   { sessionId },
@@ -85,7 +85,7 @@ const systemMessage = await ChatMessage.create({
       session,
       agent: agentPayload,
       message: systemMessage,
-      visitorText: `Agent connected. You are now chatting with ${agentName}.`,
+      visitorText: "This is Nova How may i help You",
     });
 
     await safeTrigger(CHANNELS.session(sessionId), "new-message", {

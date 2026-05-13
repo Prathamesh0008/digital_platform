@@ -55,8 +55,8 @@ export default function ChatList({
   setStatus,
 }) {
   return (
-    <aside className="flex h-full min-h-0 w-[350px] shrink-0 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-      <div className="shrink-0 border-b border-slate-100 p-4">
+    <aside className="flex h-full min-h-0 w-[350px] shrink-0 flex-col overflow-hidden rounded-3xl border border-white/70 bg-[linear-gradient(165deg,#f8fafc_0%,#e8edf4_60%,#d1d9e5_100%)] shadow-[0_14px_34px_rgba(15,23,42,0.15)]">
+      <div className="shrink-0 border-b border-slate-300/40 p-4">
         <h2 className="text-lg font-bold text-slate-950">Live Requests</h2>
         <p className="mt-1 text-xs text-slate-500">
           Select a visitor to open the conversation.
@@ -65,14 +65,14 @@ export default function ChatList({
         <input
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          className="mt-4 h-11 w-full rounded-2xl border border-slate-200 bg-[#f8fbff] px-4 text-sm outline-none transition focus:border-[#9cc8ff] focus:bg-white"
+          className="mt-4 h-11 w-full rounded-2xl border border-slate-300/60 bg-white/80 px-4 text-sm outline-none transition focus:border-slate-500 focus:bg-white"
           placeholder="Search visitor, city, service..."
         />
 
         <select
           value={status}
           onChange={(event) => setStatus(event.target.value)}
-          className="mt-3 h-11 w-full cursor-pointer rounded-2xl border border-slate-200 bg-[#f8fbff] px-4 text-sm outline-none transition focus:border-[#9cc8ff] focus:bg-white"
+          className="mt-3 h-11 w-full cursor-pointer rounded-2xl border border-slate-300/60 bg-white/80 px-4 text-sm outline-none transition focus:border-slate-500 focus:bg-white"
         >
           <option value="all">All Chats</option>
           <option value="pending">Pending Requests</option>
@@ -85,7 +85,7 @@ export default function ChatList({
 
       <div className="min-h-0 flex-1 overflow-y-auto p-3">
         {sessions.length === 0 ? (
-          <p className="rounded-2xl bg-[#f8fbff] p-4 text-sm text-slate-500">
+          <p className="rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-sm text-slate-600">
             No chats found.
           </p>
         ) : (
@@ -101,8 +101,8 @@ export default function ChatList({
                   onClick={() => onSelect(session)}
                   className={`w-full cursor-pointer rounded-2xl border p-4 text-left transition ${
                     isSelected
-                      ? "border-[#b8d9ff] bg-[#eaf4ff] shadow-sm"
-                      : "border-slate-100 bg-white hover:border-[#d2e7ff] hover:bg-[#f8fbff]"
+                      ? "border-slate-400/70 bg-[linear-gradient(150deg,#f8fbff_0%,#e7eef8_100%)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]"
+                      : "border-slate-200/70 bg-white/85 hover:border-slate-300 hover:bg-white"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
