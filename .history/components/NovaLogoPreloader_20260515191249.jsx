@@ -125,8 +125,8 @@ export default function NovaLogoPreloader() {
 
       gsap.set(allFillShapes, {
         autoAlpha: 0,
-        y: 0,
-        filter: "blur(0px)",
+        y: 14,
+        filter: "blur(8px)",
       });
 
       gsap.set(outlineShapes, {
@@ -167,15 +167,15 @@ export default function NovaLogoPreloader() {
           autoAlpha: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.35,
-          stagger: 0.08,
+          duration: 0.5,
+          stagger: 0.18,
         })
         .to(ovatechFill, {
           autoAlpha: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.4,
-          stagger: 0.04,
+          duration: 0.55,
+          stagger: 0.07,
         })
         .to(outlineShapes, {
           autoAlpha: 0,
@@ -186,8 +186,8 @@ export default function NovaLogoPreloader() {
           autoAlpha: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.4,
-          stagger: 0.04,
+          duration: 0.55,
+          stagger: 0.07,
         })
         .to({}, { duration: 0.75 })
         .to(preloaderRef.current, {
