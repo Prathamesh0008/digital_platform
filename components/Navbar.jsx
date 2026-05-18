@@ -46,7 +46,7 @@ export default function Navbar() {
       >
         <Link href="/" className="flex items-center gap-2 rounded-xl px-2 py-1.5">
           <Image
-            src="/ne2.png"
+            src="/novatechscience-logo.svg"
             alt="NovaTech logo"
             width={220}
             height={88}

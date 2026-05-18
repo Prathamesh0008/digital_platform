@@ -14,7 +14,7 @@ export default function Footer() {
         <div>
           <div className="mb-6">
             <Image
-              src="/ne2.png"
+              src="/novatechscience-logo.svg"
               alt="NovaTech logo"
               width={220}
               height={88}

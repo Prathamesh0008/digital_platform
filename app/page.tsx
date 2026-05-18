@@ -37,7 +37,7 @@ export default function Home() {
       "@type": "Organization",
       name: "Nova Techscience",
       url: siteUrl,
-      logo: `${siteUrl}/ne2.png`,
+      logo: `${siteUrl}/novatechscience-logo.svg`,
       sameAs: [],
     },
     {
