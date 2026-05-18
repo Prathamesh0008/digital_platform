@@ -44,16 +44,6 @@ export default function PortfolioHeroLight() {
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="absolute left-4 right-4 top-24 z-10 flex justify-between text-xs uppercase tracking-[0.18em] text-white/80 sm:left-6 sm:right-6 sm:top-28 sm:text-sm"
-      >
-        <p>Our Work</p>
-        <p className="text-right leading-tight">Digital Excellence</p>
-      </motion.div>
-
       <div className="relative z-10 mx-auto flex min-h-[96vh] w-full max-w-7xl items-end px-4 pb-14 sm:px-6 sm:pb-20 md:px-10">
         <div className="grid w-full items-end gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="max-w-3xl text-white">
@@ -94,12 +84,12 @@ export default function PortfolioHeroLight() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
+              className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
             >
-              <button className="cursor-pointer rounded-full bg-gradient-to-r from-[#5A7EFF] to-[#36c7dd] px-7 py-3 text-sm font-medium text-white shadow-lg shadow-[#5A7EFF]/35 transition hover:opacity-90">
+              <button className="cursor-pointer rounded-full bg-gradient-to-r from-[#5A7EFF] to-[#36c7dd] px-7 py-3 text-sm font-medium text-white shadow-lg shadow-[#5A7EFF]/35 transition hover:opacity-90 sm:w-auto">
                 View Projects
               </button>
-              <button className="cursor-pointer rounded-full border border-white/45 bg-white/10 px-7 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-black">
+              <button className="cursor-pointer rounded-full border border-white/45 bg-white/10 px-7 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-black sm:w-auto">
                 Start a Project
               </button>
             </motion.div>
@@ -112,7 +102,7 @@ export default function PortfolioHeroLight() {
             className="rounded-3xl border border-white/25 bg-white/10 p-5 backdrop-blur-xl"
           >
             <p className="text-xs uppercase tracking-[0.18em] text-white/80">Trusted By</p>
-            <div className="mt-4 grid grid-cols-4 gap-3">
+            <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
               {clientLogos.map((logo, idx) => (
                 <div
                   key={logo}
@@ -128,7 +118,7 @@ export default function PortfolioHeroLight() {
               ))}
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div className="rounded-xl border border-white/20 bg-black/20 p-3 text-white">
                 <p className="text-2xl font-semibold">50+</p>
                 <p className="text-xs text-white/75">Delivered Projects</p>

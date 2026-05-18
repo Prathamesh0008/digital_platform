@@ -16,6 +16,8 @@ export default function Hero() {
         />
       </div>
 
+      <div className="absolute inset-0 z-10 bg-black/45" />
+
       <Link
         href="/"
         className="absolute bottom-4 right-4 z-20 translate-x-[1%] -translate-y-[4%] rounded-full border border-white/35 bg-[#040208]/100 px-4 py-2 text-sm md:px-6 md:py-3 md:text-base font-semibold tracking-wide text-white backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.75)] transition hover:bg-[#0a0416]"

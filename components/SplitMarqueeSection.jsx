@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 export default function SplitMarqueeSection() {
   const marqueeItems = [
-    "Digital Growth",
-    "Brand Strategy",
-    "Creative Marketing",
-    "Performance Ads",
+    "Global Digital Marketing",
     "SEO Excellence",
+    "Audience Targeting",
+    "Performance Campaigns",
+    "Brand Growth",
   ];
 
   return (
@@ -51,7 +51,7 @@ export default function SplitMarqueeSection() {
             transition={{ duration: 1 }}
             className="text-4xl sm:text-5xl md:text-[80px] lg:text-[90px] leading-[1.1] font-medium"
           >
-            Empowering <br /> Growth
+            Leading <br /> Digital Marketing <br /> Agency Worldwide
           </motion.h2>
 
           <motion.p
@@ -60,8 +60,8 @@ export default function SplitMarqueeSection() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-[#0d2d47]/70 max-w-md"
           >
-            We build modern digital experiences that help brands grow,
-            scale, and dominate in competitive markets.
+            We help brands establish, strengthen, and scale their online presence
+            with transparent, measurable, and performance-focused execution.
           </motion.p>
 
           <motion.button
@@ -69,7 +69,7 @@ export default function SplitMarqueeSection() {
             whileTap={{ scale: 0.95 }}
             className="mt-8 px-8 py-3 rounded-full bg-[#0d2d47] text-white hover:bg-[#5A7EFF] transition"
           >
-            Learn More
+            Explore Strategy
           </motion.button>
 
         </div>
@@ -83,9 +83,9 @@ export default function SplitMarqueeSection() {
             transition={{ duration: 1 }}
             className="text-[#0d2d47] text-base sm:text-lg md:text-xl max-w-xl text-center leading-relaxed"
           >
-            From strategy to execution, we empower brands with innovative
-            marketing solutions, creative storytelling, and data-driven
-            insights that deliver real, measurable impact.
+            Behind every great result is a seamless workflow: planning, strategy,
+            execution, tracking, refinement, and repeat. This cycle keeps your
+            SEO, social, content, and paid campaigns improving with every phase.
           </motion.p>
 
         </div>

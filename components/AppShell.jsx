@@ -18,7 +18,7 @@ export default function AppShell({ children }) {
 
   return (
     <>
-      <NovaLogoPreloader key={pathname} />
+      <NovaLogoPreloader />
       <Navbar />
 
       <main className="flex-1">

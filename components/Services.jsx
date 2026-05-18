@@ -1,20 +1,20 @@
 export default function Services() {
   const services = [
     {
-      title: "Comprehensive Digital Campaigns",
-      desc: "Creating holistic digital strategies.",
+      title: "Website Development (Scratch to Launch)",
+      desc: "Complete website execution from planning, UI/UX, development, testing, and deployment with performance-first architecture.",
     },
     {
-      title: "SEO Mastery",
-      desc: "Boosting your site on search engines.",
+      title: "SEO (Technical + On-Page + Content)",
+      desc: "End-to-end SEO setup including site structure, speed optimization, keyword strategy, content alignment, and ranking improvements.",
     },
     {
-      title: "Social Media Engagement",
-      desc: "Building relationships with your audience.",
+      title: "Digital Marketing Strategy",
+      desc: "Integrated campaigns across search, social, and performance channels focused on measurable leads, growth, and ROI.",
     },
     {
-      title: "Targeted Advertisement",
-      desc: "Maximizing ROI through precise targeting.",
+      title: "Maintenance & Growth",
+      desc: "Ongoing optimization, analytics, conversion improvements, and SEO scaling to keep your business growing after launch.",
     },
   ];
 
@@ -30,7 +30,7 @@ export default function Services() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
           <div className="lg:sticky lg:top-28 h-fit border-l border-black/15 pl-4 sm:pl-6 md:pl-10">
             <h2 className="text-4xl sm:text-5xl font-semibold uppercase leading-[0.9] tracking-tight text-black md:text-[92px] lg:text-[118px]">
-              Our
+              Core
               <br />
               Services
             </h2>

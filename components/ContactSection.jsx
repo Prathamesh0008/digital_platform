@@ -2,13 +2,51 @@
 "use client";
 
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const getEmailJsErrorMessage = (error) => {
+  if (!error) return "Unknown error";
+  if (typeof error === "string") return error;
+
+  const maybeError = error;
+  const parts = [];
+
+  if (maybeError.status) parts.push(`status: ${maybeError.status}`);
+  if (maybeError.text) parts.push(`reason: ${maybeError.text}`);
+  if (maybeError.message) parts.push(`message: ${maybeError.message}`);
+
+  if (parts.length > 0) return parts.join(" | ");
+
+  try {
+    return JSON.stringify(maybeError);
+  } catch {
+    return "Unknown error object";
+  }
+};
 
 export default function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
   const controls = useAnimation();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+  const [isSending, setIsSending] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_s3guxj2";
+  const contactTemplateId =
+    process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID ||
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
+    "template_tyimu0f";
+  const autoReplyTemplateId =
+    process.env.NEXT_PUBLIC_EMAILJS_AUTOREPLY_TEMPLATE_ID || "template_l3un0rw";
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
   useEffect(() => {
     if (isInView) {
@@ -17,6 +55,62 @@ export default function ContactSection() {
       controls.start("hidden");
     }
   }, [isInView, controls]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitMessage("");
+
+    if (!serviceId || !contactTemplateId || !autoReplyTemplateId || !publicKey) {
+      setSubmitMessage("Email service is not configured yet. Add EmailJS environment values.");
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      const templateParams = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        from_name: `${formData.firstName} ${formData.lastName}`.trim(),
+        reply_to: formData.email,
+        email: formData.email,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        serviceId,
+        contactTemplateId,
+        templateParams,
+        { publicKey }
+      );
+
+      await emailjs.send(
+        serviceId,
+        autoReplyTemplateId,
+        templateParams,
+        { publicKey }
+      );
+
+      setSubmitMessage("Thanks! Your message has been sent.");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      const errorDetail = getEmailJsErrorMessage(error);
+      console.error("EmailJS send failed:", errorDetail, error);
+      setSubmitMessage(`Message failed to send. ${errorDetail}`);
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <section
@@ -67,8 +161,8 @@ export default function ContactSection() {
           </div>
 
           <p className="uppercase text-sm mb-6 text-white/80">
-            Ready to elevate your brand? <br />
-            Let’s start today
+            Connect with Nova Techscience today. <br />
+            Let&apos;s build your next growth chapter.
           </p>
 
           <h1 className="uppercase leading-[0.9] font-medium
@@ -88,28 +182,41 @@ export default function ContactSection() {
           transition={{ duration: 1 }}
           className="flex items-center"
         >
-          <form className="w-full max-w-2xl ml-auto space-y-7 sm:space-y-10">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-2xl ml-auto space-y-7 sm:space-y-10"
+          >
 
             {/* NAME ROW */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
 
               <div className="group">
-                <label className="text-sm text-white/70 group-focus-within:text-white transition">
+                <label htmlFor="firstName" className="text-sm text-white/70 group-focus-within:text-white transition">
                   First name *
                 </label>
                 <input
+                  id="firstName"
+                  name="firstName"
                   type="text"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-transparent border-b border-white/40
                     focus:border-white focus:outline-none py-2 transition"
                 />
               </div>
 
               <div className="group">
-                <label className="text-sm text-white/70 group-focus-within:text-white transition">
+                <label htmlFor="lastName" className="text-sm text-white/70 group-focus-within:text-white transition">
                   Last name *
                 </label>
                 <input
+                  id="lastName"
+                  name="lastName"
                   type="text"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-transparent border-b border-white/40
                     focus:border-white focus:outline-none py-2 transition"
                 />
@@ -119,11 +226,16 @@ export default function ContactSection() {
 
             {/* EMAIL */}
             <div className="group">
-              <label className="text-sm text-white/70 group-focus-within:text-white transition">
+              <label htmlFor="email" className="text-sm text-white/70 group-focus-within:text-white transition">
                 Email *
               </label>
               <input
+                id="email"
+                name="email"
                 type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 className="w-full bg-transparent border-b border-white/40
                   focus:border-white focus:outline-none py-2 transition"
               />
@@ -131,26 +243,36 @@ export default function ContactSection() {
 
             {/* MESSAGE */}
             <div className="group">
-              <label className="text-sm text-white/70 group-focus-within:text-white transition">
+              <label htmlFor="message" className="text-sm text-white/70 group-focus-within:text-white transition">
                 Message
               </label>
               <textarea
+                id="message"
+                name="message"
                 rows="3"
+                value={formData.message}
+                onChange={handleChange}
+                required
                 className="w-full bg-transparent border-b border-white/40
                   focus:border-white focus:outline-none py-2 resize-none transition"
               />
             </div>
+
+            {submitMessage ? (
+              <p className="text-sm text-white/90">{submitMessage}</p>
+            ) : null}
 
             {/* BUTTON */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               type="submit"
+              disabled={isSending}
               className="mt-6 px-10 py-3 rounded-full
-                bg-[#5A7EFF] hover:bg-[#4a6ae0]
+                bg-[#5A7EFF] hover:bg-[#4a6ae0] disabled:cursor-not-allowed disabled:opacity-70
                 transition text-white cursor-pointer"
             >
-              Submit
+              {isSending ? "Sending..." : "Submit"}
             </motion.button>
 
           </form>

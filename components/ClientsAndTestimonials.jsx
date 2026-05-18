@@ -129,10 +129,10 @@ export default function ClientsAndTestimonials() {
               className="uppercase tracking-tight leading-[1.0]
                 text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-medium"
             >
-              Driven by innovation, <br />
-              Fueled by strategy — <br />
-              Redefining success in <br />
-              Every campaign!
+              Smart, simple, <br />
+              and efficient <br />
+              solutions for <br />
+              every project.
             </motion.h1>
           </div>
 
@@ -184,23 +184,23 @@ export default function ClientsAndTestimonials() {
             viewport={{ once: true }}
           >
             <h2 className="uppercase leading-[0.9] text-4xl sm:text-5xl md:text-[60px] font-medium">
-              What our <br /> clients <br /> say
+              What Our <br /> Clients <br /> Say About Us
             </h2>
           </motion.div>
 
           {/* TESTIMONIALS */}
           {[
             {
-              text: "Our online presence was revolutionized by NovaTech. The team helped us reach a more targeted audience and achieve exceptional results.",
-              name: "Sarah Johnson, CMO ROON",
+              text: "Nova Techscience transformed our ideas into measurable growth. Their strategy and execution gave us stronger visibility and better lead quality.",
+              name: "Client Story 01",
             },
             {
-              text: "Their SEO strategies brought us to the top of search results. Exceptional visibility and measurable growth.",
-              name: "Andrew White, Owner of Volaso",
+              text: "From SEO to paid campaigns, every step felt structured and data-backed. We saw consistent improvements in rankings and conversions.",
+              name: "Client Story 02",
             },
             {
-              text: "Our social media engagement tripled. The team transformed our online interactions and strengthened our connection.",
-              name: "Hannah Green, Director of Vailu",
+              text: "Their team understands global audiences and adapts quickly. We now have a stronger brand presence with better campaign ROI.",
+              name: "Client Story 03",
             },
           ].map((item, i) => (
             <motion.div
@@ -364,23 +364,23 @@ export default function ClientsAndTestimonials() {
 //             viewport={{ once: true }}
 //           >
 //             <h2 className="uppercase leading-[0.9] text-[60px] font-medium">
-//               What our <br /> clients <br /> say
+//               What Our <br /> Clients <br /> Say About Us
 //             </h2>
 //           </motion.div>
 
 //           {/* TESTIMONIALS */}
 //           {[
 //             {
-//               text: "Our online presence was revolutionized by NovaTech. The team helped us reach a more targeted audience and achieve exceptional results.",
-//               name: "Sarah Johnson, CMO ROON",
+//               text: "Nova Techscience transformed our ideas into measurable growth. Their strategy and execution gave us stronger visibility and better lead quality.",
+//               name: "Client Story 01",
 //             },
 //             {
-//               text: "Their SEO strategies brought us to the top of search results. Exceptional visibility and measurable growth.",
-//               name: "Andrew White, Owner of Volaso",
+//               text: "From SEO to paid campaigns, every step felt structured and data-backed. We saw consistent improvements in rankings and conversions.",
+//               name: "Client Story 02",
 //             },
 //             {
-//               text: "Our social media engagement tripled. The team transformed our online interactions and strengthened our connection.",
-//               name: "Hannah Green, Director of Vailu",
+//               text: "Their team understands global audiences and adapts quickly. We now have a stronger brand presence with better campaign ROI.",
+//               name: "Client Story 03",
 //             },
 //           ].map((item, i) => (
 //             <motion.div

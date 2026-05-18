@@ -76,8 +76,6 @@ export default function PortfolioHero() {
       <div className="pointer-events-none absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-cyan-400/15 blur-3xl" />
 
       <div className="mx-auto mb-14 max-w-7xl text-center">
-        <p className="mb-4 text-sm uppercase tracking-[0.2em] text-black/50">Our Work</p>
-
         <h2 className="text-[40px] font-medium text-black md:text-[60px] lg:text-[70px]">
           Featured <span className="text-[#5A7EFF]">Projects</span>
         </h2>
