@@ -59,6 +59,15 @@ export default function Home() {
       description:
         "Digital marketing, SEO, and end-to-end website development services for business growth.",
       areaServed: "Worldwide",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "Office no-2, 1st Floor, Wadhwa PBR, Sector 4, Palm Beach Rd, above Venilicious Bakery & Cake shop, Nerul West, Nerul",
+        addressLocality: "Navi Mumbai",
+        addressRegion: "Maharashtra",
+        postalCode: "400706",
+        addressCountry: "IN",
+      },
       serviceType: [
         "Digital Marketing",
         "Search Engine Optimization",

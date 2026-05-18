@@ -23,10 +23,11 @@ export default function Footer() {
           </div>
 
           <p className="mb-4 break-words">
-            200 Terry Francine St. San Francisco, CA 94158
+            Office no-2, 1st Floor, Wadhwa PBR, Sector 4, Palm Beach Rd, above Venilicious
+            Bakery &amp; Cake shop, Nerul West, Nerul, Navi Mumbai, Maharashtra 400706
           </p>
           <p className="mb-2">123-456-7890</p>
-          <p>info@novatech.com</p>
+          <p>novatechscience@gmail.com</p>
 
           <div className="mt-10 text-sm space-y-2">
             <p className="cursor-pointer">Accessibility Statement</p>
