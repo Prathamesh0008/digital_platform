@@ -28,7 +28,7 @@ import {
 } from "@/data/chatbotKnowledge";
 
 const AGENCY_WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919999999999";
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9004483655";
 
 const BOT_LOGO = "/N.png";
 
@@ -273,6 +273,7 @@ export default function NovaTechAssistant() {
     }
   }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     let cancelled = false;
 
@@ -322,48 +323,6 @@ export default function NovaTechAssistant() {
   }, [contextQuickReplies, hasProactivePrompted, isOpen]);
 
   useEffect(() => {
-    if (!visitorId) return;
-
-    sendVisitorHeartbeat(true);
-
-    const interval = setInterval(() => {
-      sendVisitorHeartbeat(true);
-    }, 30000);
-
-    function handleBeforeUnload() {
-      try {
-        const payload = JSON.stringify({
-          visitorId,
-          name: liveForm.name || leadData?.name || "",
-          contact: liveForm.contact || leadData?.contact || "",
-          business: liveForm.business || leadData?.business || "",
-          selectedService: liveForm.service || leadData?.service || "",
-          location: liveForm.location || "",
-          requirement: liveForm.requirement || "",
-          pageUrl: window.location.href,
-          userAgent: navigator.userAgent,
-          isOnline: false,
-        });
-
-        const blob = new Blob([payload], {
-          type: "application/json",
-        });
-
-        navigator.sendBeacon?.("/api/live-chat/visitor-heartbeat", blob);
-      } catch {
-        // ignore browser unload errors
-      }
-    }
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [visitorId, leadData, liveForm]);
-
-  useEffect(() => {
     if (typeof window === "undefined") return;
 
     const SpeechRecognition =
@@ -411,6 +370,50 @@ export default function NovaTechAssistant() {
     };
   }, []);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (!visitorId) return;
+
+    sendVisitorHeartbeat(true);
+
+    const interval = setInterval(() => {
+      sendVisitorHeartbeat(true);
+    }, 30000);
+
+    function handleBeforeUnload() {
+      try {
+        const payload = JSON.stringify({
+          visitorId,
+          name: liveForm.name || leadData?.name || "",
+          contact: liveForm.contact || leadData?.contact || "",
+          business: liveForm.business || leadData?.business || "",
+          selectedService: liveForm.service || leadData?.service || "",
+          location: liveForm.location || "",
+          requirement: liveForm.requirement || "",
+          pageUrl: window.location.href,
+          userAgent: navigator.userAgent,
+          isOnline: false,
+        });
+
+        const blob = new Blob([payload], {
+          type: "application/json",
+        });
+
+        navigator.sendBeacon?.("/api/live-chat/visitor-heartbeat", blob);
+      } catch {
+        // ignore browser unload errors
+      }
+    }
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [visitorId, leadData, liveForm]);
+  /* eslint-enable react-hooks/exhaustive-deps */
+
   useEffect(() => {
     if (!liveSession?.sessionId) return;
 
@@ -425,6 +428,7 @@ export default function NovaTechAssistant() {
     };
   }, [liveSession?.sessionId]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (!liveSession?.sessionId) return;
 
@@ -571,6 +575,7 @@ export default function NovaTechAssistant() {
       pusher.disconnect();
     };
   }, [liveSession?.sessionId]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   function playNotificationSound() {
     try {

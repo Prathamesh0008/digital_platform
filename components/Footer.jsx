@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { MapPin, Phone, Mail, ShieldCheck, Accessibility } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -22,16 +23,34 @@ export default function Footer() {
             />
           </div>
 
-          <p className="mb-4 break-words">
-            Office no-2, 1st Floor, Wadhwa PBR, Sector 4, Palm Beach Rd, above Venilicious
-            Bakery &amp; Cake shop, Nerul West, Nerul, Navi Mumbai, Maharashtra 400706
-          </p>
-          <p className="mb-2">123-456-7890</p>
-          <p>novatechscience@gmail.com</p>
+          <div className="space-y-3">
+            <p className="mb-4 flex items-start gap-2 break-words">
+              <MapPin size={18} className="mt-1 shrink-0 text-[#5A7EFF]" />
+              <span>
+                Office no-2, 1st Floor, Wadhwa PBR, Sector 4, Palm Beach Rd, above
+                Venilicious Bakery &amp; Cake shop, Nerul West, Nerul, Navi Mumbai,
+                Maharashtra 400706
+              </span>
+            </p>
+            <p className="mb-2 flex items-center gap-2">
+              <Phone size={18} className="text-[#5A7EFF]" />
+              <span>9004483655</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Mail size={18} className="text-[#5A7EFF]" />
+              <span>novatechscience@gmail.com</span>
+            </p>
+          </div>
 
           <div className="mt-10 text-sm space-y-2">
-            <p className="cursor-pointer">Accessibility Statement</p>
-            <p className="cursor-pointer">Privacy Policy</p>
+            <p className="flex items-center gap-2 cursor-pointer">
+              <Accessibility size={16} className="text-[#5A7EFF]" />
+              <span>Accessibility Statement</span>
+            </p>
+            <p className="flex items-center gap-2 cursor-pointer">
+              <ShieldCheck size={16} className="text-[#5A7EFF]" />
+              <span>Privacy Policy</span>
+            </p>
           </div>
         </div>
 

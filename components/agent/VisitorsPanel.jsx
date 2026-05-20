@@ -7,18 +7,23 @@ export default function VisitorsPanel({ onSelectVisitor }) {
   const [visitors, setVisitors] = useState([]);
 
   useEffect(() => {
-    loadVisitors();
+    let isMounted = true;
+
+    async function run() {
+      const params = new URLSearchParams();
+      if (q) params.set("q", q);
+
+      const response = await fetch(`/api/live-chat/visitors?${params}`);
+      const data = await response.json();
+      if (isMounted && data.success) setVisitors(data.visitors || []);
+    }
+
+    run();
+
+    return () => {
+      isMounted = false;
+    };
   }, [q]);
-
-  async function loadVisitors() {
-    const params = new URLSearchParams();
-    if (q) params.set("q", q);
-
-    const response = await fetch(`/api/live-chat/visitors?${params}`);
-    const data = await response.json();
-
-    if (data.success) setVisitors(data.visitors || []);
-  }
 
   return (
     <div className="rounded-3xl bg-white p-5 shadow-sm">

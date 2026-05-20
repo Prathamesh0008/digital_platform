@@ -7,11 +7,28 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 export default function NovaLogoPreloader() {
+  const PRELOADER_SEEN_KEY = "nova_preloader_seen";
   const preloaderRef = useRef(null);
   const [svgText, setSvgText] = useState("");
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      return sessionStorage.getItem(PRELOADER_SEEN_KEY) !== "1";
+    } catch {
+      return true;
+    }
+  });
 
   useEffect(() => {
+    if (!show) return;
+
+    try {
+      // Mark as seen immediately to prevent refresh re-showing mid-animation.
+      sessionStorage.setItem(PRELOADER_SEEN_KEY, "1");
+    } catch {
+      // Ignore storage access issues and continue gracefully.
+    }
+
     fetch("/sounds/novatechscience-logo.svg")
       .then((res) => {
         if (!res.ok) {
@@ -27,12 +44,13 @@ export default function NovaLogoPreloader() {
         }
 
         setSvgText(text);
+        setShow(true);
       })
       .catch((error) => {
         console.error("SVG loading failed:", error);
         setShow(false);
       });
-  }, []);
+  }, [show]);
 
   useGSAP(
     () => {

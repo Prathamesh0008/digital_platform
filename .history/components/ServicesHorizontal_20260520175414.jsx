@@ -6,13 +6,12 @@ import {
   useTransform,
   useMotionValueEvent,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 
 export default function ServicesStacked() {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [viewportWidth, setViewportWidth] = useState(1440);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -24,43 +23,36 @@ export default function ServicesStacked() {
       title: "Brand Strategy",
       desc: "Crafting identities that dominate markets.",
       image: "/caseStudy/Brand%20Strategy.png",
-      href: "/case-studies/brand-strategy",
     },
     {
       title: "SEO Optimization",
       desc: "Boost visibility and rank higher.",
       image: "/caseStudy/SEO.png",
-      href: "/case-studies/seo-optimization",
     },
     {
       title: "Social Media",
       desc: "Build engagement and community.",
       image: "/caseStudy/Social%20media%20marketing.jpg",
-      href: "/case-studies/social-media",
     },
     {
       title: "Performance Ads",
       desc: "Maximize ROI with precision.",
       image: "/caseStudy/performance%20ads.png",
-      href: "/case-studies/performance-ads",
     },
     {
       title: "Web Design",
       desc: "Premium conversion-focused websites.",
       image: "/caseStudy/Web%20Development.png",
-      href: "/case-studies/web-design",
     },
     {
       title: "E-Commerce Growth",
       desc: "Scale your online revenue channels.",
       image: "/caseStudy/Ecommerce%20Growth.png",
-      href: "/case-studies/ecommerce-growth",
     },
     {
       title: "Analytics & Data",
       desc: "Make decisions backed by real insights.",
       image: "/caseStudy/Analytics%20%26%20data.png",
-      href: "/case-studies/analytics-data",
     },
   ];
 
@@ -70,23 +62,14 @@ export default function ServicesStacked() {
     setActiveIndex(latest);
   });
 
-  useEffect(() => {
-    const onResize = () => setViewportWidth(window.innerWidth);
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
   const total = cards.length;
   const stepDeg = 360 / total;
   const ringRotation = (activeIndex / total) * 360;
-  const ringRadius =
-    viewportWidth < 640 ? 240 : viewportWidth < 768 ? 320 : viewportWidth < 1024 ? 450 : 620;
 
   return (
     <section ref={containerRef} className="relative h-[450vh] md:h-[600vh] bg-[#FFF8F5]">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute left-4 sm:left-6 md:left-10 top-10 md:top-16 z-20">
+        <div className="absolute left-4 sm:left-6 md:left-10 top-12 md:top-20 z-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#0d2d47]">
             Case Studies
           </h2>
@@ -97,7 +80,7 @@ export default function ServicesStacked() {
           style={{ perspective: "2400px", transformStyle: "preserve-3d" }}
         >
           <motion.div
-            className="relative h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] w-full"
+            className="relative h-[360px] md:h-[420px] w-full"
             style={{ transformStyle: "preserve-3d" }}
             animate={{ rotateY: -ringRotation }}
             transition={{ type: "spring", stiffness: 90, damping: 24, mass: 1 }}
@@ -113,12 +96,12 @@ export default function ServicesStacked() {
                   key={i}
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                   style={{
-                    transform: `rotateY(${cardAngle}deg) translateZ(${ringRadius}px)`,
+                    transform: `rotateY(${cardAngle}deg) translateZ(620px)`,
                     transformStyle: "preserve-3d",
                   }}
                 >
                 <motion.div
-                  className="w-[86vw] sm:w-[74vw] md:w-[60vw] lg:w-[35vw] max-w-[760px] h-[220px] sm:h-[260px] md:h-[320px] lg:h-[380px] p-4 sm:p-5 md:p-7 lg:p-10 flex flex-col justify-between text-white overflow-hidden"
+                  className="w-[25vw] max-w-[760px] h-[320px] md:h-[380px] p-6 md:p-10 flex flex-col justify-between text-white overflow-hidden"
                   style={{
                     transformStyle: "preserve-3d",
                     backgroundImage: `linear-gradient(rgba(3, 8, 20, 0.58), rgba(3, 8, 20, 0.58)), url(${card.image})`,
@@ -138,21 +121,21 @@ export default function ServicesStacked() {
                   }}
                   transition={{ duration: 0.25 }}
                 >
-                  <div className={`${isCenter ? "text-white/50" : "text-white/20"} text-sm sm:text-base md:text-lg`}>0{i + 1}</div>
+                  <div className={`${isCenter ? "text-white/50" : "text-white/20"} text-lg`}>0{i + 1}</div>
 
                   <div className={isCenter ? "opacity-100 transition-opacity duration-200" : "opacity-0 transition-opacity duration-200"}>
-                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-2 sm:mb-3 md:mb-4">
+                    <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4">
                       {card.title}
                     </h3>
 
-                    <p className="text-white/70 max-w-md text-xs sm:text-sm md:text-base">
+                    <p className="text-white/70 max-w-md text-sm md:text-base">
                       {card.desc}
                     </p>
                   </div>
 
                   <Link
-                    href={card.href}
-                    className={`${isCenter ? "opacity-100" : "opacity-0"} bg-white text-black px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full text-xs sm:text-sm w-fit transition-opacity duration-200`}
+                    href="/case-studies"
+                    className={`${isCenter ? "opacity-100" : "opacity-0"} bg-white text-black px-6 py-3 rounded-full text-sm w-fit transition-opacity duration-200`}
                   >
                     View Case Study ?
                   </Link>

@@ -7,9 +7,9 @@ import Services from "@/components/Services";
 
 // import PortfolioHeroLight from "@/components/PortfolioHeroLight";
 import ClientsAndTestimonials from "@/components/ClientsAndTestimonials";
-import ContactSection from "@/components/ContactSection";
 // import ScrollWire from "@/components/ScrollWire";
 import SplitMarqueeSection from "@/components/SplitMarqueeSection";
+import HomeWhyChooseSection from "@/components/HomeWhyChooseSection";
 
 const siteUrl = "https://www.novatechsciences.com";
 
@@ -91,7 +91,7 @@ export default function Home() {
       {/* <PortfolioHeroLight/> */}
       <SplitMarqueeSection/>
       <ClientsAndTestimonials/>
-      <ContactSection/>
+      <HomeWhyChooseSection />
      
     </main>
   );

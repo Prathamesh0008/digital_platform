@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function PortfolioHeroLight() {
   const clientLogos = [
@@ -21,10 +22,13 @@ export default function PortfolioHeroLight() {
 
   return (
     <section className="relative min-h-[96vh] w-full overflow-hidden">
-      <motion.img
-        src="/Sat-net-prtable-project-desktop.avif"
-        alt="Portfolio Background"
+      <motion.div
         className="absolute inset-0 h-full w-full object-cover"
+        style={{
+          backgroundImage: "url('/Sat-net-prtable-project-desktop.avif')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         animate={{ scale: [1.02, 1.06, 1.02] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -34,11 +38,13 @@ export default function PortfolioHeroLight() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_66%,rgba(14,190,224,0.26),transparent_48%)]" />
       <div className="pointer-events-none absolute inset-0">
         {floatingLogos.map((item) => (
-          <img
+          <Image
             key={item.src}
             src={item.src}
             alt=""
             aria-hidden="true"
+            width={144}
+            height={144}
             className={`absolute opacity-[0.12] grayscale blur-[0.4px] ${item.className}`}
           />
         ))}
@@ -108,11 +114,12 @@ export default function PortfolioHeroLight() {
                   key={logo}
                   className="flex h-12 items-center justify-center overflow-hidden rounded-xl border border-white/25 bg-white/90 p-2"
                 >
-                  <img
+                  <Image
                     src={logo}
                     alt={`Client ${idx + 1}`}
+                    width={128}
+                    height={64}
                     className="h-full w-full object-contain"
-                    loading="lazy"
                   />
                 </div>
               ))}

@@ -6,15 +6,20 @@ export default function ResolvedPanel({ onSelect }) {
   const [sessions, setSessions] = useState([]);
 
   useEffect(() => {
-    loadResolved();
+    let isMounted = true;
+
+    async function run() {
+      const response = await fetch("/api/live-chat/sessions?status=resolved");
+      const data = await response.json();
+      if (isMounted && data.success) setSessions(data.sessions || []);
+    }
+
+    run();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
-
-  async function loadResolved() {
-    const response = await fetch("/api/live-chat/sessions?status=resolved");
-    const data = await response.json();
-
-    if (data.success) setSessions(data.sessions || []);
-  }
 
   return (
     <div className="rounded-3xl bg-white p-5 shadow-sm">

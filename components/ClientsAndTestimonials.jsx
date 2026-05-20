@@ -1,21 +1,28 @@
-//marketing-website\components\ClientsAndTestimonials.jsx
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import AnimatedLogoMerge from "./AnimatedLogoMerge";
 
 export default function ClientsAndTestimonials() {
+  const clientLogos = [
+    "/www.novatechsciences.com.webp",
+    "/Ivexia.svg",
+    "/kvs.png",
+    "/larkosis.webp",
+    "/Arena.avif",
+    "/Travelo.avif",
+    "/Bayview.avif",
+    "/MTVS.avif",
+    "/Fiber Box.avif",
+  ];
+
+  const loopLogos = [...clientLogos, ...clientLogos];
+
   return (
     <section className="w-full">
-
-      {/* ========================= */}
-      {/* 🔥 CLIENTS SECTION */}
-      {/* ========================= */}
       <div className="bg-[#EAEBDB] px-4 sm:px-6 md:px-10 py-16 sm:py-24">
-
         <div className="grid md:grid-cols-4 border-t border-black/20">
-
-          {/* LEFT TITLE */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -28,90 +35,52 @@ export default function ClientsAndTestimonials() {
             </h2>
           </motion.div>
 
-          {/* 🔥 RIGHT LOGO GRID */}
-          {/* 🔥 RIGHT LOGO GRID */}
-<div className="md:col-span-3 flex flex-col gap-6 overflow-hidden">
+          <div className="md:col-span-3 flex flex-col gap-6 overflow-hidden py-4">
+            <motion.div
+              className="flex gap-8 sm:gap-12 whitespace-nowrap"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            >
+              {loopLogos.map((src, i) => (
+                <div
+                  key={`top-${i}`}
+                  className="flex items-center justify-center h-[90px] sm:h-[110px] min-w-[150px] sm:min-w-[190px]"
+                >
+                  <Image
+                    src={src}
+                    alt="Client logo"
+                    width={220}
+                    height={88}
+                    className="max-h-[55px] sm:max-h-[72px] w-auto object-contain opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition"
+                  />
+                </div>
+              ))}
+            </motion.div>
 
-  {/* 🔥 TOP ROW → LEFT TO RIGHT */}
-  <motion.div
-    className="flex gap-6 sm:gap-10 whitespace-nowrap"
-    animate={{ x: ["-50%", "0%"] }}
-    transition={{
-      duration: 5,
-      repeat: Infinity,
-      ease: "linear",
-    }}
-  >
-    {[
-      "/Travelo.avif",
-      "/Bayview.avif",
-      "/MTVS.avif",
-      "/Fiber Box.avif",
-      "/Arena.avif",
-      // duplicate for loop
-      "/Travelo.avif",
-      "/Bayview.avif",
-      "/MTVS.avif",
-      "/Fiber Box.avif",
-      "/Arena.avif",
-    ].map((src, i) => (
-      <div
-        key={i}
-        className="flex items-center justify-center h-[90px] sm:h-[120px] min-w-[150px] sm:min-w-[200px]"
-      >
-        <img
-          src={src}
-          className="max-h-[60px] sm:max-h-[80px] w-auto object-contain opacity-70 hover:opacity-100 transition"
-        />
-      </div>
-    ))}
-  </motion.div>
-
-  {/* 🔥 BOTTOM ROW → RIGHT TO LEFT */}
-  <motion.div
-    className="flex gap-6 sm:gap-10 whitespace-nowrap"
-    animate={{ x: ["0%", "-50%"] }}
-    transition={{
-      duration: 5 ,
-      repeat: Infinity,
-      ease: "linear",
-    }}
-  >
-    {[
-      "/Travelo.avif",
-      "/Bayview.avif",
-      "/MTVS.avif",
-      "/Fiber Box.avif",
-      "/Arena.avif",
-      // duplicate for loop
-      "/Travelo.avif",
-      "/Bayview.avif",
-      "/MTVS.avif",
-      "/Fiber Box.avif",
-      "/Arena.avif",
-    ].map((src, i) => (
-      <div
-  key={i}
-  className="flex items-center justify-center h-[110px] sm:h-[160px] min-w-[180px] sm:min-w-[260px]"
->
-  <img
-    src={src}
-    className="max-h-[70px] sm:max-h-[95px] md:max-h-[130px] w-auto object-contain
-      opacity-70 hover:opacity-100 hover:scale-110
-      transition duration-300"
-  />
-</div>
-    ))}
-  </motion.div>
-
-</div>
-
+            <motion.div
+              className="flex gap-8 sm:gap-12 whitespace-nowrap"
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+            >
+              {loopLogos.map((src, i) => (
+                <div
+                  key={`bottom-${i}`}
+                  className="flex items-center justify-center h-[95px] sm:h-[120px] min-w-[160px] sm:min-w-[210px]"
+                >
+                  <Image
+                    src={src}
+                    alt="Client logo"
+                    width={220}
+                    height={96}
+                    className="max-h-[60px] sm:max-h-[80px] md:max-h-[88px] w-auto object-contain opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105 transition duration-300"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* ========================= */}
-      {/* 🔥 BIG STATEMENT */}
-      {/* ========================= */}
       <div
         className="px-4 sm:px-6 md:px-10 py-20 sm:py-32"
         style={{
@@ -126,8 +95,7 @@ export default function ClientsAndTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="uppercase tracking-tight leading-[1.0]
-                text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-medium"
+              className="uppercase tracking-tight leading-[1.0] text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-medium"
             >
               Smart, simple, <br />
               and efficient <br />
@@ -150,24 +118,17 @@ export default function ClientsAndTestimonials() {
               size="min(34vw, 220px)"
               pieceGap={10}
               scrollLinked={true}
-              scrollSceneHeight="140vh"
+              scrollSceneHeight="220vh"
               useImagePieces={true}
             />
           </motion.div>
         </div>
       </div>
 
-      {/* ========================= */}
-      {/* 🔥 TESTIMONIALS */}
-      {/* ========================= */}
       <div
         className="relative px-4 sm:px-6 md:px-10 py-16 sm:py-24 text-black"
-        style={{
-          background: "linear-gradient(to bottom, #5A7EFF, #6988FB)",
-        }}
+        style={{ background: "linear-gradient(to bottom, #5A7EFF, #6988FB)" }}
       >
-
-        {/* GRID LINES */}
         <div className="absolute inset-0 grid grid-cols-4 pointer-events-none">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="border-l border-black/20" />
@@ -175,8 +136,6 @@ export default function ClientsAndTestimonials() {
         </div>
 
         <div className="relative grid md:grid-cols-4 gap-10">
-
-          {/* LEFT TITLE */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -188,7 +147,6 @@ export default function ClientsAndTestimonials() {
             </h2>
           </motion.div>
 
-          {/* TESTIMONIALS */}
           {[
             {
               text: "Nova Techscience transformed our ideas into measurable growth. Their strategy and execution gave us stronger visibility and better lead quality.",
@@ -215,197 +173,13 @@ export default function ClientsAndTestimonials() {
                 &quot;{item.text}&quot;
               </p>
 
-              <span className="border border-black px-4 py-2 rounded-full w-fit text-sm
-                group-hover:bg-black group-hover:text-white transition">
+              <span className="border border-black px-4 py-2 rounded-full w-fit text-sm group-hover:bg-black group-hover:text-white transition">
                 {item.name}
               </span>
             </motion.div>
           ))}
-
         </div>
       </div>
-
     </section>
   );
 }
-
-
-// //marketing-website\components\ClientsAndTestimonials.jsx
-// "use client";
-
-// import { motion } from "framer-motion";
-
-// export default function ClientsAndTestimonials() {
-//   return (
-//     <section className="w-full">
-
-//       {/* ========================= */}
-//       {/* 🔥 CLIENTS SECTION */}
-//       {/* ========================= */}
-//       <div className="bg-[#EAEBDB] px-10 py-24">
-
-//         <div className="grid md:grid-cols-4 border-t border-black/20">
-
-//           {/* LEFT TITLE */}
-//           <motion.div
-//             initial={{ opacity: 0, x: -60 }}
-//             whileInView={{ opacity: 1, x: 0 }}
-//             transition={{ duration: 1 }}
-//             viewport={{ once: true }}
-//             className="p-10 border-r border-black/20 flex items-start"
-//           >
-//             <h2 className="uppercase leading-[0.9] text-[60px] font-medium">
-//               Our <br /> Clients
-//             </h2>
-//           </motion.div>
-
-//           {/* RIGHT GRID */}
-//          <div className="md:col-span-3 grid grid-cols-3 overflow-hidden">
-
-//   {[
-//     "/Travelo.avif",
-//     "/Bayview.avif",
-//     "/MTVS.avif",
-//     "/Fiber Box.avif",
-//     "/Arena.avif",
-//   ].map((src, i) => {
-//     const isTopRow = i < 3;
-
-//     return (
-//       <motion.div
-//         key={i}
-//         initial={{ 
-//           opacity: 0,
-//           x: isTopRow ? -120 : 120, // 👈 direction control
-//           scale: 0.95,
-//         }}
-//         whileInView={{
-//           opacity: 1,
-//           x: 0,
-//           scale: 1,
-//         }}
-//         transition={{
-//           delay: i * 0.15,
-//           duration: 1,
-//           ease: [0.22, 1, 0.36, 1], // premium easing
-//         }}
-//         viewport={{ once: true, margin: "-50px" }}
-//         className={`flex items-center justify-center h-[180px]
-//           ${i % 3 !== 2 ? "border-r" : ""}
-//           ${i < 3 ? "border-b" : ""}
-//           border-black/20`}
-//       >
-//         <img
-//           src={src}
-//           className="max-h-[140px] md:max-h-[170px] w-auto object-contain
-//             opacity-70 hover:opacity-100 hover:scale-105
-//             transition duration-300"
-//         />
-//       </motion.div>
-//     );
-//   })}
-
-//   {/* EMPTY CELL */}
-//   <div className="h-[180px]" />
-
-// </div>
-//         </div>
-//       </div>
-
-//       {/* ========================= */}
-//       {/* 🔥 BIG STATEMENT */}
-//       {/* ========================= */}
-//       <div
-//         className="px-10 py-32"
-//         style={{
-//           background:
-//             "linear-gradient(to bottom, #EAEBDB, #E1E4DD, #BEC9E7, #6988FB, #5A7EFF)",
-//         }}
-//       >
-//         <motion.h1
-//           initial={{ opacity: 0, y: 60 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 1 }}
-//           viewport={{ once: true }}
-//           className="uppercase tracking-tight leading-[0.9]
-//             text-[50px] md:text-[100px] lg:text-[140px] font-medium"
-//         >
-//           Driven by innovation, <br />
-//           Fueled by strategy — <br />
-//           Redefining success in <br />
-//           Every campaign!
-//         </motion.h1>
-//       </div>
-
-//       {/* ========================= */}
-//       {/* 🔥 TESTIMONIALS */}
-//       {/* ========================= */}
-//       <div
-//         className="relative px-10 py-24 text-black"
-//         style={{
-//           background: "linear-gradient(to bottom, #5A7EFF, #6988FB)",
-//         }}
-//       >
-
-//         {/* GRID LINES */}
-//         <div className="absolute inset-0 grid grid-cols-4 pointer-events-none">
-//           {[1, 2, 3, 4].map((i) => (
-//             <div key={i} className="border-l border-black/20" />
-//           ))}
-//         </div>
-
-//         <div className="relative grid md:grid-cols-4 gap-10">
-
-//           {/* LEFT TITLE */}
-//           <motion.div
-//             initial={{ opacity: 0, x: -60 }}
-//             whileInView={{ opacity: 1, x: 0 }}
-//             transition={{ duration: 1 }}
-//             viewport={{ once: true }}
-//           >
-//             <h2 className="uppercase leading-[0.9] text-[60px] font-medium">
-//               What Our <br /> Clients <br /> Say About Us
-//             </h2>
-//           </motion.div>
-
-//           {/* TESTIMONIALS */}
-//           {[
-//             {
-//               text: "Nova Techscience transformed our ideas into measurable growth. Their strategy and execution gave us stronger visibility and better lead quality.",
-//               name: "Client Story 01",
-//             },
-//             {
-//               text: "From SEO to paid campaigns, every step felt structured and data-backed. We saw consistent improvements in rankings and conversions.",
-//               name: "Client Story 02",
-//             },
-//             {
-//               text: "Their team understands global audiences and adapts quickly. We now have a stronger brand presence with better campaign ROI.",
-//               name: "Client Story 03",
-//             },
-//           ].map((item, i) => (
-//             <motion.div
-//               key={i}
-//               initial={{ opacity: 0, y: 60 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ delay: i * 0.2, duration: 0.8 }}
-//               viewport={{ once: false, amount: 0.3 }}
-//               className="flex flex-col justify-between group"
-//             >
-//               <p className="mb-10 text-black leading-relaxed">
-//                 "{item.text}"
-//               </p>
-
-//               <span className="border border-black px-4 py-2 rounded-full w-fit text-sm
-//                 group-hover:bg-black group-hover:text-white transition">
-//                 {item.name}
-//               </span>
-//             </motion.div>
-//           ))}
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-

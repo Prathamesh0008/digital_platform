@@ -30,7 +30,7 @@ export default function ContactPage() {
           </div>
           <div className="rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-white/60">Phone</p>
-            <p className="mt-3 text-lg font-medium">123-456-7890</p>
+            <p className="mt-3 text-lg font-medium">9004483655</p>
           </div>
           <div className="rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-white/60">Office</p>

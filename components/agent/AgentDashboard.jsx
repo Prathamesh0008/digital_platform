@@ -61,6 +61,7 @@ export default function AgentDashboard() {
 
   const [isChatFullscreen, setIsChatFullscreen] = useState(false);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     checkAgent();
   }, []);
@@ -101,6 +102,7 @@ export default function AgentDashboard() {
       pusher.disconnect();
     };
   }, [agent?.id, search, status, selectedSession?.sessionId]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   useEffect(() => {
     const count = stats?.onlineVisitors || 0;

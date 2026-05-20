@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 
-const siteUrl = "https://www.novatechsciences.com";
+const siteUrl = "https://www.novatechscience.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -44,3 +44,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
+

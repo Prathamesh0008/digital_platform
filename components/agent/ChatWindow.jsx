@@ -35,7 +35,10 @@ export default function ChatWindow({
   const [sending, setSending] = useState(false);
   const [visitorTyping, setVisitorTyping] = useState(false);
 
-  const [speechSupported, setSpeechSupported] = useState(false);
+  const [speechSupported] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
+  });
   const [isListening, setIsListening] = useState(false);
 
   const bottomRef = useRef(null);
@@ -55,12 +58,7 @@ export default function ChatWindow({
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    if (!SpeechRecognition) {
-      setSpeechSupported(false);
-      return;
-    }
-
-    setSpeechSupported(true);
+    if (!SpeechRecognition) return;
 
     const recognition = new SpeechRecognition();
     recognition.lang = "en-IN";
@@ -80,7 +78,6 @@ export default function ChatWindow({
           return `${prev} ${transcript}`;
         });
 
-        sendTypingStatus(true);
       }
     };
 
@@ -93,7 +90,6 @@ export default function ChatWindow({
 
   useEffect(() => {
     if (!session?.sessionId) {
-      setMessages([]);
       seenMessageIdsRef.current.clear();
       return;
     }
@@ -164,7 +160,7 @@ export default function ChatWindow({
       pusher.unsubscribe(`nova-chat-${session.sessionId}`);
       pusher.disconnect();
     };
-  }, [session?.sessionId]);
+  }, [session?.sessionId, onRefresh]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
