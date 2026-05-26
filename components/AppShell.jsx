@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,6 +11,9 @@ import NovaLogoPreloader from "@/components/NovaLogoPreloader";
 export default function AppShell({ children }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
+  const handlePreloaderComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
 
   const isAgentPortal = pathname.startsWith("/agent");
 
@@ -19,7 +22,7 @@ export default function AppShell({ children }) {
   }
 
   if (isLoading) {
-    return <NovaLogoPreloader onComplete={() => setIsLoading(false)} />;
+    return <NovaLogoPreloader onComplete={handlePreloaderComplete} />;
   }
 
   return (
