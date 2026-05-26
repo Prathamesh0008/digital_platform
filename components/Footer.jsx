@@ -15,11 +15,11 @@ export default function Footer() {
         <div>
           <div className="mb-6">
             <Image
-              src="/novatechscience-logo.svg"
-              alt="NovaTech logo"
+              src="/digitallogo.png"
+              alt="NovaTechscience"
               width={220}
               height={88}
-              className="h-auto w-[160px] sm:w-[200px] md:w-[220px] brightness-0"
+              className="h-auto w-[160px] sm:w-[200px] md:w-[220px] brightness-100"
             />
           </div>
 
@@ -27,8 +27,7 @@ export default function Footer() {
             <p className="mb-4 flex items-start gap-2 break-words">
               <MapPin size={18} className="mt-1 shrink-0 text-[#5A7EFF]" />
               <span>
-                Office no-2, 1st Floor, Wadhwa PBR, Sector 4, Palm Beach Rd, above
-                Venilicious Bakery &amp; Cake shop, Nerul West, Nerul, Navi Mumbai,
+                Nerul, Navi Mumbai,
                 Maharashtra 400706
               </span>
             </p>

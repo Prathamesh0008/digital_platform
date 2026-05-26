@@ -1,4 +1,4 @@
-import GeoServiceClient from "../generative-engine-optimization-geo-agency/GeoServiceClient";
+import GeoServiceClient from "./GeoServiceClient";
 
 export const metadata = {
   title: "GEO Marketing Services| GEO Agency | Nova Techscience",
@@ -9,6 +9,6 @@ export const metadata = {
   },
 };
 
-export default function GeoServicePage() {
+export default function Page() {
   return <GeoServiceClient />;
 }

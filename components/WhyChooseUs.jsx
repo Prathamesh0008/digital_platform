@@ -37,9 +37,9 @@ export default function WhyChooseUs() {
       <div className="relative mx-auto max-w-[1500px]">
         <div className="mb-10 grid gap-8 border-t border-[#0d2d47]/18 pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end sm:mb-14">
           <div>
-            <p className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+            {/* <p className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white">
               Why choose us
-            </p>
+            </p> */}
 
             <h2 className="max-w-4xl text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[72px]">
               Digital Growth With Direction, Not Guesswork

@@ -55,9 +55,9 @@ export default function ServicesGrid() {
       <div className="relative mx-auto max-w-[1500px]">
         <div className="mb-10 flex flex-col justify-between gap-5 border-t border-[#0d2d47]/18 pt-8 sm:mb-14 md:flex-row md:items-end">
           <div>
-            <p className="mb-4 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+            {/* <p className="mb-4 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white">
               Capabilities
-            </p>
+            </p> */}
             <h2 className="max-w-3xl text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[72px]">
               Practical Services For Every Growth Stage
             </h2>

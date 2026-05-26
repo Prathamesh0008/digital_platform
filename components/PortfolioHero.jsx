@@ -1,61 +1,12 @@
-// components/PortfolioHero.jsx
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { portfolioProjects } from "@/data/portfolio";
 
 export default function PortfolioHero() {
-  const projects = [
-    {
-      name: "Nova Tech Sciences",
-      category: "Corporate Website",
-      url: "https://www.novatechsciences.com/",
-      domain: "novatechsciences.com",
-      logo: "/www.novatechsciences.com.webp",
-    },
-    {
-      name: "Ivexia Pharma",
-      category: "Pharma Website",
-      url: "https://www.ivexiapharma.com/",
-      domain: "ivexiapharma.com",
-      logo: "/Ivexia.svg",
-    },
-    {
-      name: "ED Pharma",
-      category: "Healthcare Website",
-      url: "https://www.edpharma.co/",
-      domain: "edpharma.co",
-      logo: "/edPharma.svg",
-    },
-    {
-      name: "Bio-Peptides",
-      category: "Biotech Website",
-      url: "https://www.bio-peptides.com/",
-      domain: "bio-peptides.com",
-      logo: "/biopeptide.png",
-    },
-    {
-      name: "Larksois Pharma",
-      category: "Pharma Brand Site",
-      url: "https://www.larksoispharma.com/",
-      domain: "larksoispharma.com",
-      logo: "/larkosis.webp",
-    },
-    {
-      name: "KVA Logistics",
-      category: "Logistics Website",
-      url: "https://www.kvalogistics.nl/",
-      domain: "kvalogistics.nl",
-      logo: "/kvs.png",
-    },
-    {
-      name: "AS Blogi",
-      category: "Blog Platform",
-      url: "https://asblogi.com/",
-      domain: "asblogi.com",
-      logo: "/asblogi.png",
-    },
-  ];
+  const projects = portfolioProjects;
 
   return (
     <section
@@ -65,19 +16,12 @@ export default function PortfolioHero() {
           "linear-gradient(to bottom, #EAEBDB, #C4CFE3, #8EA5F1, #6887FB)",
       }}
     >
-      {/* Background glow */}
       <div className="pointer-events-none absolute left-[-140px] top-20 h-[360px] w-[360px] rounded-full bg-white/30 blur-3xl" />
       <div className="pointer-events-none absolute right-[-160px] top-1/2 h-[420px] w-[420px] rounded-full bg-[#0d2d47]/12 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-180px] left-1/3 h-[380px] w-[380px] rounded-full bg-[#EAEBDB]/30 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-[1400px]">
-        {/* Heading */}
         <div className="mb-10 grid gap-8 border-l border-[#0d2d47]/20 pl-4 sm:pl-6 md:mb-14 md:grid-cols-[1fr_0.75fr] md:items-end md:pl-10">
           <div>
-            <p className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-[0_14px_30px_rgba(13,45,71,0.18)]">
-              Selected Work
-            </p>
-
             <h2 className="max-w-4xl text-4xl font-semibold uppercase leading-[0.92] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[72px]">
               Featured
               <br />
@@ -92,14 +36,11 @@ export default function PortfolioHero() {
           </p>
         </div>
 
-        {/* Project chips */}
         <div className="mb-10 flex gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0">
           {projects.map((project) => (
-            <a
-              key={`${project.url}-chip`}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              key={`${project.slug}-chip`}
+              href={`/portfolio/${project.slug}`}
               className="group flex shrink-0 items-center gap-2 rounded-full border border-[#0d2d47]/10 bg-white/25 px-3 py-2 backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-white/45"
             >
               <div className="relative h-6 w-6 overflow-hidden rounded-full bg-white">
@@ -114,11 +55,10 @@ export default function PortfolioHero() {
               <p className="whitespace-nowrap text-xs font-medium text-[#0d2d47]/75 transition group-hover:text-[#0d2d47]">
                 {project.name}
               </p>
-            </a>
+            </Link>
           ))}
         </div>
 
-        {/* Cards */}
         <div className="grid gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
           {projects.map((project, i) => {
             const initials = project.name
@@ -130,7 +70,7 @@ export default function PortfolioHero() {
 
             return (
               <motion.article
-                key={project.url}
+                key={project.slug}
                 initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -138,7 +78,6 @@ export default function PortfolioHero() {
                 whileHover={{ y: -8 }}
                 className="group rounded-[32px] border border-white/35 bg-white/20 p-3 shadow-[0_22px_60px_rgba(13,45,71,0.16)] backdrop-blur-md transition"
               >
-                {/* Browser preview */}
                 <div className="overflow-hidden rounded-[26px] border border-white/45 bg-white/25">
                   <div className="flex items-center gap-2 border-b border-[#0d2d47]/10 bg-white/25 px-4 py-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#0d2d47]/35" />
@@ -146,7 +85,7 @@ export default function PortfolioHero() {
                     <span className="h-2.5 w-2.5 rounded-full bg-[#0d2d47]/14" />
 
                     <span className="ml-auto rounded-full bg-[#0d2d47]/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0d2d47]/55">
-                      Live Project
+                      Case Study
                     </span>
                   </div>
 
@@ -188,7 +127,6 @@ export default function PortfolioHero() {
                   </div>
                 </div>
 
-                {/* Card bottom */}
                 <div className="px-2 pb-2 pt-5">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
@@ -216,14 +154,12 @@ export default function PortfolioHero() {
                       {initials} Project
                     </span>
 
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href={`/portfolio/${project.slug}`}
                       className="inline-flex w-full justify-center rounded-full bg-[#0d2d47] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#0d2d47]/90 sm:w-auto"
                     >
-                      Visit Site
-                    </a>
+                      View Details
+                    </Link>
                   </div>
                 </div>
               </motion.article>

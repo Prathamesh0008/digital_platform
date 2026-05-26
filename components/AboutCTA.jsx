@@ -49,9 +49,9 @@ export default function AboutValues() {
             viewport={{ once: false }}
             className="max-w-xl"
           >
-            <p className="uppercase text-sm text-white/60 mb-6 tracking-[0.2em]">
+            {/* <p className="uppercase text-sm text-white/60 mb-6 tracking-[0.2em]">
               Our Values
-            </p>
+            </p> */}
 
             <h2
               className="uppercase leading-[0.9]

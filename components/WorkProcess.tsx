@@ -134,7 +134,7 @@ export default function WorkProcess() {
 
         hasAnimated = true;
 
-        const duration = 1800;
+        const duration = 3600;
         const startTime = performance.now();
 
         const animate = (now: number) => {
@@ -166,7 +166,7 @@ export default function WorkProcess() {
 
         animationFrame = requestAnimationFrame(animate);
       },
-      { threshold: 0.08, rootMargin: "0px 0px 12% 0px" }
+      { threshold: 0.35, rootMargin: "0px" }
     );
 
     observer.observe(section);
@@ -295,8 +295,8 @@ export default function WorkProcess() {
   <motion.div
     initial={{ height: 0 }}
     whileInView={{ height: "calc(100% - 32px)" }}
-    transition={{ duration: 1.6, ease: "easeInOut" }}
-    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 3.2, ease: "easeInOut" }}
+    viewport={{ once: true, amount: 0.35 }}
     className="absolute left-5 top-4 w-[3px] rounded-full bg-[#0d2d47] sm:left-1/2 sm:-translate-x-1/2"
   />
 
@@ -309,8 +309,8 @@ export default function WorkProcess() {
           key={step.no}
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: idx * 0.08 }}
-          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.95, delay: 0.25 + idx * 0.16 }}
+          viewport={{ once: true, amount: 0.35 }}
           className={`relative flex items-start ${
             isRight ? "sm:justify-end" : "sm:justify-start"
           }`}

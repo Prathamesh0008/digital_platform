@@ -152,7 +152,7 @@ export default function ContactSection() {
         >
           <div className="mb-6">
             <Image
-              src="/novatechscience-logo.svg"
+              src="/digitallogo.png"
               alt="NovaTech logo"
               width={180}
               height={72}

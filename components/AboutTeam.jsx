@@ -39,9 +39,9 @@ export default function AboutTeam() {
           viewport={{ once: true }}
           className="mb-14 sm:mb-20 md:mb-24"
         >
-          <p className="uppercase text-sm text-black/50 mb-4 tracking-[0.2em]">
+          {/* <p className="uppercase text-sm text-black/50 mb-4 tracking-[0.2em]">
             The Minds Behind The Magic
-          </p>
+          </p> */}
 
           <h2 className="uppercase tracking-tight leading-[0.9] 
             text-4xl sm:text-6xl md:text-[100px] lg:text-[120px] font-medium">

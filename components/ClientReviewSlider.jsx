@@ -36,9 +36,9 @@ export default function ClientReviewSlider() {
 
       <div className="relative mx-auto max-w-[1400px]">
         <div className="mb-12 max-w-3xl">
-          <span className="mb-5 inline-flex rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white ring-1 ring-white/20">
+          {/* <span className="mb-5 inline-flex rounded-full bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white ring-1 ring-white/20">
             Client Testimonials
-          </span>
+          </span> */}
 
           <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-[72px]">
             Stories From

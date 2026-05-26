@@ -88,7 +88,11 @@ export default function ServicesStacked() {
   const stepDeg = 360 / total;
 
   const ringRadius =
-    viewportWidth < 768
+    viewportWidth < 480
+      ? 260
+      : viewportWidth < 640
+      ? 320
+      : viewportWidth < 768
       ? 420
       : viewportWidth < 1024
       ? 560
@@ -96,7 +100,13 @@ export default function ServicesStacked() {
       ? 680
       : 780;
 
+  const isInteractiveTarget = (target) => {
+    return target instanceof Element && Boolean(target.closest("a, button"));
+  };
+
   const handlePointerDown = (e) => {
+    if (isInteractiveTarget(e.target)) return;
+
     dragRef.current.active = true;
     dragRef.current.lastX = e.clientX;
     setIsDragging(true);
@@ -121,77 +131,28 @@ export default function ServicesStacked() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#FFF8F5] py-14 sm:min-h-[720px] sm:py-0 md:min-h-screen">
+    <section className="relative min-h-[640px] overflow-hidden bg-[#FFF8F5] sm:min-h-[720px] md:min-h-screen">
       {/* Soft Background Shapes */}
       <div className="pointer-events-none absolute left-[-120px] top-[-120px] h-[300px] w-[300px] rounded-full bg-[#19a6b5]/10 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-160px] right-[-120px] h-[360px] w-[360px] rounded-full bg-[#0d2d47]/10 blur-3xl" />
 
-      {/* Mobile Clean Cards */}
-      <div className="mx-auto block max-w-7xl px-4 sm:hidden">
-        <div className="mb-8">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#19a6b5]">
-            Our Work
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-[#0d2d47]">
-            Case Studies
-          </h2>
-        </div>
-
-        <div className="flex snap-x gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {cards.map((card, i) => (
-            <Link
-              key={card.title}
-              href={card.href}
-              className="group relative h-[360px] min-w-[82%] snap-center overflow-hidden rounded-[32px] bg-[#0d2d47] shadow-[0_18px_50px_rgba(13,45,71,0.18)]"
-            >
-              <img
-                src={card.image}
-                alt={card.title}
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
-
-              <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
-                <span className="w-fit rounded-full bg-white/15 px-3 py-1 text-xs font-medium backdrop-blur-md">
-                  0{i + 1}
-                </span>
-
-                <div>
-                  <h3 className="mb-2 text-2xl font-semibold">
-                    {card.title}
-                  </h3>
-                  <p className="mb-5 text-sm leading-6 text-white/85">
-                    {card.desc}
-                  </p>
-
-                  <span className="inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#0d2d47]">
-                    View Case Study →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Tablet/Desktop 3D Carousel */}
+      {/* Responsive 3D Carousel */}
       <div
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onPointerLeave={handlePointerUp}
-        className={`relative hidden h-full min-h-[720px] items-center justify-center overflow-hidden sm:flex md:min-h-screen ${
+        className={`relative flex h-full min-h-[640px] items-center justify-center overflow-hidden sm:min-h-[720px] md:min-h-screen ${
           isDragging ? "cursor-grabbing" : "cursor-grab"
         }`}
         style={{ touchAction: "pan-y" }}
       >
-        <div className="absolute left-6 top-10 z-20 md:left-10 md:top-16 lg:left-14">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-[#19a6b5]">
+        <div className="absolute left-4 top-8 z-20 sm:left-6 sm:top-10 md:left-10 md:top-16 lg:left-14">
+          {/* <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-[#19a6b5]">
             Our Work
-          </p>
-          <h2 className="text-4xl font-semibold tracking-tight text-[#0d2d47] md:text-5xl lg:text-6xl">
+          </p> */}
+          <h2 className="text-3xl font-semibold tracking-tight text-[#0d2d47] sm:text-4xl md:text-5xl lg:text-6xl">
             Case Studies
           </h2>
         </div>
@@ -199,12 +160,12 @@ export default function ServicesStacked() {
         <div
           className="relative flex w-full items-center justify-center"
           style={{
-            perspective: "2400px",
+            perspective: viewportWidth < 640 ? "1400px" : "2400px",
             transformStyle: "preserve-3d",
           }}
         >
           <motion.div
-            className="relative h-[320px] w-full md:h-[380px] lg:h-[430px]"
+            className="relative h-[300px] w-full sm:h-[320px] md:h-[380px] lg:h-[430px]"
             style={{ transformStyle: "preserve-3d" }}
             animate={{ rotateY: -rotationDeg }}
             transition={{
@@ -230,14 +191,14 @@ export default function ServicesStacked() {
                   }}
                 >
                   <motion.div
-                    className="relative flex h-[280px] w-[58vw] max-w-[560px] flex-col justify-between overflow-hidden p-6 text-white md:h-[340px] md:w-[46vw] md:p-8 lg:h-[390px] lg:w-[32vw] lg:max-w-[620px] lg:p-10"
+                    className="relative flex h-[260px] w-[76vw] max-w-[340px] flex-col justify-between overflow-hidden p-5 text-white sm:h-[280px] sm:w-[58vw] sm:max-w-[560px] sm:p-6 md:h-[340px] md:w-[46vw] md:p-8 lg:h-[390px] lg:w-[32vw] lg:max-w-[620px] lg:p-10"
                     style={{
                       transformStyle: "preserve-3d",
                       backgroundImage: `url(${card.image})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
-                      borderRadius: "42px",
+                      borderRadius: viewportWidth < 640 ? "32px" : "42px",
                     }}
                     animate={{
                       opacity: 0.24 + frontness * 0.76,
@@ -257,13 +218,13 @@ export default function ServicesStacked() {
                     </div>
 
                     <div
-                      className={`relative z-10 rounded-3xl border border-white/10 bg-black/35 p-5 backdrop-blur-[3px] transition duration-200 ${
+                      className={`relative z-10 rounded-[26px] border border-white/10 bg-black/35 p-4 backdrop-blur-[3px] transition duration-200 sm:rounded-3xl sm:p-5 ${
                         isCenter
                           ? "translate-y-0 opacity-100"
                           : "translate-y-3 opacity-0"
                       }`}
                     >
-                      <h3 className="mb-3 text-2xl font-semibold drop-shadow-md lg:text-3xl">
+                      <h3 className="mb-2 text-xl font-semibold drop-shadow-md sm:mb-3 sm:text-2xl lg:text-3xl">
                         {card.title}
                       </h3>
 
@@ -274,7 +235,8 @@ export default function ServicesStacked() {
 
                     <Link
                       href={card.href}
-                      className={`relative z-10 w-fit rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#0d2d47] shadow-lg shadow-black/10 transition duration-200 hover:bg-[#0d2d47] hover:text-white md:px-6 md:py-3 ${
+                      onPointerDown={(e) => e.stopPropagation()}
+                      className={`relative z-10 w-fit rounded-full bg-white px-4 py-2 text-sm font-medium text-[#0d2d47] shadow-lg shadow-black/10 transition duration-200 hover:bg-[#0d2d47] hover:text-white sm:px-5 sm:py-2.5 md:px-6 md:py-3 ${
                         isCenter
                           ? "translate-y-0 opacity-100"
                           : "pointer-events-none translate-y-3 opacity-0"

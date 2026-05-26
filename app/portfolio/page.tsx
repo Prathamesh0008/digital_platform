@@ -17,9 +17,9 @@ export default function PortfolioPage() {
 
         <div className="relative mx-auto grid w-full max-w-[1400px] items-end gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div>
-            <p className="mb-5 inline-flex rounded-full border border-[#0d2d47]/15 bg-white/25 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0d2d47] backdrop-blur-md sm:px-5 sm:text-xs sm:tracking-[0.24em]">
+            {/* <p className="mb-5 inline-flex rounded-full border border-[#0d2d47]/15 bg-white/25 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0d2d47] backdrop-blur-md sm:px-5 sm:text-xs sm:tracking-[0.24em]">
               Portfolio
-            </p>
+            </p> */}
 
             <h1 className="max-w-4xl text-[42px] font-semibold uppercase leading-[0.94] tracking-tight text-[#0d2d47] sm:text-6xl md:text-[82px] lg:text-[96px]">
               Digital Experiences That Convert And Scale

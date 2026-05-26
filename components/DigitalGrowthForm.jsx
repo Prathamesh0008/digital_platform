@@ -16,9 +16,9 @@ export default function DigitalGrowthForm() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
           {/* LEFT TITLE */}
           <div className="h-fit border-l border-black/15 pl-4 sm:pl-6 md:pl-10 lg:sticky lg:top-28">
-            <span className="mb-5 inline-flex rounded-full bg-black px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
+            {/* <span className="mb-5 inline-flex rounded-full bg-black px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
               Let’s Connect
-            </span>
+            </span> */}
 
             <h2 className="text-4xl font-semibold uppercase leading-[0.9] tracking-tight text-black sm:text-5xl md:text-[82px] lg:text-[106px]">
               Build

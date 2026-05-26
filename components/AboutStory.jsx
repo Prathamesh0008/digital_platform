@@ -23,9 +23,9 @@ export default function AboutStory() {
           viewport={{ amount: 0.4 }}
           className="mb-16 sm:mb-24 md:mb-32 max-w-4xl"
         >
-          <p className="uppercase text-black/50 text-sm tracking-[0.3em] mb-6">
+          {/* <p className="uppercase text-black/50 text-sm tracking-[0.3em] mb-6">
             Our Story
-          </p>
+          </p> */}
 
           <h1 className="uppercase leading-[0.9]
             text-4xl sm:text-6xl md:text-[100px] lg:text-[120px] font-medium">

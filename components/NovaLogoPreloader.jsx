@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-export default function NovaLogoPreloader() {
+export default function NovaLogoPreloader({ onComplete }) {
   const preloaderRef = useRef(null);
   const [svgText, setSvgText] = useState("");
   const [show, setShow] = useState(true);
@@ -24,6 +24,7 @@ export default function NovaLogoPreloader() {
         if (!text.includes("<svg")) {
           console.error("Loaded file is not SVG:", text.slice(0, 200));
           setShow(false);
+          onComplete?.();
           return;
         }
 
@@ -32,8 +33,9 @@ export default function NovaLogoPreloader() {
       .catch((error) => {
         console.error("SVG loading failed:", error);
         setShow(false);
+        onComplete?.();
       });
-  }, []);
+  }, [onComplete]);
 
   useGSAP(
     () => {
@@ -172,6 +174,7 @@ export default function NovaLogoPreloader() {
         },
         onComplete: () => {
           setShow(false);
+          onComplete?.();
         },
       });
 
