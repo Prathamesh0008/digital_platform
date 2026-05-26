@@ -1,23 +1,17 @@
-﻿"use client";
+﻿// components/ServicesHorizontal.jsx
+"use client";
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function ServicesStacked() {
-  const containerRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [rotationDeg, setRotationDeg] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(1440);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const dragRef = useRef({ active: false, lastX: 0 });
+  const shouldReduceMotion = useReducedMotion();
 
   const cards = [
     {
@@ -64,104 +58,240 @@ export default function ServicesStacked() {
     },
   ];
 
-  const index = useTransform(scrollYProgress, [0, 1], [0, cards.length - 1]);
-
-  useMotionValueEvent(index, "change", (latest) => {
-    setActiveIndex(latest);
-  });
-
   useEffect(() => {
     const onResize = () => setViewportWidth(window.innerWidth);
     onResize();
+
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    let frame;
+
+    const animate = () => {
+      if (!dragRef.current.active) {
+        setRotationDeg((prev) => prev + 0.16);
+      }
+
+      frame = requestAnimationFrame(animate);
+    };
+
+    frame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frame);
+  }, [shouldReduceMotion]);
+
   const total = cards.length;
   const stepDeg = 360 / total;
-  const ringRotation = (activeIndex / total) * 360;
+
   const ringRadius =
-    viewportWidth < 640 ? 240 : viewportWidth < 768 ? 320 : viewportWidth < 1024 ? 450 : 620;
+    viewportWidth < 768
+      ? 420
+      : viewportWidth < 1024
+      ? 560
+      : viewportWidth < 1280
+      ? 680
+      : 780;
+
+  const handlePointerDown = (e) => {
+    dragRef.current.active = true;
+    dragRef.current.lastX = e.clientX;
+    setIsDragging(true);
+
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!dragRef.current.active) return;
+
+    const deltaX = e.clientX - dragRef.current.lastX;
+    dragRef.current.lastX = e.clientX;
+
+    setRotationDeg((prev) => prev - deltaX * 0.35);
+  };
+
+  const handlePointerUp = (e) => {
+    dragRef.current.active = false;
+    setIsDragging(false);
+
+    e.currentTarget.releasePointerCapture?.(e.pointerId);
+  };
 
   return (
-    <section ref={containerRef} className="relative h-[450vh] md:h-[600vh] bg-[#FFF8F5]">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute left-4 sm:left-6 md:left-10 top-10 md:top-16 z-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#0d2d47]">
+    <section className="relative overflow-hidden bg-[#FFF8F5] py-14 sm:min-h-[720px] sm:py-0 md:min-h-screen">
+      {/* Soft Background Shapes */}
+      <div className="pointer-events-none absolute left-[-120px] top-[-120px] h-[300px] w-[300px] rounded-full bg-[#19a6b5]/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-[-160px] right-[-120px] h-[360px] w-[360px] rounded-full bg-[#0d2d47]/10 blur-3xl" />
+
+      {/* Mobile Clean Cards */}
+      <div className="mx-auto block max-w-7xl px-4 sm:hidden">
+        <div className="mb-8">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#19a6b5]">
+            Our Work
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-[#0d2d47]">
+            Case Studies
+          </h2>
+        </div>
+
+        <div className="flex snap-x gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {cards.map((card, i) => (
+            <Link
+              key={card.title}
+              href={card.href}
+              className="group relative h-[360px] min-w-[82%] snap-center overflow-hidden rounded-[32px] bg-[#0d2d47] shadow-[0_18px_50px_rgba(13,45,71,0.18)]"
+            >
+              <img
+                src={card.image}
+                alt={card.title}
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
+
+              <div className="absolute inset-0 flex flex-col justify-between p-5 text-white">
+                <span className="w-fit rounded-full bg-white/15 px-3 py-1 text-xs font-medium backdrop-blur-md">
+                  0{i + 1}
+                </span>
+
+                <div>
+                  <h3 className="mb-2 text-2xl font-semibold">
+                    {card.title}
+                  </h3>
+                  <p className="mb-5 text-sm leading-6 text-white/85">
+                    {card.desc}
+                  </p>
+
+                  <span className="inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#0d2d47]">
+                    View Case Study →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Tablet/Desktop 3D Carousel */}
+      <div
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+        className={`relative hidden h-full min-h-[720px] items-center justify-center overflow-hidden sm:flex md:min-h-screen ${
+          isDragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
+        style={{ touchAction: "pan-y" }}
+      >
+        <div className="absolute left-6 top-10 z-20 md:left-10 md:top-16 lg:left-14">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-[#19a6b5]">
+            Our Work
+          </p>
+          <h2 className="text-4xl font-semibold tracking-tight text-[#0d2d47] md:text-5xl lg:text-6xl">
             Case Studies
           </h2>
         </div>
 
         <div
-          className="relative w-full flex justify-center items-center"
-          style={{ perspective: "2400px", transformStyle: "preserve-3d" }}
+          className="relative flex w-full items-center justify-center"
+          style={{
+            perspective: "2400px",
+            transformStyle: "preserve-3d",
+          }}
         >
           <motion.div
-            className="relative h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] w-full"
+            className="relative h-[320px] w-full md:h-[380px] lg:h-[430px]"
             style={{ transformStyle: "preserve-3d" }}
-            animate={{ rotateY: -ringRotation }}
-            transition={{ type: "spring", stiffness: 90, damping: 24, mass: 1 }}
+            animate={{ rotateY: -rotationDeg }}
+            transition={{
+              type: "spring",
+              stiffness: 90,
+              damping: 24,
+              mass: 1,
+            }}
           >
             {cards.map((card, i) => {
               const cardAngle = i * stepDeg;
-              const theta = ((cardAngle - ringRotation) * Math.PI) / 180;
+              const theta = ((cardAngle - rotationDeg) * Math.PI) / 180;
               const frontness = (Math.cos(theta) + 1) / 2;
-              const isCenter = frontness > 0.96;
+              const isCenter = frontness > 0.94;
 
               return (
                 <div
-                  key={i}
+                  key={card.title}
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                   style={{
                     transform: `rotateY(${cardAngle}deg) translateZ(${ringRadius}px)`,
                     transformStyle: "preserve-3d",
                   }}
                 >
-                <motion.div
-                  className="w-[86vw] sm:w-[74vw] md:w-[60vw] lg:w-[35vw] max-w-[760px] h-[220px] sm:h-[260px] md:h-[320px] lg:h-[380px] p-4 sm:p-5 md:p-7 lg:p-10 flex flex-col justify-between text-white overflow-hidden"
-                  style={{
-                    transformStyle: "preserve-3d",
-                    backgroundImage: `linear-gradient(rgba(3, 8, 20, 0.58), rgba(3, 8, 20, 0.58)), url(${card.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    borderRadius: "54px / 24px",
-                  }}
-                  animate={{
-                    opacity: 0.18 + frontness * 0.82,
-                    scale: 0.74 + frontness * 0.26,
-                    filter: `blur(${(1 - frontness) * 1.8}px)`,
-                    boxShadow:
-                      frontness > 0.9
-                        ? "0 30px 70px rgba(2, 10, 30, 0.45)"
-                        : "0 14px 36px rgba(2, 10, 30, 0.2)",
-                  }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <div className={`${isCenter ? "text-white/50" : "text-white/20"} text-sm sm:text-base md:text-lg`}>0{i + 1}</div>
-
-                  <div className={isCenter ? "opacity-100 transition-opacity duration-200" : "opacity-0 transition-opacity duration-200"}>
-                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-2 sm:mb-3 md:mb-4">
-                      {card.title}
-                    </h3>
-
-                    <p className="text-white/70 max-w-md text-xs sm:text-sm md:text-base">
-                      {card.desc}
-                    </p>
-                  </div>
-
-                  <Link
-                    href={card.href}
-                    className={`${isCenter ? "opacity-100" : "opacity-0"} bg-white text-black px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full text-xs sm:text-sm w-fit transition-opacity duration-200`}
+                  <motion.div
+                    className="relative flex h-[280px] w-[58vw] max-w-[560px] flex-col justify-between overflow-hidden p-6 text-white md:h-[340px] md:w-[46vw] md:p-8 lg:h-[390px] lg:w-[32vw] lg:max-w-[620px] lg:p-10"
+                    style={{
+                      transformStyle: "preserve-3d",
+                      backgroundImage: `url(${card.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      borderRadius: "42px",
+                    }}
+                    animate={{
+                      opacity: 0.24 + frontness * 0.76,
+                      scale: 0.76 + frontness * 0.24,
+                      filter: `blur(${(1 - frontness) * 1.4}px)`,
+                      boxShadow:
+                        frontness > 0.9
+                          ? "0 30px 80px rgba(2, 10, 30, 0.45)"
+                          : "0 14px 36px rgba(2, 10, 30, 0.18)",
+                    }}
+                    transition={{ duration: 0.25 }}
                   >
-                    View Case Study ?
-                  </Link>
-                </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/15" />
+
+                    <div className="relative z-10 text-sm font-medium text-white/90 md:text-base">
+                      0{i + 1}
+                    </div>
+
+                    <div
+                      className={`relative z-10 rounded-3xl border border-white/10 bg-black/35 p-5 backdrop-blur-[3px] transition duration-200 ${
+                        isCenter
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-3 opacity-0"
+                      }`}
+                    >
+                      <h3 className="mb-3 text-2xl font-semibold drop-shadow-md lg:text-3xl">
+                        {card.title}
+                      </h3>
+
+                      <p className="max-w-md text-sm leading-6 text-white/85 drop-shadow-md md:text-base">
+                        {card.desc}
+                      </p>
+                    </div>
+
+                    <Link
+                      href={card.href}
+                      className={`relative z-10 w-fit rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#0d2d47] shadow-lg shadow-black/10 transition duration-200 hover:bg-[#0d2d47] hover:text-white md:px-6 md:py-3 ${
+                        isCenter
+                          ? "translate-y-0 opacity-100"
+                          : "pointer-events-none translate-y-3 opacity-0"
+                      }`}
+                    >
+                      View Case Study →
+                    </Link>
+                  </motion.div>
                 </div>
               );
             })}
           </motion.div>
         </div>
+
+        {/* <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 rounded-full border border-[#0d2d47]/10 bg-white/70 px-4 py-2 text-xs font-medium text-[#0d2d47]/70 backdrop-blur-md">
+          Drag to explore
+        </div> */}
       </div>
     </section>
   );

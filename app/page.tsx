@@ -4,12 +4,21 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 // import PortfolioHero from  "@/components/PortfolioHero";
-
+//import ServicesStacked from "@/components/ServicesStacked";
+import  ServicesHorizontal from "@/components/ServicesHorizontal";
 // import PortfolioHeroLight from "@/components/PortfolioHeroLight";
 import ClientsAndTestimonials from "@/components/ClientsAndTestimonials";
 // import ScrollWire from "@/components/ScrollWire";
 import SplitMarqueeSection from "@/components/SplitMarqueeSection";
-import HomeWhyChooseSection from "@/components/HomeWhyChooseSection";
+//import HomeWhyChooseSection from "@/components/HomeWhyChooseSection";
+import WorkProcess from "@/components/WorkProcess";
+import HomeGrowthSection from "@/components/HomeGrowthSection";
+// import ClientsLogoSlider from "@/components/ClientsLogoSlider";
+import VideoTestimonialsSlider from "@/components/VideoTestimonialsSlider";
+import ClientReviewSlider from "@/components/ClientReviewSlider";
+import DigitalGrowthForm from "@/components/DigitalGrowthForm";
+import BlogSection from "@/components/BlogSection";
+import FAQSection from "@/components/FAQSection";
 
 const siteUrl = "https://www.novatechsciences.com";
 
@@ -86,12 +95,22 @@ export default function Home() {
      {/* <ScrollWire /> */}
       <Hero />
       <Services />
-      
+      {/* <ServicesStacked/> */}
+       <ServicesHorizontal />
       {/* <PortfolioHero/> */}
       {/* <PortfolioHeroLight/> */}
       <SplitMarqueeSection/>
       <ClientsAndTestimonials/>
-      <HomeWhyChooseSection />
+      {/* <HomeWhyChooseSection /> */}
+      <WorkProcess/>
+      <HomeGrowthSection/>
+      {/* <ClientsLogoSlider/> */}
+      <VideoTestimonialsSlider/>
+      <ClientReviewSlider/>
+      <DigitalGrowthForm/>
+      <BlogSection/>
+      <FAQSection/>
+
      
     </main>
   );

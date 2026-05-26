@@ -7,33 +7,17 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 export default function NovaLogoPreloader() {
-  const PRELOADER_SEEN_KEY = "nova_preloader_seen";
   const preloaderRef = useRef(null);
   const [svgText, setSvgText] = useState("");
-  const [show, setShow] = useState(() => {
-    if (typeof window === "undefined") return false;
-    try {
-      return sessionStorage.getItem(PRELOADER_SEEN_KEY) !== "1";
-    } catch {
-      return true;
-    }
-  });
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    if (!show) return;
-
-    try {
-      // Mark as seen immediately to prevent refresh re-showing mid-animation.
-      sessionStorage.setItem(PRELOADER_SEEN_KEY, "1");
-    } catch {
-      // Ignore storage access issues and continue gracefully.
-    }
-
-    fetch("/sounds/novatechscience-logo.svg")
+    fetch("/novatechscience-logo.svg")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`SVG file not found. Status: ${res.status}`);
         }
+
         return res.text();
       })
       .then((text) => {
@@ -44,13 +28,12 @@ export default function NovaLogoPreloader() {
         }
 
         setSvgText(text);
-        setShow(true);
       })
       .catch((error) => {
         console.error("SVG loading failed:", error);
         setShow(false);
       });
-  }, [show]);
+  }, []);
 
   useGSAP(
     () => {
@@ -64,30 +47,35 @@ export default function NovaLogoPreloader() {
         return;
       }
 
-      const shapeSelector = "path, polygon, rect";
+      const shapeSelector =
+        "path, polygon, rect, circle, ellipse, line, polyline";
 
-      const getShape = (idName) => {
-        const normalizedTarget = idName.trim();
+      const getById = (id) => {
+        return (
+          root.querySelector(`[id="${id}"]`) ||
+          root.querySelector(`[data-name="${id}"]`)
+        );
+      };
 
-        const element =
-          root.querySelector(`#${normalizedTarget}`) ||
-          root.querySelector(`[id^="${normalizedTarget}"]`) ||
-          gsap.utils.toArray(root.querySelectorAll("[data-name]")).find(
-            (node) =>
-              node
-                .getAttribute("data-name")
-                ?.trim()
-                .replace(/_+$/, "") === normalizedTarget
-          );
+      const getShape = (id) => {
+        const element = getById(id);
 
         if (!element) {
-          console.warn("Missing SVG ID:", idName);
+          console.warn("Missing SVG ID:", id);
           return [];
         }
 
         const tag = element.tagName?.toLowerCase();
 
-        if (tag === "path" || tag === "polygon" || tag === "rect") {
+        if (
+          tag === "path" ||
+          tag === "polygon" ||
+          tag === "rect" ||
+          tag === "circle" ||
+          tag === "ellipse" ||
+          tag === "line" ||
+          tag === "polyline"
+        ) {
           return [element];
         }
 
@@ -96,10 +84,7 @@ export default function NovaLogoPreloader() {
 
       const unique = (items) => [...new Set(items.filter(Boolean))];
 
-      const allFillShapes = gsap.utils.toArray(
-        root.querySelectorAll(`#logo-fill ${shapeSelector}`)
-      );
-
+      // Outline order: N, O, V, A, T, E, C, H
       const outlineShapes = unique([
         ...getShape("n-path-1-outline"),
         ...getShape("n-path-2-outline"),
@@ -112,12 +97,10 @@ export default function NovaLogoPreloader() {
         ...getShape("h-outline"),
       ]);
 
-      const nParts = unique([
+      // NovaTech fill order: N, O, V, A, T, E, C, H
+      const novatechFill = unique([
         ...getShape("n-path-1-fill"),
-        ...getShape("n-part-2-fill"),
-      ]);
-
-      const ovatechFill = unique([
+        ...getShape("n-path-2-fill"),
         ...getShape("o-fill"),
         ...getShape("v-fill"),
         ...getShape("a-fill"),
@@ -127,6 +110,7 @@ export default function NovaLogoPreloader() {
         ...getShape("h-fill"),
       ]);
 
+      // Science fill order: S, C, I, E, N, C, E
       const scienceFill = unique([
         ...getShape("s-science-fill"),
         ...getShape("c1-science-fill"),
@@ -137,20 +121,36 @@ export default function NovaLogoPreloader() {
         ...getShape("e2-science-fill"),
       ]);
 
+      const allFillShapes = unique([...novatechFill, ...scienceFill]);
+
+      console.log("NovaTech animation check:", {
+        outlineShapes: outlineShapes.length,
+        novatechFill: novatechFill.length,
+        scienceFill: scienceFill.length,
+        allFillShapes: allFillShapes.length,
+      });
+
+      // Keep original Illustrator colours
       gsap.set(svg, {
         autoAlpha: 1,
+        transformOrigin: "center center",
       });
 
+      // Hide fill first, but do not change fill colour
       gsap.set(allFillShapes, {
         autoAlpha: 0,
-        y: 0,
-        filter: "blur(0px)",
+        y: 18,
+        filter: "blur(8px)",
+        transformOrigin: "center center",
       });
 
+      // Outline visible first, keeping original stroke colour
       gsap.set(outlineShapes, {
         autoAlpha: 1,
+        visibility: "visible",
       });
 
+      // Prepare outline draw
       outlineShapes.forEach((shape) => {
         if (typeof shape.getTotalLength !== "function") return;
 
@@ -162,7 +162,7 @@ export default function NovaLogoPreloader() {
             strokeDashoffset: length,
           });
         } catch (error) {
-          console.warn("Could not prepare outline shape:", shape, error);
+          console.warn("Could not prepare outline draw:", shape, error);
         }
       });
 
@@ -176,38 +176,72 @@ export default function NovaLogoPreloader() {
       });
 
       tl
+        // 1. Outline draws
         .to(outlineShapes, {
           strokeDashoffset: 0,
-          duration: 1.15,
-          stagger: 0.04,
+          duration: 1.2,
+          stagger: 0.035,
         })
-        .to(nParts, {
-          autoAlpha: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.35,
-          stagger: 0.08,
-        })
-        .to(ovatechFill, {
-          autoAlpha: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.4,
-          stagger: 0.04,
-        })
-        .to(outlineShapes, {
+
+        // 2. NOVATECH fill starts while outline is still visible
+        .add("fillStart")
+
+        .to(
+          novatechFill,
+          {
+            autoAlpha: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.55,
+            stagger: 0.065,
+            ease: "power3.out",
+          },
+          "fillStart"
+        )
+
+        // 3. Outline fades during fill
+        .to(
+          outlineShapes,
+          {
+            autoAlpha: 0,
+            duration: 0.25,
+            ease: "power2.out",
+          },
+          "fillStart+=0.15"
+        )
+
+        // 4. Keep outline hidden at the end
+        .set(outlineShapes, {
           autoAlpha: 0,
-          duration: 0.25,
+          visibility: "hidden",
         })
-        .to({}, { duration: 0.35 })
+
+        // 5. SCIENCE appears after NOVATECH fill
         .to(scienceFill, {
           autoAlpha: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.4,
-          stagger: 0.04,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: "power3.out",
         })
-        .to({}, { duration: 0.75 })
+
+        // 6. Small final settle
+        .to(svg, {
+          scale: 1.025,
+          duration: 0.18,
+          ease: "power2.out",
+        })
+        .to(svg, {
+          scale: 1,
+          duration: 0.22,
+          ease: "power2.inOut",
+        })
+
+        // 7. Hold final logo
+        .to({}, { duration: 0.9 })
+
+        // 8. Exit preloader
         .to(preloaderRef.current, {
           autoAlpha: 0,
           scale: 1.04,

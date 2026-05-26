@@ -20,24 +20,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #020303;
+  background: #111111;
   overflow: hidden;
 }
 
-.nova-preloader::before {
+/* .nova-preloader::before {
   content: "";
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 460px;
+  height: 460px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
-  filter: blur(80px);
-}
+  background: rgba(255, 255, 255, 0.08);
+  filter: blur(90px);
+} */
 
 .nova-logo-wrap {
   position: relative;
   z-index: 2;
-  width: min(760px, 86vw);
+  width: min(1000px, 94vw);
 }
 
 .nova-logo-wrap svg {
@@ -45,21 +45,4 @@ body {
   height: auto;
   display: block;
   overflow: visible;
-}
-
-.nova-logo-wrap #logo-outline path,
-.nova-logo-wrap #logo-outline polygon,
-.nova-logo-wrap #logo-outline rect {
-  fill: none !important;
-  stroke: #ffffff !important;
-  stroke-width: 2px !important;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.nova-logo-wrap #logo-fill path,
-.nova-logo-wrap #logo-fill polygon,
-.nova-logo-wrap #logo-fill rect {
-  fill: #ffffff !important;
-  stroke: none !important;
 }

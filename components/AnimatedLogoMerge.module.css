@@ -177,3 +177,15 @@
     transition: none;
   }
 }
+
+@media (max-width: 767px) {
+  .scene:global(.clientsLogoMerge) {
+    min-height: auto !important;
+  }
+
+  .scene:global(.clientsLogoMerge) .stickyStage {
+    position: relative;
+    min-height: auto;
+    padding: 0;
+  }
+}

@@ -1,3 +1,4 @@
+//components\Services.jsx
 export default function Services() {
   const services = [
     {
@@ -23,7 +24,7 @@ export default function Services() {
       className="relative py-16 md:py-24"
       style={{
         background:
-          "linear-gradient(to bottom, #9CADDA 0%, #BFC8DD 58%, #E8E9DD 100%)",
+          "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #7392FB)",
       }}
     >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10">

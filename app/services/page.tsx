@@ -8,7 +8,7 @@ import ServicesHorizontal from "@/components/ServicesHorizontal";
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[linear-gradient(to_bottom,#f8fafc,#eef2ff_35%,#dbeafe_68%,#93c5fd)]">
+    <main className="min-h-screen bg-[#EAEBDB] text-[#0d2d47]">
       <ServicesHero />
       <ServicesHorizontal />
       <ServicesGrid />

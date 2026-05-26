@@ -1,4 +1,5 @@
-﻿"use client";
+﻿// components/ClientsAndTestimonials.jsx
+"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -10,17 +11,16 @@ export default function ClientsAndTestimonials() {
     "/Ivexia.svg",
     "/kvs.png",
     "/larkosis.webp",
-    "/Arena.avif",
-    "/Travelo.avif",
-    "/Bayview.avif",
-    "/MTVS.avif",
-    "/Fiber Box.avif",
+    "/edPharma.svg",
+    "/asblogi.png",
+    "/biopeptide.png",
+   
   ];
 
   const loopLogos = [...clientLogos, ...clientLogos];
 
   return (
-    <section className="w-full">
+    <section className="w-full overflow-x-hidden md:overflow-x-visible">
       <div className="bg-[#EAEBDB] px-4 sm:px-6 md:px-10 py-16 sm:py-24">
         <div className="grid md:grid-cols-4 border-t border-black/20">
           <motion.div
@@ -28,51 +28,51 @@ export default function ClientsAndTestimonials() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="p-6 sm:p-8 md:p-10 border-r border-black/20 flex items-start"
+            className="p-6 sm:p-8 md:p-10 border-b md:border-b-0 md:border-r border-black/20 flex items-start"
           >
             <h2 className="uppercase leading-[0.9] text-4xl sm:text-5xl md:text-[60px] font-medium">
               Our <br /> Clients
             </h2>
           </motion.div>
 
-          <div className="md:col-span-3 flex flex-col gap-6 overflow-hidden py-4">
+          <div className="md:col-span-3 flex flex-col gap-4 sm:gap-6 overflow-hidden py-4">
             <motion.div
-              className="flex gap-8 sm:gap-12 whitespace-nowrap"
+              className="flex gap-6 sm:gap-12 whitespace-nowrap"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
             >
               {loopLogos.map((src, i) => (
                 <div
                   key={`top-${i}`}
-                  className="flex items-center justify-center h-[90px] sm:h-[110px] min-w-[150px] sm:min-w-[190px]"
+                  className="flex items-center justify-center h-[70px] sm:h-[110px] min-w-[120px] sm:min-w-[190px]"
                 >
                   <Image
                     src={src}
                     alt="Client logo"
                     width={220}
                     height={88}
-                    className="max-h-[55px] sm:max-h-[72px] w-auto object-contain opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition"
+                    className="max-h-[45px] sm:max-h-[72px] w-auto object-contain hover:opacity-100 transition"
                   />
                 </div>
               ))}
             </motion.div>
 
             <motion.div
-              className="flex gap-8 sm:gap-12 whitespace-nowrap"
+              className="flex gap-6 sm:gap-12 whitespace-nowrap"
               animate={{ x: ["-50%", "0%"] }}
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
             >
               {loopLogos.map((src, i) => (
                 <div
                   key={`bottom-${i}`}
-                  className="flex items-center justify-center h-[95px] sm:h-[120px] min-w-[160px] sm:min-w-[210px]"
+                  className="flex items-center justify-center h-[76px] sm:h-[120px] min-w-[130px] sm:min-w-[210px]"
                 >
                   <Image
                     src={src}
                     alt="Client logo"
                     width={220}
                     height={96}
-                    className="max-h-[60px] sm:max-h-[80px] md:max-h-[88px] w-auto object-contain opacity-75 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105 transition duration-300"
+                    className="max-h-[48px] sm:max-h-[80px] md:max-h-[88px] w-auto object-contain hover:grayscale-0 hover:opacity-100 hover:scale-105 transition duration-300"
                   />
                 </div>
               ))}
@@ -82,13 +82,13 @@ export default function ClientsAndTestimonials() {
       </div>
 
       <div
-        className="px-4 sm:px-6 md:px-10 py-20 sm:py-32"
+        className="px-4 sm:px-6 md:px-10 py-10 sm:py-20 md:py-32"
         style={{
           background:
             "linear-gradient(to bottom, #EAEBDB, #E1E4DD, #BEC9E7, #6988FB, #5A7EFF)",
         }}
       >
-        <div className="grid items-start gap-5 md:grid-cols-2 md:min-h-[140vh]">
+        <div className="grid items-start gap-3 sm:gap-6 md:gap-5 md:grid-cols-2 md:min-h-[140vh]">
           <div className="self-start md:sticky md:top-24 md:h-[calc(100vh-6rem)] md:flex md:items-start md:pt-2">
             <motion.h1
               initial={{ opacity: 0, y: 60 }}
@@ -109,18 +109,21 @@ export default function ClientsAndTestimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1 }}
             viewport={{ once: true }}
-            className="flex items-start md:items-end md:justify-center"
+            className="relative flex min-h-[160vh] items-start justify-center md:min-h-0 md:items-end md:justify-center"
           >
-            <AnimatedLogoMerge
-              topImageSrc="/Toppart.png"
-              bottomImageSrc="/Bottompart.png"
-              ariaLabel="NovaTech animated logo"
-              size="min(34vw, 220px)"
-              pieceGap={10}
-              scrollLinked={true}
-              scrollSceneHeight="220vh"
-              useImagePieces={true}
-            />
+            <div className="sticky top-[34vh] pt-8 sm:pt-0 md:static md:top-auto">
+              <AnimatedLogoMerge
+                className="clientsLogoMerge"
+                topImageSrc="/Toppart.png"
+                bottomImageSrc="/Bottompart.png"
+                ariaLabel="NovaTech animated logo"
+                size="clamp(120px, 38vw, 220px)"
+                pieceGap={4}
+                scrollLinked={true}
+                scrollSceneHeight="220vh"
+                useImagePieces={true}
+              />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -129,7 +132,7 @@ export default function ClientsAndTestimonials() {
         className="relative px-4 sm:px-6 md:px-10 py-16 sm:py-24 text-black"
         style={{ background: "linear-gradient(to bottom, #5A7EFF, #6988FB)" }}
       >
-        <div className="absolute inset-0 grid grid-cols-4 pointer-events-none">
+        <div className="absolute inset-0 hidden md:grid grid-cols-4 pointer-events-none">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="border-l border-black/20" />
           ))}
@@ -150,15 +153,15 @@ export default function ClientsAndTestimonials() {
           {[
             {
               text: "Nova Techscience transformed our ideas into measurable growth. Their strategy and execution gave us stronger visibility and better lead quality.",
-              name: "Client Story 01",
+              name: "Client Story",
             },
             {
               text: "From SEO to paid campaigns, every step felt structured and data-backed. We saw consistent improvements in rankings and conversions.",
-              name: "Client Story 02",
+              name: "Client Story ",
             },
             {
               text: "Their team understands global audiences and adapts quickly. We now have a stronger brand presence with better campaign ROI.",
-              name: "Client Story 03",
+              name: "Client Story ",
             },
           ].map((item, i) => (
             <motion.div
@@ -167,7 +170,7 @@ export default function ClientsAndTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.8 }}
               viewport={{ once: false, amount: 0.3 }}
-              className="flex flex-col justify-between group"
+              className="flex flex-col justify-between group border-t border-black/20 pt-6 md:border-t-0 md:pt-0"
             >
               <p className="mb-8 sm:mb-10 text-black leading-relaxed text-sm sm:text-base">
                 &quot;{item.text}&quot;
