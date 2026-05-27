@@ -157,8 +157,8 @@ export default function ClientsAndTestimonials() {
             <div className="sticky top-[34vh] pt-8 sm:pt-0 md:static md:top-auto">
               <AnimatedLogoMerge
                 className="clientsLogoMerge"
-                topImageSrc="/Toppart.png"
-                bottomImageSrc="/Bottompart.png"
+                topImageSrc="/Top part.png"
+                bottomImageSrc="/Bottom part.png"
                 ariaLabel="NovaTech animated logo"
                 size="clamp(120px, 38vw, 220px)"
                 pieceGap={4}
