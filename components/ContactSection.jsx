@@ -120,7 +120,7 @@ export default function ContactSection() {
 
       {/* 🔥 BACKGROUND (CONTINUOUS LOOP) */}
       <motion.img
-        src="/background-contact-desktop.avif"
+        src="/background-contact-desktop2.jpg"
         alt="Contact Background"
         className="absolute inset-0 w-full h-full object-cover"
         animate={{
@@ -150,15 +150,16 @@ export default function ContactSection() {
           transition={{ duration: 1 }}
           className="flex flex-col justify-center"
         >
-          <div className="mb-6">
-            <Image
-              src="/digitallogo.png"
-              alt="NovaTech logo"
-              width={180}
-              height={72}
-              className="h-auto w-auto"
-            />
-          </div>
+        <div className="mb-6 inline-flex w-fit items-center justify-center rounded-2xl bg-white/90 px-5 py-3 shadow-xl backdrop-blur-md border border-white/40">
+  <Image
+    src="/digitallogo.png"
+    alt="NovaTech logo"
+    width={210}
+    height={84}
+    priority
+    className="h-auto w-auto max-h-[72px] object-contain"
+  />
+</div>
 
           <p className="uppercase text-sm mb-6 text-white/80">
             Connect with Nova Techscience today. <br />

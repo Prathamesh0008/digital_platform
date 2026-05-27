@@ -7,20 +7,55 @@ import AnimatedLogoMerge from "./AnimatedLogoMerge";
 
 export default function ClientsAndTestimonials() {
   const clientLogos = [
-    "/www.novatechsciences.com.webp",
-    "/Ivexia.svg",
-    "/kvs.png",
-    "/larkosis.webp",
-    "/edPharma.svg",
-    "/asblogi.png",
-    "/biopeptide.png",
-   
+    {
+      src: "/www.novatechsciences.com.webp",
+      url: "https://www.novatechsciences.com/",
+      alt: "Nova Tech Sciences",
+    },
+    {
+      src: "/Ivexia.svg",
+      url: "https://www.ivexiapharma.com/",
+      alt: "Ivexia Pharma",
+    },
+    {
+      src: "/kvs.png",
+      url: "https://www.kvalogistics.nl/",
+      alt: "KVA Logistics",
+    },
+    {
+      src: "/larkosis.webp",
+      url: "https://www.larksoispharma.com/",
+      alt: "Larksois Pharma",
+    },
+    {
+      src: "/edPharma.svg",
+      url: "https://www.edpharma.co/",
+      alt: "ED Pharma",
+    },
+    {
+      src: "/asblogi.png",
+      url: "https://asblogi.com/",
+      alt: "AS Blogi",
+    },
+    {
+      src: "/biopeptide.png",
+      url: "https://www.bio-peptides.com/",
+      alt: "Bio Peptides",
+    },
   ];
 
   const loopLogos = [...clientLogos, ...clientLogos];
 
   return (
     <section className="w-full overflow-x-hidden md:overflow-x-visible">
+      <style jsx global>{`
+        .clientsLogoMerge img:first-of-type,
+        .clientsLogoMerge > *:first-child,
+        .clientsLogoMerge > *:first-child * {
+          opacity: 1 !important;
+        }
+      `}</style>
+
       <div className="bg-[#EAEBDB] px-4 sm:px-6 md:px-10 py-16 sm:py-24">
         <div className="grid md:grid-cols-4 border-t border-black/20">
           <motion.div
@@ -41,19 +76,23 @@ export default function ClientsAndTestimonials() {
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
             >
-              {loopLogos.map((src, i) => (
-                <div
+              {loopLogos.map((item, i) => (
+                <a
                   key={`top-${i}`}
-                  className="flex items-center justify-center h-[70px] sm:h-[110px] min-w-[120px] sm:min-w-[190px]"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center h-[70px] sm:h-[110px] min-w-[120px] sm:min-w-[190px] cursor-pointer"
+                  aria-label={`Open ${item.alt}`}
                 >
                   <Image
-                    src={src}
-                    alt="Client logo"
+                    src={item.src}
+                    alt={item.alt}
                     width={220}
                     height={88}
                     className="max-h-[45px] sm:max-h-[72px] w-auto object-contain hover:opacity-100 transition"
                   />
-                </div>
+                </a>
               ))}
             </motion.div>
 
@@ -62,19 +101,23 @@ export default function ClientsAndTestimonials() {
               animate={{ x: ["-50%", "0%"] }}
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
             >
-              {loopLogos.map((src, i) => (
-                <div
+              {loopLogos.map((item, i) => (
+                <a
                   key={`bottom-${i}`}
-                  className="flex items-center justify-center h-[76px] sm:h-[120px] min-w-[130px] sm:min-w-[210px]"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center h-[76px] sm:h-[120px] min-w-[130px] sm:min-w-[210px] cursor-pointer"
+                  aria-label={`Open ${item.alt}`}
                 >
                   <Image
-                    src={src}
-                    alt="Client logo"
+                    src={item.src}
+                    alt={item.alt}
                     width={220}
                     height={96}
                     className="max-h-[48px] sm:max-h-[80px] md:max-h-[88px] w-auto object-contain hover:grayscale-0 hover:opacity-100 hover:scale-105 transition duration-300"
                   />
-                </div>
+                </a>
               ))}
             </motion.div>
           </div>

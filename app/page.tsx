@@ -14,7 +14,7 @@ import SplitMarqueeSection from "@/components/SplitMarqueeSection";
 import WorkProcess from "@/components/WorkProcess";
 import HomeGrowthSection from "@/components/HomeGrowthSection";
 // import ClientsLogoSlider from "@/components/ClientsLogoSlider";
-import VideoTestimonialsSlider from "@/components/VideoTestimonialsSlider";
+// import VideoTestimonialsSlider from "@/components/VideoTestimonialsSlider";
 import ClientReviewSlider from "@/components/ClientReviewSlider";
 import DigitalGrowthForm from "@/components/DigitalGrowthForm";
 import BlogSection from "@/components/BlogSection";
@@ -105,7 +105,7 @@ export default function Home() {
       <WorkProcess/>
       <HomeGrowthSection/>
       {/* <ClientsLogoSlider/> */}
-      <VideoTestimonialsSlider/>
+      {/* <VideoTestimonialsSlider/> */}
       <ClientReviewSlider/>
       <DigitalGrowthForm/>
       <BlogSection/>
