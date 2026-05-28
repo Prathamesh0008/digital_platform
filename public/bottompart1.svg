@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Sciences" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 210.98 210.18">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="6.28" y1="105.09" x2="204.7" y2="105.09" gradientUnits="userSpaceOnUse">
+      <stop offset=".39" stop-color="#543aa3"/>
+      <stop offset="1" stop-color="#360f8a"/>
+    </linearGradient>
+  </defs>
+  <path class="cls-1" d="M204.16,204.06l-129.15.78L11.24,138.14c-9.15-17.43-2.98-45.97-2.31-63.65l64.09,63.11,60.91,1.61-.6-133.43,71.36-.44-.54,198.72Z"/>
+</svg>

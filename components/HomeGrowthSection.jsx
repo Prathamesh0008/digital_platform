@@ -38,45 +38,45 @@ const contentBlocks = [
 function CountUpNumber({ target, suffix = "+" }) {
   const [count, setCount] = useState(0);
   const numberRef = useRef(null);
-  const intervalRef = useRef(null);
+  const frameRef = useRef(null);
 
   useEffect(() => {
     const element = numberRef.current;
     if (!element) return;
 
-    const clearCounterInterval = () => {
-      if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-        intervalRef.current = null;
+    const stopAnimation = () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
       }
     };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        clearCounterInterval();
+        stopAnimation();
 
         if (!entry.isIntersecting) {
           setCount(0);
           return;
         }
 
-        setCount(0);
+        const duration = 900;
+        const startTime = performance.now();
 
-        const stepDelay = target <= 50 ? 90 : target <= 250 ? 24 : 16;
-        let currentValue = 0;
+        const animate = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-        intervalRef.current = window.setInterval(() => {
-          currentValue += 1;
+          setCount(Math.floor(easedProgress * target));
 
-          if (currentValue >= target) {
+          if (progress < 1) {
+            frameRef.current = requestAnimationFrame(animate);
+          } else {
             setCount(target);
-            window.clearInterval(intervalRef.current);
-            intervalRef.current = null;
-            return;
           }
+        };
 
-          setCount(currentValue);
-        }, stepDelay);
+        frameRef.current = requestAnimationFrame(animate);
       },
       { threshold: 0.25 }
     );
@@ -85,7 +85,7 @@ function CountUpNumber({ target, suffix = "+" }) {
 
     return () => {
       observer.disconnect();
-      clearCounterInterval();
+      stopAnimation();
     };
   }, [target]);
 
@@ -161,14 +161,16 @@ export default function HomeGrowthSection() {
 </div>
         <div className="mt-20 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
-            <Image
-              src="/about6.jpg"
-              alt="Business professionals collaborating"
-              width={900}
-              height={1100}
-              className="h-full min-h-[360px] w-full rounded-[28px] object-cover"
-            />
-          </div>
+  <div className="h-[420px] overflow-hidden rounded-[28px] sm:h-[480px] lg:h-[560px]">
+    <Image
+      src="/Home_1.png"
+      alt="Business professionals collaborating"
+      width={941}
+      height={1672}
+      className="h-full w-full object-cover object-center"
+    />
+  </div>
+</div>
 
           <div>
             <h3 className="text-4xl font-semibold uppercase leading-[0.95] text-[#0d2d47] sm:text-5xl md:text-[64px]">
@@ -234,15 +236,17 @@ export default function HomeGrowthSection() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
-            <Image
-              src="/about2.jpg"
-              alt="Digital marketing strategy visualization"
-              width={900}
-              height={1100}
-              className="h-full min-h-[320px] w-full rounded-[28px] object-cover"
-            />
-          </div>
+        <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
+  <div className="h-[380px] overflow-hidden rounded-[28px] sm:h-[440px] lg:h-[520px]">
+    <Image
+      src="/Home_2.png"
+      alt="Digital marketing strategy visualization"
+      width={941}
+      height={1672}
+      className="h-full w-full object-cover object-center"
+    />
+  </div>
+</div>
         </div>
       </div>
     </section>

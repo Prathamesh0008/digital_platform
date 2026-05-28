@@ -128,15 +128,17 @@ export default function HomeWhyChooseSection() {
   const isImageOnRight = activeInfoTab !== 1;
  
   const imageColumn = (
-    <div className="overflow-hidden rounded-[32px] border border-black/10 bg-white/20">
-      <Image
-        src="/about2.jpg"
-        alt="Digital marketing strategy visualization"
-        width={900}
-        height={1100}
-        className="h-full min-h-[320px] w-full object-cover"
-      />
-    </div>
+  <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
+  <div className="h-[380px] overflow-hidden rounded-[28px] sm:h-[440px] lg:h-[520px]">
+    <Image
+      src="/Home_2.png"
+      alt="Digital marketing strategy visualization"
+      width={941}
+      height={1672}
+      className="h-full w-full object-cover object-center"
+    />
+  </div>
+</div>
   );
  
   const contentColumn = (
@@ -217,15 +219,17 @@ export default function HomeWhyChooseSection() {
         {/* Why Choose Section */}
         <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div className="overflow-hidden border-l border-black/15 pl-4 sm:pl-6 md:pl-10">
-            <div className="overflow-hidden rounded-[32px] border border-black/10 bg-white/20">
-              <Image
-                src="/about6.jpg"
-                alt="Business professionals collaborating"
-                width={900}
-                height={1100}
-                className="h-full min-h-[320px] w-full object-cover"
-              />
-            </div>
+          <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
+  <div className="h-[420px] overflow-hidden rounded-[28px] sm:h-[480px] lg:h-[560px]">
+    <Image
+      src="/Home_1.png"
+      alt="Business professionals collaborating"
+      width={941}
+      height={1672}
+      className="h-full w-full object-cover object-center"
+    />
+  </div>
+</div>
           </div>
  
           <div className="border-l border-black/15 pl-4 sm:pl-6 md:pl-10">

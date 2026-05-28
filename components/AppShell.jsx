@@ -21,9 +21,23 @@ export default function AppShell({ children }) {
     return <>{children}</>;
   }
 
-  if (isLoading) {
-    return <NovaLogoPreloader onComplete={handlePreloaderComplete} />;
-  }
+return (
+  <>
+    <Navbar />
+
+    <main className="flex-1">
+      {children}
+    </main>
+
+    <NovaTechAssistant />
+
+    <Footer />
+
+    {isLoading && (
+      <NovaLogoPreloader onComplete={handlePreloaderComplete} />
+    )}
+  </>
+);
 
   return (
     <>

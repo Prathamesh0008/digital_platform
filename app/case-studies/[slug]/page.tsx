@@ -56,14 +56,14 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-4">
-          <a
+          {/* <a
             href={study.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex rounded-full bg-[#0d2d47] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#163f61]"
           >
             Visit Live Site
-          </a>
+          </a> */}
           <Link href="/case-studies" className="text-[#5A7EFF] underline underline-offset-4">
             Back to All Case Studies
           </Link>

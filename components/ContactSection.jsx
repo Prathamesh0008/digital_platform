@@ -152,7 +152,7 @@ export default function ContactSection() {
         >
         <div className="mb-6 inline-flex w-fit items-center justify-center rounded-2xl bg-white/90 px-5 py-3 shadow-xl backdrop-blur-md border border-white/40">
   <Image
-    src="/digitallogo.png"
+    src="/Nova_logo.png"
     alt="NovaTech logo"
     width={210}
     height={84}

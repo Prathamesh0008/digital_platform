@@ -44,7 +44,28 @@ export default function ClientsAndTestimonials() {
     },
   ];
 
-  const loopLogos = [...clientLogos, ...clientLogos];
+  const topLogos = [
+    clientLogos[0],
+    clientLogos[3],
+    clientLogos[6],
+    clientLogos[2],
+    clientLogos[5],
+    clientLogos[1],
+    clientLogos[4],
+  ];
+
+  const bottomLogos = [
+    clientLogos[4],
+    clientLogos[1],
+    clientLogos[5],
+    clientLogos[0],
+    clientLogos[6],
+    clientLogos[3],
+    clientLogos[2],
+  ];
+
+  const topLoopLogos = [...topLogos, ...topLogos];
+  const bottomLoopLogos = [...bottomLogos, ...bottomLogos];
 
   return (
     <section className="w-full overflow-x-hidden md:overflow-x-visible">
@@ -56,33 +77,33 @@ export default function ClientsAndTestimonials() {
         }
       `}</style>
 
-      <div className="bg-[#EAEBDB] px-4 sm:px-6 md:px-10 py-16 sm:py-24">
-        <div className="grid md:grid-cols-4 border-t border-black/20">
+      <div className="bg-[#EAEBDB] px-4 py-16 sm:px-6 sm:py-24 md:px-10">
+        <div className="grid border-t border-black/20 md:grid-cols-4">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="p-6 sm:p-8 md:p-10 border-b md:border-b-0 md:border-r border-black/20 flex items-start"
+            className="flex items-start border-b border-black/20 p-6 sm:p-8 md:border-b-0 md:border-r md:p-10"
           >
-            <h2 className="uppercase leading-[0.9] text-4xl sm:text-5xl md:text-[60px] font-medium">
+            <h2 className="text-4xl font-medium uppercase leading-[0.9] sm:text-5xl md:text-[60px]">
               Our <br /> Clients
             </h2>
           </motion.div>
 
-          <div className="md:col-span-3 flex flex-col gap-4 sm:gap-6 overflow-hidden py-4">
+          <div className="flex flex-col gap-4 overflow-hidden py-4 sm:gap-6 md:col-span-3">
             <motion.div
-              className="flex gap-6 sm:gap-12 whitespace-nowrap"
+              className="flex whitespace-nowrap gap-6 sm:gap-12"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
             >
-              {loopLogos.map((item, i) => (
+              {topLoopLogos.map((item, i) => (
                 <a
-                  key={`top-${i}`}
+                  key={`top-${item.alt}-${i}`}
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center h-[70px] sm:h-[110px] min-w-[120px] sm:min-w-[190px] cursor-pointer"
+                  className="flex h-[70px] min-w-[120px] cursor-pointer items-center justify-center sm:h-[110px] sm:min-w-[190px]"
                   aria-label={`Open ${item.alt}`}
                 >
                   <Image
@@ -90,24 +111,24 @@ export default function ClientsAndTestimonials() {
                     alt={item.alt}
                     width={220}
                     height={88}
-                    className="max-h-[45px] sm:max-h-[72px] w-auto object-contain hover:opacity-100 transition"
+                    className="max-h-[45px] w-auto object-contain transition hover:opacity-100 sm:max-h-[72px]"
                   />
                 </a>
               ))}
             </motion.div>
 
             <motion.div
-              className="flex gap-6 sm:gap-12 whitespace-nowrap"
+              className="flex whitespace-nowrap gap-6 sm:gap-12"
               animate={{ x: ["-50%", "0%"] }}
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
             >
-              {loopLogos.map((item, i) => (
+              {bottomLoopLogos.map((item, i) => (
                 <a
-                  key={`bottom-${i}`}
+                  key={`bottom-${item.alt}-${i}`}
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center h-[76px] sm:h-[120px] min-w-[130px] sm:min-w-[210px] cursor-pointer"
+                  className="flex h-[76px] min-w-[130px] cursor-pointer items-center justify-center sm:h-[120px] sm:min-w-[210px]"
                   aria-label={`Open ${item.alt}`}
                 >
                   <Image
@@ -115,7 +136,7 @@ export default function ClientsAndTestimonials() {
                     alt={item.alt}
                     width={220}
                     height={96}
-                    className="max-h-[48px] sm:max-h-[80px] md:max-h-[88px] w-auto object-contain hover:grayscale-0 hover:opacity-100 hover:scale-105 transition duration-300"
+                    className="max-h-[48px] w-auto object-contain transition duration-300 hover:scale-105 hover:grayscale-0 hover:opacity-100 sm:max-h-[80px] md:max-h-[88px]"
                   />
                 </a>
               ))}
@@ -125,20 +146,17 @@ export default function ClientsAndTestimonials() {
       </div>
 
       <div
-        className="px-4 sm:px-6 md:px-10 py-10 sm:py-20 md:py-32"
-        style={{
-          background:
-            "linear-gradient(to bottom, #EAEBDB, #E1E4DD, #BEC9E7, #6988FB, #5A7EFF)",
-        }}
+        className="px-4 py-10 sm:px-6 sm:py-20 md:px-10 md:py-32"
+        style={{ background: "#E6E8DC" }}
       >
-        <div className="grid items-start gap-3 sm:gap-6 md:gap-5 md:grid-cols-2 md:min-h-[140vh]">
-          <div className="self-start md:sticky md:top-24 md:h-[calc(100vh-6rem)] md:flex md:items-start md:pt-2">
+        <div className="grid items-start gap-3 sm:gap-6 md:min-h-[140vh] md:grid-cols-2 md:gap-5">
+          <div className="self-start md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:items-start md:pt-2">
             <motion.h1
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="uppercase tracking-tight leading-[1.0] text-4xl sm:text-5xl md:text-[90px] lg:text-[120px] font-medium"
+              className="text-4xl font-medium uppercase leading-[1.0] tracking-tight sm:text-5xl md:text-[90px] lg:text-[120px]"
             >
               Smart, simple, <br />
               and efficient <br />
@@ -157,8 +175,8 @@ export default function ClientsAndTestimonials() {
             <div className="sticky top-[34vh] pt-8 sm:pt-0 md:static md:top-auto">
               <AnimatedLogoMerge
                 className="clientsLogoMerge"
-                topImageSrc="/Top part.png"
-                bottomImageSrc="/Bottom part.png"
+                topImageSrc="/toppart1.svg"
+                bottomImageSrc="/bottompart1.svg"
                 ariaLabel="NovaTech animated logo"
                 size="clamp(120px, 38vw, 220px)"
                 pieceGap={4}
@@ -172,23 +190,23 @@ export default function ClientsAndTestimonials() {
       </div>
 
       <div
-        className="relative px-4 sm:px-6 md:px-10 py-16 sm:py-24 text-black"
+        className="relative px-4 py-16 text-black sm:px-6 sm:py-24 md:px-10"
         style={{ background: "linear-gradient(to bottom, #5A7EFF, #6988FB)" }}
       >
-        <div className="absolute inset-0 hidden md:grid grid-cols-4 pointer-events-none">
+        <div className="pointer-events-none absolute inset-0 hidden grid-cols-4 md:grid">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="border-l border-black/20" />
           ))}
         </div>
 
-        <div className="relative grid md:grid-cols-4 gap-10">
+        <div className="relative grid gap-10 md:grid-cols-4">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="uppercase leading-[0.9] text-4xl sm:text-5xl md:text-[60px] font-medium">
+            <h2 className="text-4xl font-medium uppercase leading-[0.9] sm:text-5xl md:text-[60px]">
               What Our <br /> Clients <br /> Say About Us
             </h2>
           </motion.div>
@@ -200,11 +218,11 @@ export default function ClientsAndTestimonials() {
             },
             {
               text: "From SEO to paid campaigns, every step felt structured and data-backed. We saw consistent improvements in rankings and conversions.",
-              name: "Client Story ",
+              name: "Client Story",
             },
             {
               text: "Their team understands global audiences and adapts quickly. We now have a stronger brand presence with better campaign ROI.",
-              name: "Client Story ",
+              name: "Client Story",
             },
           ].map((item, i) => (
             <motion.div
@@ -213,13 +231,13 @@ export default function ClientsAndTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.8 }}
               viewport={{ once: false, amount: 0.3 }}
-              className="flex flex-col justify-between group border-t border-black/20 pt-6 md:border-t-0 md:pt-0"
+              className="group flex flex-col justify-between border-t border-black/20 pt-6 md:border-t-0 md:pt-0"
             >
-              <p className="mb-8 sm:mb-10 text-black leading-relaxed text-sm sm:text-base">
+              <p className="mb-8 text-sm leading-relaxed text-black sm:mb-10 sm:text-base">
                 &quot;{item.text}&quot;
               </p>
 
-              <span className="border border-black px-4 py-2 rounded-full w-fit text-sm group-hover:bg-black group-hover:text-white transition">
+              <span className="w-fit rounded-full border border-black px-4 py-2 text-sm transition group-hover:bg-black group-hover:text-white">
                 {item.name}
               </span>
             </motion.div>

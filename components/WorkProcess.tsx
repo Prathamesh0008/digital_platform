@@ -7,7 +7,7 @@ const steps = [
     no: "1",
     color: "#C69C6D",
     glow: "#FF0000",
-    gradient: "linear-gradient(135deg, #C69C6D 0%, #FF0000 100%)",
+    gradient: "linear-gradient(135deg, #91C382 0%, #A0CD91 100%)",
     title: "Strategic Planning in Digital Marketing",
     text: "The first step in any effective digital marketing strategy is thorough planning. This includes research, competitor analysis, and clear goal setting.",
     left: "13%",
@@ -17,7 +17,7 @@ const steps = [
     no: "2",
     color: "#3CF4FF",
     glow: "#FF0000",
-    gradient: "linear-gradient(135deg, #3CF4FF 0%, #FF0000 100%)",
+    gradient: "linear-gradient(135deg, #FA6482 0%, #FA7880 100%)",
     title: "Strategy: Crafting a Roadmap for Digital Marketing Success",
     text: "At the strategy stage, we define the most effective approaches to engage your audience and achieve your marketing objectives.",
     left: "50%",
@@ -27,7 +27,7 @@ const steps = [
     no: "3",
     color: "#2FA084",
     glow: "#6FCF97",
-    gradient: "linear-gradient(135deg, #2FA084 0%, #6FCF97 100%)",
+    gradient: "linear-gradient(135deg, #09509B 0%, #3273AF 100%)",
     title: "Execution: Bringing Your Digital Marketing Plan to Life",
     text: "This is where strategy turns into action through campaigns across the most effective digital marketing channels.",
     left: "87%",
@@ -37,7 +37,7 @@ const steps = [
     no: "4",
     color: "#143F6B",
     glow: "#F55353",
-    gradient: "linear-gradient(135deg, #143F6B 0%, #F55353 100%)",
+    gradient: "linear-gradient(135deg, #73A8EB 0%, #91D7E1 100%)",
     title: "Tracking and Analysis: Measuring Digital Marketing Success",
     text: "We track key performance metrics, analyze campaign results, and improve campaigns continuously.",
     left: "87%",
@@ -47,7 +47,7 @@ const steps = [
     no: "5",
     color: "#72FFFF",
     glow: "#00D7FF",
-    gradient: "linear-gradient(135deg, #72FFFF 0%, #00D7FF 100%)",
+    gradient: "linear-gradient(135deg, #7388F0 0%, #5CC3E7 100%)",
     title: "Refinement: Optimizing Your Digital Marketing Strategy",
     text: "After analyzing results, we fine-tune your digital marketing plan to maximize performance and ROI.",
     left: "50%",
@@ -57,7 +57,7 @@ const steps = [
     no: "6",
     color: "#C5172E",
     glow: "#4A102A",
-    gradient: "linear-gradient(135deg, #C5172E 0%, #4A102A 100%)",
+    gradient: "linear-gradient(135deg, #5CC3E7 0%, #F57182 100%)",
     title: "Repeat: Continuously Optimizing Your Digital Marketing Success",
     text: "After achieving results, we restart the process to further improve performance and growth.",
     left: "13%",
@@ -254,14 +254,14 @@ export default function WorkProcess() {
               <div
                 className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold text-white transition-all duration-500 ${
                   glowStates[idx]
-                    ? "scale-110 glow-effect"
-                    : "scale-100 opacity-70"
+                  ? "scale-110"
+  : "scale-100 opacity-70"
                 }`}
                 style={{
                   background: step.gradient,
                   boxShadow: glowStates[idx]
-                    ? "0 18px 42px rgba(13, 45, 71, 0.42), 0 0 0 8px rgba(13, 45, 71, 0.16)"
-                    : "0 12px 26px rgba(13, 45, 71, 0.24)",
+  ? "0 18px 38px rgba(13, 45, 71, 0.42), 0 6px 14px rgba(13, 45, 71, 0.28)"
+  : "0 10px 24px rgba(13, 45, 71, 0.24)",
                 }}
               >
                 {step.no}
@@ -320,8 +320,8 @@ export default function WorkProcess() {
             className="absolute left-5 top-4 z-20 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-base font-bold text-white sm:left-1/2"
             style={{
               background: step.gradient,
-              boxShadow:
-                "0 0 0 7px rgba(13, 45, 71, 0.12), 0 16px 34px rgba(13, 45, 71, 0.3)",
+       boxShadow:
+  "0 16px 24px rgba(13, 45, 71, 0.36), 0 7px 12px rgba(13, 45, 71, 0.26)",
             }}
           >
             {step.no}
@@ -369,18 +369,12 @@ export default function WorkProcess() {
             0 0 36px rgba(13, 45, 71, 0.42),
             0 0 56px rgba(13, 45, 71, 0.28);
           animation: dotGlowPulse 1.5s ease-in-out infinite;
-          transition: box-shadow 0.25s ease, transform 0.25s ease;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
         }
 
         @keyframes dotGlowPulse {
           0%,
-          100% {
-            box-shadow:
-              0 0 0 8px rgba(13, 45, 71, 0.14),
-              0 0 0 16px rgba(13, 45, 71, 0.07),
-              0 0 34px rgba(13, 45, 71, 0.36),
-              0 0 52px rgba(13, 45, 71, 0.24);
-          }
+        
           50% {
             box-shadow:
               0 0 0 12px rgba(13, 45, 71, 0.2),
