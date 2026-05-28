@@ -110,10 +110,10 @@ export default function NovaLogoPreloader({ onComplete }) {
 
       const allFillShapes = unique([...novatechFill, ...scienceFill]);
 
-      gsap.set(preloaderRef.current, {
-        autoAlpha: 1,
-        backgroundColor: "#06111f",
-      });
+    gsap.set(preloaderRef.current, {
+  autoAlpha: 1,
+  backgroundColor: "#E5E6DD",
+});
 
       gsap.set(svg, {
         autoAlpha: 1,
