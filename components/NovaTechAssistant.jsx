@@ -2088,22 +2088,33 @@ export default function NovaTechAssistant() {
           </div>
 
           {liveMode && (
-            <div className="border-b border-red-100 bg-white px-4 py-2">
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-xs font-medium text-red-700">
-                  {agentConnected
-                    ? "Live agent is connected."
-                    : "Waiting for live agent..."}
-                </p>
+            <div className="space-y-2">
+              <div className="border-b border-red-100 bg-white px-4 py-2">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-medium text-red-700">
+                    {agentConnected
+                      ? "Live agent is connected."
+                      : "Waiting for live agent..."}
+                  </p>
 
-                <button
-                  type="button"
-                  onClick={endLiveChat}
-                  className="cursor-pointer rounded-full bg-red-100 px-3 py-1 text-[11px] font-semibold text-red-700 transition hover:bg-red-200"
-                >
-                  End Live Chat
-                </button>
+                  <button
+                    type="button"
+                    onClick={endLiveChat}
+                    className="cursor-pointer rounded-full bg-red-100 px-3 py-1 text-[11px] font-semibold text-red-700 transition hover:bg-red-200"
+                  >
+                    End Live Chat
+                  </button>
+                </div>
               </div>
+
+              {agentTyping && (
+                <div className="rounded-2xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-900 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 animate-pulse" />
+                    {agentDisplayName || "Agent"} is typing...
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

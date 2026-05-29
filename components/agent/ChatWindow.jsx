@@ -137,7 +137,7 @@ export default function ChatWindow({
       onRefresh?.();
     });
 
-    channel.bind("typing", (data) => {
+    function handleTypingEvent(data) {
       if (data?.senderType !== "visitor") return;
 
       const isVisitorTyping = Boolean(data?.isTyping);
@@ -152,7 +152,10 @@ export default function ChatWindow({
           setVisitorTyping(false);
         }, 2500);
       }
-    });
+    }
+
+    channel.bind("typing", handleTypingEvent);
+    channel.bind("visitor-typing", handleTypingEvent);
 
     return () => {
       clearInterval(refreshInterval);
@@ -379,7 +382,7 @@ export default function ChatWindow({
       }`}
     >
       {/* Header */}
-      <div className="shrink-0 border-b border-slate-300/40 bg-[linear-gradient(180deg,#f8fbfe_0%,#e9eff8_100%)] px-5 py-3">
+      <div className="shrink-0 border-b border-slate-300/40 bg-white/85 px-5 py-3 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
@@ -483,7 +486,7 @@ export default function ChatWindow({
             if (isSystem) {
               return (
                 <div key={message._id} className="flex justify-center">
-                  <div className="rounded-full border border-slate-300 bg-[linear-gradient(150deg,#f8fafd_0%,#e6ecf5_100%)] px-3 py-1 text-[10px] font-bold text-slate-700 shadow-sm">
+                  <div className="rounded-full border border-slate-200 bg-white/95 px-3 py-1 text-[10px] font-bold text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.08)]">
                     {message.message}
                   </div>
                 </div>
@@ -504,10 +507,10 @@ export default function ChatWindow({
                 )}
 
                 <div
-                  className={`max-w-[240px] px-2.5 py-1.5 text-xs shadow-sm ${
+                  className={`max-w-[260px] px-3 py-2 text-xs shadow-sm ${
                     isAgent
-                      ? "rounded-lg rounded-br-none border border-slate-600 bg-[linear-gradient(160deg,#3f4754_0%,#262d37_58%,#171c25_100%)] text-slate-100"
-                      : "rounded-lg rounded-bl-none border border-slate-200 bg-white/90 text-slate-950"
+                      ? "rounded-3xl rounded-br-none border border-slate-900 bg-[linear-gradient(160deg,#2f3640_0%,#1e262f_55%,#11181f_100%)] text-slate-100 shadow-[0_18px_42px_rgba(15,23,42,0.18)]"
+                      : "rounded-3xl rounded-bl-none border border-slate-200 bg-white/95 text-slate-950 shadow-[0_14px_30px_rgba(15,23,42,0.08)]"
                   }`}
                 >
                   <p className="mt-0.5 text-[11px] leading-snug">
@@ -534,11 +537,18 @@ export default function ChatWindow({
 
           {visitorTyping && (
             <div className="flex items-end gap-1.5 justify-start">
-              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[9px] font-bold text-slate-700 shadow">
+              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[9px] font-bold text-slate-700 shadow-[0_10px_20px_rgba(15,23,42,0.08)]">
                 {(session.visitorName || "U").charAt(0).toUpperCase()}
               </div>
-              <div className="rounded-lg rounded-bl-none border border-slate-200 bg-white px-2.5 py-1.5 text-[11px] font-medium text-slate-600 shadow-sm">
-                Visitor is typing...
+              <div className="rounded-3xl rounded-bl-none border border-slate-200 bg-white/95 px-4 py-2 text-[11px] font-medium text-slate-600 shadow-[0_10px_20px_rgba(15,23,42,0.08)]">
+                <div className="flex items-center gap-2">
+                  <span>Visitor is typing</span>
+                  <span className="flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400 animate-bounce" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:120ms]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:240ms]" />
+                  </span>
+                </div>
               </div>
             </div>
           )}
@@ -550,14 +560,14 @@ export default function ChatWindow({
       {/* Input */}
       <form
         onSubmit={sendMessage}
-        className="shrink-0 border-t border-slate-300/40 bg-[linear-gradient(180deg,#f8fbfe_0%,#e9eff8_100%)] px-5 py-3"
+        className="shrink-0 border-t border-slate-300/40 bg-white/90 backdrop-blur-xl px-5 py-3"
       >
         <div className="flex items-center gap-2">
           <input
             value={input}
             onChange={handleInputChange}
             disabled={!canReply}
-            className="h-10 flex-1 rounded-full border border-slate-300/70 bg-white/80 px-5 text-sm outline-none transition focus:border-slate-500 focus:bg-white disabled:bg-slate-100"
+            className="h-11 flex-1 rounded-full border border-slate-300/60 bg-white/90 px-5 text-sm outline-none transition focus:border-slate-500 focus:bg-white disabled:bg-slate-100"
             placeholder={
               canReply ? "Reply to visitor..." : "Join chat to reply..."
             }

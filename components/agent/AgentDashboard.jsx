@@ -16,7 +16,7 @@ const tabs = ["Live Chats", "Visitors", "Leads", "Resolved", "Settings"];
 
 function StatBox({ label, value }) {
   return (
-    <div className="rounded-2xl border border-white/70 bg-[linear-gradient(150deg,#ffffff_0%,#edf2f8_55%,#dbe2ec_100%)] px-4 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
+    <div className="rounded-3xl border border-white/80 bg-[linear-gradient(140deg,rgba(255,255,255,0.95)_0%,rgba(244,247,255,0.88)_45%,rgba(226,235,248,0.92)_100%)] px-4 py-3 shadow-[0_22px_55px_rgba(56,95,226,0.12)] backdrop-blur-xl">
       <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
         {label}
       </p>
