@@ -55,7 +55,7 @@ export default function ChatList({
   setStatus,
 }) {
   return (
-    <aside className="flex h-full min-h-0 w-[350px] shrink-0 flex-col overflow-hidden rounded-3xl border border-white/70 bg-[linear-gradient(165deg,#f8fafc_0%,#e8edf4_60%,#d1d9e5_100%)] shadow-[0_14px_34px_rgba(15,23,42,0.15)]">
+    <aside className="flex h-full min-h-0 w-[350px] shrink-0 flex-col overflow-hidden rounded-3xl border border-white/70 bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.12),transparent_35%),linear-gradient(165deg,#f8fafc_0%,#e8edf4_60%,#d1d9e5_100%)] shadow-[0_24px_60px_rgba(56,95,230,0.14)] backdrop-blur-xl">
       <div className="shrink-0 border-b border-slate-300/40 p-4">
         <h2 className="text-lg font-bold text-slate-950">Live Requests</h2>
         <p className="mt-1 text-xs text-slate-500">
@@ -99,10 +99,10 @@ export default function ChatList({
                   key={session.sessionId}
                   type="button"
                   onClick={() => onSelect(session)}
-                  className={`w-full cursor-pointer rounded-2xl border p-4 text-left transition ${
+                  className={`w-full cursor-pointer rounded-3xl border p-4 text-left transition ${
                     isSelected
-                      ? "border-slate-400/70 bg-[linear-gradient(150deg,#f8fbff_0%,#e7eef8_100%)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]"
-                      : "border-slate-200/70 bg-white/85 hover:border-slate-300 hover:bg-white"
+                      ? "border-slate-200/80 bg-[linear-gradient(160deg,#eff6ff_0%,#e0f2fe_60%,#eefcff_100%)] shadow-[0_16px_40px_rgba(56,95,230,0.16)]"
+                      : "border-slate-200/70 bg-white/90 hover:border-slate-300 hover:bg-white"
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">

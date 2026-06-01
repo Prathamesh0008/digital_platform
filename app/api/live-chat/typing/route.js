@@ -43,6 +43,24 @@ export async function POST(request) {
       isTyping,
     });
 
+    if (senderType === "agent") {
+      await pusherServer.trigger(channelName, "agent-typing", {
+        sessionId,
+        senderType,
+        senderName,
+        isTyping,
+      });
+    }
+
+    if (senderType === "visitor") {
+      await pusherServer.trigger(channelName, "visitor-typing", {
+        sessionId,
+        senderType,
+        senderName,
+        isTyping,
+      });
+    }
+
     return Response.json({
       success: true,
       channelName,

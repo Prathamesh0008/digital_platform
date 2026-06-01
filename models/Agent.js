@@ -14,6 +14,16 @@ const AgentSchema = new mongoose.Schema(
       index: true,
     },
 
+    passwordHash: {
+      type: String,
+      default: null,
+    },
+
+    passwordSalt: {
+      type: String,
+      default: null,
+    },
+
     role: {
       type: String,
       default: "agent",
