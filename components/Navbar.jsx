@@ -116,9 +116,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-3 py-2.5 sm:px-4 sm:py-3">
           <Link href="/" className="flex items-center gap-2 rounded-xl px-2 py-2.5">
             <Image
-              src="/nova_logo.svg"
+              src="/novalogo1.svg"
               alt="NovaTechscience"
-              width={220}
+              width={230}
               height={88}
               className="h-auto w-[150px] sm:w-[150px] md:w-[180px]"
               priority
