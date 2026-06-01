@@ -12,7 +12,7 @@ export default function Services() {
     >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-          <div className="lg:sticky lg:top-28 h-fit border-l border-black/15 pl-4 sm:pl-6 md:pl-10">
+          <div className="lg:sticky lg:top-28 h-fit  pl-4 sm:pl-6 md:pl-10">
             <h2 className="text-4xl sm:text-5xl font-semibold uppercase leading-[0.9] tracking-tight text-black md:text-[92px] lg:text-[118px]">
               Core
               <br />

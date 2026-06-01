@@ -46,7 +46,7 @@ export default function BlogSection() {
     <section className="relative overflow-hidden bg-[#7A97F8] px-4 py-16 sm:px-6 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-          <div className="border-l border-[#0d2d47]/20 pl-4 sm:pl-6 md:pl-10">
+          <div className="pl-4 sm:pl-6 md:pl-10">
             {/* <span className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
               Insights
             </span> */}

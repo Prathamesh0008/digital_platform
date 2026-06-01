@@ -5,6 +5,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  FaBullhorn,
+  FaChartLine,
+  FaChevronDown,
+  FaGlobeAmericas,
+  FaLaptopCode,
+  FaPalette,
+  FaSearch,
+  FaShareAlt,
+  FaShoppingCart,
+} from "react-icons/fa";
+
+const rotatingWords = ["Start Project", "Digital", "Growth", "Online"];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -12,16 +25,17 @@ export default function Navbar() {
   const [isAfterHero, setIsAfterHero] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
   const serviceLinks = [
-    { name: "Brand Strategy", href: "/services/brand-strategy" },
-    { name: "SEO Optimization", href: "/services/seo-optimization" },
-    { name: "Social Media", href: "/services/social-media" },
-    { name: "Performance Ads", href: "/services/performance-ads" },
-    { name: "Web Designs", href: "/services/web-design" },
-    { name: "E-Commerce Growth", href: "/services/ecommerce-growth" },
-    { name: "Analytics And Data", href: "/services/analytics-data" },
-    { name: "GEO Service", href: "/services/geo-service" },
+    { name: "Brand Strategy", href: "/services/brand-strategy", icon: FaPalette },
+    { name: "SEO Optimization", href: "/services/seo-optimization", icon: FaSearch },
+    { name: "Social Media", href: "/services/social-media", icon: FaShareAlt },
+    { name: "Performance Ads", href: "/services/performance-ads", icon: FaBullhorn },
+    { name: "Web Designs", href: "/services/web-design", icon: FaLaptopCode },
+    { name: "E-Commerce Growth", href: "/services/ecommerce-growth", icon: FaShoppingCart },
+    { name: "Analytics And Data", href: "/services/analytics-data", icon: FaChartLine },
+    { name: "GEO Service", href: "/services/geo-service", icon: FaGlobeAmericas },
   ];
 
   const links = [
@@ -50,9 +64,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setIsOpen(false);
-    setServicesOpen(false);
-    setMobileServicesOpen(false);
+    const frame = requestAnimationFrame(() => {
+      setIsOpen(false);
+      setServicesOpen(false);
+      setMobileServicesOpen(false);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {
@@ -71,6 +89,21 @@ export default function Navbar() {
     };
   }, [isOpen, mobileServicesOpen]);
 
+  // Handle word rotation with "Start Project" staying longer
+  useEffect(() => {
+    const durations = [3000, 1500, 1500, 1500]; // Start Project: 3s, others: 1.5s
+    let timeoutId;
+
+    const rotateWord = () => {
+      setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
+      timeoutId = setTimeout(rotateWord, durations[(currentWordIndex + 1) % rotatingWords.length]);
+    };
+
+    timeoutId = setTimeout(rotateWord, durations[0]);
+
+    return () => clearTimeout(timeoutId);
+  }, [currentWordIndex]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
       <div
@@ -81,13 +114,13 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between px-3 py-2.5 sm:px-4 sm:py-3">
-          <Link href="/" className="flex items-center gap-2 rounded-xl px-2 py-1.5">
+          <Link href="/" className="flex items-center gap-2 rounded-xl px-2 py-2.5">
             <Image
-              src="/Nova_logo.png"
+              src="/nova_logo.svg"
               alt="NovaTechscience"
               width={220}
               height={88}
-              className="h-auto w-[125px] sm:w-[150px] md:w-[175px]"
+              className="h-auto w-[150px] sm:w-[150px] md:w-[180px]"
               priority
             />
           </Link>
@@ -115,9 +148,10 @@ export default function Navbar() {
                       }`}
                     >
                       {link.name}
-                      <span className={`text-xs transition ${servicesOpen ? "rotate-180" : ""}`}>
-                        ▾
-                      </span>
+                      <FaChevronDown
+                        className={`text-[10px] transition ${servicesOpen ? "rotate-180" : ""}`}
+                        aria-hidden="true"
+                      />
                     </Link>
 
                     <AnimatePresence>
@@ -127,26 +161,40 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.98 }}
                           transition={{ duration: 0.18 }}
-                          className="absolute left-1/2 top-[46px] w-[310px] -translate-x-1/2 rounded-2xl border border-black/10 bg-white/95 p-3 shadow-[0_22px_60px_rgba(13,45,71,0.18)] backdrop-blur-2xl"
+                          className="absolute left-1/2 top-[46px] w-[340px] -translate-x-1/2 rounded-2xl border border-black/10 bg-white/95 p-3 shadow-[0_22px_60px_rgba(13,45,71,0.18)] backdrop-blur-2xl"
                         >
                           <p className="mb-2 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-black/45">
                             Services
                           </p>
 
                           <div className="grid gap-1.5">
-                            {serviceLinks.map((service) => (
-                              <Link
-                                key={service.name}
-                                href={service.href}
-                                className={`rounded-xl px-3 py-2.5 text-sm font-medium transition ${
-                                  pathname === service.href
-                                    ? "bg-black text-white"
-                                    : "text-black/80 hover:bg-black/10 hover:text-black"
-                                }`}
-                              >
-                                {service.name}
-                              </Link>
-                            ))}
+                            {serviceLinks.map((service) => {
+                              const ServiceIcon = service.icon;
+                              const isServiceActive = pathname === service.href;
+
+                              return (
+                                <Link
+                                  key={service.name}
+                                  href={service.href}
+                                  className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                                    isServiceActive
+                                      ? "bg-black text-white"
+                                      : "text-black/80 hover:bg-black/10 hover:text-black"
+                                  }`}
+                                >
+                                  <span
+                                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition ${
+                                      isServiceActive
+                                        ? "bg-white/15 text-white"
+                                        : "bg-[#19a6b5]/10 text-[#0d2d47] group-hover:bg-[#0d2d47] group-hover:text-white"
+                                    }`}
+                                  >
+                                    <ServiceIcon className="text-sm" aria-hidden="true" />
+                                  </span>
+                                  <span>{service.name}</span>
+                                </Link>
+                              );
+                            })}
                           </div>
                         </motion.div>
                       )}
@@ -174,11 +222,33 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <Link
               href="/contact"
-              className="hidden rounded-xl bg-black px-4 py-2 text-sm font-semibold text-white transition hover:bg-black/80 md:inline-flex"
+              className="group relative hidden h-11 w-[168px] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-black via-[#1a1a1a] to-black px-3 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(230,79,14,0.35)] focus:outline-none focus:ring-2 focus:ring-[#f97316]/50 md:inline-flex"
             >
-              Start Project
+              <span className="absolute inset-0 bg-gradient-to-r from-[#f97316]/0 via-[#f97316]/15 to-[#f97316]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
+              <span className="absolute inset-0 rounded-xl text-white blur-md transition-opacity duration-300 group-hover:opacity-100" />
+              
+              <span className="relative flex h-7 w-full items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWordIndex}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute font-serif text-base font-bold  tracking-wide  text-white drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap"
+                  >
+                    {rotatingWords[currentWordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+              
+              <span className="absolute right-3 flex -translate-x-2 items-center justify-center opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                <svg className="h-4 w-4 text-[#f97316]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
             </Link>
-
+            
             <button
               type="button"
               onClick={() => setIsOpen((prev) => !prev)}
@@ -242,13 +312,12 @@ export default function Navbar() {
                               onClick={() => setMobileServicesOpen((prev) => !prev)}
                               className="flex w-14 items-center justify-center border-l border-black/10"
                             >
-                              <span
-                                className={`transition duration-300 ${
+                              <FaChevronDown
+                                className={`text-xs transition duration-300 ${
                                   mobileServicesOpen ? "rotate-180" : ""
                                 }`}
-                              >
-                                ▾
-                              </span>
+                                aria-hidden="true"
+                              />
                             </button>
                           </div>
 
@@ -262,20 +331,34 @@ export default function Navbar() {
                                 className="overflow-hidden"
                               >
                                 <div className="mt-2 grid gap-1.5 rounded-2xl border border-black/10 bg-black/[0.03] p-2">
-                                  {serviceLinks.map((service) => (
-                                    <Link
-                                      key={service.name}
-                                      href={service.href}
-                                      onClick={() => setIsOpen(false)}
-                                      className={`rounded-xl px-3 py-2 text-sm font-medium transition ${
-                                        pathname === service.href
-                                          ? "bg-black text-white"
-                                          : "text-black/80 hover:bg-black hover:text-white"
-                                      }`}
-                                    >
-                                      {service.name}
-                                    </Link>
-                                  ))}
+                                  {serviceLinks.map((service) => {
+                                    const ServiceIcon = service.icon;
+                                    const isServiceActive = pathname === service.href;
+
+                                    return (
+                                      <Link
+                                        key={service.name}
+                                        href={service.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className={`group flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition ${
+                                          isServiceActive
+                                            ? "bg-black text-white"
+                                            : "text-black/80 hover:bg-black hover:text-white"
+                                        }`}
+                                      >
+                                        <span
+                                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition ${
+                                            isServiceActive
+                                              ? "bg-white/15 text-white"
+                                              : "bg-white text-[#0d2d47] group-hover:bg-white/15 group-hover:text-white"
+                                          }`}
+                                        >
+                                          <ServiceIcon className="text-sm" aria-hidden="true" />
+                                        </span>
+                                        <span>{service.name}</span>
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
                               </motion.div>
                             )}
@@ -300,19 +383,48 @@ export default function Navbar() {
                     );
                   })}
                 </nav>
-
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-black px-4 py-3 text-sm font-semibold text-white transition hover:bg-black/80"
+                  className="group relative mt-3 inline-flex h-12 w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-black via-[#1a1a1a] to-black px-4 text-sm font-semibold shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(230,79,14,0.3)]"
                 >
-                  Start Project
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#f97316]/0 via-[#f97316]/10 to-[#f97316]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
+                  
+                  <span className="relative flex h-7 w-full items-center justify-center">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={currentWordIndex}
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="absolute font-serif text-base font-bold italic tracking-wide bg-gradient-to-r from-[#ffb15c] via-[#ff6a1a] to-[#e64f0e] bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap"
+                      >
+                        {rotatingWords[currentWordIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </span>
                 </Link>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        .animate-shimmer {
+          animation: shimmer 1.5s ease-in-out infinite;
+        }
+      `}</style>
     </header>
   );
 }

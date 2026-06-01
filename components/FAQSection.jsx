@@ -80,7 +80,7 @@ export default function FAQSection() {
 >
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-          <div className="border-l border-black/15 pl-4 sm:pl-6 md:pl-10">
+          <div className=" pl-4 sm:pl-6 md:pl-10">
             {/* <span className="mb-5 inline-flex rounded-full bg-black px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
               FAQ
             </span> */}

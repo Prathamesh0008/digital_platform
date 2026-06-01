@@ -127,7 +127,7 @@ export default function HomeGrowthSection() {
       }}
     >
       <div className="mx-auto max-w-[1400px]">
-        <div className="mb-12 border-l border-[#0d2d47]/20 pl-4 sm:pl-6 md:pl-10">
+        <div className="mb-12  pl-4 sm:pl-6 md:pl-10">
           {/* <span className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
             Talk About Us
           </span> */}
