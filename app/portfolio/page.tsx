@@ -6,7 +6,7 @@ export default function PortfolioPage() {
   return (
     <main className="min-h-screen bg-[#EAEBDB] text-[#0d2d47]">
       <section
-        className="relative overflow-hidden px-4 pb-12 pt-24 sm:px-6 sm:pb-14 sm:pt-28 md:px-10 md:pb-20 md:pt-28"
+        className="relative overflow-hidden px-4 pb-12 pt-24 sm:px-6 sm:pb-14 sm:pt-28 md:px-10 md:pb-20 md:pt-48"
         style={{
           background:
             "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #6887FB)",
