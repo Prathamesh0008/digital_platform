@@ -3,6 +3,36 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import {
+  FaComments,
+  FaUnlockAlt,
+  FaEye,
+  FaPalette,
+  FaChartLine,
+  FaSearch,
+  FaRedoAlt,
+  FaChartBar,
+  FaRobot,
+  FaGlobe,
+  FaBullseye,
+  FaPenNib,
+  FaBullhorn,
+  FaMobileAlt,
+  FaClipboardList,
+  FaTag,
+  FaTrophy,
+  FaShieldAlt,
+  FaHeart,
+  FaStar,
+  FaUsers,
+  FaVideo,
+  FaSeedling,
+  FaBookOpen,
+  FaLink,
+  FaMicrophoneAlt,
+  FaLightbulb,
+  FaBrain,
+} from "react-icons/fa";
 
 const stats = [
   { value: "500+", label: "Brands Transformed" },
@@ -12,14 +42,14 @@ const stats = [
 ];
 
 const problemItems = [
-  { icon: "💬", text: "Confusing brand messaging" },
-  { icon: "🔓", text: "Weak customer trust" },
-  { icon: "👁️", text: "Poor market recognition" },
-  { icon: "🎨", text: "Inconsistent visual identity" },
-  { icon: "📉", text: "Low social engagement" },
-  { icon: "🔍", text: "Weak SEO and AI visibility" },
-  { icon: "🔁", text: "Lower customer retention" },
-  { icon: "📊", text: "Reduced conversions" },
+  { icon: FaComments, text: "Confusing brand messaging" },
+  { icon: FaUnlockAlt, text: "Weak customer trust" },
+  { icon: FaEye, text: "Poor market recognition" },
+  { icon: FaPalette, text: "Inconsistent visual identity" },
+  { icon: FaChartLine, text: "Low social engagement" },
+  { icon: FaSearch, text: "Weak SEO and AI visibility" },
+  { icon: FaRedoAlt, text: "Lower customer retention" },
+  { icon: FaChartBar, text: "Reduced conversions" },
 ];
 
 const oldBranding = [
@@ -43,7 +73,7 @@ const modernBranding = [
 
 const services = [
   {
-    icon: "🤖",
+    icon: FaRobot,
     title: "AI Branding",
     text: "Optimize your brand for AI-driven digital experiences so your content, authority, and digital presence are understandable to AI systems like ChatGPT, Gemini, and Perplexity.",
     features: [
@@ -53,7 +83,7 @@ const services = [
     ],
   },
   {
-    icon: "🌐",
+    icon: FaGlobe,
     title: "GEO Optimization",
     text: "Generative Engine Optimization helps your business appear in AI-generated summaries, conversational search responses, and knowledge-based answers.",
     features: [
@@ -63,7 +93,7 @@ const services = [
     ],
   },
   {
-    icon: "🎯",
+  icon: FaBullseye,
     title: "Brand Positioning",
     text: "Define exactly how your business stands apart from competitors with clear differentiation that connects emotionally and logically with your audience.",
     features: [
@@ -73,7 +103,7 @@ const services = [
     ],
   },
   {
-    icon: "✏️",
+   icon: FaPenNib,
     title: "Brand Identity Design",
     text: "Create a premium visual identity that builds trust instantly through logo systems, typography, colours, visual consistency, and brand guidelines.",
     features: [
@@ -83,7 +113,7 @@ const services = [
     ],
   },
   {
-    icon: "📢",
+    icon: FaBullhorn,
     title: "SEO Branding",
     text: "Combine search optimization with brand authority to build topical trust, organic visibility, and long-term digital growth.",
     features: [
@@ -93,7 +123,7 @@ const services = [
     ],
   },
   {
-    icon: "📱",
+    icon: FaMobileAlt,
     title: "Social Media Branding",
     text: "Build platform-specific branding that drives real engagement through storytelling, video-first content, and community-building.",
     features: [
@@ -105,36 +135,12 @@ const services = [
 ];
 
 const geoElements = [
-  {
-    icon: "📋",
-    title: "Structured Content",
-    text: "Organized semantic content AI systems can parse and trust.",
-  },
-  {
-    icon: "🏷️",
-    title: "Entity Optimization",
-    text: "Strong brand entity recognition across search engines.",
-  },
-  {
-    icon: "🏆",
-    title: "Authority Building",
-    text: "Expert-level content that improves AI trust signals.",
-  },
-  {
-    icon: "💬",
-    title: "Conversational Language",
-    text: "Natural writing aligned with modern search behavior.",
-  },
-  {
-    icon: "🌍",
-    title: "Multi-Platform Presence",
-    text: "Consistent brand signals across every digital platform.",
-  },
-  {
-    icon: "🔮",
-    title: "Future-Proof Strategy",
-    text: "Early GEO adoption gives lasting competitive advantage.",
-  },
+  { icon: FaClipboardList, title: "Structured Content", text: "Organized semantic content AI systems can parse and trust." },
+  { icon: FaTag, title: "Entity Optimization", text: "Strong brand entity recognition across search engines." },
+  { icon: FaTrophy, title: "Authority Building", text: "Expert-level content that improves AI trust signals." },
+  { icon: FaComments, title: "Conversational Language", text: "Natural writing aligned with modern search behavior." },
+  { icon: FaGlobe, title: "Multi-Platform Presence", text: "Consistent brand signals across every digital platform." },
+  { icon: FaLightbulb, title: "Future-Proof Strategy", text: "Early GEO adoption gives lasting competitive advantage." },
 ];
 
 const components = [
@@ -172,31 +178,14 @@ const psychologyStats = [
 ];
 
 const feelings = [
-  {
-    icon: "🛡️",
-    title: "Trust",
-    text: "Professional branding increases customer confidence in your business and offerings.",
-  },
-  {
-    icon: "🔄",
-    title: "Familiarity",
-    text: "Consistent visuals and messaging improve recognition across every touchpoint.",
-  },
-  {
-    icon: "❤️",
-    title: "Emotional Connection",
-    text: "Storytelling creates meaningful relationships that outlast any single campaign.",
-  },
-  {
-    icon: "⭐",
-    title: "Authority",
-    text: "Expert-driven branding builds long-term credibility and market leadership.",
-  },
+  { icon: FaShieldAlt, title: "Trust", text: "Professional branding increases customer confidence in your business and offerings." },
+  { icon: FaRedoAlt, title: "Familiarity", text: "Consistent visuals and messaging improve recognition across every touchpoint." },
+  { icon: FaHeart, title: "Emotional Connection", text: "Storytelling creates meaningful relationships that outlast any single campaign." },
+  { icon: FaStar, title: "Authority", text: "Expert-driven branding builds long-term credibility and market leadership." },
 ];
-
 const trends = [
   {
-    icon: "🤖",
+    icon: FaRobot,
     title: "AI-Powered Personalization",
     text: "Brands now create customized customer experiences using AI-driven insights for better engagement and conversion.",
     points: [
@@ -206,7 +195,7 @@ const trends = [
     ],
   },
   {
-    icon: "🗣️",
+    icon: FaMicrophoneAlt,
     title: "Conversational Branding",
     text: "Customers prefer natural human-like communication instead of cold corporate language.",
     points: [
@@ -216,7 +205,7 @@ const trends = [
     ],
   },
   {
-    icon: "🌱",
+    icon: FaSeedling,
     title: "Ethical Branding",
     text: "Modern consumers value transparency, sustainability, and responsible business practices.",
     points: [
@@ -226,7 +215,7 @@ const trends = [
     ],
   },
   {
-    icon: "👥",
+    icon: FaUsers,
     title: "Community-Led Branding",
     text: "Brands are shifting from audience building to community building for stronger loyalty.",
     points: [
@@ -236,7 +225,7 @@ const trends = [
     ],
   },
   {
-    icon: "🎬",
+    icon: FaVideo,
     title: "Video-First Branding",
     text: "Short-form video has become a dominant discovery channel across Reels, TikTok, YouTube Shorts, and LinkedIn.",
     points: [
@@ -246,7 +235,7 @@ const trends = [
     ],
   },
   {
-    icon: "🔍",
+    icon: FaSearch,
     title: "Search Everywhere",
     text: "Customers search across Google, YouTube, TikTok, Instagram, Reddit, and AI platforms.",
     points: [
@@ -256,7 +245,7 @@ const trends = [
     ],
   },
   {
-    icon: "🧬",
+    icon:  FaBrain,
     title: "Human-Centered Design",
     text: "Consumers prefer brands that feel authentic, transparent, and emotionally relatable.",
     points: [
@@ -266,7 +255,7 @@ const trends = [
     ],
   },
   {
-    icon: "📡",
+    icon: FaGlobe,
     title: "AI Search Visibility",
     text: "Brands optimizing for ChatGPT, Gemini, Claude, and Perplexity can gain early visibility advantages.",
     points: [
@@ -279,22 +268,22 @@ const trends = [
 
 const authorityItems = [
   {
-    icon: "📚",
+    icon: FaBookOpen,
     title: "Publish Expert Content",
     text: "Educational, research-backed content positions your business as the go-to industry leader.",
   },
   {
-    icon: "🔗",
+    icon: FaLink,
     title: "Build High-Quality Backlinks",
     text: "Authority websites and trusted publications improve search credibility and AI trust signals.",
   },
   {
-    icon: "🎤",
+    icon: FaMicrophoneAlt,
     title: "Create Thought Leadership",
     text: "Industry insights, original research, and bold perspectives establish genuine expertise.",
   },
   {
-    icon: "🤖",
+    icon: FaRobot,
     title: "Optimize For AI Search",
     text: "AI visibility is the future of discovery. Early optimization creates long-term advantage.",
   },
@@ -383,7 +372,7 @@ export default function BrandStrategyPage() {
         />
 
         <div className="relative mx-auto max-w-[1180px] text-center">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
@@ -391,7 +380,7 @@ export default function BrandStrategyPage() {
           >
             <span className="h-2 w-2 rounded-full bg-[#7392FB] shadow-[0_0_0_6px_rgba(115,146,251,0.18)]" />
             Future-Ready Brand Strategy For 2026
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 34 }}
@@ -465,7 +454,7 @@ export default function BrandStrategyPage() {
       <section className="bg-[#EAEBDB] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <SectionLabel>The Problem</SectionLabel>
+            {/* <SectionLabel>The Problem</SectionLabel> */}
             <SectionTitle>
               What Happens Without A Brand Strategy?
             </SectionTitle>
@@ -492,7 +481,10 @@ export default function BrandStrategyPage() {
                 className="flex items-start gap-3 rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-4 shadow-[0_15px_45px_rgba(13,45,71,0.07)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/65"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#7392FB]/20 text-lg">
-                  {item.icon}
+                  {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                 </span>
                 <p className="text-sm font-bold uppercase leading-relaxed text-[#0d2d47]/75">
                   {item.text}
@@ -506,7 +498,7 @@ export default function BrandStrategyPage() {
       {/* AI ERA */}
       <section className="bg-[#C4CFE3] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
-          <SectionLabel>The Shift</SectionLabel>
+          {/* <SectionLabel>The Shift</SectionLabel> */}
           <SectionTitle>Branding Has Changed In The AI Era</SectionTitle>
           <p className="mt-5 max-w-3xl text-base leading-8 text-[#0d2d47]/72">
             The branding industry has evolved dramatically because of artificial
@@ -584,7 +576,7 @@ export default function BrandStrategyPage() {
         }}
       >
         <div className="mx-auto max-w-[1180px]">
-          <SectionLabel light>Our Services</SectionLabel>
+          {/* <SectionLabel light>Our Services</SectionLabel> */}
           <SectionTitle light>Complete Brand Strategy Services</SectionTitle>
           <p className="mt-5 max-w-3xl text-base leading-8 text-white/72">
             Every service is designed to build authority, trust, and long-term
@@ -603,7 +595,10 @@ export default function BrandStrategyPage() {
                 className="rounded-[26px] border border-white/20 bg-white/12 p-6 shadow-[0_24px_70px_rgba(13,45,71,0.22)] backdrop-blur-md transition hover:bg-white/18"
               >
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 text-2xl">
-                  {item.icon}
+                  {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                 </div>
                 <h3 className="text-xl font-bold uppercase">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/74 md:text-base">
@@ -631,7 +626,7 @@ export default function BrandStrategyPage() {
       <section className="bg-[#EAEBDB] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-[1180px] gap-10 overflow-hidden rounded-[32px] border border-[#7392FB]/25 bg-gradient-to-br from-[#7392FB]/18 to-white/35 p-6 shadow-[0_24px_80px_rgba(13,45,71,0.12)] backdrop-blur-md md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <SectionLabel>GEO Explained</SectionLabel>
+            {/* <SectionLabel>GEO Explained</SectionLabel> */}
             <SectionTitle>What Is Generative Engine Optimization?</SectionTitle>
             <p className="mt-5 text-base leading-8 text-[#0d2d47]/72">
               GEO is one of the biggest branding and SEO trends of 2026. It
@@ -655,7 +650,10 @@ export default function BrandStrategyPage() {
                 transition={{ delay: i * 0.04 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-4 transition hover:-translate-y-1 hover:bg-white/65"
               >
-                <span className="text-2xl">{item.icon}</span>
+                <span className="text-2xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
                 <h3 className="mt-3 text-base font-bold uppercase">
                   {item.title}
                 </h3>
@@ -671,7 +669,7 @@ export default function BrandStrategyPage() {
       {/* COMPONENTS */}
       <section className="bg-[#C4CFE3] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
-          <SectionLabel>Strategy Framework</SectionLabel>
+          {/* <SectionLabel>Strategy Framework</SectionLabel> */}
           <SectionTitle>
             What Makes A Strong Modern Brand Strategy?
           </SectionTitle>
@@ -729,7 +727,7 @@ export default function BrandStrategyPage() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="mb-5 block text-7xl"
             >
-              🧠
+             <FaBrain />
             </motion.span>
             <h3 className="text-2xl font-bold uppercase">
               The Psychology Of Branding
@@ -757,7 +755,7 @@ export default function BrandStrategyPage() {
           </motion.div>
 
           <div>
-            <SectionLabel>Customer Psychology</SectionLabel>
+            {/* <SectionLabel>Customer Psychology</SectionLabel> */}
             <SectionTitle>How Branding Shapes Customer Perception</SectionTitle>
             <p className="mt-5 max-w-2xl text-base leading-8 text-[#0d2d47]/72">
               Strong branding creates emotional trust, familiarity, and
@@ -774,7 +772,10 @@ export default function BrandStrategyPage() {
                   transition={{ delay: i * 0.06 }}
                   className="flex items-start gap-4 rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-4 backdrop-blur-md transition hover:translate-x-1 hover:bg-white/65"
                 >
-                  <span className="text-3xl">{item.icon}</span>
+                  <span className="text-3xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
                   <div>
                     <h3 className="text-lg font-bold uppercase">
                       {item.title}
@@ -799,7 +800,7 @@ export default function BrandStrategyPage() {
         }}
       >
         <div className="mx-auto max-w-[1180px]">
-          <SectionLabel light>2026 Landscape</SectionLabel>
+          {/* <SectionLabel light>2026 Landscape</SectionLabel> */}
           <SectionTitle light>The Biggest Branding Trends Of 2026</SectionTitle>
           <p className="mt-5 max-w-3xl text-base leading-8 text-white/72">
             The branding landscape is evolving rapidly because of AI, shifting
@@ -818,7 +819,10 @@ export default function BrandStrategyPage() {
                 className="relative overflow-hidden rounded-[24px] border border-white/20 bg-white/12 p-5 backdrop-blur-md"
               >
                 <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-white/80 to-[#7392FB]" />
-                <span className="text-4xl">{item.icon}</span>
+                <span className="text-4xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
                 <h3 className="mt-4 text-lg font-bold uppercase">
                   {item.title}
                 </h3>
@@ -847,7 +851,7 @@ export default function BrandStrategyPage() {
       <section className="bg-[#EAEBDB] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <SectionLabel>Brand Authority</SectionLabel>
+            {/* <SectionLabel>Brand Authority</SectionLabel> */}
             <SectionTitle>How To Build Long-Term Brand Authority</SectionTitle>
             <p className="mt-5 max-w-2xl text-base leading-8 text-[#0d2d47]/72">
               Authority is one of the most valuable digital assets a business
@@ -868,7 +872,10 @@ export default function BrandStrategyPage() {
                   <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#7392FB] to-[#0d2d47]" />
                   <div className="flex gap-4">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-2xl">
-                      {item.icon}
+                      {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                     </span>
                     <div>
                       <h3 className="text-lg font-bold uppercase">
@@ -891,7 +898,10 @@ export default function BrandStrategyPage() {
             className="h-fit rounded-[30px] border border-[#7392FB]/25 bg-gradient-to-br from-[#7392FB]/20 to-white/45 p-6 shadow-[0_22px_70px_rgba(13,45,71,0.1)] backdrop-blur-md"
           >
             <h3 className="text-2xl font-extrabold uppercase text-[#0d2d47]">
-              💡 Branding Is An Investment, Not An Expense
+              <span className="inline-flex items-center gap-3">
+  <FaLightbulb />
+  Branding Is An Investment, Not An Expense
+</span>
             </h3>
             <p className="mt-4 text-base leading-8 text-[#0d2d47]/72">
               Many businesses treat branding as a short-term design project. In
@@ -920,7 +930,7 @@ export default function BrandStrategyPage() {
       <section className="overflow-hidden bg-[#C4CFE3] px-4 py-14 text-center sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
           <div className="flex justify-center">
-            <SectionLabel>Search Everywhere Optimization</SectionLabel>
+            {/* <SectionLabel>Search Everywhere Optimization</SectionLabel> */}
           </div>
           <SectionTitle>Your Brand, Visible On Every Platform</SectionTitle>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#0d2d47]/72">
@@ -958,10 +968,10 @@ export default function BrandStrategyPage() {
           viewport={{ once: true }}
           className="mx-auto max-w-[1180px] overflow-hidden rounded-[32px] border border-white/35 bg-white/20 p-6 text-center shadow-[0_30px_90px_rgba(13,45,71,0.2)] backdrop-blur-md sm:p-10 md:p-14"
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#0d2d47]/15 bg-white/25 px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#0d2d47]/70">
+          {/* <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#0d2d47]/15 bg-white/25 px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#0d2d47]/70">
             <span className="h-2 w-2 rounded-full bg-[#0d2d47]" />
             Ready To Build Something Great?
-          </div>
+          </div> */}
 
           <h2 className="mx-auto max-w-5xl text-3xl font-extrabold uppercase leading-tight text-[#0d2d47] sm:text-4xl md:text-5xl lg:text-6xl">
             Build A Future-Ready Brand That Lasts

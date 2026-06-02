@@ -4,7 +4,23 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-
+import {
+  FaStore,
+  FaChartLine,
+  FaShoppingCart,
+  FaUndo,
+  FaEnvelopeOpenText,
+  FaChartBar,
+  FaCode,
+  FaWordpress,
+  FaSearch,
+  FaMobileAlt,
+  FaRobot,
+  FaRocket,
+  FaMapSigns,
+  FaWrench,
+  FaBullhorn,
+} from "react-icons/fa";
 const growthStats = [
   { value: "+42%", label: "Conversion Improvement" },
   { value: "3.4x", label: "Return On Ad Spend" },
@@ -12,50 +28,56 @@ const growthStats = [
 ];
 
 const growthAreas = [
-  "Store Audit",
-  "Conversion Strategy",
-  "Product Page Optimization",
-  "Cart Flow Improvement",
-  "Retention Campaigns",
-  "Upsell & Cross-Sell",
-  "Email Automation",
-  "Performance Tracking",
+  { icon: FaStore, title: "Store Audit" },
+  { icon: FaChartLine, title: "Conversion Strategy" },
+  { icon: FaShoppingCart, title: "Product Page Optimization" },
+  { icon: FaWrench, title: "Cart Flow Improvement" },
+  { icon: FaUndo, title: "Retention Campaigns" },
+  { icon: FaRocket, title: "Upsell & Cross-Sell" },
+  { icon: FaEnvelopeOpenText, title: "Email Automation" },
+  { icon: FaChartBar, title: "Performance Tracking" },
 ];
 
 const services = [
   {
+    icon: FaCode,
     title: "Custom E-Commerce Website Development",
     text: "Secure, scalable, SEO-friendly online stores built around your business goals, product structure, and customer journey.",
   },
   {
+    icon: FaWordpress,
     title: "Shopify, WooCommerce & Magento",
     text: "Modern platform-based e-commerce stores with custom themes, payment setup, performance optimization, and product management.",
   },
   {
+    icon: FaSearch,
     title: "E-Commerce SEO & GEO",
     text: "Product visibility, search rankings, structured content, local targeting, AI search readiness, and voice-friendly optimization.",
   },
   {
+    icon: FaMobileAlt,
     title: "Mobile Commerce Solutions",
     text: "Responsive shopping experiences, mobile apps, progressive web apps, wallets, push notifications, and mobile-first checkout.",
   },
   {
+    icon: FaRobot,
     title: "AI-Powered Commerce",
     text: "Chatbots, recommendations, predictive analytics, customer behaviour tracking, fraud detection, and personalization.",
   },
   {
+    icon: FaRocket,
     title: "Conversion & Retention Growth",
     text: "Product page optimization, checkout improvement, cart recovery, email automation, remarketing, loyalty, and analytics.",
   },
 ];
 
 const process = [
-  "Audit Store",
-  "Map Funnel",
-  "Fix Friction",
-  "Optimize SEO",
-  "Launch Campaigns",
-  "Scale Revenue",
+  { icon: FaStore, title: "Audit Store" },
+  { icon: FaMapSigns, title: "Map Funnel" },
+  { icon: FaWrench, title: "Fix Friction" },
+  { icon: FaSearch, title: "Optimize SEO" },
+  { icon: FaBullhorn, title: "Launch Campaigns" },
+  { icon: FaRocket, title: "Scale Revenue" },
 ];
 
 const contentSections = [
@@ -735,22 +757,31 @@ className="relative overflow-hidden px-4 pb-14 pt-36 sm:px-6 sm:pt-40 md:px-10 m
           {/* <Badge>Growth Areas</Badge> */}
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {growthAreas.map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 24, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.035 }}
-                whileHover={{ y: -5 }}
-                className="rounded-2xl border border-[#0d2d47]/10 bg-white/35 p-4 shadow-[0_14px_40px_rgba(13,45,71,0.07)] backdrop-blur-md"
-              >
-                <p className="mb-3 text-sm font-bold text-[#7392FB]">
-                  {(i + 1).toString().padStart(2, "0")}
-                </p>
-                <h3 className="text-base font-bold uppercase">{item}</h3>
-              </motion.div>
-            ))}
+           {growthAreas.map((item, i) => {
+  const Icon = item.icon;
+
+  return (
+    <motion.div
+      key={item.title}
+      initial={{ opacity: 0, y: 24, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.035 }}
+      whileHover={{ y: -6 }}
+      className="group rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-5 shadow-[0_18px_45px_rgba(13,45,71,0.08)] backdrop-blur-md transition hover:bg-white/70"
+    >
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-xl text-[#7392FB] transition group-hover:bg-[#0d2d47] group-hover:text-white">
+        <Icon />
+      </div>
+
+      {/* <p className="mb-2 text-xs font-bold text-[#7392FB]">
+        {(i + 1).toString().padStart(2, "0")}
+      </p> */}
+
+      <h3 className="text-base font-bold uppercase">{item.title}</h3>
+    </motion.div>
+  );
+})}
           </div>
         </div>
       </section>
@@ -779,25 +810,31 @@ className="relative overflow-hidden px-4 pb-14 pt-36 sm:px-6 sm:pt-40 md:px-10 m
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((item, i) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -6 }}
-                className="rounded-[22px] border border-white/20 bg-white/12 p-5 backdrop-blur-md"
-              >
-                <span className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xs font-bold text-[#0d2d47]">
-                  0{i + 1}
-                </span>
-                <h3 className="text-lg font-bold uppercase">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/75">
-                  {item.text}
-                </p>
-              </motion.article>
-            ))}
+           {services.map((item, i) => {
+  const Icon = item.icon;
+
+  return (
+    <motion.article
+      key={item.title}
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.05 }}
+      whileHover={{ y: -7 }}
+      className="group rounded-[24px] border border-white/20 bg-white/12 p-6 shadow-[0_22px_65px_rgba(13,45,71,0.18)] backdrop-blur-md transition hover:bg-white/18"
+    >
+      <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-xl text-white ring-1 ring-white/20">
+        <Icon />
+      </span>
+
+      <h3 className="text-lg font-bold uppercase">{item.title}</h3>
+
+      <p className="mt-3 text-sm leading-relaxed text-white/75">
+        {item.text}
+      </p>
+    </motion.article>
+  );
+})}
           </div>
         </div>
       </section>
@@ -808,21 +845,28 @@ className="relative overflow-hidden px-4 pb-14 pt-36 sm:px-6 sm:pt-40 md:px-10 m
           {/* <Badge>Growth Process</Badge> */}
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-            {process.map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                className="rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-4"
-              >
-                <p className="text-3xl font-bold text-[#0d2d47]/20">
-                  {(i + 1).toString().padStart(2, "0")}
-                </p>
-                <h3 className="mt-4 text-sm font-bold uppercase">{item}</h3>
-              </motion.div>
-            ))}
+       {process.map((item, i) => {
+  const Icon = item.icon;
+
+  return (
+    <motion.div
+      key={item.title}
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.04 }}
+      className="rounded-2xl border border-[#0d2d47]/10 bg-gradient-to-br from-[#B6C4E7] to-white/50 p-4 shadow-[0_14px_35px_rgba(13,45,71,0.08)]"
+    >
+      <Icon className="text-2xl text-[#7392FB]" />
+
+      {/* <p className="mt-4 text-3xl font-bold text-[#0d2d47]/20">
+        {(i + 1).toString().padStart(2, "0")}
+      </p> */}
+
+      <h3 className="mt-3 text-sm font-bold uppercase">{item.title}</h3>
+    </motion.div>
+  );
+})}
           </div>
         </div>
       </section>
@@ -834,9 +878,9 @@ className="relative overflow-hidden px-4 pb-14 pt-36 sm:px-6 sm:pt-40 md:px-10 m
 
   <div className="relative mx-auto max-w-[1180px]">
     <div className="mb-10 max-w-4xl">
-      <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[#7392FB]">
+      {/* <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[#7392FB]">
         Complete E-Commerce Services
-      </p>
+      </p> */}
 
       <h2 className="text-3xl font-bold uppercase leading-tight sm:text-4xl md:text-5xl">
         Explore Our Full E-Commerce Growth Strategy

@@ -1,9 +1,27 @@
+//app\services\analytics-data\page.jsx
 "use client";
 
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import {
+  FaChartLine,
+  FaBullseye,
+  FaChartBar,
+  FaFilter,
+  FaUsers,
+  FaRoute,
+  FaMousePointer,
+  FaLightbulb,
+  FaCog,
+  FaTachometerAlt,
+  FaProjectDiagram,
+  FaShareAlt,
+  FaEye,
+  FaRocket,
+  FaDatabase,
+  FaClipboardList,
+} from "react-icons/fa";
 const insightCards = [
   { label: "Traffic Quality", value: "72%" },
   { label: "Lead Sources", value: "14" },
@@ -12,44 +30,57 @@ const insightCards = [
 ];
 
 const dataAreas = [
-  "GA4 Setup",
-  "Conversion Tracking",
-  "Dashboard Reporting",
-  "Funnel Analysis",
-  "Customer Behaviour",
-  "Campaign Attribution",
-  "Event Tracking",
-  "Monthly Insights",
+  { icon: FaChartLine, title: "GA4 Setup" },
+  { icon: FaBullseye, title: "Conversion Tracking" },
+  { icon: FaTachometerAlt, title: "Dashboard Reporting" },
+  { icon: FaFilter, title: "Funnel Analysis" },
+  { icon: FaUsers, title: "Customer Behaviour" },
+  { icon: FaShareAlt, title: "Campaign Attribution" },
+  { icon: FaMousePointer, title: "Event Tracking" },
+  { icon: FaLightbulb, title: "Monthly Insights" },
 ];
 
 const services = [
   {
+    icon: FaCog,
     title: "Analytics Setup",
     text: "Set up GA4, pixels, tags, events, conversions, and tracking systems correctly across your website.",
   },
   {
+    icon: FaTachometerAlt,
     title: "Dashboard Reporting",
     text: "Create clean reporting dashboards that show traffic, leads, revenue, campaign performance, and growth signals.",
   },
   {
+    icon: FaProjectDiagram,
     title: "Funnel Analysis",
     text: "Identify where users drop, what pages convert, and which journeys create the strongest business results.",
   },
   {
+    icon: FaShareAlt,
     title: "Campaign Attribution",
     text: "Understand which channels, campaigns, ads, and content actually contribute to leads and conversions.",
   },
   {
+    icon: FaEye,
     title: "User Behaviour Insights",
     text: "Study visitor actions, engagement patterns, scroll behaviour, clicks, and conversion intent.",
   },
   {
+    icon: FaRocket,
     title: "Growth Recommendations",
     text: "Turn data into practical action plans for improving marketing, UX, content, and conversion performance.",
   },
 ];
 
-const process = ["Track", "Measure", "Analyse", "Report", "Recommend", "Improve"];
+const process = [
+  { icon: FaDatabase, title: "Track" },
+  { icon: FaChartBar, title: "Measure" },
+  { icon: FaFilter, title: "Analyse" },
+  { icon: FaClipboardList, title: "Report" },
+  { icon: FaLightbulb, title: "Recommend" },
+  { icon: FaRocket, title: "Improve" },
+];
 
 const contentSections = [
   {
@@ -567,9 +598,9 @@ function ContentArticle({ section, index, open, setOpen }) {
         className="flex w-full cursor-pointer items-start justify-between gap-5 px-5 py-5 text-left transition hover:bg-white/45 sm:px-7 sm:py-6"
       >
         <div className="flex gap-4">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-sm font-bold text-white">
-            {(index + 1).toString().padStart(2, "0")}
-          </span>
+         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-white">
+  <FaChartLine />
+</span>
 
           <h2 className="text-xl font-bold uppercase leading-tight text-[#0d2d47] sm:text-2xl lg:text-[27px]">
             {section.title}
@@ -772,22 +803,27 @@ export default function AnalyticsDataPage() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {dataAreas.map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 24, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.035 }}
-                whileHover={{ y: -5 }}
-                className="rounded-2xl border border-[#0d2d47]/10 bg-white/40 p-4 shadow-[0_14px_40px_rgba(13,45,71,0.07)] backdrop-blur-md"
-              >
-                <p className="mb-3 text-sm font-bold text-[#7392FB]">
-                  {(i + 1).toString().padStart(2, "0")}
-                </p>
-                <h3 className="text-base font-bold uppercase">{item}</h3>
-              </motion.div>
-            ))}
+       {dataAreas.map((item, i) => {
+  const Icon = item.icon;
+
+  return (
+    <motion.div
+      key={item.title}
+      initial={{ opacity: 0, y: 24, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.035 }}
+      whileHover={{ y: -6 }}
+      className="group rounded-2xl border border-[#0d2d47]/10 bg-white/50 p-5 shadow-[0_18px_45px_rgba(13,45,71,0.08)] backdrop-blur-md transition hover:bg-white/75"
+    >
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-xl text-[#7392FB] transition group-hover:bg-[#0d2d47] group-hover:text-white">
+        <Icon />
+      </div>
+
+      <h3 className="text-base font-bold uppercase">{item.title}</h3>
+    </motion.div>
+  );
+})}
           </div>
         </div>
       </section>
@@ -819,25 +855,31 @@ export default function AnalyticsDataPage() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((item, i) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -6 }}
-                className="rounded-[22px] border border-white/20 bg-white/12 p-5 backdrop-blur-md"
-              >
-                <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-white text-sm font-bold text-[#0d2d47]">
-                  0{i + 1}
-                </span>
-                <h3 className="text-xl font-bold uppercase">{item.title}</h3>
-                <p className="mt-3 text-base leading-8 text-white/75">
-                  {item.text}
-                </p>
-              </motion.article>
-            ))}
+          {services.map((item, i) => {
+  const Icon = item.icon;
+
+  return (
+    <motion.article
+      key={item.title}
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.05 }}
+      whileHover={{ y: -7 }}
+      className="group rounded-[24px] border border-white/20 bg-white/12 p-6 shadow-[0_22px_65px_rgba(13,45,71,0.18)] backdrop-blur-md transition hover:bg-white/18"
+    >
+      <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-xl text-white ring-1 ring-white/20">
+        <Icon />
+      </span>
+
+      <h3 className="text-xl font-bold uppercase">{item.title}</h3>
+
+      <p className="mt-3 text-base leading-8 text-white/75">
+        {item.text}
+      </p>
+    </motion.article>
+  );
+})}
           </div>
         </div>
       </section>
@@ -856,21 +898,25 @@ export default function AnalyticsDataPage() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-            {process.map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                className="rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-4"
-              >
-                <p className="text-3xl font-bold text-[#0d2d47]/20">
-                  {(i + 1).toString().padStart(2, "0")}
-                </p>
-                <h3 className="mt-4 text-sm font-bold uppercase">{item}</h3>
-              </motion.div>
-            ))}
+           {process.map((item, i) => {
+  const Icon = item.icon;
+
+  return (
+    <motion.div
+      key={item.title}
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.04 }}
+      whileHover={{ y: -5 }}
+      className="rounded-2xl border border-[#0d2d47]/10 bg-gradient-to-br from-[#B6C4E7] to-white/50 p-5 shadow-[0_14px_35px_rgba(13,45,71,0.08)]"
+    >
+      <Icon className="text-2xl text-[#7392FB]" />
+
+      <h3 className="mt-5 text-sm font-bold uppercase">{item.title}</h3>
+    </motion.div>
+  );
+})}
           </div>
         </div>
       </section>

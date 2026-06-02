@@ -25,9 +25,9 @@ export default function BlogPage() {
         <div className="pointer-events-none absolute bottom-[-160px] right-[-120px] h-[340px] w-[340px] rounded-full bg-[#0d2d47]/15 blur-3xl" />
 
         <div className="relative mx-auto max-w-[1400px]">
-          <p className="mb-5 inline-flex rounded-full border border-[#0d2d47]/15 bg-white/25 px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] backdrop-blur-md">
+          {/* <p className="mb-5 inline-flex rounded-full border border-[#0d2d47]/15 bg-white/25 px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] backdrop-blur-md">
             NovaTech Blog
-          </p>
+          </p> */}
 
           <h1 className="max-w-5xl text-[44px] font-semibold uppercase leading-[0.9] tracking-tight sm:text-6xl md:text-[88px] lg:text-[104px]">
             Digital Growth Insights

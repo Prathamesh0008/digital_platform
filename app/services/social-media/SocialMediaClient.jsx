@@ -1,8 +1,37 @@
+//app\services\social-media\SocialMediaClient.jsx
 "use client";
-
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  FaMobileAlt,
+  FaClock,
+  FaShoppingBag,
+  FaChartLine,
+  FaComments,
+  FaInstagram,
+  FaLinkedin,
+  FaFacebookF,
+  FaTiktok,
+  FaYoutube,
+  FaPinterest,
+  FaMicroscope,
+  FaMapMarkedAlt,
+  FaPalette,
+  FaChartBar,
+  FaRobot,
+  FaBullseye,
+  FaPenAlt,
+  FaHandshake,
+  FaSeedling,
+  FaRedoAlt,
+  FaLightbulb,
+  FaEye,
+  FaHeart,
+  FaDollarSign,
+  FaShareAlt,
+  FaChartPie,
+} from "react-icons/fa";
 import { faqs } from "./socialMediaData";
 
 const heroStats = [
@@ -38,66 +67,46 @@ const tickerItems = [
 ];
 
 const whyStats = [
-  {
-    icon: "📱",
-    value: "4.9B",
-    text: "People actively using social media platforms worldwide",
-  },
-  {
-    icon: "⏱️",
-    value: "2.5 hrs",
-    text: "Average daily time spent on social media per user",
-  },
-  {
-    icon: "🛍️",
-    value: "76%",
-    text: "Consumers purchase after discovering a brand on social media",
-  },
-  {
-    icon: "📈",
-    value: "89%",
-    text: "Marketers say social media increases brand awareness",
-  },
-  {
-    icon: "💬",
-    value: "54%",
-    text: "Consumers use social media to research products before buying",
-  },
+  { icon: FaMobileAlt, value: "4.9B", text: "People actively using social media platforms worldwide" },
+  { icon: FaClock, value: "2.5 hrs", text: "Average daily time spent on social media per user" },
+  { icon: FaShoppingBag, value: "76%", text: "Consumers purchase after discovering a brand on social media" },
+  { icon: FaChartLine, value: "89%", text: "Marketers say social media increases brand awareness" },
+  { icon: FaComments, value: "54%", text: "Consumers use social media to research products before buying" },
 ];
 
 const platformCards = [
   {
-    icon: "📸",
+    icon: FaInstagram,
     title: "Instagram",
     text: "Instagram remains the visual center of modern social media marketing. We create Reels, carousel posts, Stories, and live content that stop scrolling and spark real engagement.",
     tags: ["Reels Strategy", "Stories", "Visual Branding", "Influencer Collabs"],
   },
   {
-    icon: "💼",
+    icon: FaLinkedin,
     title: "LinkedIn",
     text: "LinkedIn is powerful for B2B brands, consultants, professional services, and thought leadership. We build authority-driven content and decision-maker engagement.",
     tags: ["Thought Leadership", "B2B Strategy", "Lead Generation"],
   },
   {
-    icon: "📘",
+    icon: FaFacebookF,
     title: "Facebook",
     text: "Facebook supports community-building, retargeting, paid ads, and customer relationship growth for brands targeting broad audiences.",
     tags: ["Community Building", "Facebook Ads", "Retargeting"],
   },
   {
-    icon: "🎵",
+    icon: FaTiktok,
     title: "TikTok",
     text: "TikTok rewards platform-native creativity. We create trend-aware short-form content that makes brands culturally relevant and discoverable.",
     tags: ["Short-Form Video", "Trend Integration", "Viral Content"],
   },
   {
-    icon: "🎬",
+    icon: FaYoutube,
     title: "YouTube",
     text: "YouTube is both a social platform and a search engine. We develop Shorts, long-form video strategy, channel growth, and YouTube SEO.",
     tags: ["YouTube SEO", "Shorts Strategy", "Channel Growth"],
   },
   {
-    icon: "🐦",
+    icon: FaPinterest,
     title: "X & Pinterest",
     text: "X supports real-time conversation while Pinterest supports product and lifestyle discovery. We tailor both for visibility and referral traffic.",
     tags: ["Real-Time Marketing", "Pinterest SEO", "Trend Monitoring"],
@@ -106,22 +115,22 @@ const platformCards = [
 
 const strategySteps = [
   {
-    icon: "🔬",
+    icon: FaMicroscope,
     title: "Discovery & Audit",
     text: "We audit your current social presence, competitors, audience behaviour, and missed opportunities to create a strong foundation.",
   },
   {
-    icon: "🗺️",
+    icon: FaMapMarkedAlt,
     title: "Strategy & Planning",
     text: "We build your roadmap including content pillars, platform priorities, brand voice, posting cadence, and campaign goals.",
   },
   {
-    icon: "🎨",
+    icon: FaPalette,
     title: "Content Creation",
     text: "We create platform-native content including Reels, graphics, carousels, Stories, captions, and interactive content.",
   },
   {
-    icon: "📊",
+    icon: FaChartBar,
     title: "Optimize & Scale",
     text: "We track engagement, reach, conversions, audience response, and campaign data to improve performance every month.",
   },
@@ -162,22 +171,22 @@ const contentTypes = [
 
 const aiFeatures = [
   {
-    icon: "🤖",
+    icon: FaRobot,
     title: "AI Content Intelligence",
     text: "AI tools help identify trends, content opportunities, and audience interests before they peak.",
   },
   {
-    icon: "🎯",
+    icon: FaBullseye,
     title: "Predictive Audience Targeting",
     text: "Machine learning helps refine posting times, audience segments, and campaign targeting.",
   },
   {
-    icon: "📝",
+    icon: FaPenAlt,
     title: "Content Personalization",
     text: "Dynamic content variations help brands speak to different audience segments more effectively.",
   },
   {
-    icon: "📊",
+    icon: FaChartBar,
     title: "Performance Forecasting",
     text: "AI-assisted dashboards help forecast KPIs and highlight optimization opportunities.",
   },
@@ -204,43 +213,42 @@ const results = [
 
 const values = [
   {
-    icon: "🤝",
+    icon: FaHandshake,
     title: "Authentic Communication",
     text: "Social media content that reflects your real brand personality and values.",
   },
   {
-    icon: "🌱",
+    icon: FaSeedling,
     title: "Community-First Mindset",
     text: "We focus on building loyal communities, not only chasing follower counts.",
   },
   {
-    icon: "🎯",
+    icon: FaBullseye,
     title: "Audience-Driven Content",
     text: "Every decision is based on what your audience needs, likes, and responds to.",
   },
   {
-    icon: "🔄",
+    icon: FaRedoAlt,
     title: "Consistent Brand Voice",
     text: "Your brand communicates with a unified tone across every social platform.",
   },
   {
-    icon: "💡",
+    icon: FaLightbulb,
     title: "Value Before Promotion",
     text: "We lead with education, entertainment, usefulness, and trust-building content.",
   },
 ];
 
 const metrics = [
-  ["📈", "Engagement Rate", "Likes, comments, shares"],
-  ["👁️", "Reach & Impressions", "Unique views per platform"],
-  ["📊", "Follower Growth", "Community size and velocity"],
-  ["💰", "Conversion Tracking", "Social to revenue attribution"],
-  ["🎯", "Click-Through Rate", "Traffic from social media"],
-  ["❤️", "Audience Sentiment", "Brand perception analysis"],
-  ["🔁", "Share Of Voice", "Competitor comparison"],
-  ["📉", "Cost Per Acquisition", "Paid social efficiency"],
+  { icon: FaChartLine, title: "Engagement Rate", sub: "Likes, comments, shares" },
+  { icon: FaEye, title: "Reach & Impressions", sub: "Unique views per platform" },
+  { icon: FaChartBar, title: "Follower Growth", sub: "Community size and velocity" },
+  { icon: FaDollarSign, title: "Conversion Tracking", sub: "Social to revenue attribution" },
+  { icon: FaBullseye, title: "Click-Through Rate", sub: "Traffic from social media" },
+  { icon: FaHeart, title: "Audience Sentiment", sub: "Brand perception analysis" },
+  { icon: FaShareAlt, title: "Share Of Voice", sub: "Competitor comparison" },
+  { icon: FaChartPie, title: "Cost Per Acquisition", sub: "Paid social efficiency" },
 ];
-
 const investmentItems = [
   "Premium brand positioning through consistent social media presence",
   "Reduced customer acquisition cost as organic visibility grows",
@@ -312,9 +320,9 @@ export default function SocialMediaClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
-            <p className="mb-5 inline-flex bg-[#0d2d47] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(115,146,251,0.45)]">
+            {/* <p className="mb-5 inline-flex bg-[#0d2d47] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(115,146,251,0.45)]">
               Nova Techscience · Social Media Services
-            </p>
+            </p> */}
 
             <h1 className="max-w-4xl text-[42px] font-black uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl lg:text-[86px]">
               Social Media That Builds{" "}
@@ -405,7 +413,7 @@ export default function SocialMediaClient() {
         <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[1.12fr_0.88fr]">
           <div>
             <SectionHeader
-              eyebrow="Why It Matters"
+              // eyebrow="Why It Matters"
               title="Why Social Media Is The Foundation Of Modern Growth"
             />
 
@@ -458,7 +466,10 @@ export default function SocialMediaClient() {
                 className="flex items-center gap-4 rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-4 shadow-[4px_4px_0_rgba(13,45,71,0.08)] backdrop-blur-md"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#C4CFE3] text-2xl">
-                  {item.icon}
+                  {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                 </span>
                 <div>
                   <p className="text-2xl font-black text-[#7392FB]">
@@ -478,7 +489,7 @@ export default function SocialMediaClient() {
       <section className="bg-white px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Platform Expertise"
+            // eyebrow="Platform Expertise"
             title="Social Media Platforms We Master For Your Brand"
             text="Every platform has its own audience, culture, and algorithm. Nova Techscience creates platform-specific strategies for visibility, engagement, and conversion."
           />
@@ -497,7 +508,10 @@ export default function SocialMediaClient() {
                 <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-[#7392FB] transition group-hover:scale-x-100" />
 
                 <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C4CFE3] text-3xl">
-                  {item.icon}
+                  {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                 </span>
 
                 <h3 className="text-2xl font-black uppercase">
@@ -534,7 +548,7 @@ export default function SocialMediaClient() {
       >
         <div className="mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Our Process"
+            // eyebrow="Our Process"
             title="Nova Techscience's 4-Step Social Media Strategy Framework"
             text="Every social media success story starts with a structured, research-driven process."
             light
@@ -554,7 +568,10 @@ export default function SocialMediaClient() {
                   {(i + 1).toString().padStart(2, "0")}
                 </p>
 
-                <span className="mt-4 block text-3xl">{item.icon}</span>
+                <span className="mt-4 block text-3xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
 
                 <h3 className="mt-4 text-xl font-black uppercase">
                   {item.title}
@@ -573,7 +590,7 @@ export default function SocialMediaClient() {
       <section className="bg-[#EAEBDB] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Content Excellence"
+            // eyebrow="Content Excellence"
             title="Types Of Social Media Content Nova Techscience Creates"
             text="Great results begin with outstanding content. We produce every format your brand needs to dominate social media."
           />
@@ -633,7 +650,10 @@ export default function SocialMediaClient() {
                   key={item.title}
                   className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4"
                 >
-                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-2xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
                   <div>
                     <h3 className="text-base font-black uppercase text-white">
                       {item.title}
@@ -649,7 +669,7 @@ export default function SocialMediaClient() {
 
           <div>
             <SectionHeader
-              eyebrow="AI-Powered Approach"
+              // eyebrow="AI-Powered Approach"
               title="How Nova Techscience Uses AI To Supercharge Social Media Results"
             />
 
@@ -711,7 +731,7 @@ export default function SocialMediaClient() {
         <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <SectionHeader
-              eyebrow="Human-First Philosophy"
+              // eyebrow="Human-First Philosophy"
               title="Building Brands That People Genuinely Connect With"
             />
 
@@ -740,7 +760,10 @@ export default function SocialMediaClient() {
                 transition={{ delay: i * 0.05 }}
                 className="flex gap-4 rounded-2xl border border-[#0d2d47]/10 bg-white/50 p-4 backdrop-blur-md transition hover:translate-x-1"
               >
-                <span className="text-3xl">{item.icon}</span>
+                <span className="text-3xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
                 <div>
                   <h3 className="text-base font-black uppercase">
                     {item.title}
@@ -760,7 +783,7 @@ export default function SocialMediaClient() {
         <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <SectionHeader
-              eyebrow="Data & Analytics"
+              // eyebrow="Data & Analytics"
               title="Social Media Analytics That Drive Smarter Decisions"
             />
 
@@ -780,7 +803,7 @@ export default function SocialMediaClient() {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            {metrics.map(([icon, title, sub], i) => (
+            {metrics.map(({ icon: Icon, title, sub }, i) => (
               <motion.div
                 key={title}
                 initial={{ opacity: 0, y: 22 }}
@@ -789,7 +812,9 @@ export default function SocialMediaClient() {
                 transition={{ delay: i * 0.035 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-white/50 p-4 text-center shadow-[4px_4px_0_rgba(13,45,71,0.08)] backdrop-blur-md"
               >
-                <span className="text-2xl">{icon}</span>
+               <span className="text-2xl">
+  <Icon />
+</span>
                 <p className="mt-2 text-sm font-black uppercase">{title}</p>
                 <p className="mt-1 text-xs leading-snug text-[#0d2d47]/55">
                   {sub}
@@ -805,7 +830,7 @@ export default function SocialMediaClient() {
         <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <SectionHeader
-              eyebrow="The Business Case"
+              // eyebrow="The Business Case"
               title="Social Media Is A Long-Term Business Investment"
             />
 
@@ -892,7 +917,7 @@ export default function SocialMediaClient() {
         <div className="mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <SectionHeader
-              eyebrow="The Future Of Social Media Marketing"
+              // eyebrow="The Future Of Social Media Marketing"
               title="Relevance, Engagement Quality And AI Recommendations"
             />
 
@@ -972,9 +997,9 @@ export default function SocialMediaClient() {
           viewport={{ once: true }}
           className="mx-auto max-w-[1180px] text-center"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#7392FB]">
+          {/* <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[#7392FB]">
             Get Started
-          </p>
+          </p> */}
 
           <h2 className="mx-auto max-w-5xl text-4xl font-black uppercase leading-tight tracking-tight sm:text-5xl md:text-6xl">
             Ready To Transform Your{" "}

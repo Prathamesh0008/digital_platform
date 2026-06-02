@@ -4,7 +4,24 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import {
+  FaSearch,
+  FaMobileAlt,
+  FaLinkedin,
+  FaYoutube,
+  FaShoppingCart,
+  FaRedoAlt,
+  FaMicroscope,
+  FaCompass,
+  FaPalette,
+  FaChartBar,
+  FaBullseye,
+  FaChartLine,
+  FaEye,
+  FaMousePointer,
+  FaDollarSign,
+  FaPhoneAlt,
+} from "react-icons/fa";
 const heroStats = [
   { value: "$12.5K", label: "Tracked ad spend sample" },
   { value: "4.8x", label: "Return on ad spend" },
@@ -27,37 +44,37 @@ const tickerItems = [
 
 const platformCards = [
   {
-    icon: "🔍",
+    icon: FaSearch,
     title: "Google Ads",
     text: "Capture high-intent users through search, display, shopping, and conversion-led paid campaigns.",
     tags: ["Search Intent", "PPC", "Shopping Ads"],
   },
   {
-    icon: "📱",
+    icon: FaMobileAlt,
     title: "Meta Ads",
     text: "Build awareness, retarget interested users, and generate leads across Facebook and Instagram.",
     tags: ["Facebook Ads", "Instagram Ads", "Retargeting"],
   },
   {
-    icon: "💼",
+    icon: FaLinkedin,
     title: "LinkedIn Ads",
     text: "Reach B2B decision-makers with account-based campaigns, lead forms, and industry targeting.",
     tags: ["B2B Leads", "Decision Makers", "Lead Forms"],
   },
   {
-    icon: "▶️",
+    icon: FaYoutube,
     title: "YouTube Ads",
     text: "Use video campaigns to build trust, explain offers, increase recall, and drive conversion intent.",
     tags: ["Video Ads", "Brand Recall", "Awareness"],
   },
   {
-    icon: "🛒",
+    icon: FaShoppingCart,
     title: "Ecommerce Ads",
     text: "Track product views, add-to-cart actions, purchases, and ROAS across ecommerce campaigns.",
     tags: ["ROAS", "Cart Recovery", "Product Ads"],
   },
   {
-    icon: "🔁",
+    icon: FaRedoAlt,
     title: "Remarketing",
     text: "Reconnect with warm audiences who visited your website, viewed products, or started checkout.",
     tags: ["Warm Traffic", "Funnels", "Repeat Touchpoints"],
@@ -66,22 +83,22 @@ const platformCards = [
 
 const strategySteps = [
   {
-    icon: "🔬",
+    icon: FaMicroscope,
     title: "Audit & Research",
     text: "We review your current ads, funnel, audience, tracking, competitors, and landing page performance.",
   },
   {
-    icon: "🧭",
+    icon: FaCompass,
     title: "Strategy & Setup",
     text: "We define campaign objectives, platforms, budgets, audience targeting, tracking, and launch structure.",
   },
   {
-    icon: "🎨",
+    icon: FaPalette,
     title: "Creative Testing",
     text: "We test hooks, headlines, visuals, CTAs, offers, and landing page angles to find what converts.",
   },
   {
-    icon: "📊",
+    icon: FaChartBar,
     title: "Optimize & Scale",
     text: "We shift budget to winners, reduce wasted spend, improve lead quality, and scale profitable campaigns.",
   },
@@ -89,27 +106,27 @@ const strategySteps = [
 
 const whyStats = [
   {
-    icon: "🎯",
+    icon: FaBullseye,
     value: "High Intent",
     text: "Reach users already searching, comparing, or ready to take action.",
   },
   {
-    icon: "📉",
+    icon: FaDollarSign,
     value: "Lower CPA",
     text: "Improve cost efficiency through testing, targeting, and tracking.",
   },
   {
-    icon: "📈",
+    icon: FaChartLine,
     value: "Fast Growth",
     text: "Generate traffic, enquiries, leads, and sales faster than organic alone.",
   },
   {
-    icon: "🔍",
+    icon: FaSearch,
     value: "Clear Data",
     text: "Understand which platform, campaign, ad, and audience creates results.",
   },
   {
-    icon: "🔁",
+    icon: FaRedoAlt,
     value: "Remarketing",
     text: "Bring back warm users who did not convert on their first visit.",
   },
@@ -156,14 +173,14 @@ const contentTypes = [
 ];
 
 const analyticsMetrics = [
-  ["👁️", "Impressions", "Campaign visibility"],
-  ["🖱️", "Clicks", "Ad engagement"],
-  ["📊", "CTR", "Click-through rate"],
-  ["💰", "CPC", "Cost per click"],
-  ["🎯", "CPL", "Cost per lead"],
-  ["🛒", "ROAS", "Ad revenue return"],
-  ["📞", "Calls", "Lead actions"],
-  ["🔁", "Retargeting", "Warm audience results"],
+  { icon: FaEye, title: "Impressions", sub: "Campaign visibility" },
+  { icon: FaMousePointer, title: "Clicks", sub: "Ad engagement" },
+  { icon: FaChartBar, title: "CTR", sub: "Click-through rate" },
+  { icon: FaDollarSign, title: "CPC", sub: "Cost per click" },
+  { icon: FaBullseye, title: "CPL", sub: "Cost per lead" },
+  { icon: FaShoppingCart, title: "ROAS", sub: "Ad revenue return" },
+  { icon: FaPhoneAlt, title: "Calls", sub: "Lead actions" },
+  { icon: FaRedoAlt, title: "Retargeting", sub: "Warm audience results" },
 ];
 
 const contentSections = [
@@ -874,7 +891,7 @@ function FAQAccordion() {
       <div className="mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <SectionHeader
-            eyebrow="Performance Ads FAQs"
+            // eyebrow="Performance Ads FAQs"
             title="Common Questions About Paid Growth"
             text="Open each question to understand how performance advertising works, how it is tracked, and how it can support business growth."
           />
@@ -1028,7 +1045,7 @@ export default function PerformanceAdsPage() {
         <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[1.12fr_0.88fr]">
           <div>
             <SectionHeader
-              eyebrow="Why It Matters"
+              // eyebrow="Why It Matters"
               title="Performance Ads Turn Budget Into Measurable Growth"
             />
 
@@ -1079,7 +1096,10 @@ export default function PerformanceAdsPage() {
                 className="flex items-center gap-4 rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-4 shadow-[4px_4px_0_rgba(13,45,71,0.08)] backdrop-blur-md"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#C4CFE3] text-2xl">
-                  {item.icon}
+                  {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                 </span>
                 <div>
                   <p className="text-2xl font-black text-[#7392FB]">
@@ -1099,7 +1119,7 @@ export default function PerformanceAdsPage() {
       <section className="bg-white px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Platform Expertise"
+            // eyebrow="Platform Expertise"
             title="Paid Media Platforms We Manage For Growth"
             text="Every ad platform behaves differently. We build platform-specific campaigns for search intent, social discovery, B2B targeting, video awareness, ecommerce sales and remarketing."
           />
@@ -1118,7 +1138,10 @@ export default function PerformanceAdsPage() {
                 <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-[#7392FB] transition group-hover:scale-x-100" />
 
                 <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C4CFE3] text-3xl">
-                  {item.icon}
+                  {(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}
                 </span>
 
                 <h3 className="text-2xl font-black uppercase">
@@ -1155,7 +1178,7 @@ export default function PerformanceAdsPage() {
       >
         <div className="mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Our Process"
+            // eyebrow="Our Process"
             title="Nova Techscience's 4-Step Performance Ads Framework"
             text="Every successful paid campaign starts with research, tracking, structured testing and continuous optimization."
             light
@@ -1175,7 +1198,10 @@ export default function PerformanceAdsPage() {
                   {(i + 1).toString().padStart(2, "0")}
                 </p>
 
-                <span className="mt-4 block text-3xl">{item.icon}</span>
+                <span className="mt-4 block text-3xl">{(() => {
+  const Icon = item.icon;
+  return <Icon />;
+})()}</span>
 
                 <h3 className="mt-4 text-xl font-black uppercase">
                   {item.title}
@@ -1194,7 +1220,7 @@ export default function PerformanceAdsPage() {
       <section className="bg-[#EAEBDB] px-4 py-14 sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Campaign Excellence"
+            // eyebrow="Campaign Excellence"
             title="Performance Advertising Systems We Build"
             text="Each campaign format is designed to support a specific business goal, from awareness and traffic to lead generation, ecommerce sales and remarketing."
           />
@@ -1239,7 +1265,7 @@ export default function PerformanceAdsPage() {
       <section className="bg-[#7392FB] px-4 py-14 text-white sm:px-6 md:px-10 md:py-20">
         <div className="mx-auto max-w-[1180px] text-center">
           <SectionHeader
-            eyebrow="Proven Results"
+            // eyebrow="Proven Results"
             title="Paid Campaign Results Built Around Measurable Action"
             text="We focus on metrics that matter: cost per lead, conversion rate, ROAS, lead quality, revenue and campaign scalability."
             light
@@ -1270,7 +1296,7 @@ export default function PerformanceAdsPage() {
         <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <SectionHeader
-              eyebrow="Data & Analytics"
+              // eyebrow="Data & Analytics"
               title="Performance Tracking That Shows What Actually Works"
             />
 
@@ -1289,7 +1315,7 @@ export default function PerformanceAdsPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            {analyticsMetrics.map(([icon, title, sub], i) => (
+    {analyticsMetrics.map(({ icon: Icon, title, sub }, i) => (
               <motion.div
                 key={title}
                 initial={{ opacity: 0, y: 22 }}
@@ -1298,7 +1324,7 @@ export default function PerformanceAdsPage() {
                 transition={{ delay: i * 0.035 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-white/50 p-4 text-center shadow-[4px_4px_0_rgba(13,45,71,0.08)] backdrop-blur-md"
               >
-                <span className="text-2xl">{icon}</span>
+                <span className="text-2xl">{Icon}</span>
                 <p className="mt-2 text-sm font-black uppercase">{title}</p>
                 <p className="mt-1 text-xs leading-snug text-[#0d2d47]/55">
                   {sub}
@@ -1316,7 +1342,7 @@ export default function PerformanceAdsPage() {
 
         <div className="relative mx-auto max-w-[1180px]">
           <SectionHeader
-            eyebrow="Complete Performance Ads Strategy"
+            // eyebrow="Complete Performance Ads Strategy"
             title="Explore Our Full Paid Growth Framework"
             text="Open each section to read the full Performance Ads, GEO, AEO, lead generation, ecommerce, tracking, targeting and optimisation strategy."
           />

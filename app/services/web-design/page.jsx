@@ -4,14 +4,26 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  FaMobileAlt,
+  FaPalette,
+  FaSearch,
+  FaRocket,
+  FaEdit,
+  FaShoppingCart,
+  FaSitemap,
+  FaCode,
+  FaVial,
+  FaHeadset,
+} from "react-icons/fa";
 
 const features = [
-  "Responsive website design",
-  "Custom UI/UX design",
-  "SEO-friendly structure",
-  "Fast loading performance",
-  "CMS-ready architecture",
-  "Conversion-focused layouts",
+  { icon: FaMobileAlt, title: "Responsive website design" },
+  { icon: FaPalette, title: "Custom UI/UX design" },
+  { icon: FaSearch, title: "SEO-friendly structure" },
+  { icon: FaRocket, title: "Fast loading performance" },
+  { icon: FaEdit, title: "CMS-ready architecture" },
+  { icon: FaShoppingCart, title: "Conversion-focused layouts" },
 ];
 
 const websiteTypes = [
@@ -34,12 +46,12 @@ const websiteTypes = [
 ];
 
 const process = [
-  "Discovery & Planning",
-  "UI/UX Wireframe",
-  "Website Design",
-  "Development",
-  "Testing & Optimization",
-  "Launch & Support",
+  { icon: FaSitemap, title: "Discovery & Planning" },
+  { icon: FaPalette, title: "UI/UX Wireframe" },
+  { icon: FaCode, title: "Website Design" },
+  { icon: FaRocket, title: "Development" },
+  { icon: FaVial, title: "Testing & Optimization" },
+  { icon: FaHeadset, title: "Launch & Support" },
 ];
 
 const contentSections = [
@@ -593,10 +605,15 @@ export default function WebDesignPage() {
                 whileHover={{ y: -5 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-white/40 p-4 shadow-[0_14px_40px_rgba(13,45,71,0.07)] backdrop-blur-md"
               >
-                <p className="mb-3 text-sm font-bold text-[#7392FB]">
+                {/* <p className="mb-3 text-sm font-bold text-[#7392FB]">
                   {(i + 1).toString().padStart(2, "0")}
-                </p>
-                <h3 className="text-base font-bold uppercase">{item}</h3>
+                </p> */}
+        {(() => {
+  const Icon = item.icon;
+  return <Icon className="mb-3 text-2xl text-[#7392FB]" />;
+})()}
+
+<h3 className="text-base font-bold uppercase">{item.title}</h3>
               </motion.div>
             ))}
           </div>
@@ -671,10 +688,10 @@ export default function WebDesignPage() {
                 transition={{ delay: i * 0.04 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-4"
               >
-                <p className="text-3xl font-bold text-[#0d2d47]/20">
+                {/* <p className="text-3xl font-bold text-[#0d2d47]/20">
                   {(i + 1).toString().padStart(2, "0")}
-                </p>
-                <h3 className="mt-4 text-sm font-bold uppercase">{item}</h3>
+                </p> */}
+             <h3 className="mt-4 text-sm font-bold uppercase">{item.title}</h3>
               </motion.div>
             ))}
           </div>

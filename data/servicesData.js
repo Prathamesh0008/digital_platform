@@ -1,3 +1,4 @@
+//data\servicesData.js
 export const services = [
   {
     slug: "brand-strategy",
@@ -33,9 +34,10 @@ export const services = [
     ],
   },
   {
-    slug: "programming ads",
-    title: "Programming Ads",
-    desc: "Custom programming solutions for websites, web apps, automation, dashboards, backend systems, and scalable digital products.",
+ 
+  slug: "performance-ads",
+  title: "Performance Ads",
+  desc: "Drive qualified traffic, leads, enquiries, and sales through Google Ads, Meta Ads, remarketing, conversion tracking, and campaign optimization.",
     details: [
       "Frontend and backend development",
       "Custom web application development",
@@ -55,7 +57,7 @@ export const services = [
     ],
   },
   {
-    slug: "e-commerce-growth",
+    slug: "ecommerce-growth",
     title: "E-Commerce Growth",
     desc: "Grow online sales with optimized product pages, conversion strategy, SEO, performance marketing, and customer journey improvements.",
     details: [
@@ -66,7 +68,7 @@ export const services = [
     ],
   },
   {
-    slug: "analytics-and-data",
+    slug: "analytics-data",
     title: "Analytics and Data",
     desc: "Track, measure, and improve business performance using analytics setup, reporting dashboards, conversion tracking, and data insights.",
     details: [
@@ -76,4 +78,15 @@ export const services = [
       "Data-driven growth insights",
     ],
   },
+  {
+  slug: "geo-service",
+  title: "GEO Service",
+  desc: "Improve AI search visibility with generative engine optimization, answer-focused content, entity building, and AI-ready digital structure.",
+  details: [
+    "AI search optimization",
+    "Answer engine optimization",
+    "Entity building",
+    "Generative search visibility",
+  ],
+},
 ];

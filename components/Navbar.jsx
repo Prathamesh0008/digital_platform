@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import Link from "next/link";
@@ -43,8 +45,9 @@ export default function Navbar() {
     { name: "About", href: "/about" },
     { name: "Services", href: "/services", hasDropdown: true },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact", href: "/contact" },
     { name: "Blog", href: "/services/blog" },
+    { name: "Contact", href: "/contact" },
+    
   ];
 
   useEffect(() => {
@@ -90,19 +93,15 @@ export default function Navbar() {
   }, [isOpen, mobileServicesOpen]);
 
   // Handle word rotation with "Start Project" staying longer
-  useEffect(() => {
-    const durations = [3000, 1500, 1500, 1500]; // Start Project: 3s, others: 1.5s
-    let timeoutId;
+ useEffect(() => {
+  const durations = [2800, 1500, 1500, 1500];
 
-    const rotateWord = () => {
-      setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
-      timeoutId = setTimeout(rotateWord, durations[(currentWordIndex + 1) % rotatingWords.length]);
-    };
+  const timeoutId = setTimeout(() => {
+    setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
+  }, durations[currentWordIndex]);
 
-    timeoutId = setTimeout(rotateWord, durations[0]);
-
-    return () => clearTimeout(timeoutId);
-  }, [currentWordIndex]);
+  return () => clearTimeout(timeoutId);
+}, [currentWordIndex]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
@@ -221,34 +220,30 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <Link
-              href="/contact"
-              className="group relative hidden h-11 w-[168px] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-black via-[#1a1a1a] to-black px-3 text-sm font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(230,79,14,0.35)] focus:outline-none focus:ring-2 focus:ring-[#f97316]/50 md:inline-flex"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#f97316]/0 via-[#f97316]/15 to-[#f97316]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
-              <span className="absolute inset-0 rounded-xl text-white blur-md transition-opacity duration-300 group-hover:opacity-100" />
-              
-              <span className="relative flex h-7 w-full items-center justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentWordIndex}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute font-serif text-base font-bold  tracking-wide  text-white drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap"
-                  >
-                    {rotatingWords[currentWordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-              
-              <span className="absolute right-3 flex -translate-x-2 items-center justify-center opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                <svg className="h-4 w-4 text-[#f97316]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
-            
+  href="/contact"
+  className="group relative hidden h-11 w-[176px] items-center justify-between overflow-hidden rounded-full bg-[#0d2d47] px-3 text-sm font-bold text-white shadow-[0_12px_32px_rgba(13,45,71,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(115,146,251,0.35)] md:inline-flex"
+>
+  <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/35 to-[#7392FB]/0 opacity-0 transition duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
+
+  <span className="relative flex h-7 min-w-0 flex-1 items-center overflow-hidden px-2">
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={currentWordIndex}
+        initial={{ y: 16, opacity: 0, filter: "blur(4px)" }}
+        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+        exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
+        transition={{ duration: 0.28, ease: "easeOut" }}
+        className="absolute whitespace-nowrap text-[14px] tracking-wide"
+      >
+        {rotatingWords[currentWordIndex]}
+      </motion.span>
+    </AnimatePresence>
+  </span>
+
+  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#0d2d47] transition group-hover:translate-x-0.5">
+    →
+  </span>
+</Link>
             <button
               type="button"
               onClick={() => setIsOpen((prev) => !prev)}
@@ -383,28 +378,32 @@ export default function Navbar() {
                     );
                   })}
                 </nav>
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="group relative mt-3 inline-flex h-12 w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-black via-[#1a1a1a] to-black px-4 text-sm font-semibold shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(230,79,14,0.3)]"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#f97316]/0 via-[#f97316]/10 to-[#f97316]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
-                  
-                  <span className="relative flex h-7 w-full items-center justify-center">
-                    <AnimatePresence mode="wait">
-                      <motion.span
-                        key={currentWordIndex}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute font-serif text-base font-bold italic tracking-wide bg-gradient-to-r from-[#ffb15c] via-[#ff6a1a] to-[#e64f0e] bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] whitespace-nowrap"
-                      >
-                        {rotatingWords[currentWordIndex]}
-                      </motion.span>
-                    </AnimatePresence>
-                  </span>
-                </Link>
+           <Link
+  href="/contact"
+  onClick={() => setIsOpen(false)}
+  className="group relative mt-3 inline-flex h-12 w-full items-center justify-between overflow-hidden rounded-full bg-[#0d2d47] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(13,45,71,0.28)]"
+>
+  <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/30 to-[#7392FB]/0 opacity-70 animate-shimmer" />
+
+  <span className="relative flex h-7 flex-1 items-center overflow-hidden">
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={currentWordIndex}
+        initial={{ y: 16, opacity: 0, filter: "blur(4px)" }}
+        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+        exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
+        transition={{ duration: 0.28, ease: "easeOut" }}
+        className="absolute whitespace-nowrap text-[15px] tracking-wide"
+      >
+        {rotatingWords[currentWordIndex]}
+      </motion.span>
+    </AnimatePresence>
+  </span>
+
+  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#0d2d47]">
+    →
+  </span>
+</Link>
               </div>
             </motion.div>
           )}
@@ -428,3 +427,10 @@ export default function Navbar() {
     </header>
   );
 }
+
+
+
+
+
+
+
