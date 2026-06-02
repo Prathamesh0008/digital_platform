@@ -68,7 +68,7 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
    <section
@@ -120,15 +120,15 @@ export default function FAQSection() {
                   className="flex w-full cursor-pointer items-start justify-between gap-5 px-5 py-5 text-left sm:px-6"
                 >
                   <div className="flex gap-4">
-                    <span
-                      className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs ${
-                        isOpen
-                          ? "bg-white text-black"
-                          : "bg-black text-white"
-                      }`}
-                    >
-                      <FaQuestion />
-                    </span>
+                   <span
+  className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+    isOpen
+      ? "bg-white text-black"
+      : "bg-black text-white"
+  }`}
+>
+  Q
+</span>
 
                     <h3 className="text-sm font-semibold leading-6 md:text-base">
                       {faq.question}
