@@ -152,58 +152,58 @@ export default function NovaLogoPreloader({ onComplete }) {
         },
       });
 
-      tl.to(outlineShapes, {
-        strokeDashoffset: 0,
-        duration: 0.35,
-        stagger: 0.02,
-      })
-        .add("fillStart", "-=0.25")
-        .to(
-          novatechFill,
-          {
-            autoAlpha: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 0.2,
-            stagger: 0.035,
-          },
-          "fillStart"
-        )
-        .to(
-          outlineShapes,
-          {
-            autoAlpha: 0,
-            duration: 0.18,
-          },
-          "fillStart+=0.08"
-        )
-        .set(outlineShapes, {
-          autoAlpha: 0,
-          visibility: "hidden",
-        })
-        .to(scienceFill, {
-          autoAlpha: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.18,
-          stagger: 0.035,
-        })
-        .to(svg, {
-          scale: 1.02,
-          duration: 0.12,
-        })
-        .to(svg, {
-          scale: 1,
-          duration: 0.16,
-        })
-        .to({}, { duration: 0.05 })
-        .to(preloaderRef.current, {
-          autoAlpha: 0,
-          scale: 1.03,
-          duration: 0.2,
-          ease: "power2.inOut",
-        });
-
+     tl.to(outlineShapes, {
+  strokeDashoffset: 0,
+  duration: 0.9,
+  stagger: 0.045,
+})
+  .add("fillStart", "-=0.35")
+  .to(
+    novatechFill,
+    {
+      autoAlpha: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.45,
+      stagger: 0.06,
+    },
+    "fillStart"
+  )
+  .to(
+    outlineShapes,
+    {
+      autoAlpha: 0,
+      duration: 0.35,
+    },
+    "fillStart+=0.25"
+  )
+  .set(outlineShapes, {
+    autoAlpha: 0,
+    visibility: "hidden",
+  })
+  .to(scienceFill, {
+    autoAlpha: 1,
+    y: 0,
+    filter: "blur(0px)",
+    duration: 0.45,
+    stagger: 0.06,
+  })
+  .to(svg, {
+    scale: 1.04,
+    duration: 0.25,
+  })
+  .to(svg, {
+    scale: 1,
+    duration: 0.25,
+  })
+  .to({}, { duration: 0.35 })
+  .to(preloaderRef.current, {
+    autoAlpha: 0,
+    scale: 1.03,
+    duration: 0.45,
+    ease: "power2.inOut",
+  });
+       
       return () => tl.kill();
     },
     {
@@ -227,3 +227,4 @@ export default function NovaLogoPreloader({ onComplete }) {
     </div>
   );
 }
+

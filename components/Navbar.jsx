@@ -75,22 +75,23 @@ export default function Navbar() {
 
     return () => cancelAnimationFrame(frame);
   }, [pathname]);
+  
+//push website down when mobile services dropdown is open to prevent content jump when it opens/closes
+  // useEffect(() => {
+  //   const isMobile = window.matchMedia("(max-width: 1023px)").matches;
 
-  useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+  //   document.body.style.transition = "padding-top 0.35s ease";
 
-    document.body.style.transition = "padding-top 0.35s ease";
+  //   if (isMobile && isOpen) {
+  //     document.body.style.paddingTop = mobileServicesOpen ? "620px" : "430px";
+  //   } else {
+  //     document.body.style.paddingTop = "0px";
+  //   }
 
-    if (isMobile && isOpen) {
-      document.body.style.paddingTop = mobileServicesOpen ? "620px" : "430px";
-    } else {
-      document.body.style.paddingTop = "0px";
-    }
-
-    return () => {
-      document.body.style.paddingTop = "0px";
-    };
-  }, [isOpen, mobileServicesOpen]);
+  //   return () => {
+  //     document.body.style.paddingTop = "0px";
+  //   };
+  // }, [isOpen, mobileServicesOpen]);
 
   // Handle word rotation with "Start Project" staying longer
  useEffect(() => {
@@ -119,7 +120,7 @@ export default function Navbar() {
               alt="NovaTechscience"
               width={230}
               height={88}
-              className="h-auto w-[150px] sm:w-[150px] md:w-[180px]"
+          className="h-auto w-[190px] sm:w-[210px] md:w-[180px]"
               priority
             />
           </Link>
@@ -221,11 +222,11 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <Link
   href="/contact"
-  className="group relative hidden h-11 w-[176px] items-center justify-between overflow-hidden rounded-full bg-[#0d2d47] px-3 text-sm font-bold text-white shadow-[0_12px_32px_rgba(13,45,71,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(115,146,251,0.35)] md:inline-flex"
+  className="group relative hidden h-12 w-[178px] items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-3 text-sm font-bold text-white shadow-[0_12px_32px_rgba(13,45,71,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(115,146,251,0.35)] md:inline-flex"
 >
   <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/35 to-[#7392FB]/0 opacity-0 transition duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
 
-  <span className="relative flex h-7 min-w-0 flex-1 items-center overflow-hidden px-2">
+<span className="relative flex h-12 min-w-0 flex-1 items-center justify-center overflow-visible px-2 text-center">
     <AnimatePresence mode="wait">
       <motion.span
         key={currentWordIndex}
@@ -233,7 +234,8 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
         exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
         transition={{ duration: 0.28, ease: "easeOut" }}
-        className="absolute whitespace-nowrap text-[14px] tracking-wide"
+     className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] font-normal"
+        style={{ fontFamily: "'Great Vibes', cursive" }}
       >
         {rotatingWords[currentWordIndex]}
       </motion.span>
@@ -272,13 +274,13 @@ export default function Navbar() {
 
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden lg:hidden"
-            >
+          <motion.div
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -10 }}
+  transition={{ duration: 0.25, ease: "easeOut" }}
+  className="max-h-[calc(100vh-110px)] overflow-y-auto overscroll-contain lg:hidden"
+>
               <div className="border-t border-black/10 p-4 pt-3">
                 <nav className="flex flex-col gap-2">
                   {links.map((link) => {
@@ -381,11 +383,10 @@ export default function Navbar() {
            <Link
   href="/contact"
   onClick={() => setIsOpen(false)}
-  className="group relative mt-3 inline-flex h-12 w-full items-center justify-between overflow-hidden rounded-full bg-[#0d2d47] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(13,45,71,0.28)]"
+ className="group relative mt-3 inline-flex h-12 w-full items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(13,45,71,0.28)]"
 >
   <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/30 to-[#7392FB]/0 opacity-70 animate-shimmer" />
-
-  <span className="relative flex h-7 flex-1 items-center overflow-hidden">
+<span className="relative flex h-12 flex-1 items-center justify-center overflow-visible text-center">
     <AnimatePresence mode="wait">
       <motion.span
         key={currentWordIndex}
@@ -393,7 +394,8 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
         exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
         transition={{ duration: 0.28, ease: "easeOut" }}
-        className="absolute whitespace-nowrap text-[15px] tracking-wide"
+   className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] font-normal"
+        style={{ fontFamily: "'Great Vibes', cursive" }}
       >
         {rotatingWords[currentWordIndex]}
       </motion.span>

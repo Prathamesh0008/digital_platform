@@ -304,6 +304,21 @@ gtag('config', 'G-T3CMEYQ5DK');`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
+    <link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+/>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossOrigin=""
+/>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+  rel="stylesheet"
+/>
       </head>
       <body className="min-h-full flex flex-col">
         <noscript>
