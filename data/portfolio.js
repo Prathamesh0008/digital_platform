@@ -8,7 +8,7 @@ export const portfolioProjects = [
     domain: "novatechsciences.com",
     logo: "/www.novatechsciences.com.webp",
     desktop: "/portfolio/nova-tech-sciences-desktop.png",
-    mobile: "/portfolio/nova-tech-sciences-mobile.png",
+    mobile: "/portfolio/nova-tech-sciences-mobile1.png",
     about:
       "A professional corporate website built for a science-focused brand with a modern, clean and trustworthy digital identity.",
     whatWeDid: [

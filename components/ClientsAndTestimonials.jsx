@@ -78,13 +78,14 @@ export default function ClientsAndTestimonials() {
       `}</style>
 
       <div className="bg-[#EAEBDB] px-4 py-16 sm:px-6 sm:py-24 md:px-10">
+        <div className="mx-auto max-w-[1400px]">
         <div className="grid border-t border-black/20 md:grid-cols-4">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="flex items-start border-b border-black/20 p-6 sm:p-8 md:border-b-0 md:border-r md:p-10"
+          className="flex items-center justify-center border-b border-black/20 p-6 text-center sm:p-8 md:min-h-[280px] md:border-b-0 md:border-r md:p-10"
           >
             <h2 className="text-4xl font-medium uppercase leading-[0.9] sm:text-5xl md:text-[60px]">
               Our <br /> Clients
@@ -143,63 +144,61 @@ export default function ClientsAndTestimonials() {
             </motion.div>
           </div>
         </div>
-      </div>
-
-      <div
-        className="px-4 py-10 sm:px-6 sm:py-20 md:px-10 md:py-32"
-        style={{ background: "#E6E8DC" }}
-      >
-        <div className="grid items-start gap-3 sm:gap-6 md:min-h-[140vh] md:grid-cols-2 md:gap-5">
-          <div className="self-start md:sticky md:top-24 md:flex md:h-[calc(100vh-6rem)] md:items-start md:pt-2">
-            <motion.h1
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="text-4xl font-medium uppercase leading-[1.0] tracking-tight sm:text-5xl md:text-[90px] lg:text-[120px]"
-            >
-              Smart, simple, <br />
-              and efficient <br />
-              solutions for <br />
-              every project.
-            </motion.h1>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="relative flex min-h-[160vh] items-start justify-center md:min-h-0 md:items-end md:justify-center"
-          >
-            <div className="sticky top-[34vh] pt-8 sm:pt-0 md:static md:top-auto">
-              <AnimatedLogoMerge
-                className="clientsLogoMerge"
-                topImageSrc="/toppart1.svg"
-                bottomImageSrc="/bottompart1.svg"
-                ariaLabel="NovaTech animated logo"
-                size="clamp(120px, 38vw, 220px)"
-                pieceGap={4}
-                scrollLinked={true}
-                scrollSceneHeight="220vh"
-                useImagePieces={true}
-              />
-            </div>
-          </motion.div>
         </div>
       </div>
 
+ <div
+  className="px-4 py-10 sm:px-6 sm:py-14 md:px-10 md:py-20 lg:py-24"
+  style={{ background: "#E6E8DC" }}
+>
+  <div className="mx-auto max-w-[1180px]">
+    <div className="grid items-center gap-8 sm:gap-10 md:min-h-[70vh] md:grid-cols-2 md:gap-8 lg:min-h-[78vh]">
+      <motion.h2
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="text-4xl font-medium uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[78px] lg:text-[108px] xl:text-[124px]"
+      >
+        Smart, simple, <br />
+        and efficient <br />
+        solutions for <br />
+        every project.
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="relative flex min-h-[280px] items-center justify-center md:min-h-0"
+      >
+        <AnimatedLogoMerge
+          className="clientsLogoMerge"
+          topImageSrc="/toppart1.svg"
+          bottomImageSrc="/bottompart1.svg"
+          ariaLabel="NovaTech animated logo"
+          size="clamp(120px, 34vw, 210px)"
+          pieceGap={4}
+          scrollLinked={true}
+          scrollSceneHeight="160vh"
+          useImagePieces={true}
+        />
+      </motion.div>
+    </div>
+  </div>
+</div>
       <div
         className="relative px-4 py-16 text-black sm:px-6 sm:py-24 md:px-10"
         style={{ background: "linear-gradient(to bottom, #5A7EFF, #6988FB)" }}
       >
-        <div className="pointer-events-none absolute inset-0 hidden grid-cols-4 md:grid">
+        {/* <div className="pointer-events-none absolute inset-0 hidden grid-cols-4 md:grid">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="border-l border-black/20" />
           ))}
-        </div>
+        </div> */}
 
-        <div className="relative grid gap-10 md:grid-cols-4">
+        <div className="relative mx-auto grid max-w-[1400px] gap-10 md:grid-cols-4">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}

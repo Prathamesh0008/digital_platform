@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 
 const discoveryChannels = [
   "Google Search",
@@ -167,11 +168,15 @@ function SectionIntro({ eyebrow, title, text }) {
         {eyebrow}
       </p> */}
       <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[72px]">
-        {title}
+        <ServiceInternalLinkText currentHref="/services/seo-optimization">
+          {title}
+        </ServiceInternalLinkText>
       </h2>
       {text ? (
         <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
-          {text}
+          <ServiceInternalLinkText currentHref="/services/seo-optimization">
+            {text}
+          </ServiceInternalLinkText>
         </p>
       ) : null}
     </motion.div>
@@ -386,16 +391,24 @@ export default function SeoServicesClient() {
                     SEO Service
                   </p> */}
                   <h3 className="mt-3 text-2xl font-semibold uppercase leading-tight">
-                    {section.title}
+                    <ServiceInternalLinkText currentHref="/services/seo-optimization">
+                      {section.title}
+                    </ServiceInternalLinkText>
                   </h3>
                   <p className="mt-4 text-sm leading-relaxed text-white/72">
-                    {section.intro}
+                    <ServiceInternalLinkText currentHref="/services/seo-optimization">
+                      {section.intro}
+                    </ServiceInternalLinkText>
                   </p>
                 </div>
 
                 <div className="space-y-4 text-sm leading-relaxed text-white/78 md:text-base">
                   {section.body.map((item) => (
-                    <p key={item}>{item}</p>
+                    <p key={item}>
+                      <ServiceInternalLinkText currentHref="/services/seo-optimization">
+                        {item}
+                      </ServiceInternalLinkText>
+                    </p>
                   ))}
                 </div>
               </motion.article>
@@ -521,7 +534,9 @@ export default function SeoServicesClient() {
                     className="flex w-full items-center justify-between gap-5 py-5 text-left"
                   >
                     <span className="text-base font-semibold uppercase">
-                      {item.q}
+                      <ServiceInternalLinkText currentHref="/services/seo-optimization">
+                        {item.q}
+                      </ServiceInternalLinkText>
                     </span>
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-white cursor-pointer">
                       {isOpen ? "-" : "+"}
@@ -538,7 +553,9 @@ export default function SeoServicesClient() {
                         className="overflow-hidden"
                       >
                         <p className="pb-5 text-sm leading-relaxed text-[#0d2d47]/70 md:text-base">
-                          {item.a}
+                          <ServiceInternalLinkText currentHref="/services/seo-optimization">
+                            {item.a}
+                          </ServiceInternalLinkText>
                         </p>
                       </motion.div>
                     )}

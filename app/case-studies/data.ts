@@ -1,137 +1,242 @@
-export type CaseStudy = {
-  slug: string;
-  title: string;
-  sector: string;
-  summary: string;
-  challenge: string;
-  solution: string;
-  outcome: string[];
-  image: string;
-  liveUrl: string;
-};
-
-export const caseStudies: CaseStudy[] = [
+//app\case-studies\data.ts
+export const caseStudies = [
   {
     slug: "brand-strategy",
     title: "Brand Strategy",
-    sector: "Branding",
-    summary: "Crafted a clear positioning system and visual language to strengthen market recall.",
+    sector: "Brand Identity",
+    image: "/caseStudy/brand-strategy-500x320.png",
+    summary:
+      "A complete brand positioning project focused on making NovaTech Sciences look clear, premium, and trustworthy.",
     challenge:
-      "The brand had fragmented messaging across channels, making trust-building and differentiation difficult.",
+      "NovaTech Sciences needed stronger brand clarity, better service communication, and a professional digital presence.",
     solution:
-      "We built a unified brand strategy with audience-specific messaging, voice guidelines, and a consistent visual framework.",
+      "We improved brand messaging, visual direction, service positioning, and website content structure.",
     outcome: [
-      "Stronger brand consistency across digital touchpoints",
-      "Higher engagement on branded campaigns",
-      "Clearer messaging for sales and performance marketing",
+      "Improved brand clarity",
+      "Stronger visual identity",
+      "Better service communication",
+      "More professional digital presence",
     ],
-    image: "/caseStudy/Brand%20Strategy.png",
-    liveUrl: "https://www.novatechsciences.com/",
+    overview:
+      "NovaTech Sciences required a clearer brand direction that could instantly explain who they are, what they offer, and why businesses should trust them. The goal was to create a confident brand experience across the website.",
+    strategy:
+      "We focused on brand positioning, service clarity, content hierarchy, and visual consistency. Each section was planned to support trust, authority, and conversion.",
+    execution:
+      "The website content, section flow, CTA placement, and visual blocks were refined to make the brand feel more premium and easier to understand.",
+    quote: "A strong brand is not just seen, it is remembered.",
+    improvements: [
+      "Clearer brand positioning",
+      "Premium visual presentation",
+      "Better content hierarchy",
+      "Improved trust sections",
+      "Consistent brand tone",
+      "Stronger service storytelling",
+    ],
   },
   {
     slug: "seo-optimization",
     title: "SEO Optimization",
-    sector: "SEO",
-    summary: "Improved rankings and discoverability with technical and on-page SEO improvements.",
+    sector: "Search Visibility",
+    image: "/caseStudy/seo-500x320.png",
+    summary:
+      "An SEO-focused improvement project designed to make NovaTech Sciences more visible and easier to discover online.",
     challenge:
-      "Low organic visibility and weak keyword footprint in competitive service categories.",
+      "The website needed better page structure, stronger keyword direction, and improved content organization.",
     solution:
-      "Implemented technical SEO fixes, content hierarchy improvements, schema optimization, and intent-focused landing pages.",
+      "We improved headings, page flow, internal linking, keyword placement, and SEO-friendly content sections.",
     outcome: [
-      "Improved keyword visibility in target categories",
-      "Higher organic traffic quality",
-      "Better crawl health and page indexing stability",
+      "Better SEO-ready structure",
+      "Improved search visibility",
+      "Stronger keyword relevance",
+      "More organized page content",
     ],
-    image: "/caseStudy/SEO.png",
-    liveUrl: "https://www.ivexiapharma.com/",
+    overview:
+      "NovaTech Sciences needed a stronger organic visibility foundation. The project focused on making every page easier for users and search engines to understand.",
+    strategy:
+      "The SEO strategy included better heading hierarchy, improved service pages, stronger content intent, and clear internal navigation.",
+    execution:
+      "We refined important content blocks, improved readability, added better section structure, and aligned pages with search-focused user intent.",
+    quote: "Good SEO starts with clear structure and useful content.",
+    improvements: [
+      "Improved heading hierarchy",
+      "Better internal linking",
+      "SEO-friendly sections",
+      "Clearer page intent",
+      "Improved readability",
+      "Stronger organic foundation",
+    ],
   },
   {
     slug: "social-media",
-    title: "Social Media",
-    sector: "Social",
-    summary: "Built a focused social content engine to increase engagement and audience trust.",
+    title: "Social Media Marketing",
+    sector: "Social Growth",
+    image: "/caseStudy/social-media-marketing.png",
+    summary:
+      "A social media content direction project focused on improving consistency, engagement, and brand recall.",
     challenge:
-      "Inconsistent posting and weak content structure were reducing audience interaction.",
+      "NovaTech Sciences needed a stronger content system with better consistency, clearer messaging, and more engaging presentation.",
     solution:
-      "Designed a monthly social framework with campaign themes, short-form creative systems, and performance tracking loops.",
+      "We created content pillars, improved post direction, refined messaging, and aligned social content with core services.",
     outcome: [
-      "More consistent audience engagement",
-      "Improved reach across priority platforms",
-      "Faster campaign iteration with data-led creative updates",
+      "Better content consistency",
+      "Stronger brand voice",
+      "Improved engagement direction",
+      "More organized social content",
     ],
-    image: "/caseStudy/Social%20media%20marketing.jpg",
-    liveUrl: "https://www.edpharma.co/",
+    overview:
+      "The goal was to make social media content more professional, helpful, and aligned with the company’s digital marketing services.",
+    strategy:
+      "We built the strategy around educational posts, service explainers, brand trust content, and conversion-focused messaging.",
+    execution:
+      "Content categories, caption style, visual tone, and campaign ideas were organized to support awareness and enquiries.",
+    quote: "Consistent content builds consistent trust.",
+    improvements: [
+      "Defined content pillars",
+      "Better visual consistency",
+      "Clearer brand voice",
+      "Improved audience communication",
+      "Stronger service education",
+      "More professional presence",
+    ],
   },
   {
     slug: "performance-ads",
     title: "Performance Ads",
-    sector: "Paid Media",
-    summary: "Scaled paid campaigns with tighter targeting, creatives, and conversion-focused landing journeys.",
+    sector: "Paid Marketing",
+    image: "/caseStudy/performance-ads.png",
+    summary:
+      "A performance marketing project focused on improving campaign clarity, landing flow, and lead generation direction.",
     challenge:
-      "Ad spends were growing but conversions and lead quality were not improving proportionally.",
+      "NovaTech Sciences needed ad messaging that could attract the right users and convert interest into qualified enquiries.",
     solution:
-      "Reworked account structure, audience segmentation, and creatives, then aligned landing pages with ad intent.",
+      "We improved campaign messaging, landing page structure, CTA placement, and offer communication.",
     outcome: [
-      "Better cost-efficiency across campaigns",
-      "Improved lead quality from paid channels",
-      "More predictable performance at scale",
+      "Better campaign clarity",
+      "Improved lead direction",
+      "Stronger ad-to-page connection",
+      "More focused conversion journey",
     ],
-    image: "/caseStudy/performance%20ads.png",
-    liveUrl: "https://www.bio-peptides.com/",
+    overview:
+      "The paid ads direction was created to connect campaign messages with landing page sections that explain value quickly.",
+    strategy:
+      "We focused on campaign angles around business growth, online visibility, trust, and clear service benefits.",
+    execution:
+      "Ad copy direction, CTA flow, audience messaging, and page sections were aligned to support better conversion.",
+    quote: "Performance improves when message and landing page work together.",
+    improvements: [
+      "Clearer campaign messaging",
+      "Better CTA placement",
+      "Improved landing flow",
+      "Stronger conversion path",
+      "More relevant audience targeting",
+      "Better service-focused offers",
+    ],
   },
   {
     slug: "web-design",
-    title: "Web Design",
-    sector: "Web",
-    summary: "Designed a premium, conversion-driven web experience with stronger trust signals.",
+    title: "Web Design & Development",
+    sector: "Website Experience",
+    image: "/caseStudy/web-development-500x320.png",
+    summary:
+      "A modern website design project focused on improving visual quality, responsiveness, trust, and user experience.",
     challenge:
-      "The previous site looked dated, had weak user flow, and lacked clear conversion paths.",
+      "The website needed a cleaner design system, stronger mobile responsiveness, and better content flow.",
     solution:
-      "Created a modern UI system with clearer navigation, focused service storytelling, and stronger call-to-action structure.",
+      "We redesigned the structure with modern layouts, improved spacing, premium cards, and consistent brand colors.",
     outcome: [
-      "Improved usability and page flow",
-      "Stronger visual trust for first-time visitors",
-      "Higher conversion intent across key pages",
+      "Modern website layout",
+      "Improved mobile experience",
+      "Cleaner visual system",
+      "Better user journey",
     ],
-    image: "/caseStudy/Web%20Development.png",
-    liveUrl: "https://www.larksoispharma.com/",
+    overview:
+      "NovaTech Sciences needed a website experience that looked professional across desktop, laptop, tablet, and mobile screens.",
+    strategy:
+      "The design strategy focused on strong first impression, clean service presentation, visual hierarchy, and conversion flow.",
+    execution:
+      "We improved spacing, cards, typography, section balance, image presentation, and CTA areas.",
+    quote: "Great design makes information easier to trust.",
+    improvements: [
+      "Cleaner UI layout",
+      "Better responsiveness",
+      "Improved spacing",
+      "Modern content cards",
+      "Stronger hero presentation",
+      "Better visual hierarchy",
+    ],
   },
   {
-    slug: "ecommerce-growth",
-    title: "E-Commerce Growth",
-    sector: "E-Commerce",
-    summary: "Optimized growth funnels for product discovery, checkout flow, and retention.",
+    slug: "e-commerce-growth",
+    title: "Ecommerce Growth",
+    sector: "Online Revenue",
+    image: "/caseStudy/ecommerce-growth.png",
+    summary:
+      "A growth-focused case study for improving product presentation, customer journey, and conversion structure.",
     challenge:
-      "Users were dropping during product exploration and checkout, limiting revenue growth.",
+      "The project needed stronger product-focused communication, better user flow, and more trust-building sections.",
     solution:
-      "Improved category flow, PDP clarity, trust components, and checkout simplification while aligning with acquisition campaigns.",
+      "We improved product storytelling, page structure, CTA placement, and conversion-focused content blocks.",
     outcome: [
-      "Smoother buyer journey from discovery to checkout",
-      "Higher conversion momentum on core products",
-      "Better alignment between ads and onsite experience",
+      "Improved product journey",
+      "Better buyer confidence",
+      "Stronger conversion sections",
+      "Cleaner growth-focused structure",
     ],
-    image: "/caseStudy/Ecommerce%20Growth.png",
-    liveUrl: "https://www.kvalogistics.nl/",
+    overview:
+      "Ecommerce growth depends on clarity, trust, and smooth user movement. The goal was to make the digital journey easier for visitors.",
+    strategy:
+      "The strategy focused on product clarity, offer visibility, customer trust, and reducing confusion during the buying journey.",
+    execution:
+      "We improved product sections, benefit blocks, CTA flow, and page readability to make the experience more direct.",
+    quote: "Growth happens when buying becomes easier.",
+    improvements: [
+      "Better product presentation",
+      "Improved customer journey",
+      "Clearer conversion flow",
+      "Stronger trust sections",
+      "More organized content",
+      "Better mobile shopping flow",
+    ],
   },
   {
     slug: "analytics-data",
-    title: "Analytics & Data",
-    sector: "Analytics",
-    summary: "Built actionable reporting layers for faster decisions and clearer growth tracking.",
+    title: "Analytics & Data Insights",
+    sector: "Data Insights",
+    image: "/caseStudy/analytics-data-500x320-blended.png",
+    summary:
+      "A data-focused improvement project designed to help NovaTech Sciences understand user behavior and improve decisions.",
     challenge:
-      "Data existed across tools but decision-making was slow due to fragmented reporting.",
+      "The brand needed better clarity on visitor behavior, conversion paths, and performance improvement areas.",
     solution:
-      "Set up unified event tracking, KPI dashboards, and weekly decision frameworks mapped to business goals.",
+      "We planned analytics tracking, funnel understanding, performance review structure, and insight-led improvements.",
     outcome: [
-      "Faster insight-to-action cycles",
-      "Cleaner visibility into channel performance",
-      "Better confidence in scaling decisions",
+      "Better performance visibility",
+      "Improved decision-making",
+      "Clearer funnel understanding",
+      "More data-led improvements",
     ],
-    image: "/caseStudy/Analytics%20%26%20data.png",
-    liveUrl: "https://asblogi.com/",
+    overview:
+      "Analytics helps a business understand what users are doing and where improvements are needed. For NovaTech Sciences, the focus was on smarter digital decisions.",
+    strategy:
+      "The strategy included defining key actions, understanding user paths, and reviewing page performance.",
+    execution:
+      "Tracking direction, conversion points, and insight areas were planned so improvements could be based on actual user behavior.",
+    quote: "Data turns guessing into direction.",
+    improvements: [
+      "Clearer tracking direction",
+      "Better funnel understanding",
+      "Improved performance review",
+      "More informed decisions",
+      "Stronger conversion analysis",
+      "Better growth planning",
+    ],
   },
 ];
 
-export const caseStudyMap: Record<string, CaseStudy> = Object.fromEntries(
-  caseStudies.map((item) => [item.slug, item])
+export const caseStudyMap = caseStudies.reduce(
+  (acc, item) => {
+    acc[item.slug] = item;
+    return acc;
+  },
+  {} as Record<string, (typeof caseStudies)[number]>
 );

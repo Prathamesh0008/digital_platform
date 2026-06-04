@@ -180,7 +180,7 @@ export default function HomeWhyChooseSection() {
       <div className="mx-auto max-w-[1400px]">
         {/* Stats Section */}
         <div className="mb-16 md:mb-24">
-          <div className="mb-8 border-l border-black/15 pl-4 sm:pl-6 md:pl-10">
+          <div className="mb-8  pl-4 sm:pl-6 md:pl-10">
             {/* <span className="mb-5 inline-flex rounded-full bg-black px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white sm:text-sm">
               Talk About Us
             </span> */}

@@ -1,12 +1,19 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { useCallback, useState } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import NovaTechAssistant from "@/components/NovaTechAssistant";
-import NovaLogoPreloader from "@/components/NovaLogoPreloader";
+
+const NovaTechAssistant = dynamic(() => import("@/components/NovaTechAssistant"), {
+  ssr: false,
+});
+
+const NovaLogoPreloader = dynamic(() => import("@/components/NovaLogoPreloader"), {
+  ssr: false,
+});
 
 export default function AppShell({ children }) {
   const pathname = usePathname();

@@ -18,7 +18,7 @@ export default function AboutValues() {
     },
     {
       title: "Impact",
-      text: "Our focus is not just visibility — but measurable business growth.",
+      text: "Our focus is not just visibility but measurable business growth.",
     },
   ];
 

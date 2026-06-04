@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 import {
   FaStore,
   FaChartLine,
@@ -318,7 +319,9 @@ function CompactList({ items }) {
           key={item}
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/80 px-4 py-3 text-[15px] font-medium leading-relaxed text-[#0d2d47]/80"
         >
-          {item}
+          <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+            {item}
+          </ServiceInternalLinkText>
         </div>
       ))}
     </div>
@@ -337,10 +340,14 @@ function MiniCards({ items }) {
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/70 p-4"
         >
           <h3 className="text-sm font-semibold uppercase text-[#0d2d47]">
-            {item.title}
+            <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+              {item.title}
+            </ServiceInternalLinkText>
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-[#0d2d47]/70">
-            {item.text}
+            <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+              {item.text}
+            </ServiceInternalLinkText>
           </p>
         </motion.div>
       ))}
@@ -387,7 +394,9 @@ function ContentArticle({ section, index, open, setOpen }) {
           </span>
 
           <h2 className="text-xl font-semibold uppercase leading-tight text-[#0d2d47] sm:text-2xl lg:text-[28px]">
-            {section.title}
+            <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+              {section.title}
+            </ServiceInternalLinkText>
           </h2>
         </div>
 
@@ -411,14 +420,18 @@ function ContentArticle({ section, index, open, setOpen }) {
               <div className="space-y-4">
                 {section.paragraphs?.map((text) => (
                   <p key={text} className="text-base leading-8 text-[#0d2d47]/78">
-                    {text}
+                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                      {text}
+                    </ServiceInternalLinkText>
                   </p>
                 ))}
               </div>
 
               {section.listTitle && (
                 <h3 className="mt-6 text-base font-semibold uppercase tracking-[0.08em] text-[#0d2d47]">
-                  {section.listTitle}
+                  <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                    {section.listTitle}
+                  </ServiceInternalLinkText>
                 </h3>
               )}
 
@@ -471,7 +484,9 @@ function FAQAccordion() {
                     </span>
 
                     <span className="text-base font-semibold leading-snug text-[#0d2d47] md:text-lg">
-                      {item.question}
+                      <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                        {item.question}
+                      </ServiceInternalLinkText>
                     </span>
                   </div>
 
@@ -496,7 +511,9 @@ function FAQAccordion() {
                           Voice-ready answer
                         </p>
                         <p className="text-sm leading-7 text-[#0d2d47]/72 sm:text-base">
-                          {item.answer}
+                          <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                            {item.answer}
+                          </ServiceInternalLinkText>
                         </p>
                       </div>
                     </motion.div>
@@ -603,7 +620,9 @@ export default function EcommerceGrowthPage() {
                   </div>
 
                   <h3 className="text-base font-semibold uppercase">
-                    {item.title}
+                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                      {item.title}
+                    </ServiceInternalLinkText>
                   </h3>
                 </motion.div>
               );
@@ -652,11 +671,15 @@ export default function EcommerceGrowthPage() {
                   </span>
 
                   <h3 className="text-lg font-semibold uppercase">
-                    {item.title}
+                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                      {item.title}
+                    </ServiceInternalLinkText>
                   </h3>
 
                   <p className="mt-3 text-sm leading-relaxed text-white/75">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
                 </motion.article>
               );
@@ -682,7 +705,9 @@ export default function EcommerceGrowthPage() {
                 >
                   <Icon className="text-2xl text-[#7392FB]" />
                   <h3 className="mt-3 text-sm font-semibold uppercase">
-                    {item.title}
+                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                      {item.title}
+                    </ServiceInternalLinkText>
                   </h3>
                 </motion.div>
               );

@@ -35,7 +35,7 @@ export default function SplitMarqueeSection() {
 
       {/* 🔥 MAIN SECTION (SOFT GRADIENT LIKE NextSection) */}
       <div
-        className="grid md:grid-cols-2 min-h-[80vh]"
+        className="min-h-[80vh]"
         style={{
           background:
              "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #7392FB)",
@@ -43,7 +43,8 @@ export default function SplitMarqueeSection() {
       >
 
         {/* 🔥 LEFT */}
-        <div className="flex flex-col justify-center items-center text-center px-5 sm:px-8 md:px-10 py-14 sm:py-20 text-[#0d2d47]">
+        <div className="mx-auto grid min-h-[80vh] max-w-[1400px] md:grid-cols-2">
+       <div className="flex min-h-[80vh] flex-col items-center justify-center px-5 py-14 text-center text-[#0d2d47] sm:px-8 sm:py-20 md:px-10">
 
           <motion.h2
             initial={{ opacity: 0, y: 60 }}
@@ -90,6 +91,7 @@ export default function SplitMarqueeSection() {
 
         </div>
 
+      </div>
       </div>
     </section>
   );

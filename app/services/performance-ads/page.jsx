@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 import {
   FaSearch,
   FaMobileAlt,
@@ -758,7 +759,9 @@ function CompactList({ items }) {
           key={item}
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/80 px-4 py-3 text-[15px] font-semibold leading-relaxed text-[#0d2d47]/80"
         >
-          {item}
+          <ServiceInternalLinkText currentHref="/services/performance-ads">
+            {item}
+          </ServiceInternalLinkText>
         </div>
       ))}
     </div>
@@ -777,10 +780,14 @@ function MiniCards({ items }) {
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/75 p-4"
         >
           <h3 className="text-base font-black uppercase text-[#0d2d47]">
-            {item.title}
+            <ServiceInternalLinkText currentHref="/services/performance-ads">
+              {item.title}
+            </ServiceInternalLinkText>
           </h3>
           <p className="mt-2 text-[15px] leading-7 text-[#0d2d47]/72">
-            {item.text}
+            <ServiceInternalLinkText currentHref="/services/performance-ads">
+              {item.text}
+            </ServiceInternalLinkText>
           </p>
         </motion.div>
       ))}
@@ -810,7 +817,9 @@ function ContentArticle({ section, index, open, setOpen }) {
           </span>
 
           <h2 className="text-lg font-black uppercase leading-tight text-[#0d2d47] sm:text-2xl lg:text-[27px]">
-            {section.title}
+            <ServiceInternalLinkText currentHref="/services/performance-ads">
+              {section.title}
+            </ServiceInternalLinkText>
           </h2>
         </div>
 
@@ -838,14 +847,18 @@ function ContentArticle({ section, index, open, setOpen }) {
                     key={text}
                     className="text-base leading-8 text-[#0d2d47]/78 sm:text-[17px]"
                   >
-                    {text}
+                    <ServiceInternalLinkText currentHref="/services/performance-ads">
+                      {text}
+                    </ServiceInternalLinkText>
                   </p>
                 ))}
               </div>
 
               {section.listTitle ? (
                 <h3 className="mt-6 text-base font-black uppercase tracking-[0.08em] text-[#0d2d47]">
-                  {section.listTitle}
+                  <ServiceInternalLinkText currentHref="/services/performance-ads">
+                    {section.listTitle}
+                  </ServiceInternalLinkText>
                 </h3>
               ) : null}
 
@@ -912,7 +925,9 @@ function FAQAccordion() {
                   className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/40"
                 >
                   <span className="text-base font-black uppercase text-[#0d2d47] md:text-lg">
-                    {item.question}
+                    <ServiceInternalLinkText currentHref="/services/performance-ads">
+                      {item.question}
+                    </ServiceInternalLinkText>
                   </span>
 
                   <motion.span
@@ -932,7 +947,9 @@ function FAQAccordion() {
                       transition={{ duration: 0.25 }}
                     >
                       <p className="px-5 pb-5 text-base leading-8 text-[#0d2d47]/72">
-                        {item.answer}
+                        <ServiceInternalLinkText currentHref="/services/performance-ads">
+                          {item.answer}
+                        </ServiceInternalLinkText>
                       </p>
                     </motion.div>
                   )}
@@ -1075,7 +1092,7 @@ export default function PerformanceAdsPage() {
               className="mt-7 rounded-2xl bg-[#0d2d47] p-6 text-white shadow-[0_22px_65px_rgba(13,45,71,0.22)]"
             >
               <p className="text-xl font-bold italic leading-relaxed">
-                “Performance advertising is not only about clicks — it is about
+                “Performance advertising is not only about clicks  it is about
                 building a measurable system that improves every week.”
               </p>
               <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-white/45">
@@ -1106,7 +1123,9 @@ export default function PerformanceAdsPage() {
                     {item.value}
                   </p>
                   <p className="text-sm font-medium leading-relaxed text-[#0d2d47]/65">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/performance-ads">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
                 </div>
               </motion.div>
@@ -1145,11 +1164,15 @@ export default function PerformanceAdsPage() {
                 </span>
 
                 <h3 className="text-2xl font-black uppercase">
-                  {item.title}
+                  <ServiceInternalLinkText currentHref="/services/performance-ads">
+                    {item.title}
+                  </ServiceInternalLinkText>
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/performance-ads">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -1158,7 +1181,9 @@ export default function PerformanceAdsPage() {
                       key={tag}
                       className="rounded-full border border-[#0d2d47]/10 bg-white/60 px-3 py-1 text-xs font-black text-[#0d2d47]/70"
                     >
-                      {tag}
+                      <ServiceInternalLinkText currentHref="/services/performance-ads">
+                        {tag}
+                      </ServiceInternalLinkText>
                     </span>
                   ))}
                 </div>
@@ -1204,11 +1229,15 @@ export default function PerformanceAdsPage() {
 })()}</span>
 
                 <h3 className="mt-4 text-xl font-black uppercase">
-                  {item.title}
+                  <ServiceInternalLinkText currentHref="/services/performance-ads">
+                    {item.title}
+                  </ServiceInternalLinkText>
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-white/62">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/performance-ads">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
               </motion.div>
             ))}
@@ -1239,9 +1268,15 @@ export default function PerformanceAdsPage() {
                 </p>
 
                 <div>
-                  <h3 className="text-xl font-black uppercase">{item.title}</h3>
+                  <h3 className="text-xl font-black uppercase">
+                    <ServiceInternalLinkText currentHref="/services/performance-ads">
+                      {item.title}
+                    </ServiceInternalLinkText>
+                  </h3>
                   <p className="mt-2 text-sm leading-7 text-[#0d2d47]/70">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/performance-ads">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -1250,7 +1285,9 @@ export default function PerformanceAdsPage() {
                         key={tag}
                         className="rounded-full border border-[#7392FB]/20 bg-[#7392FB]/10 px-3 py-1 text-xs font-black text-[#0d2d47]"
                       >
-                        {tag}
+                        <ServiceInternalLinkText currentHref="/services/performance-ads">
+                          {tag}
+                        </ServiceInternalLinkText>
                       </span>
                     ))}
                   </div>

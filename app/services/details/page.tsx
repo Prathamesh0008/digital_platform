@@ -1,3 +1,4 @@
+//app\services\details\page.tsx
 import Link from "next/link";
 
 const serviceDetails = [

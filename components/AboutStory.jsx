@@ -93,7 +93,7 @@ export default function AboutStory() {
               transition={{ delay: 0.3 }}
               className="text-xl sm:text-2xl leading-relaxed font-medium"
             >
-              NovaTech started with a simple belief —  
+              NovaTech started with a simple belief  
               brands deserve more than visibility.
             </motion.p>
 
@@ -135,7 +135,7 @@ export default function AboutStory() {
           className="mt-16 sm:mt-24 md:mt-40 max-w-5xl"
         >
           <h2 className="text-2xl sm:text-4xl md:text-6xl leading-tight font-medium">
-            We don’t just build campaigns —  
+            We don’t just build campaigns  
             <br />
             we build <span className="text-[#5A7EFF]">long-term brand value.</span>
           </h2>

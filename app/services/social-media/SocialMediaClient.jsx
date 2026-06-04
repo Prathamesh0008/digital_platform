@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 import {
   FaMobileAlt,
   FaClock,
@@ -331,7 +332,7 @@ export default function SocialMediaClient() {
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#0d2d47]/75 md:text-lg">
               At Nova Techscience, we design and execute social media strategies
-              that turn your digital presence into a powerful growth engine —
+              that turn your digital presence into a powerful growth engine 
               driving engagement, building authority, and converting followers
               into customers.
             </p>
@@ -420,7 +421,7 @@ export default function SocialMediaClient() {
             <div className="space-y-4 text-base leading-8 text-[#0d2d47]/75">
               <p>
                 In 2026, social media is no longer a supporting channel for
-                businesses — it is where brand identities are built, customer
+                businesses  it is where brand identities are built, customer
                 relationships are formed, and buying decisions are influenced.
               </p>
 
@@ -445,7 +446,7 @@ export default function SocialMediaClient() {
               className="mt-7 rounded-2xl bg-[#0d2d47] p-6 text-white shadow-[0_22px_65px_rgba(13,45,71,0.22)]"
             >
               <p className="text-xl font-bold italic leading-relaxed">
-                “Social media is not just a marketing tool — it is the most
+                “Social media is not just a marketing tool  it is the most
                 powerful relationship-building platform ever created.”
               </p>
               <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-white/45">
@@ -476,7 +477,9 @@ export default function SocialMediaClient() {
                     {item.value}
                   </p>
                   <p className="text-sm font-medium leading-relaxed text-[#0d2d47]/65">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/social-media">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
                 </div>
               </motion.div>
@@ -515,11 +518,15 @@ export default function SocialMediaClient() {
                 </span>
 
                 <h3 className="text-2xl font-black uppercase">
-                  {item.title}
+                  <ServiceInternalLinkText currentHref="/services/social-media">
+                    {item.title}
+                  </ServiceInternalLinkText>
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/social-media">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -528,7 +535,9 @@ export default function SocialMediaClient() {
                       key={tag}
                       className="rounded-full border border-[#0d2d47]/10 bg-white/60 px-3 py-1 text-xs font-bold text-[#0d2d47]/70"
                     >
-                      {tag}
+                      <ServiceInternalLinkText currentHref="/services/social-media">
+                        {tag}
+                      </ServiceInternalLinkText>
                     </span>
                   ))}
                 </div>
@@ -574,11 +583,15 @@ export default function SocialMediaClient() {
 })()}</span>
 
                 <h3 className="mt-4 text-xl font-black uppercase">
-                  {item.title}
+                  <ServiceInternalLinkText currentHref="/services/social-media">
+                    {item.title}
+                  </ServiceInternalLinkText>
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-white/62">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/social-media">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
               </motion.div>
             ))}
@@ -609,9 +622,15 @@ export default function SocialMediaClient() {
                 </p>
 
                 <div>
-                  <h3 className="text-xl font-black uppercase">{item.title}</h3>
+                  <h3 className="text-xl font-black uppercase">
+                    <ServiceInternalLinkText currentHref="/services/social-media">
+                      {item.title}
+                    </ServiceInternalLinkText>
+                  </h3>
                   <p className="mt-2 text-sm leading-7 text-[#0d2d47]/70">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/social-media">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -620,7 +639,9 @@ export default function SocialMediaClient() {
                         key={tag}
                         className="rounded-full border border-[#7392FB]/20 bg-[#7392FB]/10 px-3 py-1 text-xs font-bold text-[#0d2d47]"
                       >
-                        {tag}
+                        <ServiceInternalLinkText currentHref="/services/social-media">
+                          {tag}
+                        </ServiceInternalLinkText>
                       </span>
                     ))}
                   </div>
@@ -656,10 +677,14 @@ export default function SocialMediaClient() {
 })()}</span>
                   <div>
                     <h3 className="text-base font-black uppercase text-white">
-                      {item.title}
+                      <ServiceInternalLinkText currentHref="/services/social-media">
+                        {item.title}
+                      </ServiceInternalLinkText>
                     </h3>
                     <p className="mt-1 text-sm leading-6 text-white/55">
-                      {item.text}
+                      <ServiceInternalLinkText currentHref="/services/social-media">
+                        {item.text}
+                      </ServiceInternalLinkText>
                     </p>
                   </div>
                 </div>
@@ -766,10 +791,14 @@ export default function SocialMediaClient() {
 })()}</span>
                 <div>
                   <h3 className="text-base font-black uppercase">
-                    {item.title}
+                    <ServiceInternalLinkText currentHref="/services/social-media">
+                      {item.title}
+                    </ServiceInternalLinkText>
                   </h3>
                   <p className="mt-1 text-sm leading-6 text-[#0d2d47]/68">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/social-media">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
                 </div>
               </motion.div>

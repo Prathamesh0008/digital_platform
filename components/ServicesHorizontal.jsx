@@ -17,43 +17,43 @@ export default function ServicesStacked() {
     {
       title: "Brand Strategy",
       desc: "Crafting identities that dominate markets.",
-      image: "/caseStudy/Brand%20Strategy.png",
+      image: "/caseStudy/brand-strategy-500x320.png",
       href: "/case-studies/brand-strategy",
     },
     {
       title: "SEO Optimization",
       desc: "Boost visibility and rank higher.",
-      image: "/caseStudy/SEO.png",
+      image: "/caseStudy/seo-500x320.png",
       href: "/case-studies/seo-optimization",
     },
     {
       title: "Social Media",
       desc: "Build engagement and community.",
-      image: "/caseStudy/Social%20media%20marketing.jpg",
+      image: "/caseStudy/social-media-marketing.png",
       href: "/case-studies/social-media",
     },
     {
       title: "Performance Ads",
       desc: "Maximize ROI with precision.",
-      image: "/caseStudy/performance%20ads.png",
+      image: "/caseStudy/performance-ads.png",
       href: "/case-studies/performance-ads",
     },
     {
       title: "Web Design",
       desc: "Premium conversion-focused websites.",
-      image: "/caseStudy/Web%20Development.png",
+      image: "/caseStudy/web-development-500x320.png",
       href: "/case-studies/web-design",
     },
     {
       title: "E-Commerce Growth",
       desc: "Scale your online revenue channels.",
-      image: "/caseStudy/Ecommerce%20Growth.png",
+      image: "/caseStudy/ecommerce-growth.png",
       href: "/case-studies/ecommerce-growth",
     },
     {
       title: "Analytics & Data",
       desc: "Make decisions backed by real insights.",
-      image: "/caseStudy/Analytics%20%26%20data.png",
+      image: "/caseStudy/analytics-data-500x320-blended.png",
       href: "/case-studies/analytics-data",
     },
   ];
@@ -201,7 +201,7 @@ const cardSize =
           userSelect: "none",
         }}
       >
-        <div className="absolute left-4 top-8 z-20 sm:left-6 sm:top-10 md:left-10 md:top-14 lg:left-14">
+        <div className="absolute left-1/2 top-8 z-20 w-full max-w-[1400px] -translate-x-1/2 px-4 sm:top-10 sm:px-6 md:top-14 md:px-10">
           <h2 className="text-3xl font-semibold tracking-tight text-[#0d2d47] sm:text-4xl md:text-5xl lg:text-6xl">
             Case Studies
           </h2>

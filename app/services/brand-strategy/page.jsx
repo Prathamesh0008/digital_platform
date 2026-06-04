@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 import {
   FaComments,
   FaUnlockAlt,
@@ -460,7 +461,7 @@ export default function BrandStrategyPage() {
             </SectionTitle>
             <p className="mt-5 max-w-xl text-base leading-8 text-[#0d2d47]/72">
               Many businesses invest heavily in advertising without a strong
-              branding foundation — leading to wasted budgets, poor recall,
+              branding foundation leading to wasted budgets, poor recall,
               weak trust, and stagnant growth.
             </p>
             <p className="mt-4 max-w-xl text-base leading-8 text-[#0d2d47]/72">
@@ -487,7 +488,9 @@ export default function BrandStrategyPage() {
 })()}
                 </span>
                 <p className="text-sm font-bold uppercase leading-relaxed text-[#0d2d47]/75">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
               </motion.div>
             ))}
@@ -529,7 +532,9 @@ export default function BrandStrategyPage() {
                     className="flex gap-3 text-base leading-7 text-[#0d2d47]/68"
                   >
                     <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d2d47]/35" />
-                    {item}
+                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                      {item}
+                    </ServiceInternalLinkText>
                   </li>
                 ))}
               </ul>
@@ -558,7 +563,9 @@ export default function BrandStrategyPage() {
                     className="flex gap-3 text-base font-medium leading-7 text-[#0d2d47]/78"
                   >
                     <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7392FB]" />
-                    {item}
+                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                      {item}
+                    </ServiceInternalLinkText>
                   </li>
                 ))}
               </ul>
@@ -600,9 +607,15 @@ export default function BrandStrategyPage() {
   return <Icon />;
 })()}
                 </div>
-                <h3 className="text-xl font-bold uppercase">{item.title}</h3>
+                <h3 className="text-xl font-bold uppercase">
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.title}
+                  </ServiceInternalLinkText>
+                </h3>
                 <p className="mt-3 text-sm leading-7 text-white/74 md:text-base">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-5 space-y-2">
@@ -612,7 +625,9 @@ export default function BrandStrategyPage() {
                       className="flex gap-2 text-sm font-medium text-white/70"
                     >
                       <span className="text-[#EAEBDB]">→</span>
-                      {feature}
+                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                        {feature}
+                      </ServiceInternalLinkText>
                     </p>
                   ))}
                 </div>
@@ -655,10 +670,14 @@ export default function BrandStrategyPage() {
   return <Icon />;
 })()}</span>
                 <h3 className="mt-3 text-base font-bold uppercase">
-                  {item.title}
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.title}
+                  </ServiceInternalLinkText>
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-[#0d2d47]/68">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
               </motion.div>
             ))}
@@ -691,9 +710,15 @@ export default function BrandStrategyPage() {
                   {item.num}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold uppercase">{item.title}</h3>
+                  <h3 className="text-xl font-bold uppercase">
+                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                      {item.title}
+                    </ServiceInternalLinkText>
+                  </h3>
                   <p className="mt-2 text-sm leading-7 text-[#0d2d47]/72 md:text-base">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -702,7 +727,9 @@ export default function BrandStrategyPage() {
                         key={tag}
                         className="rounded-full border border-[#7392FB]/25 bg-[#7392FB]/10 px-3 py-1 text-xs font-bold text-[#0d2d47]"
                       >
-                        {tag}
+                        <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                          {tag}
+                        </ServiceInternalLinkText>
                       </span>
                     ))}
                   </div>
@@ -778,10 +805,14 @@ export default function BrandStrategyPage() {
 })()}</span>
                   <div>
                     <h3 className="text-lg font-bold uppercase">
-                      {item.title}
+                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                        {item.title}
+                      </ServiceInternalLinkText>
                     </h3>
                     <p className="mt-1 text-sm leading-7 text-[#0d2d47]/68">
-                      {item.text}
+                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                        {item.text}
+                      </ServiceInternalLinkText>
                     </p>
                   </div>
                 </motion.div>
@@ -824,10 +855,14 @@ export default function BrandStrategyPage() {
   return <Icon />;
 })()}</span>
                 <h3 className="mt-4 text-lg font-bold uppercase">
-                  {item.title}
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.title}
+                  </ServiceInternalLinkText>
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-white/70">
-                  {item.text}
+                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                    {item.text}
+                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-4 space-y-2">
@@ -837,7 +872,9 @@ export default function BrandStrategyPage() {
                       className="flex gap-2 text-xs font-semibold text-white/65"
                     >
                       <span>●</span>
-                      {point}
+                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                        {point}
+                      </ServiceInternalLinkText>
                     </p>
                   ))}
                 </div>
@@ -879,10 +916,14 @@ export default function BrandStrategyPage() {
                     </span>
                     <div>
                       <h3 className="text-lg font-bold uppercase">
-                        {item.title}
+                        <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                          {item.title}
+                        </ServiceInternalLinkText>
                       </h3>
                       <p className="mt-1 text-sm leading-7 text-[#0d2d47]/68">
-                        {item.text}
+                        <ServiceInternalLinkText currentHref="/services/brand-strategy">
+                          {item.text}
+                        </ServiceInternalLinkText>
                       </p>
                     </div>
                   </div>
@@ -974,12 +1015,12 @@ export default function BrandStrategyPage() {
           </div> */}
 
           <h2 className="mx-auto max-w-5xl text-3xl font-extrabold uppercase leading-tight text-[#0d2d47] sm:text-4xl md:text-5xl lg:text-6xl">
-            Build A Future-Ready Brand That Lasts
+            Build A Future Ready Brand That Lasts
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#0d2d47]/75">
             From GEO optimization and AI search visibility to storytelling,
-            customer psychology, and omnichannel experiences — your brand
+            customer psychology, and omnichannel experiences  your brand
             transformation starts here.
           </p>
 
@@ -991,12 +1032,12 @@ export default function BrandStrategyPage() {
               Start Your Brand Journey →
             </Link>
 
-            <Link
+            {/* <Link
               href="/portfolio"
               className="rounded-full border border-[#0d2d47]/20 bg-white/30 px-7 py-3 text-sm font-bold text-[#0d2d47] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/55"
             >
               Schedule A Free Audit
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       </section>

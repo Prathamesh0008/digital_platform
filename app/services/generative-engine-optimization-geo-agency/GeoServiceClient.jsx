@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 
 const aiPlatforms = [
   "Google AI Overviews",
@@ -402,11 +403,15 @@ function SectionIntro({ eyebrow, title, text }) {
         {eyebrow}
       </p>
       <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[72px]">
-        {title}
+        <ServiceInternalLinkText currentHref="/services/geo-service">
+          {title}
+        </ServiceInternalLinkText>
       </h2>
       {text ? (
         <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
-          {text}
+          <ServiceInternalLinkText currentHref="/services/geo-service">
+            {text}
+          </ServiceInternalLinkText>
         </p>
       ) : null}
     </motion.div>
@@ -496,7 +501,7 @@ export default function GeoServiceClient() {
       <section className="bg-[#EAEBDB] px-4 py-16 sm:px-6 md:px-10 md:py-24">
         <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[0.88fr_1.12fr]">
           <SectionIntro
-            eyebrow="Why GEO Marketing Matters In 2026"
+            // eyebrow="Why GEO Marketing Matters In 2026"
             title="AI Search Is Changing How Brands Are Found"
           />
 
@@ -550,7 +555,7 @@ export default function GeoServiceClient() {
       >
         <div className="mx-auto max-w-[1400px]">
           <SectionIntro
-            eyebrow="What Is Generative Engine Optimization GEO?"
+            // eyebrow="What Is Generative Engine Optimization GEO?"
             title="Make Your Brand Understandable To AI Engines"
             text="Generative Engine Optimization GEO is the process of improving your website, content, structured data and brand authority so AI platforms can understand, trust and mention your business in AI-generated answers."
           />
@@ -566,7 +571,9 @@ export default function GeoServiceClient() {
                     key={item}
                     className="py-4 text-sm font-semibold text-[#0d2d47]"
                   >
-                    {item}
+                    <ServiceInternalLinkText currentHref="/services/geo-service">
+                      {item}
+                    </ServiceInternalLinkText>
                   </p>
                 ))}
               </div>
@@ -587,7 +594,9 @@ export default function GeoServiceClient() {
                   transition={{ delay: i * 0.03 }}
                   className="bg-white/30 p-5 font-semibold backdrop-blur-md"
                 >
-                  {item}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {item}
+                  </ServiceInternalLinkText>
                 </motion.div>
               ))}
             </div>
@@ -604,7 +613,7 @@ export default function GeoServiceClient() {
       >
         <div className="mx-auto max-w-[1400px]">
           <SectionIntro
-            eyebrow="What Makes Nova Techscience A GEO Agency?"
+            // eyebrow="What Makes Nova Techscience A GEO Agency?"
             title="SEO, AEO And GEO In One Visibility System"
             text="Nova Techscience works as a GEO agency by combining technical optimisation, AI-focused content, entity building, authority signals and search strategy into one complete visibility system."
           />
@@ -631,7 +640,9 @@ export default function GeoServiceClient() {
                   key={item}
                   className="bg-white/30 px-4 py-3 text-sm font-semibold backdrop-blur-md"
                 >
-                  {item}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {item}
+                  </ServiceInternalLinkText>
                 </div>
               ))}
             </div>
@@ -693,11 +704,15 @@ export default function GeoServiceClient() {
 
                   <div className="relative z-10 ml-auto flex min-h-[210px] max-w-xl flex-col justify-center sm:min-h-[260px]">
                     <h3 className="text-2xl font-semibold leading-tight sm:text-3xl">
-                      {item.title}
+                      <ServiceInternalLinkText currentHref="/services/geo-service">
+                        {item.title}
+                      </ServiceInternalLinkText>
                     </h3>
 
                     <p className="mt-6 text-base font-medium leading-relaxed text-white/86">
-                      {item.text}
+                      <ServiceInternalLinkText currentHref="/services/geo-service">
+                        {item.text}
+                      </ServiceInternalLinkText>
                     </p>
                   </div>
                 </motion.article>
@@ -722,7 +737,9 @@ export default function GeoServiceClient() {
                   key={item}
                   className="py-4 text-sm font-semibold text-[#0d2d47]"
                 >
-                  {item}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {item}
+                  </ServiceInternalLinkText>
                 </p>
               ))}
             </div>
@@ -733,8 +750,16 @@ export default function GeoServiceClient() {
                   key={type}
                   className="grid gap-3 border-b border-[#0d2d47]/10 p-5 last:border-b-0 md:grid-cols-[0.42fr_0.58fr]"
                 >
-                  <p className="font-semibold uppercase">{type}</p>
-                  <p className="text-[#0d2d47]/70">{benefit}</p>
+                  <p className="font-semibold uppercase">
+                    <ServiceInternalLinkText currentHref="/services/geo-service">
+                      {type}
+                    </ServiceInternalLinkText>
+                  </p>
+                  <p className="text-[#0d2d47]/70">
+                    <ServiceInternalLinkText currentHref="/services/geo-service">
+                      {benefit}
+                    </ServiceInternalLinkText>
+                  </p>
                 </div>
               ))}
             </div>
@@ -773,10 +798,14 @@ export default function GeoServiceClient() {
                 </div>
 
                 <h3 className="text-2xl font-semibold uppercase leading-tight">
-                  {service.title}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {service.title}
+                  </ServiceInternalLinkText>
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-[#0d2d47]/75 md:text-base">
-                  {service.text}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {service.text}
+                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-6 grid gap-x-6 sm:grid-cols-2">
@@ -785,13 +814,18 @@ export default function GeoServiceClient() {
                       key={point}
                       className="border-b border-[#0d2d47]/10 py-2 text-sm font-medium text-[#0d2d47]/75"
                     >
-                      {point}
+                      <ServiceInternalLinkText currentHref="/services/geo-service">
+                        {point}
+                      </ServiceInternalLinkText>
                     </div>
                   ))}
                 </div>
 
                 <p className="mt-6 border-l-4 border-[#0d2d47] pl-4 text-sm font-semibold leading-relaxed text-[#0d2d47]">
-                  Summary: {service.summary}
+                  Summary:{" "}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {service.summary}
+                  </ServiceInternalLinkText>
                 </p>
               </motion.article>
             ))}
@@ -819,9 +853,21 @@ export default function GeoServiceClient() {
                 key={strategy}
                 className="grid gap-3 border-b border-[#0d2d47]/10 p-5 last:border-b-0 md:grid-cols-3"
               >
-                <p className="text-xl font-semibold">{strategy}</p>
-                <p className="text-[#0d2d47]/75">{goal}</p>
-                <p className="text-[#0d2d47]/75">{bestFor}</p>
+                <p className="text-xl font-semibold">
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {strategy}
+                  </ServiceInternalLinkText>
+                </p>
+                <p className="text-[#0d2d47]/75">
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {goal}
+                  </ServiceInternalLinkText>
+                </p>
+                <p className="text-[#0d2d47]/75">
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {bestFor}
+                  </ServiceInternalLinkText>
+                </p>
               </div>
             ))}
           </div>
@@ -850,7 +896,9 @@ export default function GeoServiceClient() {
                 key={item}
                 className="border-b border-[#0d2d47]/12 px-1 py-3 text-sm font-semibold"
               >
-                {item}
+                <ServiceInternalLinkText currentHref="/services/geo-service">
+                  {item}
+                </ServiceInternalLinkText>
               </div>
             ))}
             <p className="border-l-4 border-[#0d2d47] pl-5 text-sm font-semibold leading-relaxed text-[#0d2d47] sm:col-span-2">
@@ -889,10 +937,14 @@ export default function GeoServiceClient() {
                     Step {i + 1}
                   </p>
                   <h3 className="mt-1 text-xl font-semibold uppercase">
-                    {item.title}
+                    <ServiceInternalLinkText currentHref="/services/geo-service">
+                      {item.title}
+                    </ServiceInternalLinkText>
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#0d2d47]/75">
-                    {item.text}
+                    <ServiceInternalLinkText currentHref="/services/geo-service">
+                      {item.text}
+                    </ServiceInternalLinkText>
                   </p>
                 </motion.article>
               ))}
@@ -914,7 +966,9 @@ export default function GeoServiceClient() {
                   viewport={{ once: true, amount: 0.3 }}
                   className="border-b border-[#0d2d47]/12 px-1 py-4 text-sm font-semibold"
                 >
-                  {item}
+                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                    {item}
+                  </ServiceInternalLinkText>
                 </motion.div>
               ))}
             </div>
@@ -958,7 +1012,9 @@ export default function GeoServiceClient() {
                     className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left"
                   >
                     <span className="text-base font-semibold uppercase">
-                      {item.q}
+                      <ServiceInternalLinkText currentHref="/services/geo-service">
+                        {item.q}
+                      </ServiceInternalLinkText>
                     </span>
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-white">
                       {isOpen ? "-" : "+"}
@@ -975,7 +1031,9 @@ export default function GeoServiceClient() {
                         className="overflow-hidden"
                       >
                         <p className="px-5 pb-5 text-sm leading-relaxed text-[#0d2d47]/70 md:text-base">
-                          {item.a}
+                          <ServiceInternalLinkText currentHref="/services/geo-service">
+                            {item.a}
+                          </ServiceInternalLinkText>
                         </p>
                       </motion.div>
                     )}

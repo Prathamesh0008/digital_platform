@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 import {
   FaChartLine,
   FaBullseye,
@@ -551,7 +552,9 @@ function CompactList({ items }) {
           key={item}
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/80 px-4 py-3 text-[15px] font-semibold leading-relaxed text-[#0d2d47]/80"
         >
-          {item}
+          <ServiceInternalLinkText currentHref="/services/analytics-data">
+            {item}
+          </ServiceInternalLinkText>
         </div>
       ))}
     </div>
@@ -570,10 +573,14 @@ function MiniCards({ items }) {
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/75 p-4"
         >
           <h3 className="text-base font-bold uppercase text-[#0d2d47]">
-            {item.title}
+            <ServiceInternalLinkText currentHref="/services/analytics-data">
+              {item.title}
+            </ServiceInternalLinkText>
           </h3>
           <p className="mt-2 text-[15px] leading-7 text-[#0d2d47]/72">
-            {item.text}
+            <ServiceInternalLinkText currentHref="/services/analytics-data">
+              {item.text}
+            </ServiceInternalLinkText>
           </p>
         </motion.div>
       ))}
@@ -603,7 +610,9 @@ function ContentArticle({ section, index, open, setOpen }) {
 </span>
 
           <h2 className="text-xl font-bold uppercase leading-tight text-[#0d2d47] sm:text-2xl lg:text-[27px]">
-            {section.title}
+            <ServiceInternalLinkText currentHref="/services/analytics-data">
+              {section.title}
+            </ServiceInternalLinkText>
           </h2>
         </div>
 
@@ -631,14 +640,18 @@ function ContentArticle({ section, index, open, setOpen }) {
                     key={text}
                     className="text-base leading-8 text-[#0d2d47]/78 sm:text-[17px]"
                   >
-                    {text}
+                    <ServiceInternalLinkText currentHref="/services/analytics-data">
+                      {text}
+                    </ServiceInternalLinkText>
                   </p>
                 ))}
               </div>
 
               {section.listTitle && (
                 <h3 className="mt-6 text-base font-bold uppercase tracking-[0.08em] text-[#0d2d47]">
-                  {section.listTitle}
+                  <ServiceInternalLinkText currentHref="/services/analytics-data">
+                    {section.listTitle}
+                  </ServiceInternalLinkText>
                 </h3>
               )}
 
@@ -700,7 +713,9 @@ function FAQAccordion() {
                   className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/45"
                 >
                   <span className="text-base font-bold uppercase text-[#0d2d47] md:text-lg">
-                    {item.question}
+                    <ServiceInternalLinkText currentHref="/services/analytics-data">
+                      {item.question}
+                    </ServiceInternalLinkText>
                   </span>
 
                   <motion.span
@@ -720,7 +735,9 @@ function FAQAccordion() {
                       transition={{ duration: 0.25 }}
                     >
                       <p className="px-5 pb-5 text-base leading-8 text-[#0d2d47]/72">
-                        {item.answer}
+                        <ServiceInternalLinkText currentHref="/services/analytics-data">
+                          {item.answer}
+                        </ServiceInternalLinkText>
                       </p>
                     </motion.div>
                   )}
@@ -820,7 +837,11 @@ export default function AnalyticsDataPage() {
         <Icon />
       </div>
 
-      <h3 className="text-base font-bold uppercase">{item.title}</h3>
+      <h3 className="text-base font-bold uppercase">
+        <ServiceInternalLinkText currentHref="/services/analytics-data">
+          {item.title}
+        </ServiceInternalLinkText>
+      </h3>
     </motion.div>
   );
 })}
@@ -872,10 +893,16 @@ export default function AnalyticsDataPage() {
         <Icon />
       </span>
 
-      <h3 className="text-xl font-bold uppercase">{item.title}</h3>
+      <h3 className="text-xl font-bold uppercase">
+        <ServiceInternalLinkText currentHref="/services/analytics-data">
+          {item.title}
+        </ServiceInternalLinkText>
+      </h3>
 
       <p className="mt-3 text-base leading-8 text-white/75">
-        {item.text}
+        <ServiceInternalLinkText currentHref="/services/analytics-data">
+          {item.text}
+        </ServiceInternalLinkText>
       </p>
     </motion.article>
   );
@@ -913,7 +940,11 @@ export default function AnalyticsDataPage() {
     >
       <Icon className="text-2xl text-[#7392FB]" />
 
-      <h3 className="mt-5 text-sm font-bold uppercase">{item.title}</h3>
+      <h3 className="mt-5 text-sm font-bold uppercase">
+        <ServiceInternalLinkText currentHref="/services/analytics-data">
+          {item.title}
+        </ServiceInternalLinkText>
+      </h3>
     </motion.div>
   );
 })}

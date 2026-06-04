@@ -4,26 +4,26 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function AboutTeam() {
-  const teamMembers = [
+ const teamMembers = [
     {
-      name: "Rajiv Mehta",
-      role: "Founder & CEO",
-      image: "/team1.jpg",
+      name: "Adarsh Singh",
+      role: "Senior Creative Designer",
+      image: "/teams/adarshsingh.png",
     },
     {
-      name: "Priya Sharma",
-      role: "Creative Director",
-      image: "/team2.jpg",
+      name: "Prajakta Dhande",
+      role: "Frontend Developer",
+      image: "/teams/prajaktadhande.jpeg",
     },
     {
-      name: "Amit Kumar",
-      role: "Head of Strategy",
-      image: "/team3.jpg",
+      name: "Rushikesh Andhale",
+      role: "Full Stack Developer",
+      image: "/teams/rushikeshandhale.jpg",
     },
     {
-      name: "Neha Patel",
+      name: "Chotelal Singh",
       role: "SEO Specialist",
-      image: "/team4.jpg",
+      image: "/teams/chotelalsingh.png",
     },
   ];
 
