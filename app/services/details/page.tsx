@@ -1,5 +1,6 @@
 //app\services\details\page.tsx
 import Link from "next/link";
+import { absoluteUrl, siteName } from "@/lib/site";
 
 const serviceDetails = [
   {
@@ -28,9 +29,40 @@ const serviceDetails = [
   },
 ];
 
+export const metadata = {
+  title: `Service Details | ${siteName}`,
+  description:
+    "Review Nova Techscience service details across brand strategy, SEO, social media, performance ads, and website design.",
+  alternates: {
+    canonical: "/services/details",
+  },
+  openGraph: {
+    title: `Service Details | ${siteName}`,
+    description:
+      "Explore service details for SEO, digital marketing, social media, brand strategy, performance ads, and website development.",
+    url: absoluteUrl("/services/details"),
+  },
+};
+
+const serviceDetailsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Nova Techscience Service Details",
+  itemListElement: serviceDetails.map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: service.name,
+    description: service.detail,
+  })),
+};
+
 export default function ServiceDetailsPage() {
   return (
     <main className="min-h-screen bg-[linear-gradient(to_bottom,#ffffff_0%,#eff4ff_45%,#e4ecff_100%)] px-4 py-20 sm:px-6 md:px-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceDetailsSchema) }}
+      />
       <section className="mx-auto max-w-7xl">
         <p className="text-xs uppercase tracking-[0.2em] text-[#5A7EFF]">Services</p>
         <h1 className="mt-3 text-4xl font-semibold text-[#0d2d47] md:text-6xl">Service Details</h1>

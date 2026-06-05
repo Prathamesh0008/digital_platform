@@ -1,11 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
+import InternalLinkSection from "@/components/InternalLinkSection";
+import { insightLinks, serviceHubLinks } from "@/lib/internalLinks";
 import { blogs } from "@/data/blog";
 
 export const metadata = {
   title: "Digital Marketing Blog | NovaTech",
   description:
     "Read NovaTech insights on SEO, GEO, web design, branding, ads and digital growth.",
+  alternates: {
+    canonical: "/services/blog",
+  },
 };
 
 export default function BlogPage() {
@@ -138,6 +143,11 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+      <InternalLinkSection
+        title="Related Services And Proof"
+        intro="Use these supporting pages to connect insight content with real services and implementation examples."
+        items={[...serviceHubLinks, insightLinks[1], insightLinks[2]].slice(0, 3)}
+      />
     </main>
   );
 }

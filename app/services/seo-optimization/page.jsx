@@ -1,4 +1,5 @@
 import SeoServicesClient from "./SeoServicesClient";
+import { absoluteUrl, siteName } from "@/lib/site";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -169,11 +170,17 @@ const faqSchema = {
 };
 
 export const metadata = {
-  title: "Professional SEO Services Agency | Nova Techscience",
+  title: `Professional SEO Services Agency | ${siteName}`,
   description:
     "Nova Techscience provides SEO, AI SEO, technical SEO and digital marketing services designed to improve rankings, traffic, visibility and lead generation.",
   alternates: {
     canonical: "/services/seo-services",
+  },
+  openGraph: {
+    title: `Professional SEO Services Agency | ${siteName}`,
+    description:
+      "Improve rankings, organic traffic, technical SEO performance, local SEO visibility, and AI search discoverability with Nova Techscience.",
+    url: absoluteUrl("/services/seo-services"),
   },
 };
 

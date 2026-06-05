@@ -1,7 +1,11 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import InternalLinkSection from "@/components/InternalLinkSection";
 import { notFound } from "next/navigation";
 import { portfolioProjects } from "@/data/portfolio";
+import { projectRelatedLinks } from "@/lib/internalLinks";
+import { absoluteUrl, siteName } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -11,22 +15,61 @@ export function generateStaticParams() {
   return portfolioProjects.map((item) => ({ slug: item.slug }));
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = portfolioProjects.find((item) => item.slug === slug);
+
+  if (!project) {
+    return {};
+  }
+
+  return {
+    title: `${project.name} Case Study | ${siteName}`,
+    description: project.about,
+    alternates: {
+      canonical: `/case-studies/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.name} Case Study`,
+      description: project.about,
+      url: absoluteUrl(`/case-studies/${project.slug}`),
+      images: [{ url: project.desktop, alt: `${project.name} case study preview` }],
+    },
+  };
+}
+
 export default async function CaseStudyDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const project = portfolioProjects.find((item) => item.slug === slug);
 
   if (!project) notFound();
 
+  const caseStudySchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: `${project.name} Case Study`,
+    description: project.about,
+    url: absoluteUrl(`/case-studies/${project.slug}`),
+    image: absoluteUrl(project.desktop),
+    creator: {
+      "@type": "Organization",
+      name: siteName,
+    },
+    about: project.whatWeDid,
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#EAEBDB] px-4 pb-20 pt-32 text-[#0d2d47] sm:px-6 md:px-10 md:pt-36">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
+      />
       <section className="mx-auto max-w-[1450px]">
-        {/* HERO */}
         <div className="relative overflow-hidden rounded-[42px] border border-[#0d2d47]/10 bg-white/45 p-5 shadow-[0_30px_90px_rgba(13,45,71,0.12)] backdrop-blur-md md:p-8 lg:p-10">
           <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#5A7EFF]/20 blur-3xl" />
           <div className="absolute -bottom-28 -left-24 h-96 w-96 rounded-full bg-white/70 blur-3xl" />
 
           <div className="relative grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
-            {/* LEFT CONTENT */}
             <div>
               <Link
                 href="/case-studies"
@@ -52,10 +95,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               <h1 className="mt-6 text-5xl font-semibold uppercase leading-[0.9] tracking-tight sm:text-6xl md:text-[82px]">
                 {project.name}
               </h1>
-{/* 
-              <p className="mt-4 text-sm font-medium uppercase tracking-[0.16em] text-[#5A7EFF]">
-                {project.domain}
-              </p> */}
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-[#0d2d47]/72 md:text-lg">
                 {project.about}
@@ -80,14 +119,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* RIGHT PREVIEW */}
             <div className="relative min-h-[520px] overflow-hidden rounded-[34px] bg-[#C4CFE3]/45 p-5 sm:min-h-[620px] sm:p-8">
               <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#5A7EFF]/20 blur-3xl" />
               <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/60 blur-3xl" />
 
               <div className="relative flex h-full items-center justify-center">
                 <div className="relative w-full max-w-[900px]">
-                  {/* DESKTOP */}
                   <div className="relative z-10 overflow-hidden rounded-[30px] border border-white/70 bg-white/45 p-2 shadow-[0_30px_90px_rgba(13,45,71,0.22)] backdrop-blur-md">
                     <div className="mb-2 flex items-center justify-between px-2">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0d2d47]/55">
@@ -114,7 +151,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     </div>
                   </div>
 
-                  {/* MOBILE */}
                   <div className="absolute -bottom-10 -right-1 z-30 hidden w-[165px] overflow-hidden rounded-[30px] border-[7px] border-[#0d2d47] bg-white shadow-[0_24px_65px_rgba(13,45,71,0.35)] sm:block md:w-[190px] lg:-right-4">
                     <div className="mx-auto mt-2 h-1.5 w-14 rounded-full bg-[#0d2d47]/25" />
 
@@ -138,7 +174,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* DETAILS */}
       <section className="mx-auto mt-12 grid max-w-[1450px] gap-8 lg:grid-cols-[320px_1fr]">
         <aside className="h-fit rounded-[30px] border border-[#0d2d47]/10 bg-white/55 p-6 shadow-[0_20px_60px_rgba(13,45,71,0.08)] backdrop-blur-md lg:sticky lg:top-32">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#5A7EFF]">
@@ -149,7 +184,6 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             {[
               ["Client", project.name],
               ["Category", project.category],
-              // ["Website", project.domain],
             ].map(([label, value]) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-[0.16em] text-[#0d2d47]/45">
@@ -216,6 +250,11 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           </div>
         </article>
       </section>
+      <InternalLinkSection
+        title="Related Services And Insights"
+        intro="Use these connected pages to explore the strategy, SEO, and design services behind project execution."
+        items={projectRelatedLinks}
+      />
     </main>
   );
-} 
+}

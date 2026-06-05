@@ -41,36 +41,8 @@ export default function ClientReviewSlider() {
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
-  useEffect(() => {
-    let frame;
-
-    const animate = () => {
-      if (!dragRef.current.active) {
-        dragRef.current.offset -= 0.45;
-
-        const track = trackRef.current;
-        if (track) {
-          const resetWidth = track.scrollWidth / 3;
-
-          if (Math.abs(dragRef.current.offset) >= resetWidth) {
-            dragRef.current.offset = 0;
-          }
-
-          if (dragRef.current.offset > 0) {
-            dragRef.current.offset = -resetWidth;
-          }
-
-          setOffset(dragRef.current.offset);
-        }
-      }
-
-      frame = requestAnimationFrame(animate);
-    };
-
-    frame = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(frame);
-  }, []);
+  // Removed automatic scroll animation - was causing performance issues
+  // Keep only drag interaction which is event-driven, not continuous
 
   const handlePointerDown = (e) => {
     dragRef.current.active = true;

@@ -1,10 +1,13 @@
 // marketing-website/app/about/page.tsx
+import dynamic from "next/dynamic";
+
 import AboutHero from "@/components/AboutHero";
 import AboutStory from "@/components/AboutStory";
-import AboutTeam from "@/components/AboutTeam";
-import AboutApproach from "@/components/AboutApproach";
-import AboutCTA from "@/components/AboutCTA";
- import HomeWhyChooseSection  from "@/components/HomeWhyChooseSection";
+import LazySection from "@/components/LazySection";
+const AboutTeam = dynamic(() => import("@/components/AboutTeam"));
+const AboutApproach = dynamic(() => import("@/components/AboutApproach"));
+const AboutCTA = dynamic(() => import("@/components/AboutCTA"));
+const HomeWhyChooseSection = dynamic(() => import("@/components/HomeWhyChooseSection"));
 // marketing-website/app/about/page.tsx
 
 export default function AboutPage() {
@@ -15,17 +18,25 @@ export default function AboutPage() {
       <section id="story">
         <AboutStory />
       </section>
-<HomeWhyChooseSection />
+      <LazySection minHeight={620}>
+        <HomeWhyChooseSection />
+      </LazySection>
       <section id="team">
-        <AboutTeam />
+        <LazySection minHeight={720}>
+          <AboutTeam />
+        </LazySection>
       </section>
 
       <section id="approach">
-        <AboutApproach />
+        <LazySection minHeight={760}>
+          <AboutApproach />
+        </LazySection>
       </section>
 
       <section id="cta">
-        <AboutCTA />
+        <LazySection minHeight={420}>
+          <AboutCTA />
+        </LazySection>
       </section>
     </main>
   );

@@ -13,24 +13,27 @@ export default function SplitMarqueeSection() {
 
   return (
     <section className="w-full overflow-hidden">
+      <style jsx>{`
+        @keyframes marquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .marquee-scroll {
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
 
       {/* 🔥 SOFT MARQUEE */}
       <div className="bg-[#EAEBDB] border-b border-black/10 overflow-hidden">
-        <motion.div
-          className="flex whitespace-nowrap py-3 sm:py-4 text-[#0d2d47] font-medium text-base sm:text-lg"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+        <div
+          className="flex whitespace-nowrap py-3 sm:py-4 text-[#0d2d47] font-medium text-base sm:text-lg marquee-scroll"
         >
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="mx-5 sm:mx-8 flex items-center gap-3">
               ✦ {item}
             </span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* 🔥 MAIN SECTION (SOFT GRADIENT LIKE NextSection) */}

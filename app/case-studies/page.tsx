@@ -1,6 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import InternalLinkSection from "@/components/InternalLinkSection";
+import { serviceHubLinks, insightLinks } from "@/lib/internalLinks";
 import { portfolioProjects } from "@/data/portfolio";
+
+export const metadata = {
+  title: "Website Case Studies | Nova Techscience",
+  description:
+    "Explore Nova Techscience case studies covering website design, development, responsive UX, and industry-specific digital growth work.",
+  alternates: {
+    canonical: "/case-studies",
+  },
+};
 
 export default function CaseStudiesPage() {
   return (
@@ -148,6 +159,11 @@ export default function CaseStudiesPage() {
           </Link>
         </div>
       </section>
+      <InternalLinkSection
+        title="Related Services And Articles"
+        intro="Support these case studies with the service pages and educational content that explain how the work is planned and executed."
+        items={[serviceHubLinks[1], serviceHubLinks[0], insightLinks[0]]}
+      />
     </main>
   );
 }

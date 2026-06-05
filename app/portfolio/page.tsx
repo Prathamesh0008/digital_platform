@@ -1,6 +1,17 @@
 // app/portfolio/page.tsx
+import InternalLinkSection from "@/components/InternalLinkSection";
 import PortfolioHero from "@/components/PortfolioHero";
 import Link from "next/link";
+import { insightLinks, serviceHubLinks } from "@/lib/internalLinks";
+
+export const metadata = {
+  title: "Portfolio | Nova Techscience",
+  description:
+    "Explore selected website design and development projects by Nova Techscience across healthcare, biotech, logistics, and content brands.",
+  alternates: {
+    canonical: "/portfolio",
+  },
+};
 
 export default function PortfolioPage() {
   return (
@@ -72,6 +83,11 @@ export default function PortfolioPage() {
       </section>
 
       <PortfolioHero />
+      <InternalLinkSection
+        title="Connect Portfolio To Strategy"
+        intro="Review the services and case studies that support the same design, SEO, and growth work shown in this portfolio."
+        items={[serviceHubLinks[1], serviceHubLinks[0], insightLinks[1]]}
+      />
     </main>
   );
 }

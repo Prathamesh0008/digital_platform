@@ -86,7 +86,6 @@ export default function ServiceInternalLinkText({ children, currentHref }) {
       <Link
         key={`${service.href}-${part}-${index}`}
         href={service.href}
-        prefetch={false}
         className={linkClassName}
       >
         {part}

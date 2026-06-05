@@ -66,23 +66,8 @@ export default function ServicesStacked() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-
-    let frame;
-
-    const animate = () => {
-      if (!dragRef.current.active) {
-        setRotationDeg((prev) => prev + 0.16);
-      }
-
-      frame = requestAnimationFrame(animate);
-    };
-
-    frame = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(frame);
-  }, [shouldReduceMotion]);
+  // Removed automatic rotation animation - was causing performance issues
+  // Keep only drag interaction which is event-driven, not continuous
 
   const total = cards.length;
   const stepDeg = 360 / total;

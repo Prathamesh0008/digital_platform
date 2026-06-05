@@ -4,20 +4,26 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
 
 const rotatingWords = ["Start Project", "Digital", "Growth", "Online"];
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isAfterHero, setIsAfterHero] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const prefetchedRoutesRef = useRef(new Set());
 
 const serviceLinks = [
   { name: "Brand Strategy", href: "/services/brand-strategy" },
@@ -41,19 +47,45 @@ const serviceLinks = [
     
   ];
 
+  const prefetchRoutes = (routes) => {
+    routes.forEach((route) => {
+      if (prefetchedRoutesRef.current.has(route)) {
+        return;
+      }
+
+      router.prefetch(route);
+      prefetchedRoutesRef.current.add(route);
+    });
+  };
+
   useEffect(() => {
+    let ticking = false;
+    let lastScrollY = 0;
+
     const onScroll = () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          const threshold = window.innerHeight * 0.55;
+          setIsAfterHero(lastScrollY > threshold);
+          ticking = false;
+        });
+      }
+    };
+
+    const onResize = () => {
       const threshold = window.innerHeight * 0.55;
       setIsAfterHero(window.scrollY > threshold);
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
@@ -85,7 +117,7 @@ const serviceLinks = [
   // }, [isOpen, mobileServicesOpen]);
 
   // Handle word rotation with "Start Project" staying longer
- useEffect(() => {
+  useEffect(() => {
   const durations = [2800, 1500, 1500, 1500];
 
   const timeoutId = setTimeout(() => {
@@ -94,6 +126,48 @@ const serviceLinks = [
 
   return () => clearTimeout(timeoutId);
 }, [currentWordIndex]);
+
+  useEffect(() => {
+    const routesToPrefetch = [
+      ...links.map((link) => link.href),
+      ...serviceLinks.map((link) => link.href),
+    ];
+
+    const warmRoutes = () => prefetchRoutes(routesToPrefetch);
+
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(warmRoutes, { timeout: 2000 });
+
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timer = window.setTimeout(warmRoutes, 1200);
+
+    return () => window.clearTimeout(timer);
+  }, [router]);
+
+  const handleServicesPrefetch = () => {
+    prefetchRoutes(serviceLinks.map((service) => service.href));
+  };
+
+  const handleNavIntent = (href) => {
+    prefetchRoutes([href]);
+  };
+
+  const handleNavClick = (href) => {
+    setIsOpen(false);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
+
+    if (pathname === href) {
+      scrollToTop();
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      scrollToTop();
+    });
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
@@ -105,7 +179,14 @@ const serviceLinks = [
         }`}
       >
         <div className="flex items-center justify-between px-3 py-2.5 sm:px-4 sm:py-3">
-          <Link href="/" className="flex items-center gap-2 rounded-xl px-2 py-2.5">
+          <Link
+            href="/"
+            onMouseEnter={() => handleNavIntent("/")}
+            onTouchStart={() => handleNavIntent("/")}
+            onClick={() => handleNavClick("/")}
+            scroll={false}
+            className="flex items-center gap-2 rounded-xl px-2 py-2.5"
+          >
             <Image
               src="/novalogo1.svg"
               alt="NovaTechscience"
@@ -127,11 +208,18 @@ const serviceLinks = [
                   <div
                     key={link.name}
                     className="relative"
-                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseEnter={() => {
+                      handleServicesPrefetch();
+                      setServicesOpen(true);
+                    }}
                     onMouseLeave={() => setServicesOpen(false)}
                   >
                     <Link
                       href={link.href}
+                      onMouseEnter={() => handleNavIntent(link.href)}
+                      onTouchStart={() => handleNavIntent(link.href)}
+                      onClick={() => handleNavClick(link.href)}
+                      scroll={false}
                       className={`flex items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
                         isActive
                           ? "bg-black text-white"
@@ -166,6 +254,10 @@ const serviceLinks = [
     <Link
       key={service.name}
       href={service.href}
+      onMouseEnter={() => handleNavIntent(service.href)}
+      onTouchStart={() => handleNavIntent(service.href)}
+      onClick={() => handleNavClick(service.href)}
+      scroll={false}
       className={`block rounded-xl px-3 py-2 text-[13px] font-medium transition ${
         isServiceActive
           ? "bg-black text-white"
@@ -188,6 +280,10 @@ const serviceLinks = [
                 <Link
                   key={link.name}
                   href={link.href}
+                  onMouseEnter={() => handleNavIntent(link.href)}
+                  onTouchStart={() => handleNavIntent(link.href)}
+                  onClick={() => handleNavClick(link.href)}
+                  scroll={false}
                   className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
                     isActive
                       ? "bg-black text-white"
@@ -286,7 +382,9 @@ style={{
                           >
                             <Link
                               href={link.href}
-                              onClick={() => setIsOpen(false)}
+                              onTouchStart={() => handleNavIntent(link.href)}
+                              onClick={() => handleNavClick(link.href)}
+                              scroll={false}
                               className="flex flex-1 items-center px-4 py-3 text-sm font-medium"
                             >
                               {link.name}
@@ -294,7 +392,10 @@ style={{
 
                             <button
                               type="button"
-                              onClick={() => setMobileServicesOpen((prev) => !prev)}
+                              onClick={() => {
+                                handleServicesPrefetch();
+                                setMobileServicesOpen((prev) => !prev);
+                              }}
                               className="flex w-14 items-center justify-center border-l border-black/10"
                             >
                               <FaChevronDown
@@ -323,7 +424,9 @@ style={{
     <Link
       key={service.name}
       href={service.href}
-      onClick={() => setIsOpen(false)}
+      onTouchStart={() => handleNavIntent(service.href)}
+      onClick={() => handleNavClick(service.href)}
+      scroll={false}
       className={`block rounded-xl px-3 py-2 text-[13px] font-medium transition ${
         isServiceActive
           ? "bg-black text-white"
@@ -346,7 +449,9 @@ style={{
                       <Link
                         key={link.name}
                         href={link.href}
-                        onClick={() => setIsOpen(false)}
+                        onTouchStart={() => handleNavIntent(link.href)}
+                        onClick={() => handleNavClick(link.href)}
+                        scroll={false}
                         className={`rounded-xl px-4 py-3 text-sm font-medium transition ${
                           isActive
                             ? "bg-black text-white"

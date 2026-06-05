@@ -1,10 +1,43 @@
 import Link from "next/link";
 import Image from "next/image";
+import InternalLinkSection from "@/components/InternalLinkSection";
 import { notFound } from "next/navigation";
 import { blogs } from "@/data/blog";
+import { getBlogRelatedLinks } from "@/lib/internalLinks";
+import { absoluteUrl, siteName } from "@/lib/site";
 
 export async function generateStaticParams() {
   return blogs.map((blog) => ({ slug: blog.slug }));
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const blog = blogs.find((item) => item.slug === slug);
+
+  if (!blog) {
+    return {};
+  }
+
+  return {
+    title: `${blog.title} | ${siteName}`,
+    description: blog.excerpt,
+    alternates: {
+      canonical: `/services/blog/${blog.slug}`,
+    },
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      type: "article",
+      url: absoluteUrl(`/services/blog/${blog.slug}`),
+      images: [{ url: blog.image, alt: blog.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.excerpt,
+      images: [blog.image],
+    },
+  };
 }
 
 export default async function BlogDetailPage({ params }) {
@@ -14,8 +47,29 @@ export default async function BlogDetailPage({ params }) {
 
   if (!blog) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.excerpt,
+    image: absoluteUrl(blog.image),
+    author: {
+      "@type": "Organization",
+      name: blog.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteName,
+    },
+    mainEntityOfPage: absoluteUrl(`/services/blog/${blog.slug}`),
+  };
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#EAEBDB] text-[#0d2d47]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <section
         className="relative px-4 pb-12 pt-28 sm:px-6 sm:pt-32 md:px-10 md:pb-20 md:pt-40"
         style={{
@@ -180,6 +234,11 @@ export default async function BlogDetailPage({ params }) {
           </div>
         </div>
       </section>
+      <InternalLinkSection
+        title="Related Services"
+        intro="Continue from this article into the service pages and proof pages most closely connected to the topic."
+        items={getBlogRelatedLinks(blog.category)}
+      />
     </main>
   );
 }
