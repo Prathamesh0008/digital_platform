@@ -987,9 +987,9 @@ export default function PerformanceAdsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
-            <p className="mb-5 inline-flex bg-[#0d2d47] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(115,146,251,0.45)]">
+            {/* <p className="mb-5 inline-flex bg-[#0d2d47] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(115,146,251,0.45)]">
               Nova Techscience · Performance Ads
-            </p>
+            </p> */}
 
             <h1 className="max-w-4xl text-[42px] font-black uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl lg:text-[86px]">
               Paid Campaigns That{" "}
@@ -1164,9 +1164,9 @@ export default function PerformanceAdsPage() {
                 </span>
 
                 <h3 className="text-2xl font-black uppercase">
-                  <ServiceInternalLinkText currentHref="/services/performance-ads">
+                 
                     {item.title}
-                  </ServiceInternalLinkText>
+             
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70">
@@ -1420,12 +1420,12 @@ export default function PerformanceAdsPage() {
               Start Performance Ads
             </Link>
 
-            <Link
+            {/* <Link
               href="/portfolio"
               className="rounded-md border border-white/20 bg-white/10 px-7 py-3 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/15"
             >
               View Portfolio
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       </section>

@@ -476,7 +476,7 @@ export default function SocialMediaClient() {
                   <p className="text-2xl font-black text-[#7392FB]">
                     {item.value}
                   </p>
-                  <p className="text-sm font-medium leading-relaxed text-[#0d2d47]/65">
+                  <p className="text-sm font-medium leading-relaxed text-[#0d2d47]/65 [&_a]:no-underline">
                     <ServiceInternalLinkText currentHref="/services/social-media">
                       {item.text}
                     </ServiceInternalLinkText>
@@ -517,13 +517,13 @@ export default function SocialMediaClient() {
 })()}
                 </span>
 
-                <h3 className="text-2xl font-black uppercase">
+                <h3 className="text-2xl font-black uppercase [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
                     {item.title}
                   </ServiceInternalLinkText>
                 </h3>
 
-                <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70">
+                <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70 [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
                     {item.text}
                   </ServiceInternalLinkText>
@@ -533,7 +533,7 @@ export default function SocialMediaClient() {
                   {item.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[#0d2d47]/10 bg-white/60 px-3 py-1 text-xs font-bold text-[#0d2d47]/70"
+                      className="rounded-full border border-[#0d2d47]/10 bg-white/60 px-3 py-1 text-xs font-bold text-[#0d2d47]/70 [&_a]:no-underline"
                     >
                       <ServiceInternalLinkText currentHref="/services/social-media">
                         {tag}
@@ -582,13 +582,13 @@ export default function SocialMediaClient() {
   return <Icon />;
 })()}</span>
 
-                <h3 className="mt-4 text-xl font-black uppercase">
+                <h3 className="mt-4 text-xl font-black uppercase [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
                     {item.title}
                   </ServiceInternalLinkText>
                 </h3>
 
-                <p className="mt-3 text-sm leading-7 text-white/62">
+                <p className="mt-3 text-sm leading-7 text-white/62 [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
                     {item.text}
                   </ServiceInternalLinkText>
@@ -622,12 +622,12 @@ export default function SocialMediaClient() {
                 </p>
 
                 <div>
-                  <h3 className="text-xl font-black uppercase">
+                  <h3 className="text-xl font-black uppercase [&_a]:no-underline">
                     <ServiceInternalLinkText currentHref="/services/social-media">
                       {item.title}
                     </ServiceInternalLinkText>
                   </h3>
-                  <p className="mt-2 text-sm leading-7 text-[#0d2d47]/70">
+                  <p className="mt-2 text-sm leading-7 text-[#0d2d47]/70 [&_a]:no-underline">
                     <ServiceInternalLinkText currentHref="/services/social-media">
                       {item.text}
                     </ServiceInternalLinkText>
@@ -637,7 +637,7 @@ export default function SocialMediaClient() {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[#7392FB]/20 bg-[#7392FB]/10 px-3 py-1 text-xs font-bold text-[#0d2d47]"
+                        className="rounded-full border border-[#7392FB]/20 bg-[#7392FB]/10 px-3 py-1 text-xs font-bold text-[#0d2d47] [&_a]:no-underline"
                       >
                         <ServiceInternalLinkText currentHref="/services/social-media">
                           {tag}
@@ -676,7 +676,7 @@ export default function SocialMediaClient() {
   return <Icon />;
 })()}</span>
                   <div>
-                    <h3 className="text-base font-black uppercase text-white">
+                    <h3 className="text-base font-black uppercase text-white [&_a]:no-underline">
                       <ServiceInternalLinkText currentHref="/services/social-media">
                         {item.title}
                       </ServiceInternalLinkText>
@@ -790,12 +790,12 @@ export default function SocialMediaClient() {
   return <Icon />;
 })()}</span>
                 <div>
-                  <h3 className="text-base font-black uppercase">
+                  <h3 className="text-base font-black uppercase [&_a]:no-underline">
                     <ServiceInternalLinkText currentHref="/services/social-media">
                       {item.title}
                     </ServiceInternalLinkText>
                   </h3>
-                  <p className="mt-1 text-sm leading-6 text-[#0d2d47]/68">
+                  <p className="mt-1 text-sm leading-6 text-[#0d2d47]/68 [&_a]:no-underline">
                     <ServiceInternalLinkText currentHref="/services/social-media">
                       {item.text}
                     </ServiceInternalLinkText>

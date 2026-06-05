@@ -18,6 +18,7 @@ const NovaLogoPreloader = dynamic(() => import("@/components/NovaLogoPreloader")
 export default function AppShell({ children }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
+
   const handlePreloaderComplete = useCallback(() => {
     setIsLoading(false);
   }, []);
@@ -28,35 +29,26 @@ export default function AppShell({ children }) {
     return <>{children}</>;
   }
 
-return (
-  <>
-    <Navbar />
-
-    <main className="flex-1">
-      {children}
-    </main>
-
-    <NovaTechAssistant />
-
-    <Footer />
-
-    {isLoading && (
-      <NovaLogoPreloader onComplete={handlePreloaderComplete} />
-    )}
-  </>
-);
-
   return (
     <>
-      <Navbar />
+      {isLoading && <NovaLogoPreloader onComplete={handlePreloaderComplete} />}
 
-      <main className="flex-1">
-        {children}
-      </main>
+      <div
+        className={`flex min-h-screen flex-col transition-opacity duration-500 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+        aria-hidden={isLoading}
+      >
+        <Navbar />
 
-      <NovaTechAssistant />
+        <main className="flex-1">
+          {children}
+        </main>
 
-      <Footer />
+        <NovaTechAssistant />
+
+        <Footer />
+      </div>
     </>
   );
 }

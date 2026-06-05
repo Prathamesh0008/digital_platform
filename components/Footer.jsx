@@ -88,7 +88,7 @@ export default function Footer() {
       </div> */}
 
       {/* BIG TEXT (SCROLL ANIMATION) */}
-    {/* <motion.h1
+     <motion.h1
   initial={{ opacity: 0, y: 100 }}
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: false, amount: 0.6 }}
@@ -97,10 +97,10 @@ export default function Footer() {
     text-[clamp(2rem,10vw,12.5rem)] mt-12 sm:mt-16 break-words"
 >
   Novatech Marketing
-</motion.h1> */}
+</motion.h1> 
 
       {/* BOTTOM TEXT */}
-      <div className="mt-6 text-sm text-center text-black/70">
+      <div className="mt-6 text-sm ">
         {"\u00A9"} 2026 by NovaTech. Powered and secured by NovaTech
       </div>
 

@@ -10,11 +10,7 @@ export default function AboutTeam() {
       role: "Senior Creative Designer",
       image: "/teams/adarshsingh.png",
     },
-    {
-      name: "Prajakta Dhande",
-      role: "Frontend Developer",
-      image: "/teams/prajaktadhande.jpeg",
-    },
+    
     {
       name: "Rushikesh Andhale",
       role: "Full Stack Developer",
@@ -24,6 +20,11 @@ export default function AboutTeam() {
       name: "Chotelal Singh",
       role: "SEO Specialist",
       image: "/teams/chotelalsingh.png",
+    },
+    {
+      name: "Prajakta Dhande",
+      role: "Frontend Developer",
+      image: "/teams/prajaktadhande.jpeg",
     },
   ];
 

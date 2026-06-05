@@ -3,7 +3,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ServiceInternalLinkText from "@/components/ServiceInternalLinkText";
 import {
   FaComments,
   FaUnlockAlt,
@@ -488,9 +487,7 @@ export default function BrandStrategyPage() {
 })()}
                 </span>
                 <p className="text-sm font-bold uppercase leading-relaxed text-[#0d2d47]/75">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.text}
-                  </ServiceInternalLinkText>
                 </p>
               </motion.div>
             ))}
@@ -532,9 +529,7 @@ export default function BrandStrategyPage() {
                     className="flex gap-3 text-base leading-7 text-[#0d2d47]/68"
                   >
                     <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0d2d47]/35" />
-                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
                       {item}
-                    </ServiceInternalLinkText>
                   </li>
                 ))}
               </ul>
@@ -563,9 +558,7 @@ export default function BrandStrategyPage() {
                     className="flex gap-3 text-base font-medium leading-7 text-[#0d2d47]/78"
                   >
                     <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7392FB]" />
-                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
                       {item}
-                    </ServiceInternalLinkText>
                   </li>
                 ))}
               </ul>
@@ -608,14 +601,10 @@ export default function BrandStrategyPage() {
 })()}
                 </div>
                 <h3 className="text-xl font-bold uppercase">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.title}
-                  </ServiceInternalLinkText>
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-white/74 md:text-base">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.text}
-                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-5 space-y-2">
@@ -625,9 +614,7 @@ export default function BrandStrategyPage() {
                       className="flex gap-2 text-sm font-medium text-white/70"
                     >
                       <span className="text-[#EAEBDB]">→</span>
-                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
                         {feature}
-                      </ServiceInternalLinkText>
                     </p>
                   ))}
                 </div>
@@ -670,14 +657,10 @@ export default function BrandStrategyPage() {
   return <Icon />;
 })()}</span>
                 <h3 className="mt-3 text-base font-bold uppercase">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.title}
-                  </ServiceInternalLinkText>
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-[#0d2d47]/68">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.text}
-                  </ServiceInternalLinkText>
                 </p>
               </motion.div>
             ))}
@@ -711,14 +694,10 @@ export default function BrandStrategyPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold uppercase">
-                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
                       {item.title}
-                    </ServiceInternalLinkText>
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-[#0d2d47]/72 md:text-base">
-                    <ServiceInternalLinkText currentHref="/services/brand-strategy">
                       {item.text}
-                    </ServiceInternalLinkText>
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -727,9 +706,7 @@ export default function BrandStrategyPage() {
                         key={tag}
                         className="rounded-full border border-[#7392FB]/25 bg-[#7392FB]/10 px-3 py-1 text-xs font-bold text-[#0d2d47]"
                       >
-                        <ServiceInternalLinkText currentHref="/services/brand-strategy">
                           {tag}
-                        </ServiceInternalLinkText>
                       </span>
                     ))}
                   </div>
@@ -805,14 +782,10 @@ export default function BrandStrategyPage() {
 })()}</span>
                   <div>
                     <h3 className="text-lg font-bold uppercase">
-                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
                         {item.title}
-                      </ServiceInternalLinkText>
                     </h3>
                     <p className="mt-1 text-sm leading-7 text-[#0d2d47]/68">
-                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
                         {item.text}
-                      </ServiceInternalLinkText>
                     </p>
                   </div>
                 </motion.div>
@@ -855,14 +828,10 @@ export default function BrandStrategyPage() {
   return <Icon />;
 })()}</span>
                 <h3 className="mt-4 text-lg font-bold uppercase">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.title}
-                  </ServiceInternalLinkText>
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-white/70">
-                  <ServiceInternalLinkText currentHref="/services/brand-strategy">
                     {item.text}
-                  </ServiceInternalLinkText>
                 </p>
 
                 <div className="mt-4 space-y-2">
@@ -872,9 +841,7 @@ export default function BrandStrategyPage() {
                       className="flex gap-2 text-xs font-semibold text-white/65"
                     >
                       <span>●</span>
-                      <ServiceInternalLinkText currentHref="/services/brand-strategy">
                         {point}
-                      </ServiceInternalLinkText>
                     </p>
                   ))}
                 </div>
@@ -916,14 +883,10 @@ export default function BrandStrategyPage() {
                     </span>
                     <div>
                       <h3 className="text-lg font-bold uppercase">
-                        <ServiceInternalLinkText currentHref="/services/brand-strategy">
                           {item.title}
-                        </ServiceInternalLinkText>
                       </h3>
                       <p className="mt-1 text-sm leading-7 text-[#0d2d47]/68">
-                        <ServiceInternalLinkText currentHref="/services/brand-strategy">
                           {item.text}
-                        </ServiceInternalLinkText>
                       </p>
                     </div>
                   </div>

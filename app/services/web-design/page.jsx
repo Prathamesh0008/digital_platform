@@ -676,9 +676,9 @@ export default function WebDesignPage() {
                 </span>
 
                 <h3 className="text-xl font-bold uppercase">
-                  <ServiceInternalLinkText currentHref="/services/web-design">
+                  
                     {item.title}
-                  </ServiceInternalLinkText>
+                 
                 </h3>
 
                 <p className="mt-3 text-base leading-8 text-[#0d2d47]/72">

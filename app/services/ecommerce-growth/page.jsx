@@ -319,9 +319,9 @@ function CompactList({ items }) {
           key={item}
           className="rounded-2xl border border-[#0d2d47]/10 bg-[#EAEBDB]/80 px-4 py-3 text-[15px] font-medium leading-relaxed text-[#0d2d47]/80"
         >
-          <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+          
             {item}
-          </ServiceInternalLinkText>
+        
         </div>
       ))}
     </div>
@@ -386,7 +386,7 @@ function ContentArticle({ section, index, open, setOpen }) {
       <button
         type="button"
         onClick={() => setOpen(isOpen ? -1 : index)}
-        className="flex w-full items-start justify-between gap-5 px-5 py-5 text-left sm:px-7 sm:py-6"
+        className="flex w-full cursor-pointer items-start justify-between gap-5 px-5 py-5 text-left sm:px-7 sm:py-6"
       >
         <div className="flex gap-4">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-sm font-medium text-white">
@@ -476,7 +476,7 @@ function FAQAccordion() {
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? -1 : index)}
-                  className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left"
+                  className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left cursor-pointer"
                 >
                   <div className="flex gap-4">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#7392FB] text-xs font-medium text-white">
@@ -705,9 +705,9 @@ export default function EcommerceGrowthPage() {
                 >
                   <Icon className="text-2xl text-[#7392FB]" />
                   <h3 className="mt-3 text-sm font-semibold uppercase">
-                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
+                   
                       {item.title}
-                    </ServiceInternalLinkText>
+                   
                   </h3>
                 </motion.div>
               );

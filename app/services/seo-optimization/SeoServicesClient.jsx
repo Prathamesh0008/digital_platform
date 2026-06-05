@@ -167,13 +167,13 @@ function SectionIntro({ eyebrow, title, text }) {
       {/* <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#0d2d47]/55">
         {eyebrow}
       </p> */}
-      <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[72px]">
+      <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[72px] [&_a]:no-underline">
         <ServiceInternalLinkText currentHref="/services/seo-optimization">
           {title}
         </ServiceInternalLinkText>
       </h2>
       {text ? (
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg [&_a]:no-underline">
           <ServiceInternalLinkText currentHref="/services/seo-optimization">
             {text}
           </ServiceInternalLinkText>
@@ -391,18 +391,18 @@ export default function SeoServicesClient() {
                     SEO Service
                   </p> */}
                   <h3 className="mt-3 text-2xl font-semibold uppercase leading-tight">
-                    <ServiceInternalLinkText currentHref="/services/seo-optimization">
+                   
                       {section.title}
-                    </ServiceInternalLinkText>
+                    
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-white/72">
+                  <p className="mt-4 text-sm leading-relaxed text-white/72 [&_a]:no-underline">
                     <ServiceInternalLinkText currentHref="/services/seo-optimization">
                       {section.intro}
                     </ServiceInternalLinkText>
                   </p>
                 </div>
 
-                <div className="space-y-4 text-sm leading-relaxed text-white/78 md:text-base">
+                <div className="space-y-4 text-sm leading-relaxed text-white/78 md:text-base [&_a]:no-underline">
                   {section.body.map((item) => (
                     <p key={item}>
                       <ServiceInternalLinkText currentHref="/services/seo-optimization">
@@ -436,7 +436,7 @@ export default function SeoServicesClient() {
               responsiveness, conversion-focused layouts, page speed
               optimisation and content readability.
             </p>
-            <p className="border-l-4 border-[#0d2d47] pl-5 font-semibold text-[#0d2d47]">
+            <p className=" pl-5 font-semibold text-[#0d2d47]">
               Strong SEO should not only attract traffic. It should guide
               visitors toward meaningful actions such as enquiries, purchases
               or consultations.
@@ -533,7 +533,7 @@ export default function SeoServicesClient() {
                     onClick={() => setOpenFaq(isOpen ? -1 : i)}
                     className="flex w-full items-center justify-between gap-5 py-5 text-left"
                   >
-                    <span className="text-base font-semibold uppercase">
+                    <span className="text-base font-semibold uppercase [&_a]:no-underline">
                       <ServiceInternalLinkText currentHref="/services/seo-optimization">
                         {item.q}
                       </ServiceInternalLinkText>

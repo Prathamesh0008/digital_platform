@@ -403,9 +403,9 @@ function SectionIntro({ eyebrow, title, text }) {
         {eyebrow}
       </p>
       <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[72px]">
-        <ServiceInternalLinkText currentHref="/services/geo-service">
+     
           {title}
-        </ServiceInternalLinkText>
+       
       </h2>
       {text ? (
         <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
@@ -561,7 +561,7 @@ export default function GeoServiceClient() {
           />
 
           <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="border-l-4 border-[#0d2d47] py-2 pl-6">
+            <div className=" py-2 pl-6">
               <h3 className="text-2xl font-semibold uppercase leading-tight">
                 GEO helps your brand answer three important questions
               </h3>
@@ -612,11 +612,17 @@ export default function GeoServiceClient() {
         }}
       >
         <div className="mx-auto max-w-[1400px]">
-          <SectionIntro
-            // eyebrow="What Makes Nova Techscience A GEO Agency?"
-            title="SEO, AEO And GEO In One Visibility System"
-            text="Nova Techscience works as a GEO agency by combining technical optimisation, AI-focused content, entity building, authority signals and search strategy into one complete visibility system."
-          />
+       <div className="mb-10 max-w-5xl">
+  <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-[72px]">
+    SEO, AEO And GEO In One Visibility System
+  </h2>
+
+  <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
+    Nova Techscience works as a GEO agency by combining technical optimisation,
+    AI-focused content, entity building, authority signals and search strategy
+    into one complete visibility system.
+  </p>
+</div>
 
           <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
             <div className="py-4">
@@ -626,7 +632,7 @@ export default function GeoServiceClient() {
                 builds GEO campaigns that support both AI visibility and
                 traditional organic rankings.
               </p>
-              <p className="mt-6 border-l-4 border-[#0d2d47] pl-5 text-sm font-semibold leading-relaxed text-[#0d2d47]">
+              <p className="mt-6 pl-5 text-sm font-semibold leading-relaxed text-[#0d2d47]">
                 Summary: Nova Techscience does not replace SEO with GEO. We
                 strengthen your existing SEO marketing with AI search
                 optimisation so your brand can perform across both traditional
@@ -658,7 +664,7 @@ export default function GeoServiceClient() {
         }}
       >
         <div className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.78fr_1.22fr]">
-          <div className="lg:sticky lg:top-24 lg:h-fit">
+       <div className="pt-10 lg:sticky lg:top-32 lg:h-fit lg:pt-16">
             {/* <p className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white">
               What GEO Does
             </p> */}
@@ -693,7 +699,7 @@ export default function GeoServiceClient() {
                   transition={{ duration: 0.55, delay: i * 0.04 }}
                   className="relative min-h-[260px] overflow-hidden rounded-[22px] border border-white/70 p-6 text-white shadow-[0_26px_80px_rgba(13,45,71,0.2)] sm:min-h-[320px] sm:p-8 lg:sticky"
                   style={{
-                    top: `calc(5.5rem + ${i * 14}px)`,
+                    top: `calc(9rem + ${i * 14}px)`,
                     zIndex: i + 1,
                     background: cardGradients[i],
                   }}
@@ -788,7 +794,7 @@ export default function GeoServiceClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.22 }}
                 transition={{ duration: 0.55, delay: i * 0.04, ease: "easeOut" }}
-                className="group bg-white/28 p-6 backdrop-blur-md transition duration-300 hover:bg-white/42 md:p-8"
+            className="group bg-white/28 p-6 backdrop-blur-md transition-all duration-300 hover:bg-[#0d2d47] hover:text-white hover:shadow-[0_24px_70px_rgba(13,45,71,0.28)] md:p-8"
               >
                 <div className="mb-5 flex flex-wrap items-center gap-3">
                   <span className="rounded-full border border-[#0d2d47]/15 bg-[#0d2d47] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white transition group-hover:bg-[#7392FB]">
@@ -797,22 +803,20 @@ export default function GeoServiceClient() {
                   <span className="h-px min-w-10 flex-1 bg-[#0d2d47]/15" />
                 </div>
 
-                <h3 className="text-2xl font-semibold uppercase leading-tight">
-                  <ServiceInternalLinkText currentHref="/services/geo-service">
-                    {service.title}
-                  </ServiceInternalLinkText>
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-[#0d2d47]/75 md:text-base">
-                  <ServiceInternalLinkText currentHref="/services/geo-service">
-                    {service.text}
-                  </ServiceInternalLinkText>
-                </p>
+   <h3 className="text-2xl font-semibold uppercase leading-tight transition-colors group-hover:text-white">
+  {service.title}
+</h3>
+<p className="mt-4 text-sm leading-relaxed text-[#0d2d47]/75 transition-colors group-hover:text-white/80 md:text-base">
+  <ServiceInternalLinkText currentHref="/services/geo-service">
+    {service.text}
+  </ServiceInternalLinkText>
+</p>
 
                 <div className="mt-6 grid gap-x-6 sm:grid-cols-2">
                   {service.points.map((point) => (
                     <div
                       key={point}
-                      className="border-b border-[#0d2d47]/10 py-2 text-sm font-medium text-[#0d2d47]/75"
+                      className="mt-6 border-l-4 border-[#0d2d47] pl-4 text-sm font-semibold leading-relaxed text-[#0d2d47] transition-colors group-hover:border-[#7392FB] group-hover:text-white"
                     >
                       <ServiceInternalLinkText currentHref="/services/geo-service">
                         {point}
@@ -854,19 +858,19 @@ export default function GeoServiceClient() {
                 className="grid gap-3 border-b border-[#0d2d47]/10 p-5 last:border-b-0 md:grid-cols-3"
               >
                 <p className="text-xl font-semibold">
-                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                
                     {strategy}
-                  </ServiceInternalLinkText>
+             
                 </p>
                 <p className="text-[#0d2d47]/75">
-                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                 
                     {goal}
-                  </ServiceInternalLinkText>
+                 
                 </p>
                 <p className="text-[#0d2d47]/75">
-                  <ServiceInternalLinkText currentHref="/services/geo-service">
+                 
                     {bestFor}
-                  </ServiceInternalLinkText>
+                 
                 </p>
               </div>
             ))}
@@ -1009,7 +1013,7 @@ export default function GeoServiceClient() {
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? -1 : i)}
-                    className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left"
+                    className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left cursor-pointer"
                   >
                     <span className="text-base font-semibold uppercase">
                       <ServiceInternalLinkText currentHref="/services/geo-service">
