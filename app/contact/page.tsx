@@ -1,4 +1,5 @@
 import ContactSection from "@/components/ContactSection";
+import { contactDetails } from "@/lib/contactDetails";
 
 export default function ContactPage() {
   return (
@@ -26,15 +27,15 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
           <div className="rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-white/60">Email</p>
-            <p className="mt-3 text-lg font-medium">info@novatech.com</p>
+            <p className="mt-3 text-lg font-medium">{contactDetails.email}</p>
           </div>
           <div className="rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-white/60">Phone</p>
-            <p className="mt-3 text-lg font-medium">9004483655</p>
+            <p className="mt-3 text-lg font-medium">{contactDetails.phone}</p>
           </div>
           <div className="rounded-2xl border border-white/20 bg-white/5 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-white/60">Office</p>
-            <p className="mt-3 text-lg font-medium">San Francisco, CA</p>
+            <p className="mt-3 text-lg font-medium">{contactDetails.office}</p>
           </div>
         </div>
       </section>

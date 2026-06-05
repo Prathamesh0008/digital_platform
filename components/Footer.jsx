@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin, Phone, Mail, ShieldCheck, Accessibility } from "lucide-react";
+import { contactDetails } from "@/lib/contactDetails";
 
 export default function Footer() {
   return (
@@ -26,18 +27,15 @@ export default function Footer() {
           <div className="space-y-3">
             <p className="mb-4 flex items-start gap-2 break-words">
               <MapPin size={18} className="mt-1 shrink-0 text-[#5A7EFF]" />
-              <span>
-                Nerul, Navi Mumbai,
-                Maharashtra 400706
-              </span>
+              <span>{contactDetails.office}</span>
             </p>
             <p className="mb-2 flex items-center gap-2">
               <Phone size={18} className="text-[#5A7EFF]" />
-              <span>9004483655</span>
+              <span>{contactDetails.phone}</span>
             </p>
             <p className="flex items-center gap-2">
               <Mail size={18} className="text-[#5A7EFF]" />
-              <span>novatechscience@gmail.com</span>
+              <span>{contactDetails.email}</span>
             </p>
           </div>
 
