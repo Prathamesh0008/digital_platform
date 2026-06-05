@@ -69,7 +69,21 @@ export default function ClientsAndTestimonials() {
 
   return (
     <section className="w-full overflow-x-hidden md:overflow-x-visible">
-      <style jsx global>{`
+      <style jsx>{`
+        @keyframes marqueeLeft {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0%); }
+        }
+        .marquee-left {
+          animation: marqueeLeft 24s linear infinite;
+        }
+        .marquee-right {
+          animation: marqueeRight 22s linear infinite;
+        }
         .clientsLogoMerge img:first-of-type,
         .clientsLogoMerge > *:first-child,
         .clientsLogoMerge > *:first-child * {
@@ -93,10 +107,8 @@ export default function ClientsAndTestimonials() {
           </motion.div>
 
           <div className="flex flex-col gap-4 overflow-hidden py-4 sm:gap-6 md:col-span-3">
-            <motion.div
-              className="flex whitespace-nowrap gap-6 sm:gap-12"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            <div
+              className="flex whitespace-nowrap gap-6 sm:gap-12 marquee-left"
             >
               {topLoopLogos.map((item, i) => (
                 <a
@@ -116,12 +128,10 @@ export default function ClientsAndTestimonials() {
                   />
                 </a>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="flex whitespace-nowrap gap-6 sm:gap-12"
-              animate={{ x: ["-50%", "0%"] }}
-              transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+            <div
+              className="flex whitespace-nowrap gap-6 sm:gap-12 marquee-right"
             >
               {bottomLoopLogos.map((item, i) => (
                 <a
@@ -141,7 +151,7 @@ export default function ClientsAndTestimonials() {
                   />
                 </a>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
         </div>
@@ -166,9 +176,9 @@ export default function ClientsAndTestimonials() {
         every project.
       </motion.h2>
 
-      <motion.div
+     <motion.div
         initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 10, y: 0 }}
         transition={{ duration: 1, delay: 0.1 }}
         viewport={{ once: true }}
         className="relative flex min-h-[280px] items-center justify-center md:min-h-0"
@@ -185,6 +195,7 @@ export default function ClientsAndTestimonials() {
           useImagePieces={true}
         />
       </motion.div>
+ 
     </div>
   </div>
 </div>

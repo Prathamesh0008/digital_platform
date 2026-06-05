@@ -11,6 +11,7 @@ export default function ServicesStacked() {
   const [isDragging, setIsDragging] = useState(false);
 
   const dragRef = useRef({ active: false, lastX: 0 });
+  const autoRotatePausedUntilRef = useRef(0);
   const shouldReduceMotion = useReducedMotion();
 
   const cards = [
@@ -66,8 +67,29 @@ export default function ServicesStacked() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Removed automatic rotation animation - was causing performance issues
-  // Keep only drag interaction which is event-driven, not continuous
+  useEffect(() => {
+    if (shouldReduceMotion) return undefined;
+
+    let frameId = 0;
+    let lastTime = 0;
+
+    const step = (now) => {
+      if (!lastTime) lastTime = now;
+
+      const elapsed = now - lastTime;
+      lastTime = now;
+
+      if (!dragRef.current.active && now >= autoRotatePausedUntilRef.current) {
+        setRotationDeg((prev) => (prev + elapsed * 0.012) % 360);
+      }
+
+      frameId = window.requestAnimationFrame(step);
+    };
+
+    frameId = window.requestAnimationFrame(step);
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [shouldReduceMotion]);
 
   const total = cards.length;
   const stepDeg = 360 / total;
@@ -145,6 +167,7 @@ const cardSize =
 
     dragRef.current.active = true;
     dragRef.current.lastX = e.clientX;
+    autoRotatePausedUntilRef.current = performance.now() + 2500;
     setIsDragging(true);
 
     e.currentTarget.setPointerCapture?.(e.pointerId);
@@ -155,12 +178,14 @@ const cardSize =
 
     const deltaX = e.clientX - dragRef.current.lastX;
     dragRef.current.lastX = e.clientX;
+    autoRotatePausedUntilRef.current = performance.now() + 2500;
 
     setRotationDeg((prev) => prev - deltaX * 0.35);
   };
 
   const handlePointerUp = (e) => {
     dragRef.current.active = false;
+    autoRotatePausedUntilRef.current = performance.now() + 1800;
     setIsDragging(false);
 
     e.currentTarget.releasePointerCapture?.(e.pointerId);
