@@ -1,4 +1,3 @@
-//components\HomeGrowthSection.jsx
 "use client";
 
 import Image from "next/image";
@@ -103,16 +102,19 @@ export default function HomeGrowthSection() {
   const infoTabs = [
     {
       title: "Improved Customer Reach",
+      image: "/Customer reach 1.png",
       description:
         "Improved customer reach in digital marketing refers to strategically expanding your brand's visibility and influence to connect with a broader, high-potential audience across digital platforms. By leveraging digital marketing strategies, SEO, social media marketing, paid advertising, and content marketing, businesses can attract, engage, and convert customers who are actively interested in their products or services. This approach enables brands to reach new markets, increase brand awareness, drive qualified traffic, and build lasting customer relationships. Effective digital marketing efforts ensure consistent engagement, higher conversions, and sustainable growth by connecting your business with the right audience at scale.",
     },
     {
       title: "Complete Brand Control",
+      image: "/brandcontrol.jpg",
       description:
         "Complete brand control in digital marketing refers to a business's ability to maintain consistent messaging, visual identity, and brand experience across all digital platforms and online touchpoints. Through strategic digital branding, content management, social media marketing, and online reputation management, brands can actively shape how they are perceived in the digital landscape. This level of control ensures brand consistency, strengthens trust, enhances brand authority, and aligns every digital interaction with your core values and long-term vision. Effective digital marketing strategies empower businesses to protect their brand image while delivering a unified, impactful presence that resonates with their target audience.",
     },
     {
       title: "Enhanced Customer Trust",
+      image: "/Customer trust.jpg",
       description:
         "Enhanced customer trust in digital marketing refers to building strong credibility, reliability, and confidence in your brand through consistent, transparent, and value-driven digital experiences. By leveraging strategic branding, high-quality content, social proof, and data-backed digital marketing strategies, businesses can establish authority and foster long-term customer confidence. In today's competitive digital landscape, trust is a key driver of conversion, customer loyalty, and brand equity. Well-executed digital marketing initiatives ensure every interaction—across websites, campaigns, and digital channels—reinforces authenticity, professionalism, and dependability, guiding prospects smoothly through the sales funnel and strengthening enterprise-level brand perception.",
     },
@@ -127,11 +129,7 @@ export default function HomeGrowthSection() {
       }}
     >
       <div className="mx-auto max-w-[1400px]">
-        <div className="mb-12  pl-4 sm:pl-6 md:pl-10">
-          {/* <span className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
-            Talk About Us
-          </span> */}
-
+        <div className="mb-12 pl-4 sm:pl-6 md:pl-10">
           <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[72px]">
             Our Impact
             <br />
@@ -139,115 +137,84 @@ export default function HomeGrowthSection() {
           </h2>
         </div>
 
-       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-  {stats.map((item) => (
-    <article
-      key={item.label}
-      className="group rounded-[22px] border border-white/30 bg-white/20 p-4 backdrop-blur-md transition hover:bg-white/30 sm:rounded-[28px] sm:p-6"
-    >
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#0d2d47] text-lg text-white transition group-hover:scale-110 sm:mb-6 sm:h-12 sm:w-12 sm:text-xl">
-        <item.icon />
-      </div>
-
-      <h3 className="text-3xl font-semibold text-[#0d2d47] sm:text-5xl md:text-[64px]">
-        <CountUpNumber target={item.target} suffix={item.suffix} />
-      </h3>
-
-      <p className="mt-3 text-xs font-medium uppercase tracking-wide text-[#0d2d47]/75 sm:mt-4 sm:text-sm">
-        {item.label}
-      </p>
-    </article>
-  ))}
-</div>
-        <div className="mt-20 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
-  <div className="h-[420px] overflow-hidden rounded-[28px] sm:h-[480px] lg:h-[560px]">
-    <Image
-      src="/Home_1.png"
-      alt="Business professionals collaborating"
-      width={941}
-      height={1672}
-      className="h-full w-full object-cover object-center"
-    />
-  </div>
-</div>
-
-          <div>
-            <h3 className="text-4xl font-semibold uppercase leading-[0.95] text-[#0d2d47] sm:text-5xl md:text-[64px]">
-              Why Choose
-              <br />
-              Nova Techscience
-            </h3>
-
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-[#0d2d47]/75 sm:text-lg">
-              <p>As a trusted name in digital marketing, Nova Techsciences delivers innovative strategies that help businesses thrive in a fast-paced digital world. We continuously stay ahead of evolving trends, platform updates, and market shifts to ensure our clients remain competitive and visible across global markets.</p>
-              <p>Our approach is rooted in insight and precision. Every project begins with a deep analysis of your brand, industry, and objectives, allowing us to craft customized digital marketing solutions that address your unique challenges and opportunities.</p>
-              <p>From optimizing web-based marketing campaigns to strengthening your online presence, Nova Techsciences focuses on creating impact that goes beyond visibility. We aim to build sustainable growth, stronger brand recognition, and meaningful engagement with your audience.</p>
-              <p className="font-medium text-[#0d2d47]">Choose Nova Techsciences for digital marketing services worldwide, and let us guide your business through the complexities of the digital landscape.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-20 grid gap-6 lg:grid-cols-2">
-          {contentBlocks.map((block) => (
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          {stats.map((item) => (
             <article
-              key={block.title}
-              className="rounded-[30px] border border-white/30 bg-white/20 p-6 backdrop-blur-md md:p-8"
+              key={item.label}
+              className="group rounded-[22px] border border-white/30 bg-white/20 p-4 backdrop-blur-md transition hover:bg-white/30 sm:rounded-[28px] sm:p-6"
             >
-              <h4 className="text-2xl font-semibold uppercase text-[#0d2d47] sm:text-3xl">
-                {block.title}
-              </h4>
-
-              <div className="mt-6 space-y-4">
-                {block.body.map((paragraph, idx) => (
-                  <p key={idx} className="text-base leading-relaxed text-[#0d2d47]/75">
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#0d2d47] text-lg text-white transition group-hover:scale-110 sm:mb-6 sm:h-12 sm:w-12 sm:text-xl">
+                <item.icon />
               </div>
+
+              <h3 className="text-3xl font-semibold text-[#0d2d47] sm:text-5xl md:text-[64px]">
+                <CountUpNumber target={item.target} suffix={item.suffix} />
+              </h3>
+
+              <p className="mt-3 text-xs font-medium uppercase tracking-wide text-[#0d2d47]/75 sm:mt-4 sm:text-sm">
+                {item.label}
+              </p>
             </article>
           ))}
         </div>
 
-        <div className="mt-20 grid items-center gap-8 lg:grid-cols-2">
-          <div className="rounded-[30px] border border-white/30 bg-white/20 p-6 backdrop-blur-md sm:p-8">
-            <div className="mb-8 flex flex-wrap gap-3">
-              {infoTabs.map((tab, idx) => (
-                <button
-                  key={tab.title}
-                  onClick={() => setActiveInfoTab(idx)}
-                  className={`cursor-pointer rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition ${
-                    activeInfoTab === idx
-                      ? "bg-[#0d2d47] text-white"
-                      : "bg-white/30 text-[#0d2d47] hover:bg-white/50"
-                  }`}
-                >
-                  {tab.title}
-                </button>
-              ))}
-            </div>
+<div className="mt-20 grid items-center gap-8 lg:grid-cols-2">
+  {/* Content box */}
+  <div className="order-2 rounded-[30px] border border-white/30 bg-white/20 p-6 backdrop-blur-md sm:p-8 lg:order-1">
+    <div className="mb-8 flex flex-wrap gap-3">
+      {infoTabs.map((tab, idx) => (
+        <button
+          key={tab.title}
+          onClick={() => setActiveInfoTab(idx)}
+          className={`cursor-pointer rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition ${
+            activeInfoTab === idx
+              ? "bg-[#0d2d47] text-white"
+              : "bg-white/30 text-[#0d2d47] hover:bg-white/50"
+          }`}
+        >
+          {tab.title}
+        </button>
+      ))}
+    </div>
 
-            <h3 className="text-2xl font-semibold uppercase text-[#0d2d47] sm:text-3xl">
-              {infoTabs[activeInfoTab].title}
-            </h3>
 
-            <p className="mt-4 text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
-              {infoTabs[activeInfoTab].description}
-            </p>
-          </div>
-
-        <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
-  <div className="h-[380px] overflow-hidden rounded-[28px] sm:h-[440px] lg:h-[520px]">
+{/* Mobile image first - no background container */}
+<div className="mb-8 lg:hidden">
+  <div className="h-[360px] overflow-hidden sm:h-[440px]">
     <Image
-      src="/Home_2.png"
-      alt="Digital marketing strategy visualization"
+      key={activeInfoTab}
+      src={infoTabs[activeInfoTab].image}
+      alt={infoTabs[activeInfoTab].title}
       width={941}
       height={1672}
-      className="h-full w-full object-cover object-center"
+      className="h-full w-full object-contain object-center transition-all duration-500"
     />
   </div>
 </div>
-        </div>
+
+    <h3 className="text-2xl font-semibold uppercase text-[#0d2d47] sm:text-3xl">
+      {infoTabs[activeInfoTab].title}
+    </h3>
+
+    <p className="mt-4 text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
+      {infoTabs[activeInfoTab].description}
+    </p>
+  </div>
+
+  {/* Desktop image right */}
+  <div className="hidden overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md lg:block">
+    <div className="h-[520px] overflow-hidden rounded-[28px]">
+      <Image
+        key={activeInfoTab}
+        src={infoTabs[activeInfoTab].image}
+        alt={infoTabs[activeInfoTab].title}
+        width={941}
+        height={1672}
+        className="h-full w-full object-cover object-center transition-all duration-500"
+      />
+    </div>
+  </div>
+</div>
       </div>
     </section>
   );

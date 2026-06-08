@@ -31,6 +31,8 @@ export default function ClientReviewSlider() {
   const repeatedReviews = [...reviews, ...reviews, ...reviews];
 
   const trackRef = useRef(null);
+  const animationRef = useRef(null);
+
   const dragRef = useRef({
     active: false,
     startX: 0,
@@ -41,8 +43,37 @@ export default function ClientReviewSlider() {
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
-  // Removed automatic scroll animation - was causing performance issues
-  // Keep only drag interaction which is event-driven, not continuous
+  useEffect(() => {
+    const speed = 0.6;
+
+    const animate = () => {
+      if (!dragRef.current.active) {
+        const track = trackRef.current;
+
+        if (track) {
+          const resetWidth = track.scrollWidth / 3;
+
+          dragRef.current.offset -= speed;
+
+          if (Math.abs(dragRef.current.offset) >= resetWidth) {
+            dragRef.current.offset = 0;
+          }
+
+          setOffset(dragRef.current.offset);
+        }
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   const handlePointerDown = (e) => {
     dragRef.current.active = true;
@@ -61,6 +92,7 @@ export default function ClientReviewSlider() {
     dragRef.current.offset += deltaX;
 
     const track = trackRef.current;
+
     if (track) {
       const resetWidth = track.scrollWidth / 3;
 
@@ -106,7 +138,7 @@ export default function ClientReviewSlider() {
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
           onPointerLeave={handlePointerUp}
-          className={`relative overflow-hidden py-4 select-none ${
+          className={`relative overflow-hidden select-none py-4 ${
             isDragging ? "cursor-grabbing" : "cursor-grab"
           }`}
           style={{ touchAction: "pan-y" }}
@@ -116,7 +148,7 @@ export default function ClientReviewSlider() {
             className="flex w-max gap-5 sm:gap-7"
             style={{
               transform: `translateX(${offset}px)`,
-              transition: isDragging ? "none" : "transform 0.08s linear",
+              transition: isDragging ? "none" : "transform 0.03s linear",
             }}
           >
             {repeatedReviews.map((review, index) => (

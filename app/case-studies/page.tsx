@@ -28,9 +28,9 @@ export default function CaseStudiesPage() {
                 <div className="flex flex-col justify-between p-6 sm:p-8 md:p-10">
                   <div>
                     <div className="mb-6 flex items-center justify-between gap-4">
-                      <span className="rounded-full border border-[#0d2d47]/12 bg-[#EAEBDB]/85 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-[#0d2d47]/72">
+                      {/* <span className="rounded-full border border-[#0d2d47]/12 bg-[#EAEBDB]/85 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-[#0d2d47]/72">
                         {item.category}
-                      </span>
+                      </span> */}
                     </div>
 
                     <div className="mb-6 flex h-16 w-40 items-center">

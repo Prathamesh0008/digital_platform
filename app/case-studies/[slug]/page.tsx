@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import InternalLinkSection from "@/components/InternalLinkSection";
@@ -78,9 +78,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 Back to Case Studies
               </Link>
 
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5A7EFF]">
+              {/* <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5A7EFF]">
                 {project.category}
-              </p>
+              </p> */}
 
               <div className="mt-6 flex h-16 w-44 items-center">
                 <Image

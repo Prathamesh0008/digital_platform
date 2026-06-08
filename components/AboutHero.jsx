@@ -25,7 +25,7 @@ export default function AboutHero() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+<section className="relative h-[72vh] w-full overflow-hidden md:h-screen">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -36,7 +36,7 @@ export default function AboutHero() {
             },
           },
         }}
-        className="absolute inset-0 z-20 grid grid-cols-2 md:grid-cols-4"
+        className="absolute inset-0 z-20 grid grid-cols-4"
       >
         {items.map((item, i) => (
           <motion.button
@@ -45,9 +45,9 @@ export default function AboutHero() {
             onClick={() => scrollToSection(item.id)}
             variants={{
               hidden: {
-                y: -80,
+                y: i % 2 === 0 ? -80 : 80,
                 opacity: 0,
-                scale: 0.985,
+                scale: 0.95,
               },
               visible: {
                 y: 0,
@@ -57,6 +57,7 @@ export default function AboutHero() {
             }}
             transition={{
               duration: 0.9,
+              delay: i * 0.12,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="group relative cursor-pointer overflow-hidden text-left"
@@ -70,7 +71,7 @@ export default function AboutHero() {
                 src={item.img}
                 alt={item.label}
                 fill
-                sizes="(max-width: 768px) 50vw, 25vw"
+                sizes="25vw"
                 priority
                 className="object-cover"
               />
@@ -78,8 +79,8 @@ export default function AboutHero() {
               <div className="absolute inset-0 bg-black/50 transition group-hover:bg-black/30" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#5A7EFF] to-transparent opacity-0 transition duration-500 group-hover:opacity-40" />
 
-              <div className="absolute bottom-6 left-6 z-10 text-white">
-                <h3 className="text-sm font-medium tracking-wide md:text-lg">
+              <div className="absolute bottom-6 left-3 z-10 text-white sm:left-6">
+                <h3 className="text-xs font-medium tracking-wide sm:text-sm md:text-lg">
                   {item.label}
                 </h3>
               </div>
@@ -88,7 +89,7 @@ export default function AboutHero() {
         ))}
       </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 z-30 hidden md:flex">
+      <div className="pointer-events-none absolute inset-0 z-30">
         {[1, 2, 3].map((_, i) => (
           <div
             key={i}

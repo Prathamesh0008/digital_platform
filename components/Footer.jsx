@@ -1,3 +1,4 @@
+//components\Footer.jsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -86,22 +87,24 @@ export default function Footer() {
       </div> */}
 
       {/* BIG TEXT (SCROLL ANIMATION) */}
-     <motion.h1
-  initial={{ opacity: 0, y: 100 }}
+<motion.h1
+  initial={{ opacity: 0, y: 80 }}
   whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: false, amount: 0.6 }}
-  transition={{ duration: 1, ease: "easeOut" }}
-  className="uppercase font-bold tracking-tight leading-[0.8]
+  viewport={{ once: false, amount: 0.35 }}
+  transition={{
+    duration: 1.2,
+    ease: [0.16, 1, 0.3, 1],
+  }}
+  className="uppercase font-bold tracking-tight leading-[0.85]
     text-[clamp(2rem,10vw,12.5rem)] mt-12 sm:mt-16 break-words"
 >
   Novatech Marketing
 </motion.h1> 
 
       {/* BOTTOM TEXT */}
-      <div className="mt-6 text-sm ">
-        {"\u00A9"} 2026 by NovaTech. Powered and secured by NovaTech
-      </div>
-
+     <div className="mt-6 text-center text-sm">
+  {"\u00A9"} 2026 by NovaTech. Powered and secured by NovaTech
+</div>
     </footer>
   );
 }

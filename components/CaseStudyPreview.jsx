@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -73,7 +72,7 @@ function PreviewModal({
             <div className="w-full max-w-[380px] overflow-hidden rounded-[34px] border-[8px] border-[#0d2d47] bg-white shadow-[0_28px_80px_rgba(0,0,0,0.35)]">
             <div className="mx-auto mt-3 h-2 w-20 rounded-full bg-[#0d2d47]/25" />
 
-            <div className="relative mt-3 h-[78vh] w-full overflow-hidden bg-white">
+            <div className="relative mt-3 h-[min(78vh,740px)] w-full overflow-auto bg-white">
               {!mobileLoaded && (
                 <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#eef2f7]">
                   <div className="rounded-full border border-[#d7dfef] bg-white px-4 py-2 text-center text-sm font-medium text-[#0d2d47]/70 shadow-sm">
@@ -85,13 +84,8 @@ function PreviewModal({
               <iframe
                 src={item.url}
                 title={`${item.name} mobile live preview`}
-                className="h-[740px] origin-top-left border-0 bg-white"
+                className="h-[740px] w-full border-0 bg-white"
                 onLoad={onMobileLoad}
-                style={{
-                  width: "390px",
-                  transform: "scale(0.94)",
-                  transformOrigin: "top left",
-                }}
               />
             </div>
           </div>
@@ -185,7 +179,7 @@ export default function CaseStudyPreview({ item }) {
               <button
                 type="button"
                 onClick={() => setActivePreview("desktop")}
-                className="group relative z-10 block w-full cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/60 p-2 text-left shadow-[0_32px_90px_rgba(13,45,71,0.18)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_38px_100px_rgba(13,45,71,0.24)]"
+                className="group relative z-10 hidden w-full cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/60 p-2 text-left shadow-[0_32px_90px_rgba(13,45,71,0.18)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_38px_100px_rgba(13,45,71,0.24)] lg:block"
                 aria-label={`Open ${item.name} desktop preview`}
               >
                 <div className="absolute left-5 top-5 z-10 inline-flex rounded-full bg-[#0d2d47] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg">
@@ -203,12 +197,11 @@ export default function CaseStudyPreview({ item }) {
                   </div>
 
                   <div className="relative h-[360px] w-full overflow-hidden bg-white sm:h-[420px] lg:h-[460px]">
-                    <Image
-                      src={item.desktop}
-                      alt={`${item.name} desktop preview`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                      className="object-cover object-top transition duration-500 group-hover:scale-[1.015]"
+                    <iframe
+                      src={item.url}
+                      title={`${item.name} desktop website preview`}
+                      className="pointer-events-none h-full w-full origin-top-left border-0 bg-white transition duration-500 group-hover:scale-[1.015]"
+                      tabIndex={-1}
                     />
                   </div>
                 </div>
@@ -217,7 +210,7 @@ export default function CaseStudyPreview({ item }) {
               <button
                 type="button"
                 onClick={() => setActivePreview("mobile")}
-                className="group absolute -bottom-8 right-0 z-30 hidden w-[175px] cursor-pointer overflow-hidden rounded-[30px] border-[6px] border-[#0d2d47] bg-white text-left shadow-[0_28px_70px_rgba(13,45,71,0.32)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_80px_rgba(13,45,71,0.38)] sm:block md:w-[190px] lg:-bottom-10"
+                className="group relative z-30 mx-auto block w-[min(100%,230px)] cursor-pointer overflow-hidden rounded-[30px] border-[6px] border-[#0d2d47] bg-white text-left shadow-[0_28px_70px_rgba(13,45,71,0.32)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_80px_rgba(13,45,71,0.38)] sm:w-[250px] md:w-[270px] lg:absolute lg:-bottom-10 lg:right-0 lg:mx-0 lg:w-[190px]"
                 aria-label={`Open ${item.name} mobile preview`}
               >
                 <div className="absolute left-3 top-3 z-10 rounded-full bg-[#0d2d47] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
@@ -225,21 +218,25 @@ export default function CaseStudyPreview({ item }) {
                 </div>
 
                 <div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-[#0d2d47]/25" />
-                <div className="relative mt-2 h-[330px] w-full overflow-hidden bg-white md:h-[370px]">
-                  <Image
-                    src={item.mobile}
-                    alt={`${item.name} mobile preview`}
-                    fill
-                    sizes="190px"
-                    className="object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+                <div className="relative mt-2 h-[420px] w-full overflow-hidden bg-white sm:h-[460px] md:h-[500px] lg:h-[370px]">
+                  <iframe
+                    src={item.url}
+                    title={`${item.name} mobile website preview`}
+                    className="pointer-events-none h-[calc(100%/var(--preview-scale))] w-[390px] origin-top-left scale-[var(--preview-scale)] border-0 bg-white sm:[--preview-scale:0.61] md:[--preview-scale:0.66] lg:[--preview-scale:0.46]"
+                    style={{
+                      "--preview-scale": "0.56",
+                    }}
+                    tabIndex={-1}
                   />
                 </div>
               </button>
             </div>
           </div>
 
-          <div className="grid gap-3 sm:hidden">
-            {Object.entries(previewModes).map(([mode, preview]) => (
+          <div className="grid gap-3 lg:hidden">
+            {Object.entries(previewModes)
+              .filter(([mode]) => mode === "mobile")
+              .map(([mode, preview]) => (
               <button
                 key={mode}
                 type="button"
