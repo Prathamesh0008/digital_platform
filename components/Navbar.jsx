@@ -204,7 +204,8 @@ const serviceLinks = [
               alt="NovaTechscience"
               width={230}
               height={88}
-          className="h-auto w-[190px] sm:w-[210px] md:w-[180px]"
+              className="h-auto w-[190px] sm:w-[210px] md:w-[180px]"
+              loading="eager"
               priority
             />
           </Link>
