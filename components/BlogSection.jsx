@@ -1,6 +1,8 @@
 // digital_platform/components/BlogSection.jsx
 "use client";
 
+import Image from "next/image";
+
 const blogs = [
   {
     title: "10 Digital Marketing Trends To Watch In 2026",
@@ -40,7 +42,7 @@ const blogs = [
 ];
 
 export default function BlogSection() {
-  const repeatedBlogs = [...blogs, ...blogs, ...blogs];
+  const repeatedBlogs = [...blogs, ...blogs];
 
   return (
     <section className="relative overflow-hidden bg-[#7A97F8] px-4 py-16 sm:px-6 md:px-10 md:py-24">
@@ -72,10 +74,13 @@ export default function BlogSection() {
                 className="group w-[320px] shrink-0 overflow-hidden rounded-[30px] border border-[#0d2d47]/10 bg-white/35 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:bg-white/50 sm:w-[390px]"
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={blog.image}
                     alt={blog.title}
-                   className="h-[300px] w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 sm:h-[340px]"
+                    width={800}
+                    height={340}
+                    sizes="(max-width: 640px) 320px, 390px"
+                    className="h-[300px] w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 sm:h-[340px]"
                   />
 
                   <div className="absolute left-4 top-4 rounded-full bg-[#0d2d47] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white">
@@ -112,7 +117,7 @@ export default function BlogSection() {
             transform: translateX(0);
           }
           to {
-            transform: translateX(-33.33%);
+            transform: translateX(-50%);
           }
         }
 

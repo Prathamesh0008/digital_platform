@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Great_Vibes, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -26,6 +26,12 @@ const defaultKeywords = [
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
 });
 
 const webPageSchema = {
@@ -246,18 +252,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${greatVibes.variable} h-full antialiased`}
+    >
       <head>
-        <link
-          rel="preload"
-          href="/novatechscience-logo.svg"
-          as="image"
-          type="image/svg+xml"
-        />
-        <link rel="preconnect" href="https://my.spline.design" />
-        <link rel="dns-prefetch" href="https://my.spline.design" />
-
-        <Script id="gtm-script" strategy="afterInteractive">
+        <Script id="gtm-script" strategy="lazyOnload">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -267,9 +267,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-T3CMEYQ5DK"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="ga-script" strategy="afterInteractive">
+        <Script id="ga-script" strategy="lazyOnload">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -306,21 +306,6 @@ gtag('config', 'G-T3CMEYQ5DK');`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
-    <link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
-/>
-
-<link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossOrigin=""
-/>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
-  rel="stylesheet"
-/>
       </head>
       <body className="min-h-full flex flex-col">
         <noscript>

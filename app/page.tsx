@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import ServicesHorizontal from "@/components/ServicesHorizontal";
+import DeferredServicesHorizontal from "@/components/DeferredServicesHorizontal";
 import LazySection from "@/components/LazySection";
 
 const SplitMarqueeSection = dynamic(() => import("@/components/SplitMarqueeSection"));
@@ -91,7 +91,7 @@ export default function Home() {
      {/* <ScrollWire /> */}
       <Hero />
       <Services />
-      <ServicesHorizontal />
+      <DeferredServicesHorizontal />
       <LazySection minHeight={280}>
         <SplitMarqueeSection />
       </LazySection>

@@ -1,11 +1,56 @@
+// components/NovaLogoPreloader.jsx
 "use client";
 
+<<<<<<< ours
+import { useEffect, useRef, useState } from "react";
+=======
 import { useRef, useState } from "react";
+>>>>>>> theirs
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
+<<<<<<< ours
+export default function NovaLogoPreloader({ onComplete }) {
+  const preloaderRef = useRef(null);
+  const [svgText, setSvgText] = useState("");
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch("/novatechscience-logo.svg", { cache: "force-cache" })
+      .then((res) => {
+        if (!res.ok) throw new Error(`SVG not found: ${res.status}`);
+        return res.text();
+      })
+      .then((text) => {
+        if (cancelled) return;
+
+        if (!text.includes("<svg")) {
+          setShow(false);
+          onComplete?.();
+          return;
+        }
+
+        setSvgText(text);
+      })
+      .catch((error) => {
+        console.error("SVG loading failed:", error);
+        setShow(false);
+        onComplete?.();
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [onComplete]);
+
+  useGSAP(
+    () => {
+      if (!svgText || !preloaderRef.current) return;
+=======
 const NOVA_LOGO_SVG = `<?xml version="1.0" encoding="UTF-8"?>
 <svg id="Nova-logo-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 710.81 224.6">
   <defs>
@@ -84,43 +129,27 @@ export default function NovaLogoPreloader({ onComplete }) {
   useGSAP(
     () => {
       if (!preloaderRef.current) return;
+>>>>>>> theirs
 
       const root = preloaderRef.current;
       const svg = root.querySelector("svg");
-
-      if (!svg) {
-        console.error("SVG not found inside preloader");
-        return;
-      }
+      if (!svg) return;
 
       const shapeSelector =
         "path, polygon, rect, circle, ellipse, line, polyline";
 
-      const getById = (id) => {
-        return (
-          root.querySelector(`[id="${id}"]`) ||
-          root.querySelector(`[data-name="${id}"]`)
-        );
-      };
+      const getById = (id) =>
+        root.querySelector(`[id="${id}"]`) ||
+        root.querySelector(`[data-name="${id}"]`);
 
       const getShape = (id) => {
         const element = getById(id);
-
-        if (!element) {
-          console.warn("Missing SVG ID:", id);
-          return [];
-        }
+        if (!element) return [];
 
         const tag = element.tagName?.toLowerCase();
 
         if (
-          tag === "path" ||
-          tag === "polygon" ||
-          tag === "rect" ||
-          tag === "circle" ||
-          tag === "ellipse" ||
-          tag === "line" ||
-          tag === "polyline"
+          ["path", "polygon", "rect", "circle", "ellipse", "line", "polyline"].includes(tag)
         ) {
           return [element];
         }
@@ -166,6 +195,18 @@ export default function NovaLogoPreloader({ onComplete }) {
 
       const allFillShapes = unique([...novatechFill, ...scienceFill]);
 
+<<<<<<< ours
+    gsap.set(preloaderRef.current, {
+  autoAlpha: 1,
+  backgroundColor: "#E5E6DD",
+});
+=======
+      gsap.set(preloaderRef.current, {
+        autoAlpha: 1,
+        backgroundColor: "#E5E6DD",
+      });
+>>>>>>> theirs
+
       gsap.set(svg, {
         autoAlpha: 1,
         transformOrigin: "center center",
@@ -173,8 +214,8 @@ export default function NovaLogoPreloader({ onComplete }) {
 
       gsap.set(allFillShapes, {
         autoAlpha: 0,
-        y: 18,
-        filter: "blur(8px)",
+        y: 12,
+        filter: "blur(5px)",
         transformOrigin: "center center",
       });
 
@@ -188,42 +229,89 @@ export default function NovaLogoPreloader({ onComplete }) {
 
         try {
           const length = shape.getTotalLength();
-
           gsap.set(shape, {
             strokeDasharray: length,
             strokeDashoffset: length,
           });
-        } catch (error) {
-          console.warn("Could not prepare outline draw:", shape, error);
-        }
+        } catch {}
       });
 
       const tl = gsap.timeline({
-        defaults: {
-          ease: "power3.out",
-        },
+        defaults: { ease: "power3.out" },
         onComplete: () => {
           setShow(false);
           onComplete?.();
         },
       });
 
-      tl
-        .to(outlineShapes, {
-          strokeDashoffset: 0,
-          duration: 0.32,
-          stagger: 0.01,
-        })
-        .add("fillStart")
+<<<<<<< ours
+     tl.to(outlineShapes, {
+  strokeDashoffset: 0,
+  duration: 0.9,
+  stagger: 0.045,
+})
+  .add("fillStart", "-=0.35")
+  .to(
+    novatechFill,
+    {
+      autoAlpha: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.45,
+      stagger: 0.06,
+    },
+    "fillStart"
+  )
+  .to(
+    outlineShapes,
+    {
+      autoAlpha: 0,
+      duration: 0.35,
+    },
+    "fillStart+=0.25"
+  )
+  .set(outlineShapes, {
+    autoAlpha: 0,
+    visibility: "hidden",
+  })
+  .to(scienceFill, {
+    autoAlpha: 1,
+    y: 0,
+    filter: "blur(0px)",
+    duration: 0.45,
+    stagger: 0.06,
+  })
+  .to(svg, {
+    scale: 1.04,
+    duration: 0.25,
+  })
+  .to(svg, {
+    scale: 1,
+    duration: 0.25,
+  })
+  .to({}, { duration: 0.35 })
+  .to(preloaderRef.current, {
+    autoAlpha: 0,
+    scale: 1.03,
+    duration: 0.45,
+    ease: "power2.inOut",
+  });
+       
+=======
+      tl.to(outlineShapes, {
+        strokeDashoffset: 0,
+        duration: 0.45,
+        stagger: 0.022,
+      })
+        .add("fillStart", "-=0.35")
         .to(
           novatechFill,
           {
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.16,
-            stagger: 0.015,
-            ease: "power3.out",
+            duration: 0.24,
+            stagger: 0.03,
           },
           "fillStart"
         )
@@ -231,10 +319,9 @@ export default function NovaLogoPreloader({ onComplete }) {
           outlineShapes,
           {
             autoAlpha: 0,
-            duration: 0.1,
-            ease: "power2.out",
+            duration: 0.18,
           },
-          "fillStart+=0.05"
+          "fillStart+=0.12"
         )
         .set(outlineShapes, {
           autoAlpha: 0,
@@ -246,36 +333,31 @@ export default function NovaLogoPreloader({ onComplete }) {
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.14,
-            stagger: 0.015,
-            ease: "power3.out",
+            duration: 0.24,
+            stagger: 0.03,
           },
           "-=0.06"
         )
-        .to(svg, {
-          scale: 1.025,
-          duration: 0.08,
-          ease: "power2.out",
-        })
-        .to(svg, {
-          scale: 1,
-          duration: 0.08,
-          ease: "power2.inOut",
-        })
-        .to({}, { duration: 0.04 })
-        .to(preloaderRef.current, {
-          autoAlpha: 0,
-          scale: 1.04,
-          duration: 0.16,
-          ease: "power2.inOut",
-        });
+        .to(
+          preloaderRef.current,
+          {
+            autoAlpha: 0,
+            scale: 1.015,
+            duration: 0.25,
+            ease: "power2.inOut",
+          },
+          "-=0.02"
+        );
 
-      return () => {
-        tl.kill();
-      };
+>>>>>>> theirs
+      return () => tl.kill();
     },
     {
       scope: preloaderRef,
+<<<<<<< ours
+      dependencies: [svgText],
+=======
+>>>>>>> theirs
     }
   );
 
@@ -283,10 +365,22 @@ export default function NovaLogoPreloader({ onComplete }) {
 
   return (
     <div ref={preloaderRef} className="nova-preloader">
+<<<<<<< ours
+      {/* {!svgText && <div className="nova-loader-dot" />} */}
+
+      {svgText && (
+        <div
+          className="nova-logo-wrap"
+          dangerouslySetInnerHTML={{ __html: svgText }}
+        />
+      )}
+=======
       <div
         className="nova-logo-wrap"
         dangerouslySetInnerHTML={{ __html: NOVA_LOGO_SVG }}
       />
+>>>>>>> theirs
     </div>
   );
 }
+

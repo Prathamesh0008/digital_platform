@@ -131,7 +131,7 @@ export default function HomeWhyChooseSection() {
   <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
   <div className="h-[380px] overflow-hidden rounded-[28px] sm:h-[440px] lg:h-[520px]">
     <Image
-      src="/Home_2.png"
+      src="/Home_2.avif"
       alt="Digital marketing strategy visualization"
       width={941}
       height={1672}
@@ -222,7 +222,7 @@ export default function HomeWhyChooseSection() {
           <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
   <div className="h-[420px] overflow-hidden rounded-[28px] sm:h-[480px] lg:h-[560px]">
     <Image
-      src="/Home_1.png"
+      src="/Home_1.avif"
       alt="Business professionals collaborating"
       width={941}
       height={1672}

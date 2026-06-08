@@ -1,7 +1,8 @@
 // digital_platform/components/ClientReviewSlider.jsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import { FaStar, FaQuoteLeft } from "react-icons/fa";
 
 const reviews = [
@@ -28,7 +29,7 @@ const reviews = [
 ];
 
 export default function ClientReviewSlider() {
-  const repeatedReviews = [...reviews, ...reviews, ...reviews];
+  const repeatedReviews = [...reviews, ...reviews];
 
   const trackRef = useRef(null);
   const dragRef = useRef({
@@ -62,7 +63,7 @@ export default function ClientReviewSlider() {
 
     const track = trackRef.current;
     if (track) {
-      const resetWidth = track.scrollWidth / 3;
+        const resetWidth = track.scrollWidth / 2;
 
       if (dragRef.current.offset > 0) {
         dragRef.current.offset = -resetWidth + dragRef.current.offset;
@@ -129,9 +130,12 @@ export default function ClientReviewSlider() {
                 </div>
 
                 <div className="mb-6 flex items-center gap-4">
-                  <img
+                  <Image
                     src={review.image}
                     alt={review.name}
+                    width={56}
+                    height={56}
+                    sizes="56px"
                     draggable={false}
                     className="h-14 w-14 rounded-full border border-white/20 object-cover"
                   />

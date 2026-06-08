@@ -9,7 +9,9 @@ export default function ServicesStacked() {
   const [rotationDeg, setRotationDeg] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(1440);
   const [isDragging, setIsDragging] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
+  const sectionRef = useRef(null);
   const dragRef = useRef({ active: false, lastX: 0 });
   const autoRotatePausedUntilRef = useRef(0);
   const shouldReduceMotion = useReducedMotion();
@@ -68,7 +70,24 @@ export default function ServicesStacked() {
   }, []);
 
   useEffect(() => {
-    if (shouldReduceMotion) return undefined;
+    if (!sectionRef.current) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(Boolean(entry?.isIntersecting));
+      },
+      { rootMargin: "20% 0px" }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (shouldReduceMotion || !isInView) return undefined;
 
     let frameId = 0;
     let lastTime = 0;
@@ -89,7 +108,7 @@ export default function ServicesStacked() {
     frameId = window.requestAnimationFrame(step);
 
     return () => window.cancelAnimationFrame(frameId);
-  }, [shouldReduceMotion]);
+  }, [isInView, shouldReduceMotion]);
 
   const total = cards.length;
   const stepDeg = 360 / total;
@@ -192,7 +211,10 @@ const cardSize =
   };
 
   return (
-    <section className="relative min-h-[560px] overflow-hidden bg-[#FFF8F5] sm:min-h-[640px] md:min-h-[760px] lg:min-h-screen">
+    <section
+      ref={sectionRef}
+      className="relative min-h-[560px] overflow-hidden bg-[#FFF8F5] sm:min-h-[640px] md:min-h-[760px] lg:min-h-screen"
+    >
       <div className="pointer-events-none absolute left-[-120px] top-[-120px] h-[300px] w-[300px] rounded-full bg-[#19a6b5]/10 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-160px] right-[-120px] h-[360px] w-[360px] rounded-full bg-[#0d2d47]/10 blur-3xl" />
 

@@ -1,6 +1,7 @@
 // digital_platform/components/VideoTestimonialsSlider.jsx
 "use client";
 
+import Image from "next/image";
 import { FaPlay } from "react-icons/fa";
 
 const videos = [
@@ -22,7 +23,7 @@ const videos = [
 ];
 
 export default function VideoTestimonialsSlider() {
-  const repeatedVideos = [...videos, ...videos, ...videos];
+  const repeatedVideos = [...videos, ...videos];
 
   return (
     <section
@@ -60,9 +61,11 @@ export default function VideoTestimonialsSlider() {
                 className="group relative h-[300px] w-[210px] shrink-0 overflow-hidden rounded-[28px] border border-white/30 bg-white/20 p-2 backdrop-blur-md transition duration-300 hover:-translate-y-2 sm:h-[360px] sm:w-[250px] md:h-[420px] md:w-[295px]"
               >
                 <div className="relative h-full w-full overflow-hidden rounded-[22px]">
-                  <img
+                  <Image
                     src={video.thumbnail}
                     alt={video.title}
+                    fill
+                    sizes="(max-width: 640px) 210px, (max-width: 768px) 250px, 295px"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
@@ -92,7 +95,7 @@ export default function VideoTestimonialsSlider() {
             transform: translateX(0);
           }
           to {
-            transform: translateX(-33.33%);
+            transform: translateX(-50%);
           }
         }
 

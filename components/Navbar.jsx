@@ -135,25 +135,6 @@ const serviceLinks = [
   return () => clearTimeout(timeoutId);
 }, [currentWordIndex]);
 
-  useEffect(() => {
-    const routesToPrefetch = [
-      ...links.map((link) => link.href),
-      ...serviceLinks.map((link) => link.href),
-    ];
-
-    const warmRoutes = () => prefetchRoutes(routesToPrefetch);
-
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(warmRoutes, { timeout: 2000 });
-
-      return () => window.cancelIdleCallback(idleId);
-    }
-
-    const timer = window.setTimeout(warmRoutes, 1200);
-
-    return () => window.clearTimeout(timer);
-  }, [router]);
-
   const handleServicesPrefetch = () => {
     prefetchRoutes(serviceLinks.map((service) => service.href));
   };
@@ -326,7 +307,7 @@ const serviceLinks = [
         transition={{ duration: 0.28, ease: "easeOut" }}
    className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] font-normal text-white"
 style={{
-  fontFamily: "'Great Vibes', cursive",
+  fontFamily: "var(--font-great-vibes), cursive",
   textShadow: `
     0 0 8px rgba(230,79,14,0.55),
     0 0 16px rgba(230,79,14,0.45),
@@ -491,7 +472,7 @@ style={{
         exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
         transition={{ duration: 0.28, ease: "easeOut" }}
    className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] font-normal"
-        style={{ fontFamily: "'Great Vibes', cursive" }}
+        style={{ fontFamily: "var(--font-great-vibes), cursive" }}
       >
         {rotatingWords[currentWordIndex]}
       </motion.span>
