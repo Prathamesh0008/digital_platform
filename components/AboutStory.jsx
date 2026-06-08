@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function AboutStory() {
@@ -49,13 +50,19 @@ export default function AboutStory() {
             className="relative"
           >
             <div className="overflow-hidden rounded-3xl shadow-2xl">
-              <motion.img
-                src="/about1.jpg"
-                alt="Story"
-                className="w-full h-[360px] sm:h-[450px] md:h-[550px] object-cover"
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
-              />
+                className="relative h-[360px] w-full sm:h-[450px] md:h-[550px]"
+              >
+                <Image
+                  src="/about1.jpg"
+                  alt="Story"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </motion.div>
             </div>
 
             {/* FLOAT CARD */}

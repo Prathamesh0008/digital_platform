@@ -71,7 +71,7 @@ export default function AboutHero() {
                 alt={item.label}
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
-                priority={i < 2}
+                priority
                 className="object-cover"
               />
 

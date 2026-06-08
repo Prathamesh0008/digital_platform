@@ -161,7 +161,7 @@ export default function ContactSection() {
   />
 </div> */}
 
-          <p className="uppercase text-sm mb-6 text-white/80">
+          <p className="uppercase text-sm mb-3 text-white/80">
             Connect with Nova Techscience today. <br />
             Let&apos;s build your next growth chapter.
           </p>

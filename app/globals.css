@@ -13,6 +13,15 @@ body {
   overflow-x: hidden;
 }
 
+body.preview-modal-open .app-navbar,
+body.preview-modal-open .app-assistant {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(-140%);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
 a[href],
 button,
 [role="button"],

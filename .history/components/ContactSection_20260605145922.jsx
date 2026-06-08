@@ -150,7 +150,7 @@ export default function ContactSection() {
           transition={{ duration: 1 }}
           className="flex flex-col justify-center"
         >
-        {/* <div className="mb-6 inline-flex w-fit items-center justify-center rounded-2xl bg-white/90 px-5 py-3 shadow-xl backdrop-blur-md border border-white/40">
+        <div className="mb-6 inline-flex w-fit items-center justify-center rounded-2xl bg-white/90 px-5 py-3 shadow-xl backdrop-blur-md border border-white/40">
   <Image
     src="/Nova_logo.png"
     alt="NovaTech logo"
@@ -159,7 +159,7 @@ export default function ContactSection() {
     priority
     className="h-auto w-auto max-h-[72px] object-contain"
   />
-</div> */}
+</div>
 
           <p className="uppercase text-sm mb-6 text-white/80">
             Connect with Nova Techscience today. <br />
