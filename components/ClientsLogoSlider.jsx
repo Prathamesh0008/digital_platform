@@ -1,6 +1,8 @@
 // components/ClientsLogoSlider.jsx
 "use client";
 
+import Image from "next/image";
+
 const clientLogos = [
   "/Ivexia.svg",
   "/larkosis.webp",
@@ -20,8 +22,8 @@ const partners = [
 ];
 
 export default function ClientsLogoSlider() {
-  const repeatedLogos = [...clientLogos, ...clientLogos, ...clientLogos];
-  const repeatedPartners = [...partners, ...partners, ...partners, ...partners];
+  const repeatedLogos = [...clientLogos, ...clientLogos];
+  const repeatedPartners = [...partners, ...partners];
 
   return (
     <section
@@ -66,10 +68,13 @@ export default function ClientsLogoSlider() {
                 key={`${logo}-${index}`}
                className="flex h-[110px] w-[170px] shrink-0 items-center justify-center p-5 transition duration-300 hover:-translate-y-1 sm:h-[130px] sm:w-[205px]"
               >
-                <img
+                <Image
                   src={logo}
                   alt="Client brand logo"
-                  className="max-h-[90px] max-w-full object-contain   transition duration-300 hover:grayscale-0 sm:max-h-[95px]"
+                  width={160}
+                  height={95}
+                  sizes="160px"
+                  className="max-h-[90px] max-w-full object-contain transition duration-300 hover:grayscale-0 sm:max-h-[95px]"
                 />
               </div>
             ))}
@@ -93,9 +98,12 @@ export default function ClientsLogoSlider() {
                 key={`${partner.name}-${index}`}
                 className="flex h-[105px] w-[240px] shrink-0 items-center justify-center p-6 transition duration-300 hover:-translate-y-1 sm:w-[300px]"
               >
-                <img
+                <Image
                   src={partner.logo}
                   alt={partner.name}
+                  width={170}
+                  height={58}
+                  sizes="170px"
                   className="max-h-[58px] max-w-[170px] object-contain transition duration-300 hover:grayscale-0"
                 />
               </div>
@@ -110,13 +118,13 @@ export default function ClientsLogoSlider() {
             transform: translateX(0);
           }
           to {
-            transform: translateX(-33.33%);
+            transform: translateX(-50%);
           }
         }
 
         @keyframes partner-slide {
           from {
-            transform: translateX(-33.33%);
+            transform: translateX(-50%);
           }
           to {
             transform: translateX(0);

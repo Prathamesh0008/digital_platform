@@ -1,12 +1,12 @@
 //marketing-website\app\page.tsx
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-
+ 
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-// import ServicesHorizontal from "@/components/ServicesHorizontal";
+import DeferredServicesHorizontal from "@/components/DeferredServicesHorizontal";
 import LazySection from "@/components/LazySection";
-
+ 
 const SplitMarqueeSection = dynamic(() => import("@/components/SplitMarqueeSection"));
 const ClientsAndTestimonials = dynamic(() => import("@/components/ClientsAndTestimonials"));
 const WorkProcess = dynamic(() => import("@/components/WorkProcess"));
@@ -15,9 +15,9 @@ const ClientReviewSlider = dynamic(() => import("@/components/ClientReviewSlider
 const DigitalGrowthForm = dynamic(() => import("@/components/DigitalGrowthForm"));
 const BlogSection = dynamic(() => import("@/components/BlogSection"));
 const FAQSection = dynamic(() => import("@/components/FAQSection"));
-
+ 
 const siteUrl = "https://www.novatechsciences.com";
-
+ 
 export const metadata: Metadata = {
   title: "Digital Marketing, SEO & Website Development",
   description:
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 };
-
+ 
 export default function Home() {
   const schema = [
     {
@@ -81,7 +81,7 @@ export default function Home() {
       ],
     },
   ];
-
+ 
   return (
     <main>
       <script
@@ -91,7 +91,7 @@ export default function Home() {
      {/* <ScrollWire /> */}
       <Hero />
       <Services />
-      {/* <ServicesHorizontal /> */}
+      <DeferredServicesHorizontal />
       <LazySection minHeight={280}>
         <SplitMarqueeSection />
       </LazySection>
@@ -116,8 +116,10 @@ export default function Home() {
       <LazySection minHeight={520}>
         <FAQSection />
       </LazySection>
-
+ 
      
     </main>
   );
 }
+ 
+ 

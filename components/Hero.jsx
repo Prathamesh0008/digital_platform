@@ -5,20 +5,11 @@ export default function Hero() {
     <section className="relative min-h-[85vh] md:h-screen w-full overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
-
-        <iframe
-          src="https://my.spline.design/nexbotrobotcharacterconcept-gr7nouhE7TXWGE9GLpmKbqhE/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          className="relative h-full w-full"
-          title="Nexbot robot character concept"
-        />
       </div>
 
       <Link
         href="/"
-        className="absolute bottom-4 right-4 z-20 translate-x-[1%] -translate-y-[4%] rounded-full border border-white/35 bg-[#040208]/100 px-4 py-2 text-sm md:px-6 md:py-3 md:text-base font-semibold tracking-wide text-white backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.75)] transition hover:bg-[#0a0416]"
+        className="absolute bottom-4 right-4 z-20 translate-x-[1%] -translate-y-[4%] rounded-full border border-white/35 bg-[#040208]/100 px-4 py-2 text-sm font-semibold tracking-wide text-white shadow-[0_10px_40px_rgba(0,0,0,0.75)] transition hover:bg-[#0a0416] md:px-6 md:py-3 md:text-base"
       >
         NovaTech Science
       </Link>

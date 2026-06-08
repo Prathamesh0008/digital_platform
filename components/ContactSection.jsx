@@ -1,7 +1,6 @@
 //marketing-website\components\ContactSection.jsx
 "use client";
 
-import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -120,7 +119,7 @@ export default function ContactSection() {
 
       {/* 🔥 BACKGROUND (CONTINUOUS LOOP) */}
       <motion.img
-        src="/background-contact-desktop2.jpg"
+        src="/background-contact-desktop2.avif"
         alt="Contact Background"
         className="absolute inset-0 w-full h-full object-cover"
         animate={{
