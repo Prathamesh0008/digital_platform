@@ -6,15 +6,31 @@ export default function LazySection({
   children,
   className = "",
   minHeight = 320,
-  rootMargin = "300px 0px",
+  rootMargin = "900px 0px",
 }) {
   const containerRef = useRef(null);
-  const [shouldRender, setShouldRender] = useState(false);
+  const [shouldRender, setShouldRender] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      typeof window.IntersectionObserver === "undefined"
+  );
 
   useEffect(() => {
     if (shouldRender || !containerRef.current) {
       return;
     }
+
+    const idleCallback =
+      typeof window !== "undefined" && "requestIdleCallback" in window
+        ? window.requestIdleCallback(
+            () => {
+              setShouldRender(true);
+            },
+            { timeout: 1500 }
+          )
+        : window.setTimeout(() => {
+            setShouldRender(true);
+          }, 1200);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -30,7 +46,16 @@ export default function LazySection({
 
     observer.observe(containerRef.current);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+
+      if (typeof idleCallback === "number") {
+        window.clearTimeout(idleCallback);
+        return;
+      }
+
+      window.cancelIdleCallback?.(idleCallback);
+    };
   }, [rootMargin, shouldRender]);
 
   return (

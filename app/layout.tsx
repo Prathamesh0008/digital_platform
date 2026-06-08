@@ -254,6 +254,8 @@ export default function RootLayout({
           as="image"
           type="image/svg+xml"
         />
+        <link rel="preconnect" href="https://my.spline.design" />
+        <link rel="dns-prefetch" href="https://my.spline.design" />
 
         <Script id="gtm-script" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

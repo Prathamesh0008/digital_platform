@@ -13,6 +13,25 @@ body {
   overflow-x: hidden;
 }
 
+a[href],
+button,
+[role="button"],
+summary,
+label[for],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 .nova-preloader {
   position: fixed;
   inset: 0;

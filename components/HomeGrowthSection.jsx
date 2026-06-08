@@ -216,7 +216,7 @@ export default function HomeGrowthSection() {
                 <button
                   key={tab.title}
                   onClick={() => setActiveInfoTab(idx)}
-                  className={`rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition ${
+                  className={`cursor-pointer rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition ${
                     activeInfoTab === idx
                       ? "bg-[#0d2d47] text-white"
                       : "bg-white/30 text-[#0d2d47] hover:bg-white/50"

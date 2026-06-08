@@ -1,40 +1,19 @@
-"use client";
-
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Delay Spline loading until after initial paint
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="relative min-h-[85vh] md:h-screen w-full overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="absolute inset-0 z-0">
-        {/* Placeholder while loading */}
-        {!isLoaded && (
-          <div className="h-full w-full bg-gradient-to-br from-gray-800 via-gray-900 to-black animate-pulse" />
-        )}
-        
-        {/* Load Spline only after initial render */}
-        {isLoaded && (
-          <iframe
-            src="https://my.spline.design/nexbotrobotcharacterconcept-gr7nouhE7TXWGE9GLpmKbqhE/"
-            frameBorder="0"
-            width="100%"
-            height="100%"
-            className="h-full w-full"
-            title="Nexbot robot character concept"
-            loading="lazy"
-          />
-        )}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
+
+        <iframe
+          src="https://my.spline.design/nexbotrobotcharacterconcept-gr7nouhE7TXWGE9GLpmKbqhE/"
+          frameBorder="0"
+          width="100%"
+          height="100%"
+          className="relative h-full w-full"
+          title="Nexbot robot character concept"
+        />
       </div>
 
       <Link

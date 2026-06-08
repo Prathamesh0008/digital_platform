@@ -148,7 +148,7 @@ export default function HomeWhyChooseSection() {
           <button
             key={tab.title}
             onClick={() => setActiveInfoTab(idx)}
-            className={`rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 ${
+            className={`cursor-pointer rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 ${
               activeInfoTab === idx
                 ? "bg-black text-white shadow-md"
                 : "bg-black/10 text-black/80 hover:bg-black/20"
