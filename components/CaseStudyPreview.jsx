@@ -43,31 +43,12 @@ function PreviewModal({
         X
       </button>
 
-      <a
-        href={item.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute left-5 top-5 z-20 inline-flex rounded-full bg-white/95 px-4 py-2 text-sm font-medium text-[#0d2d47] shadow-lg transition hover:bg-[#0d2d47] hover:text-white"
-        onClick={(event) => event.stopPropagation()}
-      >
-        Open In New Tab
-      </a>
-
       {isDesktop ? (
         <div
-          className="h-screen w-screen bg-white pt-[60px]"
+          className="h-screen w-screen px-6 pb-6 pt-[60px] md:px-8 md:pb-8"
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex h-[60px] items-center gap-2 border-b border-[#d7dfef] bg-white px-4">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ffd166]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#06d6a0]" />
-            <span className="ml-3 truncate pr-40 text-xs font-medium text-[#0d2d47]/55">
-              {item.url}
-            </span>
-          </div>
-
-          <div className="relative h-[calc(100vh-60px)] w-full bg-white">
+          <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
             {!desktopLoaded && (
               <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#eef2f7]">
                 <div className="rounded-full border border-[#d7dfef] bg-white px-4 py-2 text-sm font-medium text-[#0d2d47]/70 shadow-sm">
@@ -85,11 +66,11 @@ function PreviewModal({
           </div>
         </div>
       ) : (
-        <div
-          className="flex h-screen w-screen items-center justify-center p-4"
-          onClick={(event) => event.stopPropagation()}
-        >
-          <div className="w-full max-w-[380px] overflow-hidden rounded-[34px] border-[8px] border-[#0d2d47] bg-white shadow-[0_28px_80px_rgba(0,0,0,0.35)]">
+          <div
+            className="flex h-screen w-screen items-center justify-center p-4"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="w-full max-w-[380px] overflow-hidden rounded-[34px] border-[8px] border-[#0d2d47] bg-white shadow-[0_28px_80px_rgba(0,0,0,0.35)]">
             <div className="mx-auto mt-3 h-2 w-20 rounded-full bg-[#0d2d47]/25" />
 
             <div className="relative mt-3 h-[78vh] w-full overflow-hidden bg-white">

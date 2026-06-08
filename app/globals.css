@@ -48,8 +48,39 @@ textarea:disabled,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #E5E6DD;
+  background:
+    radial-gradient(circle at top, rgba(115, 146, 251, 0.16), transparent 34%),
+    linear-gradient(180deg, #f3f4eb 0%, #e6e8dd 100%);
   overflow: hidden;
+}
+
+.nova-preloader-glow {
+  position: absolute;
+  inset: auto;
+  width: min(42rem, 78vw);
+  height: min(42rem, 78vw);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(13, 45, 71, 0.09) 0%, rgba(13, 45, 71, 0) 68%);
+  filter: blur(18px);
+  opacity: 0.9;
+}
+
+.nova-logo-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 180px;
+  min-width: min(620px, calc(100vw - 2rem));
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(13, 45, 71, 0.08);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 24px 80px rgba(13, 45, 71, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  padding: 2rem 2.25rem;
 }
 
 .nova-logo-wrap {
@@ -66,12 +97,13 @@ textarea:disabled,
 }
 
 .nova-loader-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
-  background: white;
-  opacity: 0.75;
-  animation: novaPulse 0.8s infinite alternate;
+  background: #0d2d47;
+  box-shadow: 0 0 0 10px rgba(13, 45, 71, 0.08);
+  opacity: 0.8;
+  animation: novaPulse 0.9s infinite alternate;
 }
 
 @keyframes novaPulse {
@@ -80,8 +112,21 @@ textarea:disabled,
     opacity: 0.35;
   }
   to {
-    transform: scale(1.8);
+    transform: scale(1.65);
     opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .nova-logo-card {
+    min-height: 150px;
+    min-width: calc(100vw - 1.5rem);
+    border-radius: 24px;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .nova-logo-wrap {
+    width: min(420px, 82vw);
   }
 }
 

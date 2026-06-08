@@ -9,6 +9,7 @@ gsap.registerPlugin(useGSAP);
 
 export default function NovaLogoPreloader({ onComplete }) {
   const preloaderRef = useRef(null);
+  const cardRef = useRef(null);
   const [svgText, setSvgText] = useState("");
   const [show, setShow] = useState(true);
 
@@ -110,10 +111,16 @@ export default function NovaLogoPreloader({ onComplete }) {
 
       const allFillShapes = unique([...novatechFill, ...scienceFill]);
 
-    gsap.set(preloaderRef.current, {
-  autoAlpha: 1,
-  backgroundColor: "#E5E6DD",
-});
+      gsap.set(preloaderRef.current, {
+        autoAlpha: 1,
+        backgroundColor: "#eef1e7",
+      });
+
+      gsap.set(cardRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+      });
 
       gsap.set(svg, {
         autoAlpha: 1,
@@ -122,8 +129,7 @@ export default function NovaLogoPreloader({ onComplete }) {
 
       gsap.set(allFillShapes, {
         autoAlpha: 0,
-        y: 12,
-        filter: "blur(5px)",
+        y: 8,
         transformOrigin: "center center",
       });
 
@@ -152,57 +158,78 @@ export default function NovaLogoPreloader({ onComplete }) {
         },
       });
 
-     tl.to(outlineShapes, {
-  strokeDashoffset: 0,
-  duration: 0.9,
-  stagger: 0.045,
-})
-  .add("fillStart", "-=0.35")
-  .to(
-    novatechFill,
-    {
-      autoAlpha: 1,
-      y: 0,
-      filter: "blur(0px)",
-      duration: 0.45,
-      stagger: 0.06,
-    },
-    "fillStart"
-  )
-  .to(
-    outlineShapes,
-    {
-      autoAlpha: 0,
-      duration: 0.35,
-    },
-    "fillStart+=0.25"
-  )
-  .set(outlineShapes, {
-    autoAlpha: 0,
-    visibility: "hidden",
-  })
-  .to(scienceFill, {
-    autoAlpha: 1,
-    y: 0,
-    filter: "blur(0px)",
-    duration: 0.45,
-    stagger: 0.06,
-  })
-  .to(svg, {
-    scale: 1.04,
-    duration: 0.25,
-  })
-  .to(svg, {
-    scale: 1,
-    duration: 0.25,
-  })
-  .to({}, { duration: 0.35 })
-  .to(preloaderRef.current, {
-    autoAlpha: 0,
-    scale: 1.03,
-    duration: 0.45,
-    ease: "power2.inOut",
-  });
+      tl.fromTo(
+        cardRef.current,
+        { autoAlpha: 0, y: 18, scale: 0.985 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" }
+      )
+        .to(outlineShapes, {
+          strokeDashoffset: 0,
+          duration: 0.7,
+          stagger: 0.032,
+        })
+        .add("fillStart", "-=0.24")
+        .to(
+          novatechFill,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.34,
+            stagger: 0.042,
+          },
+          "fillStart"
+        )
+        .to(
+          outlineShapes,
+          {
+            autoAlpha: 0,
+            duration: 0.22,
+          },
+          "fillStart+=0.14"
+        )
+        .set(outlineShapes, {
+          autoAlpha: 0,
+          visibility: "hidden",
+        })
+        .to(scienceFill, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.32,
+          stagger: 0.04,
+        })
+        .to(
+          svg,
+          {
+            scale: 1.015,
+            duration: 0.18,
+          },
+          "-=0.08"
+        )
+        .to(svg, {
+          scale: 1,
+          duration: 0.2,
+        })
+        .to({}, { duration: 0.18 })
+        .to(
+          cardRef.current,
+          {
+            autoAlpha: 0,
+            y: -10,
+            scale: 0.992,
+            duration: 0.28,
+            ease: "power2.inOut",
+          },
+          "-=0.02"
+        )
+        .to(
+          preloaderRef.current,
+          {
+            autoAlpha: 0,
+            duration: 0.22,
+            ease: "power1.out",
+          },
+          "-=0.16"
+        );
        
       return () => tl.kill();
     },
@@ -216,14 +243,17 @@ export default function NovaLogoPreloader({ onComplete }) {
 
   return (
     <div ref={preloaderRef} className="nova-preloader">
-      {/* {!svgText && <div className="nova-loader-dot" />} */}
+      <div className="nova-preloader-glow" aria-hidden="true" />
+      <div ref={cardRef} className="nova-logo-card">
+        {!svgText && <div className="nova-loader-dot" />}
 
-      {svgText && (
-        <div
-          className="nova-logo-wrap"
-          dangerouslySetInnerHTML={{ __html: svgText }}
-        />
-      )}
+        {svgText && (
+          <div
+            className="nova-logo-wrap"
+            dangerouslySetInnerHTML={{ __html: svgText }}
+          />
+        )}
+      </div>
     </div>
   );
 }

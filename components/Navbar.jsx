@@ -20,6 +20,7 @@ export default function Navbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isAfterHero, setIsAfterHero] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -63,12 +64,17 @@ const serviceLinks = [
     let lastScrollY = 0;
 
     const onScroll = () => {
-      lastScrollY = window.scrollY;
+      const currentScrollY = window.scrollY;
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(() => {
           const threshold = window.innerHeight * 0.55;
-          setIsAfterHero(lastScrollY > threshold);
+          setIsAfterHero(currentScrollY > threshold);
+          const scrollingUp = currentScrollY < lastScrollY;
+          const nearTop = currentScrollY < 24;
+
+          setIsNavVisible(nearTop || scrollingUp);
+          lastScrollY = currentScrollY;
           ticking = false;
         });
       }
@@ -77,8 +83,10 @@ const serviceLinks = [
     const onResize = () => {
       const threshold = window.innerHeight * 0.55;
       setIsAfterHero(window.scrollY > threshold);
+      setIsNavVisible(true);
     };
 
+    lastScrollY = window.scrollY;
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
@@ -170,7 +178,11 @@ const serviceLinks = [
   };
 
   return (
-    <header className="app-navbar fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+    <header
+      className={`app-navbar fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-transform duration-300 sm:px-5 sm:pt-4 ${
+        isNavVisible ? "translate-y-0" : "-translate-y-[140%]"
+      }`}
+    >
       <div
         className={`mx-auto max-w-7xl rounded-2xl border transition-all duration-300 ${
           isAfterHero
