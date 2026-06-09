@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden bg-[#0d2d47] px-4 pt-28 sm:px-6 sm:pt-32 md:px-10">
+    <section className="relative flex min-h-[80svh] items-center justify-center overflow-hidden bg-[#0d2d47] px-4 pt-28 sm:px-6 sm:pt-32 md:px-10">
       <Image
         src="/Hero-image-desktop.avif"
         alt="Nova Techscience digital marketing and website strategy"
@@ -17,12 +17,12 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(156,173,218,0.18),transparent_34%)]" />
       <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(0deg,#EAEBDB,rgba(234,235,219,0))]" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center pb-14 text-center sm:pb-18 md:pb-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center pb-10 text-center sm:pb-14 md:pb-16">
         <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white/70 sm:text-xs">
           Nova Techscience
         </p>
 
-        <h1 className="mt-6 max-w-5xl text-[3rem] font-semibold uppercase leading-[0.9] tracking-[-0.05em] text-white sm:text-[4.4rem] md:text-[6rem] lg:text-[7rem]">
+        <h1 className="mt-6 max-w-5xl text-[2.45rem] font-semibold uppercase leading-[0.94] tracking-[-0.05em] text-white sm:text-[3.8rem] md:text-[5rem] lg:text-[5.9rem]">
           Grow Online
           <br />
           With Clarity
@@ -33,16 +33,16 @@ export default function Hero() {
           sharper visibility, better conversion, and steady growth.
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
           <Link
             href="/contact"
-            className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-[#0d2d47] transition hover:bg-[#dfe7f5]"
+            className="w-full rounded-full bg-white px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.08em] text-[#0d2d47] transition hover:bg-[#dfe7f5] sm:w-auto"
           >
             Start A Project
           </Link>
           <Link
             href="/services"
-            className="rounded-full border border-white/24 bg-white/8 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition hover:bg-white hover:text-[#0d2d47]"
+            className="w-full rounded-full border border-white/24 bg-white/8 px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition hover:bg-white hover:text-[#0d2d47] sm:w-auto"
           >
             View Services
           </Link>

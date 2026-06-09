@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import AnimatedLogoMerge from "./AnimatedLogoMerge";
 
 export default function ClientsAndTestimonials() {
   const clientLogos = [
@@ -68,6 +69,14 @@ export default function ClientsAndTestimonials() {
 
   return (
     <section className="w-full overflow-x-hidden md:overflow-x-visible">
+      <style jsx global>{`
+        .clientsLogoMerge img:first-of-type,
+        .clientsLogoMerge > *:first-child,
+        .clientsLogoMerge > *:first-child * {
+          opacity: 1 !important;
+        }
+      `}</style>
+
       <div className="bg-[#EAEBDB] px-4 py-8 sm:px-6 sm:py-10 md:px-10">
         <div className="mx-auto max-w-[1400px]">
         <div className="grid border-t border-black/20 md:grid-cols-4">
@@ -137,6 +146,48 @@ export default function ClientsAndTestimonials() {
         </div>
         </div>
       </div>
+
+ <div
+  className="px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:py-10"
+  style={{ background: "#E6E8DC" }}
+>
+  <div className="mx-auto max-w-[1180px]">
+    <div className="grid items-center gap-6 sm:gap-8 md:grid-cols-2 md:gap-8">
+      <motion.h2
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="text-4xl font-medium uppercase leading-[0.98] tracking-tight sm:text-5xl md:text-[60px] lg:text-[78px] xl:text-[90px]"
+      >
+        Smart, simple, <br />
+        and efficient <br />
+        solutions for <br />
+        every project.
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="relative flex min-h-[190px] items-start justify-center pt-0 md:min-h-0 md:pt-2"
+      >
+        <AnimatedLogoMerge
+          className="clientsLogoMerge"
+          topImageSrc="/toppart1.svg"
+          bottomImageSrc="/bottompart1.svg"
+          ariaLabel="NovaTech animated logo"
+          size="clamp(108px, 26vw, 170px)"
+          pieceGap={4}
+          scrollLinked={true}
+          scrollSceneHeight="135vh"
+          useImagePieces={true}
+        />
+      </motion.div>
+    </div>
+  </div>
+</div>
       <div
         className="relative px-4 py-12 text-black sm:px-6 sm:py-14 md:px-10 md:py-16"
         style={{ background: "linear-gradient(to bottom, #5A7EFF, #6988FB)" }}

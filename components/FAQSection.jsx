@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaQuestion, FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 const faqs = [
   {
@@ -72,7 +72,7 @@ export default function FAQSection() {
 
   return (
    <section
-  className="relative overflow-hidden px-4 py-16 sm:px-6 md:px-10 md:py-24"
+  className="relative overflow-hidden px-4 py-12 sm:px-6 md:px-10 md:py-14"
   style={{
     background:
       "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #7392FB)",
@@ -85,7 +85,7 @@ export default function FAQSection() {
               FAQ
             </span> */}
 
-            <h2 className="text-4xl font-semibold uppercase leading-[0.9] tracking-tight text-black sm:text-5xl md:text-[72px]">
+            <h2 className="text-4xl font-semibold uppercase leading-[0.92] tracking-tight text-black sm:text-5xl md:text-[56px]">
               Frequently
               <br />
               Asked

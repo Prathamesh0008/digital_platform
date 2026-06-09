@@ -160,7 +160,7 @@ const serviceLinks = [
 
   return (
     <header
-      className={`app-navbar fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-transform duration-300 sm:px-5 sm:pt-4 ${
+      className={`app-navbar fixed inset-x-0 top-0 z-50 px-3 pt-2 transition-transform duration-300 sm:px-5 sm:pt-3 ${
         isNavVisible ? "translate-y-0" : "-translate-y-[140%]"
       }`}
     >
@@ -171,21 +171,21 @@ const serviceLinks = [
             : "border-black/10 bg-white/85 shadow-[0_8px_30px_rgba(13,45,71,0.12)] backdrop-blur-lg"
         }`}
       >
-        <div className="flex items-center justify-between px-3 py-2.5 sm:px-4 sm:py-3">
+        <div className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-2.5">
           <Link
             href="/"
             onMouseEnter={() => handleNavIntent("/")}
             onTouchStart={() => handleNavIntent("/")}
             onClick={() => handleNavClick("/")}
             scroll={false}
-            className="flex items-center gap-2 rounded-xl px-2 py-2.5"
+            className="flex items-center gap-2 rounded-xl px-2 py-1.5"
           >
             <Image
               src="/novalogo1.svg"
               alt="NovaTechscience"
               width={230}
               height={88}
-              className="h-auto w-[190px] sm:w-[210px] md:w-[180px]"
+              className="h-auto w-[150px] sm:w-[168px] md:w-[185px]"
               loading="eager"
               priority
             />
@@ -214,7 +214,7 @@ const serviceLinks = [
                       onTouchStart={() => handleNavIntent(link.href)}
                       onClick={() => handleNavClick(link.href)}
                       scroll={false}
-                      className={`flex items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
+                      className={`flex items-center gap-1 rounded-xl px-4 py-1.5 text-sm font-medium transition ${
                         isActive
                           ? "bg-black text-white"
                           : "text-black hover:bg-black/10"
@@ -278,7 +278,7 @@ const serviceLinks = [
                   onTouchStart={() => handleNavIntent(link.href)}
                   onClick={() => handleNavClick(link.href)}
                   scroll={false}
-                  className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
+                  className={`rounded-xl px-4 py-1.5 text-sm font-medium transition ${
                     isActive
                       ? "bg-black text-white"
                       : "text-black hover:bg-black/10"
@@ -293,11 +293,11 @@ const serviceLinks = [
           <div className="flex items-center gap-2">
             <Link
   href="/contact"
-  className="group relative hidden h-12 w-[178px] items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-3 text-sm font-bold text-white shadow-[0_12px_32px_rgba(13,45,71,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(115,146,251,0.35)] md:inline-flex"
+  className="group relative hidden h-10 w-[168px] items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-3 text-sm font-bold text-white shadow-[0_12px_32px_rgba(13,45,71,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(115,146,251,0.35)] md:inline-flex"
 >
-  <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/35 to-[#7392FB]/0 opacity-0 transition duration-500 group-hover:opacity-100 group-hover:animate-shimmer" />
+  <span className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.22)_38%,rgba(255,255,255,0.04)_62%,rgba(255,255,255,0)_100%)] opacity-100" />
 
-<span className="relative flex h-12 min-w-0 flex-1 items-center justify-center overflow-visible px-2 text-center">
+<span className="relative flex h-10 min-w-0 flex-1 items-center justify-center overflow-visible px-2 text-center">
     <AnimatePresence mode="wait">
       <motion.span
         key={currentWordIndex}
@@ -460,10 +460,10 @@ style={{
            <Link
   href="/contact"
   onClick={() => setIsOpen(false)}
- className="group relative mt-3 inline-flex h-12 w-full items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(13,45,71,0.28)]"
+ className="group relative mt-3 inline-flex h-10 w-full items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(13,45,71,0.28)]"
 >
   <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/30 to-[#7392FB]/0 opacity-70 animate-shimmer" />
-<span className="relative flex h-12 flex-1 items-center justify-center overflow-visible text-center">
+<span className="relative flex h-10 flex-1 items-center justify-center overflow-visible text-center">
     <AnimatePresence mode="wait">
       <motion.span
         key={currentWordIndex}

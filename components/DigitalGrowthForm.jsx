@@ -6,7 +6,7 @@ const rotatingWords = ["Digital", "Growth", "Online"];
 export default function DigitalGrowthForm() {
   return (
     <section
-      className="relative overflow-hidden py-14 sm:py-16 md:py-24"
+      className="relative overflow-hidden py-10 sm:py-12 md:py-14"
       style={{
         background:
           "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #7392FB)",
@@ -15,8 +15,8 @@ export default function DigitalGrowthForm() {
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 md:px-10">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
           {/* LEFT TITLE */}
-          <div className="h-fit pl-0 sm:pl-4 md:pl-10 lg:sticky lg:top-32">
-            <h2 className="text-4xl font-semibold uppercase leading-[0.9] tracking-tight text-black sm:text-5xl md:text-[82px] lg:text-[106px]">
+          <div className="h-fit pl-0 sm:pl-4 md:pl-10 lg:pt-2">
+            <h2 className="text-4xl font-semibold uppercase leading-[0.92] tracking-tight text-black sm:text-5xl md:text-[62px] lg:text-[78px]">
               Build
               <br />
               Your

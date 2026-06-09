@@ -116,13 +116,13 @@ export default function ClientReviewSlider() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#A0B3ED] px-4 py-16 sm:px-6 md:px-10 md:py-24">
+    <section className="relative overflow-hidden bg-[#A0B3ED] px-4 py-12 sm:px-6 md:px-10 md:py-14">
       <div className="absolute left-[-120px] top-[-120px] h-[320px] w-[320px] rounded-full bg-[#7392FB]/30 blur-3xl" />
       <div className="absolute bottom-[-140px] right-[-120px] h-[340px] w-[340px] rounded-full bg-[#EAEBDB]/20 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1400px]">
-        <div className="mb-12 max-w-3xl">
-          <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-[72px]">
+        <div className="mb-10 max-w-3xl">
+          <h2 className="text-4xl font-semibold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl md:text-[58px]">
             Stories From
             <br />
             Our Clients
@@ -155,7 +155,7 @@ export default function ClientReviewSlider() {
             {repeatedReviews.map((review, index) => (
               <article
                 key={`${review.name}-${index}`}
-                className="group relative h-[300px] w-[310px] shrink-0 overflow-hidden rounded-[30px] border border-white/15 bg-white/[0.08] p-6 text-left backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:bg-white/[0.12] sm:w-[390px]"
+                className="group relative h-[280px] w-[310px] shrink-0 overflow-hidden rounded-[30px] border border-white/15 bg-white/[0.08] p-6 text-left backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:bg-white/[0.12] sm:h-[300px] sm:w-[390px]"
               >
                 <div className="absolute right-5 top-5 text-white/35 drop-shadow-[0_8px_20px_rgba(255,255,255,0.25)]">
                   <FaQuoteLeft className="text-6xl" />

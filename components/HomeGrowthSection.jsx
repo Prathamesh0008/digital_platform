@@ -127,19 +127,19 @@ export default function HomeGrowthSection() {
  
   return (
     <section
-      className="relative overflow-hidden px-4 py-16 sm:px-6 md:px-10 md:py-24"
+      className="relative overflow-hidden px-4 py-12 sm:px-6 md:px-10 md:py-14"
       style={{
         background:
           "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #6887FB)",
       }}
     >
       <div className="mx-auto max-w-[1400px]">
-        <div className="mb-12  pl-4 sm:pl-6 md:pl-10">
+        <div className="mb-10 pl-4 sm:pl-6 md:pl-10">
           {/* <span className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
             Talk About Us
           </span> */}
  
-          <h2 className="text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[72px]">
+          <h2 className="text-4xl font-semibold uppercase leading-[0.98] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[58px]">
             Our Impact
             <br />
             In Numbers
@@ -156,7 +156,7 @@ export default function HomeGrowthSection() {
         <item.icon />
       </div>
  
-      <h3 className="text-3xl font-semibold text-[#0d2d47] sm:text-5xl md:text-[64px]">
+      <h3 className="text-3xl font-semibold text-[#0d2d47] sm:text-4xl md:text-[48px]">
         <CountUpNumber target={item.target} suffix={item.suffix} />
       </h3>
  
@@ -166,9 +166,9 @@ export default function HomeGrowthSection() {
     </article>
   ))}
 </div>
-        <div className="mt-20 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mt-10 grid items-center gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
-  <div className="h-[420px] overflow-hidden rounded-[28px] sm:h-[480px] lg:h-[560px]">
+  <div className="h-[260px] overflow-hidden rounded-[28px] sm:h-[320px] lg:h-[380px]">
     <Image
       src="/Home_1.avif"
       alt="Business professionals collaborating"
@@ -180,13 +180,13 @@ export default function HomeGrowthSection() {
 </div>
  
           <div>
-            <h3 className="text-4xl font-semibold uppercase leading-[0.95] text-[#0d2d47] sm:text-5xl md:text-[64px]">
+            <h3 className="text-4xl font-semibold uppercase leading-[0.98] text-[#0d2d47] sm:text-5xl md:text-[52px]">
               Why Choose
               <br />
               Nova Techscience
             </h3>
  
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-[#0d2d47]/75 sm:text-lg">
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-[#0d2d47]/75 sm:text-lg">
               <p>As a trusted name in digital marketing, Nova Techsciences delivers innovative strategies that help businesses thrive in a fast-paced digital world. We continuously stay ahead of evolving trends, platform updates, and market shifts to ensure our clients remain competitive and visible across global markets.</p>
               <p>Our approach is rooted in insight and precision. Every project begins with a deep analysis of your brand, industry, and objectives, allowing us to craft customized digital marketing solutions that address your unique challenges and opportunities.</p>
               <p>From optimizing web-based marketing campaigns to strengthening your online presence, Nova Techsciences focuses on creating impact that goes beyond visibility. We aim to build sustainable growth, stronger brand recognition, and meaningful engagement with your audience.</p>
@@ -195,11 +195,11 @@ export default function HomeGrowthSection() {
           </div>
         </div>
  
-        <div className="mt-20 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {contentBlocks.map((block) => (
             <article
               key={block.title}
-              className="rounded-[30px] border border-white/30 bg-white/20 p-6 backdrop-blur-md md:p-8"
+              className="rounded-[30px] border border-white/30 bg-white/20 p-5 backdrop-blur-md md:p-6"
             >
               <h4 className="text-2xl font-semibold uppercase text-[#0d2d47] sm:text-3xl">
                 {block.title}
@@ -216,9 +216,9 @@ export default function HomeGrowthSection() {
           ))}
         </div>
  
-        <div className="mt-20 grid items-center gap-8 lg:grid-cols-2">
+        <div className="mt-10 grid items-center gap-6 lg:grid-cols-2">
           <div className="order-1 rounded-[30px] border border-white/30 bg-white/20 p-6 backdrop-blur-md sm:p-8 lg:order-1">
-            <div className="mb-8 flex flex-wrap gap-3">
+            <div className="mb-6 flex flex-wrap gap-3">
               {infoTabs.map((tab, idx) => (
                 <button
                   key={tab.title}
@@ -246,7 +246,7 @@ export default function HomeGrowthSection() {
           </div>
  
         <div className="order-2 overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md lg:order-2">
-  <div className="h-[380px] overflow-hidden rounded-[28px] sm:h-[440px] lg:h-[520px]">
+  <div className="h-[240px] overflow-hidden rounded-[28px] sm:h-[300px] lg:h-[350px]">
     <Image
       src={activeInfo.image}
       alt={activeInfo.imageAlt}

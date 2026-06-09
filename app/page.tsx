@@ -90,28 +90,28 @@ export default function Home() {
      {/* <ScrollWire /> */}
       <Hero />
       <Services />
-      <LazySection minHeight={280}>
+      <LazySection minHeight={180}>
         <SplitMarqueeSection />
       </LazySection>
-      <LazySection minHeight={900}>
+      <LazySection minHeight={360}>
         <ClientsAndTestimonials />
       </LazySection>
-      <LazySection minHeight={760}>
+      <LazySection minHeight={320}>
         <WorkProcess />
       </LazySection>
-      <LazySection minHeight={680}>
+      <LazySection minHeight={320}>
         <HomeGrowthSection />
       </LazySection>
-      <LazySection minHeight={520}>
+      <LazySection minHeight={240}>
         <ClientReviewSlider />
       </LazySection>
-      <LazySection minHeight={680}>
+      <LazySection minHeight={280}>
         <DigitalGrowthForm />
       </LazySection>
-      <LazySection minHeight={560}>
+      <LazySection minHeight={240}>
         <BlogSection />
       </LazySection>
-      <LazySection minHeight={520}>
+      <LazySection minHeight={220}>
         <FAQSection />
       </LazySection>
  

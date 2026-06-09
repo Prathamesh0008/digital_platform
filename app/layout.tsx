@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Great_Vibes, Inter } from "next/font/google";
+import { Great_Vibes, Manrope } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -23,7 +23,7 @@ const defaultKeywords = [
   "branding and marketing",
 ];
 
-const inter = Inter({
+const inter = Manrope({
   subsets: ["latin"],
   variable: "--font-inter",
 });

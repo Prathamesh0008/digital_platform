@@ -45,7 +45,7 @@ export default function BlogSection() {
   const repeatedBlogs = [...blogs, ...blogs];
 
   return (
-    <section className="relative overflow-hidden bg-[#7A97F8] px-4 py-16 sm:px-6 md:px-10 md:py-24">
+    <section className="relative overflow-hidden bg-[#7A97F8] px-4 py-12 sm:px-6 md:px-10 md:py-14">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
           <div className="pl-4 sm:pl-6 md:pl-10">
@@ -53,7 +53,7 @@ export default function BlogSection() {
               Insights
             </span> */}
 
-            <h2 className="text-4xl font-semibold uppercase leading-[0.9] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[72px]">
+            <h2 className="text-4xl font-semibold uppercase leading-[0.92] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[56px]">
               Latest
               <br />
               Blogs
@@ -71,7 +71,7 @@ export default function BlogSection() {
             {repeatedBlogs.map((blog, index) => (
               <article
                 key={`${blog.title}-${index}`}
-                className="group w-[320px] shrink-0 overflow-hidden rounded-[30px] border border-[#0d2d47]/10 bg-white/35 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:bg-white/50 sm:w-[390px]"
+                className="group w-[84vw] max-w-[320px] shrink-0 overflow-hidden rounded-[30px] border border-[#0d2d47]/10 bg-white/35 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:bg-white/50 sm:w-[390px] sm:max-w-none"
               >
                 <div className="relative overflow-hidden">
                   <Image
