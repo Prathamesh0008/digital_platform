@@ -211,8 +211,8 @@ export default function NovaLogoPreloader({ onComplete }) {
       tl
         .to(outlineShapes, {
           strokeDashoffset: 0,
-          duration: 0.32,
-          stagger: 0.01,
+          duration: 0.7,
+          stagger: 0.025,
         })
         .add("fillStart")
         .to(
@@ -221,8 +221,8 @@ export default function NovaLogoPreloader({ onComplete }) {
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.16,
-            stagger: 0.015,
+            duration: 0.32,
+            stagger: 0.03,
             ease: "power3.out",
           },
           "fillStart"
@@ -231,10 +231,10 @@ export default function NovaLogoPreloader({ onComplete }) {
           outlineShapes,
           {
             autoAlpha: 0,
-            duration: 0.1,
+            duration: 0.18,
             ease: "power2.out",
           },
-          "fillStart+=0.05"
+          "fillStart+=0.12"
         )
         .set(outlineShapes, {
           autoAlpha: 0,
@@ -246,27 +246,27 @@ export default function NovaLogoPreloader({ onComplete }) {
             autoAlpha: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.14,
-            stagger: 0.015,
+            duration: 0.3,
+            stagger: 0.03,
             ease: "power3.out",
           },
-          "-=0.06"
+          "-=0.08"
         )
         .to(svg, {
           scale: 1.025,
-          duration: 0.08,
+          duration: 0.18,
           ease: "power2.out",
         })
         .to(svg, {
           scale: 1,
-          duration: 0.08,
+          duration: 0.18,
           ease: "power2.inOut",
         })
-        .to({}, { duration: 0.04 })
+        .to({}, { duration: 0.55 })
         .to(preloaderRef.current, {
           autoAlpha: 0,
           scale: 1.04,
-          duration: 0.16,
+          duration: 0.28,
           ease: "power2.inOut",
         });
 

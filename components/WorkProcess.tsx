@@ -256,7 +256,7 @@ export default function WorkProcess() {
         </p>
 
         {/* Desktop view */}
-        <div className="relative mx-auto mt-12 hidden h-[700px] max-w-[1350px] lg:block">
+        <div className="relative mx-auto mt-16 hidden h-[820px] max-w-[1350px] lg:block">
           <svg
             className="absolute inset-0 z-0 h-full w-full"
             viewBox="0 0 1350 820"
@@ -314,7 +314,7 @@ export default function WorkProcess() {
           {steps.map((step, idx) => (
             <div
               key={step.no}
-              className="absolute z-10 w-[300px] -translate-x-1/2 text-center"
+              className="absolute z-10 w-[330px] -translate-x-1/2 text-center"
               style={{ left: step.left, top: step.top }}
             >
               <div
@@ -332,19 +332,19 @@ export default function WorkProcess() {
               </div>
 
               <div
-               className={`mt-4 flex min-h-[205px] flex-col justify-start rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-4 shadow-[0_18px_40px_rgba(13,45,71,0.14)] transition-all duration-700 ${
+               className={`mt-5 flex min-h-[230px] flex-col justify-start rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 shadow-[0_18px_40px_rgba(13,45,71,0.14)] transition-all duration-700 ${
                   glowStates[idx]
                     ? "translate-y-0 opacity-100"
                     : "translate-y-6 opacity-0"
                 }`}
               >
                 <h3
-                  className={`${cookie.className} text-2xl font-normal leading-[1.08] text-[#0d2d47]`}
+                  className={`${cookie.className} text-[28px] text-2xl font-normal leading-[1.1] text-[#0d2d47]`}
                 >
                   {step.title}
                 </h3>
 
-                <p className={`${cookie.className} mt-3 text-lg leading-relaxed text-[#0d2d47]/75`}>
+                <p className={`${cookie.className} mt-4 text-xl leading-relaxed text-[#0d2d47]/75`}>
                   {step.text}
                 </p>
               </div>

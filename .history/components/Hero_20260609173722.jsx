@@ -3,22 +3,24 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[80svh] items-center justify-center overflow-hidden bg-[#0d2d47] px-4 pt-36 sm:px-6 sm:pt-40 md:px-10">
+    <section className="relative flex min-h-[80svh] items-center justify-center overflow-hidden bg-[#0d2d47] px-4 pt-28 sm:px-6 sm:pt-32 md:px-10">
       <Image
-        src="/Home_2.png"
-        alt="Nova Techscience digital marketing workspace"
+        src="/Hero-image-desktop.avif"
+        alt="Nova Techscience digital marketing and website strategy"
         fill
         priority
         sizes="100vw"
         className="object-cover object-center"
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,31,0.78),rgba(13,45,71,0.62),rgba(13,45,71,0.76))]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(156,173,218,0.16),transparent_36%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,31,0.72),rgba(13,45,71,0.58),rgba(13,45,71,0.74))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(156,173,218,0.18),transparent_34%)]" />
       <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(0deg,#EAEBDB,rgba(234,235,219,0))]" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center pb-12 text-center sm:pb-16 md:pb-20">
-        
+      <div className="relative z-10 mx-auto flex w-full max-w-[1100px] flex-col items-center pb-10 text-center sm:pb-14 md:pb-16">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white/70 sm:text-xs">
+          Nova Techscience
+        </p>
 
         <h1 className="mt-6 max-w-5xl text-[2.45rem] font-semibold uppercase leading-[0.94] tracking-[-0.05em] text-white sm:text-[3.8rem] md:text-[5rem] lg:text-[5.9rem]">
           Grow Online
