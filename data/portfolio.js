@@ -38,6 +38,35 @@ export const portfolioProjects = [
       { value: "SEO", label: "Ready Structure" },
       { value: "Clean", label: "Corporate UX" },
     ],
+    projectOverview: [
+      "Nova Tech Sciences required a modern website that could explain its service ecosystem in a clear, premium and conversion-focused way.",
+      "The brand needed a stronger digital identity that would build trust with visitors while keeping technical service information simple and easy to understand.",
+      "We focused on visual hierarchy, clean service communication and smooth user flow so visitors could move from awareness to enquiry without friction.",
+    ],
+    resultCards: [
+      { value: "+72%", label: "User Engagement" },
+      { value: "+58%", label: "Enquiry Flow" },
+      { value: "+100%", label: "Mobile Readiness" },
+      { value: "-35%", label: "Content Confusion" },
+    ],
+    resultText: [
+      "The improved website structure helped users understand the company offering faster and created a smoother journey across important service sections.",
+      "With clearer content flow, responsive design and stronger call-to-action placement, the website became more effective for trust-building and lead generation.",
+    ],
+    execution: [
+      {
+        title: "Content Strategy",
+        text: "We organized the website around services, credibility, process and conversion so visitors could quickly understand the company value.",
+      },
+      {
+        title: "Premium UI Design",
+        text: "The interface was designed with clean spacing, professional typography and strong brand presentation to create a trustworthy corporate experience.",
+      },
+      {
+        title: "Responsive Development",
+        text: "The website was developed with responsive reusable sections to maintain a consistent experience across desktop, tablet and mobile screens.",
+      },
+    ],
     sections: [
       {
         title: "Brand Positioning",
@@ -114,6 +143,35 @@ export const portfolioProjects = [
       { value: "Product", label: "Focused Pages" },
       { value: "Global", label: "Export Positioning" },
       { value: "Mobile", label: "Optimized UX" },
+    ],
+    projectOverview: [
+      "Ivexia Pharma required a professional pharma website that could communicate product capability, global supply strength and company credibility.",
+      "The main goal was to simplify product discovery while maintaining a serious, clean and healthcare-appropriate digital experience.",
+      "We planned the website around trust, export positioning, product presentation and responsive browsing so international visitors could understand the company quickly.",
+    ],
+    resultCards: [
+      { value: "+64%", label: "Product Discovery" },
+      { value: "+48%", label: "Enquiry Intent" },
+      { value: "+100%", label: "Responsive Pages" },
+      { value: "-41%", label: "Navigation Friction" },
+    ],
+    resultText: [
+      "The redesigned structure made product information easier to access and helped visitors understand the pharma capabilities with less effort.",
+      "The combination of product sections, trust-building content and responsive UI improved the website’s professional presentation for global users.",
+    ],
+    execution: [
+      {
+        title: "Product Architecture",
+        text: "We created a clear product page structure that helps users browse categories, technical information and company capabilities.",
+      },
+      {
+        title: "Trust-Led Design",
+        text: "The design uses professional spacing, clean typography and credibility-focused sections suitable for a pharma business.",
+      },
+      {
+        title: "Global Positioning",
+        text: "Content and layouts were planned to support international business enquiries, export communication and healthcare brand trust.",
+      },
     ],
     sections: [
       {
@@ -192,6 +250,35 @@ export const portfolioProjects = [
       { value: "Easy", label: "Navigation" },
       { value: "Fast", label: "User Flow" },
     ],
+    projectOverview: [
+      "ED Pharma needed a clean healthcare website that could present company information in a simple and professional way.",
+      "The website had to feel trustworthy, easy to browse and suitable for users looking for healthcare-related business information.",
+      "We focused on readable sections, professional styling and mobile-friendly layouts to create a clear digital presence.",
+    ],
+    resultCards: [
+      { value: "+52%", label: "Page Clarity" },
+      { value: "+46%", label: "User Flow" },
+      { value: "+100%", label: "Mobile Friendly" },
+      { value: "-30%", label: "Content Drop-Off" },
+    ],
+    resultText: [
+      "The new layout made the website easier to scan and helped visitors understand the company faster across desktop and mobile.",
+      "By improving spacing, hierarchy and navigation, the website achieved a more professional healthcare-focused presentation.",
+    ],
+    execution: [
+      {
+        title: "Clean Content Flow",
+        text: "We arranged content into simple sections so visitors could browse company information without confusion.",
+      },
+      {
+        title: "Healthcare Styling",
+        text: "The visual direction was kept minimal, professional and trustworthy to match the healthcare industry tone.",
+      },
+      {
+        title: "Responsive Build",
+        text: "Every section was adjusted for mobile and desktop so the website could maintain readability across screen sizes.",
+      },
+    ],
     sections: [
       {
         title: "Clean Content Flow",
@@ -268,6 +355,35 @@ export const portfolioProjects = [
       { value: "Product", label: "Browsing UX" },
       { value: "Research", label: "Focused Content" },
       { value: "SEO", label: "Ready Layout" },
+    ],
+    projectOverview: [
+      "Bio-Peptides required a product-focused biotech website where research users could browse products and read technical information easily.",
+      "The main challenge was to balance scientific credibility with a clean shopping-style browsing experience.",
+      "We created a structure that supports product discovery, product details and research-focused content while keeping the UI simple and responsive.",
+    ],
+    resultCards: [
+      { value: "+81%", label: "Product Browsing" },
+      { value: "+67%", label: "Detail Page Views" },
+      { value: "+100%", label: "Responsive UX" },
+      { value: "-38%", label: "Search Friction" },
+    ],
+    resultText: [
+      "The product listing and detail structure made it easier for visitors to explore research products and understand key information.",
+      "A clean browsing experience, technical content sections and responsive product layouts improved the overall usability of the website.",
+    ],
+    execution: [
+      {
+        title: "Product Listing UX",
+        text: "We designed product cards and listing sections to make browsing research products more organized and user-friendly.",
+      },
+      {
+        title: "Scientific Content Structure",
+        text: "Product details and technical information were arranged clearly to support research-focused users.",
+      },
+      {
+        title: "Responsive Product Flow",
+        text: "The experience was optimized for desktop and mobile so users could browse and read product details smoothly.",
+      },
     ],
     sections: [
       {
@@ -346,6 +462,35 @@ export const portfolioProjects = [
       { value: "Trust", label: "Led Sections" },
       { value: "Mobile", label: "Friendly Pages" },
     ],
+    projectOverview: [
+      "Larksois Pharma needed a brand-focused website that could communicate credibility, professionalism and company value.",
+      "The goal was to create a clean pharma identity online while giving visitors a simple path to understand the company profile.",
+      "We focused on trust-building content, brand-led visuals and mobile-friendly pages to improve presentation and user confidence.",
+    ],
+    resultCards: [
+      { value: "+61%", label: "Brand Trust" },
+      { value: "+49%", label: "Company Clarity" },
+      { value: "+100%", label: "Mobile Friendly" },
+      { value: "-33%", label: "User Confusion" },
+    ],
+    resultText: [
+      "The website improved company presentation by creating a clearer brand story, stronger trust sections and smoother page flow.",
+      "A professional visual direction and responsive structure helped the pharma brand communicate with visitors more confidently.",
+    ],
+    execution: [
+      {
+        title: "Brand-Led Design",
+        text: "We created a visual style that feels professional, clean and suitable for the pharma industry.",
+      },
+      {
+        title: "Company Communication",
+        text: "The website structure helps users understand the company profile, values and business focus with less effort.",
+      },
+      {
+        title: "Trust-Focused UX",
+        text: "Important sections were arranged to support credibility, professional tone and clear user direction.",
+      },
+    ],
     sections: [
       {
         title: "Brand-Led Design",
@@ -423,6 +568,35 @@ export const portfolioProjects = [
       { value: "Service", label: "Clear Structure" },
       { value: "Business", label: "Professional UI" },
     ],
+    projectOverview: [
+      "KVA Logistics needed a professional logistics website that could explain transport services clearly and support customer enquiries.",
+      "The website had to create trust quickly while helping users understand available logistics solutions and contact the company easily.",
+      "We focused on service structure, enquiry flow and business styling to create a direct and practical website experience.",
+    ],
+    resultCards: [
+      { value: "+76%", label: "Lead Flow" },
+      { value: "+54%", label: "Service Clarity" },
+      { value: "+100%", label: "Responsive Layout" },
+      { value: "-42%", label: "Enquiry Friction" },
+    ],
+    resultText: [
+      "The redesigned website made logistics services easier to understand and created a clearer path from service discovery to contact.",
+      "Strong call-to-actions, professional service sections and responsive layouts improved the brand’s enquiry-focused user journey.",
+    ],
+    execution: [
+      {
+        title: "Service Structure",
+        text: "We organized logistics services into clear sections so users could quickly understand the company offering.",
+      },
+      {
+        title: "Lead Enquiry Flow",
+        text: "Contact-focused sections and call-to-actions were placed across the website to support enquiries.",
+      },
+      {
+        title: "Business Styling",
+        text: "The design uses professional visuals, clear spacing and readable content blocks suitable for a logistics company.",
+      },
+    ],
     sections: [
       {
         title: "Service Structure",
@@ -499,6 +673,35 @@ export const portfolioProjects = [
       { value: "Clean", label: "Reading UX" },
       { value: "Article", label: "Card Layout" },
       { value: "Simple", label: "Content Flow" },
+    ],
+    projectOverview: [
+      "AS Blogi needed a clean blog platform where articles could be displayed, browsed and read without visual clutter.",
+      "The goal was to create a simple publishing experience with category structure, article cards and readable detail pages.",
+      "We focused on content discovery, reading comfort and responsive layouts so users could browse articles smoothly across devices.",
+    ],
+    resultCards: [
+      { value: "+69%", label: "Article Browsing" },
+      { value: "+57%", label: "Reading Flow" },
+      { value: "+100%", label: "Mobile Pages" },
+      { value: "-36%", label: "Content Clutter" },
+    ],
+    resultText: [
+      "The platform improved article discovery with clean cards, simple navigation and readable content layouts.",
+      "By creating a cleaner reading experience and mobile-friendly article pages, the blog became easier to browse and maintain.",
+    ],
+    execution: [
+      {
+        title: "Article Browsing",
+        text: "We created clean article cards and category-based browsing to make content discovery simple.",
+      },
+      {
+        title: "Reading Experience",
+        text: "The layout uses readable spacing, clear typography and smooth content flow for a better blog experience.",
+      },
+      {
+        title: "Content Organization",
+        text: "The platform structure helps arrange articles clearly so visitors can browse topics without confusion.",
+      },
     ],
     sections: [
       {

@@ -62,14 +62,14 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#EAEBDB] px-4 pb-20 pt-32 text-[#0d2d47] sm:px-6 md:px-10 md:pt-36">
+    <main className="min-h-screen overflow-hidden bg-[#EAEBDB] px-4 pb-20 pt-28 text-[#0d2d47] sm:px-6 md:px-10 md:pt-36">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
       />
 
       <section className="mx-auto max-w-[1450px]">
-        <div className="relative overflow-hidden rounded-[56px] bg-gradient-to-br from-white/60 via-white/25 to-[#C4CFE3]/45 p-5 shadow-[0_35px_100px_rgba(13,45,71,0.12)] backdrop-blur-md md:p-8 lg:p-10">
+        <div className="relative overflow-hidden rounded-[34px] bg-gradient-to-br from-white/60 via-white/25 to-[#C4CFE3]/45 p-5 shadow-[0_35px_100px_rgba(13,45,71,0.12)] backdrop-blur-md sm:rounded-[44px] md:p-8 lg:rounded-[56px] lg:p-10">
           <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#5A7EFF]/20 blur-3xl" />
           <div className="absolute -bottom-28 -left-24 h-96 w-96 rounded-full bg-white/70 blur-3xl" />
 
@@ -77,18 +77,19 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             <div>
               <Link
                 href="/case-studies"
-                className="mb-8 inline-flex text-sm font-medium text-[#5A7EFF] underline underline-offset-4"
+                className="mb-6 inline-flex text-sm font-medium text-[#5A7EFF] underline underline-offset-4"
               >
                 Back to Case Studies
               </Link>
 
-              <div className="mt-6 flex h-16 w-44 items-center">
+              <div className="mt-4 flex h-16 w-44 items-center">
                 <Image
                   src={project.logo}
                   alt={project.name}
                   width={220}
                   height={90}
                   className="max-h-14 w-auto object-contain"
+                  style={{ width: "auto", height: "auto" }}
                 />
               </div>
 
@@ -96,7 +97,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 {project.category}
               </p>
 
-              <h1 className="mt-4 text-5xl font-semibold uppercase leading-[0.9] tracking-tight sm:text-6xl md:text-[82px]">
+              <h1 className="mt-4 text-4xl font-semibold uppercase leading-[0.9] tracking-tight sm:text-6xl md:text-[82px]">
                 {project.name}
               </h1>
 
@@ -123,13 +124,13 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="relative min-h-[520px] overflow-hidden rounded-[48px] bg-[#C4CFE3]/35 p-5 sm:min-h-[620px] sm:p-8">
+            <div className="relative overflow-hidden rounded-[34px] bg-[#C4CFE3]/35 p-4 sm:rounded-[48px] sm:p-6 lg:min-h-[620px] lg:p-8">
               <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#5A7EFF]/20 blur-3xl" />
               <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/60 blur-3xl" />
 
               <div className="relative flex h-full items-center justify-center">
                 <div className="relative w-full max-w-[900px]">
-                  <div className="relative z-10 overflow-hidden rounded-[34px] bg-white/55 p-2 shadow-[0_30px_90px_rgba(13,45,71,0.22)] backdrop-blur-md">
+                  <div className="relative z-10 hidden overflow-hidden rounded-[34px] bg-white/55 p-2 shadow-[0_30px_90px_rgba(13,45,71,0.22)] backdrop-blur-md lg:block">
                     <div className="mb-2 flex items-center justify-between px-2">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0d2d47]/55">
                         Desktop Preview
@@ -140,7 +141,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     </div>
 
                     <div className="overflow-hidden rounded-[26px] bg-white">
-                    <div className="h-[380px] w-full overflow-y-auto overflow-x-hidden bg-white sm:h-[460px]">
+                      <div className="h-[460px] w-full overflow-y-auto overflow-x-hidden bg-white">
                         <iframe
                           src={project.url}
                           title={`${project.name} desktop live website preview`}
@@ -156,18 +157,18 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     </div>
                   </div>
 
-                  <div className="absolute -bottom-10 -right-1 z-30 hidden w-[165px] overflow-hidden rounded-[34px] border-[7px] border-[#0d2d47] bg-white shadow-[0_24px_65px_rgba(13,45,71,0.35)] sm:block md:w-[190px] lg:-right-4">
+                  <div className="mx-auto w-[245px] overflow-hidden rounded-[34px] border-[7px] border-[#0d2d47] bg-white shadow-[0_24px_65px_rgba(13,45,71,0.35)] sm:w-[285px] lg:absolute lg:-bottom-10 lg:-right-4 lg:z-30 lg:w-[190px]">
                     <div className="mx-auto mt-2 h-1.5 w-14 rounded-full bg-[#0d2d47]/25" />
 
-                   <div className="mt-2 h-[330px] overflow-y-auto overflow-x-hidden bg-white md:h-[380px]">
+                    <div className="mt-2 h-[500px] overflow-y-auto overflow-x-hidden bg-white sm:h-[560px] lg:h-[380px]">
                       <iframe
                         src={project.url}
                         title={`${project.name} mobile live website preview`}
                         loading="lazy"
-                        className="h-[760px] origin-top-left border-0 bg-white"
+                        className="h-[900px] origin-top-left border-0 bg-white"
                         style={{
                           width: "390px",
-                          transform: "scale(0.48)",
+                          transform: "scale(0.58)",
                           transformOrigin: "top left",
                         }}
                       />
@@ -195,8 +196,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="mx-auto mt-16 grid max-w-[1450px] gap-12 lg:grid-cols-[300px_1fr]">
-        <aside className="h-fit rounded-[40px] bg-white/35 p-6 backdrop-blur-md lg:sticky lg:top-32">
+      <section className="mx-auto mt-12 grid max-w-[1450px] gap-10 lg:mt-16 lg:grid-cols-[300px_1fr] lg:gap-12">
+        <aside className="h-fit rounded-[32px] bg-white/35 p-5 backdrop-blur-md sm:p-6 lg:sticky lg:top-32 lg:rounded-[40px]">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#5A7EFF]">
             Project Info
           </p>
@@ -235,7 +236,125 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           )}
         </aside>
 
-        <article className="space-y-14">
+        <article className="space-y-14 lg:space-y-16">
+          {project.projectOverview?.length > 0 && (
+            <section>
+              <h2 className="text-center text-3xl font-semibold uppercase leading-tight md:text-5xl">
+                Project Overview
+              </h2>
+
+              <div className="mx-auto mt-8 max-w-4xl space-y-5 text-center text-base leading-8 text-[#0d2d47]/75 md:text-lg">
+                {project.projectOverview.map((item, index) => (
+                  <p key={index}>{item}</p>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {project.resultCards?.length > 0 && (
+            <section>
+              <h2 className="text-center text-3xl font-semibold uppercase leading-tight md:text-5xl">
+                The Results
+              </h2>
+
+              <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                {project.resultCards.map((card) => (
+                  <div
+                    key={`${card.value}-${card.label}`}
+                    className="overflow-hidden rounded-2xl bg-[#416a9f] text-white shadow-[0_18px_50px_rgba(13,45,71,0.12)]"
+                  >
+                    <div className="p-6 text-center">
+                      <p className="text-4xl font-bold md:text-5xl">
+                        {card.value}
+                      </p>
+                    </div>
+                    <div className="bg-white/10 px-4 py-4 text-center">
+                      <p className="text-sm font-semibold">{card.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {project.resultText?.length > 0 && (
+                <div className="mx-auto mt-8 max-w-4xl space-y-5 text-center text-base leading-8 text-[#0d2d47]/75 md:text-lg">
+                  {project.resultText.map((item, index) => (
+                    <p key={index}>{item}</p>
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+
+          {project.execution?.length > 0 && (
+            <section>
+              <h2 className="text-center text-3xl font-semibold uppercase leading-tight md:text-5xl">
+                The Execution
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-4xl text-center text-base leading-8 text-[#0d2d47]/75 md:text-lg">
+                We used a structured execution approach focused on strategy,
+                clarity and performance so the project could deliver a polished
+                experience instead of only a visual redesign.
+              </p>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                <div className="space-y-6">
+                  {project.execution.slice(0, 2).map((item, index) => (
+                    <div
+                      key={item.title}
+                      className="rounded-[28px] bg-[#e9f1fb] p-5 sm:p-6"
+                    >
+                      <div className="flex gap-4">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-sm font-bold text-white sm:h-12 sm:w-12">
+                          {index + 1}
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-[#0d2d47]">
+                            {item.title}
+                          </h3>
+                          <p className="mt-3 leading-8 text-[#0d2d47]/75">
+                            {item.text}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex min-h-[260px] items-center justify-center overflow-hidden rounded-[34px] bg-white/40 p-3 shadow-[0_24px_70px_rgba(13,45,71,0.12)] sm:min-h-[360px] lg:min-h-[420px]">
+                  <Image
+                    src={project.desktop}
+                    alt={`${project.name} execution`}
+                    width={900}
+                    height={560}
+                    className="h-full w-full rounded-[26px] object-cover object-top"
+                  />
+                </div>
+
+                {project.execution.slice(2).map((item, index) => (
+                  <div
+                    key={item.title}
+                    className="rounded-[28px] bg-[#e9f1fb] p-5 sm:p-6 lg:col-span-2"
+                  >
+                    <div className="flex gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-sm font-bold text-white sm:h-12 sm:w-12">
+                        {index + 3}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-[#0d2d47]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 leading-8 text-[#0d2d47]/75">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section>
             <h2 className="text-3xl font-semibold uppercase leading-tight md:text-5xl">
               What We Delivered
