@@ -28,9 +28,9 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-[#EAEBDB] text-[#0d2d47]">
       <ServicesHero />
       <ServicesHorizontal />
-      <LazySection minHeight={860}>
+      {/* <LazySection minHeight={860}>
         <ServicesGrid />
-      </LazySection>
+      </LazySection> */}
       <LazySection minHeight={620}>
         <WhyChooseUs />
       </LazySection>

@@ -214,7 +214,7 @@ const serviceLinks = [
                       onTouchStart={() => handleNavIntent(link.href)}
                       onClick={() => handleNavClick(link.href)}
                       scroll={false}
-                      className={`flex items-center gap-1 rounded-xl px-4 py-1.5 text-sm font-medium transition ${
+                     className={`flex items-center gap-1 rounded-xl px-4 py-2 text-[17px] font-semibold transition ${
                         isActive
                           ? "bg-black text-white"
                           : "text-black hover:bg-black/10"
@@ -252,7 +252,7 @@ const serviceLinks = [
       onTouchStart={() => handleNavIntent(service.href)}
       onClick={() => handleNavClick(service.href)}
       scroll={false}
-      className={`block rounded-xl px-3 py-2 text-[13px] font-medium transition ${
+      className={`block rounded-xl px-3 py-2.5 text-[15px] font-medium transition ${
         isServiceActive
           ? "bg-black text-white"
           : "text-black/75 hover:bg-black/8 hover:text-black"
@@ -278,7 +278,7 @@ const serviceLinks = [
                   onTouchStart={() => handleNavIntent(link.href)}
                   onClick={() => handleNavClick(link.href)}
                   scroll={false}
-                  className={`rounded-xl px-4 py-1.5 text-sm font-medium transition ${
+             className={`rounded-xl px-4 py-2 text-[17px] font-semibold transition ${
                     isActive
                       ? "bg-black text-white"
                       : "text-black hover:bg-black/10"
@@ -379,7 +379,7 @@ style={{
                               onTouchStart={() => handleNavIntent(link.href)}
                               onClick={() => handleNavClick(link.href)}
                               scroll={false}
-                              className="flex flex-1 items-center px-4 py-3 text-sm font-medium"
+                              className="flex flex-1 items-center px-4 py-3 text-[17px] font-semibold"
                             >
                               {link.name}
                             </Link>
@@ -421,7 +421,7 @@ style={{
       onTouchStart={() => handleNavIntent(service.href)}
       onClick={() => handleNavClick(service.href)}
       scroll={false}
-      className={`block rounded-xl px-3 py-2 text-[13px] font-medium transition ${
+   className={`block rounded-xl px-3 py-2.5 text-[15px] font-medium transition ${
         isServiceActive
           ? "bg-black text-white"
           : "text-black/75 hover:bg-black hover:text-white"
@@ -446,7 +446,7 @@ style={{
                         onTouchStart={() => handleNavIntent(link.href)}
                         onClick={() => handleNavClick(link.href)}
                         scroll={false}
-                        className={`rounded-xl px-4 py-3 text-sm font-medium transition ${
+                       className={`rounded-xl px-4 py-3 text-[17px] font-semibold transition ${
                           isActive
                             ? "bg-black text-white"
                             : "bg-black/5 text-black hover:bg-black hover:text-white"

@@ -17,7 +17,7 @@ export default function AboutApproach() {
   const approaches = [
     {
       title: "Strategy First",
-      bg: "/Holographic 1.png",
+      bg: "/Strategy First.jpg",
       description:
         "Every campaign begins with deep research, clear goals, and a roadmap tailored to your unique challenges.",
       extra:
@@ -25,7 +25,7 @@ export default function AboutApproach() {
     },
     {
       title: "Creative Excellence",
-      bg: "/Holographic 2.png",
+      bg: "/Creative Excellence.jpg",
       description:
         "We craft compelling visuals and narratives that capture attention and leave lasting impressions.",
       extra:
@@ -33,7 +33,7 @@ export default function AboutApproach() {
     },
     {
       title: "Data-Driven Execution",
-      bg: "/Holographic 3.png",
+      bg: "/Data Driven Execution.jpg",
       description:
         "Real-time analytics guide our decisions, ensuring every dollar spent delivers maximum ROI.",
       extra:
@@ -41,7 +41,7 @@ export default function AboutApproach() {
     },
     {
       title: "Continuous Optimization",
-      bg: "/Holographic 4.png",
+      bg: "/Continuous Optimization.jpg",
       description:
         "We never stop improving. Constant testing and iteration keep your campaigns ahead of the curve.",
       extra:
@@ -73,7 +73,7 @@ export default function AboutApproach() {
               />
 
               {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black/45" />
+              {/* <div className="absolute inset-0 bg-black/10" /> */}
 
               {/* Soft color overlay */}
               <div

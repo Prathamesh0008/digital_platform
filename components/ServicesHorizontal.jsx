@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
@@ -69,14 +69,14 @@ export default function ServicesHorizontal() {
         <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-14">
           <div className="lg:sticky lg:top-28 lg:h-fit">
             <div className="max-w-xl">
-              <span className="inline-flex rounded-full border border-[#0d2d47]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#0d2d47]/68">
+              {/* <span className="inline-flex rounded-full border border-[#0d2d47]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#0d2d47]/68">
                 Selected Work
-              </span>
+              </span> */}
 
               <h2 className="mt-5 text-4xl font-semibold uppercase leading-[0.9] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[86px] lg:text-[108px]">
-                Case
+               Our 
                 <br />
-                Studies
+                Services
               </h2>
 
               <p className="mt-6 max-w-md text-base leading-8 text-[#0d2d47]/72 sm:text-lg">
@@ -137,7 +137,7 @@ export default function ServicesHorizontal() {
                     href={activeCard.href}
                     className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-[#0d2d47] transition hover:bg-[#c8d3ef]"
                   >
-                    View Case Study
+                    View Service
                     <span aria-hidden="true">{">"}</span>
                   </Link>
                 </div>
@@ -162,13 +162,13 @@ export default function ServicesHorizontal() {
                     }`}
                   >
                     <div className="pr-4">
-                      <div
+                      {/* <div
                         className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${
                           isActive ? "text-white/58" : "text-[#0d2d47]/45"
                         }`}
                       >
                         {String(index + 1).padStart(2, "0")} / {card.label}
-                      </div>
+                      </div> */}
                       <div className="mt-2 text-lg font-semibold leading-tight sm:text-[22px]">
                         {card.title}
                       </div>

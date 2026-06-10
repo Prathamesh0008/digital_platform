@@ -110,14 +110,14 @@ export default function HomeGrowthSection() {
     },
     {
       title: "Complete Brand Control",
-      image: "/brandcontrol.jpg",
+      image: "/brandcontrol2.png",
       imageAlt: "Complete brand control digital marketing visual",
       description:
         "Complete brand control in digital marketing refers to a business's ability to maintain consistent messaging, visual identity, and brand experience across all digital platforms and online touchpoints. Through strategic digital branding, content management, social media marketing, and online reputation management, brands can actively shape how they are perceived in the digital landscape. This level of control ensures brand consistency, strengthens trust, enhances brand authority, and aligns every digital interaction with your core values and long-term vision. Effective digital marketing strategies empower businesses to protect their brand image while delivering a unified, impactful presence that resonates with their target audience.",
     },
     {
       title: "Enhanced Customer Trust",
-      image: "/Customer trust.jpg",
+      image: "/Enhancedcustomertrust1.png",
       imageAlt: "Enhanced customer trust digital marketing visual",
       description:
         "Enhanced customer trust in digital marketing refers to building strong credibility, reliability, and confidence in your brand through consistent, transparent, and value-driven digital experiences. By leveraging strategic branding, high-quality content, social proof, and data-backed digital marketing strategies, businesses can establish authority and foster long-term customer confidence. In today's competitive digital landscape, trust is a key driver of conversion, customer loyalty, and brand equity. Well-executed digital marketing initiatives ensure every interaction—across websites, campaigns, and digital channels—reinforces authenticity, professionalism, and dependability, guiding prospects smoothly through the sales funnel and strengthening enterprise-level brand perception.",
@@ -168,15 +168,15 @@ export default function HomeGrowthSection() {
 </div>
         <div className="mt-10 grid items-center gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
-  <div className="h-[260px] overflow-hidden rounded-[28px] sm:h-[320px] lg:h-[380px]">
-    <Image
-      src="/Home_1.avif"
-      alt="Business professionals collaborating"
-      width={941}
-      height={1672}
-      className="h-full w-full object-cover object-center"
-    />
-  </div>
+<div className="flex h-[320px] items-center justify-center overflow-hidden rounded-[28px] bg-white/20 sm:h-[380px] lg:h-[430px]">
+  <Image
+    src="/Home_1.avif"
+    alt="Business professionals collaborating"
+    width={941}
+    height={1672}
+    className="h-full w-full object-cover object-center"
+  />
+</div>
 </div>
  
           <div>

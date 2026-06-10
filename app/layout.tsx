@@ -2,9 +2,14 @@
 import { Great_Vibes, Manrope } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { Crimson_Text } from "next/font/google";
 
 import AppShell from "@/components/AppShell";
-
+const crimsonText = Crimson_Text({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-crimson-text",
+});
 const siteUrl = "https://www.novatechscience.com";
 const siteName = "Nova Techscience";
 const defaultTitle = "Nova Techscience | Digital Marketing, SEO & Website Development";
@@ -307,7 +312,7 @@ gtag('config', 'G-T3CMEYQ5DK');`}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
+ <body className={`${crimsonText.className} min-h-full flex flex-col`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NMQHTXRJ"
