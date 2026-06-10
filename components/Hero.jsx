@@ -92,7 +92,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
+  <div className="relative z-10 flex min-h-screen items-center justify-center px-6 pt-28 sm:pt-32 md:pt-36">
         <div className="mx-auto w-full max-w-[1400px]">
           <div className="relative">
 
