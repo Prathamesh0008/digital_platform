@@ -56,7 +56,7 @@ export default function AboutStory() {
                 className="relative h-[360px] w-full sm:h-[450px] md:h-[550px]"
               >
                 <Image
-                  src="/about.png"
+                  src="/about1.jpg"
                   alt="Story"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
