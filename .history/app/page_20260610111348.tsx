@@ -97,25 +97,25 @@ export default function Home() {
       </LazySection>
       <LazySection minHeight={360} rootMargin="1200px 0px">
         <ClientsAndTestimonials />
-      </LazySection>
-      <LazySection minHeight={320} rootMargin="1400px 0px">
+      
+     
         <WorkProcess />
-      </LazySection>
-      <LazySection minHeight={320}>
+     
+      
         <HomeGrowthSection />
-      </LazySection>
-      <LazySection minHeight={240}>
+      
+      
         <ClientReviewSlider />
-      </LazySection>
-      <LazySection minHeight={280}>
+      
+      
         <DigitalGrowthForm />
-      </LazySection>
-      <LazySection minHeight={240}>
+      
+      
         <BlogSection />
-      </LazySection>
-      <LazySection minHeight={220}>
+      
+      
         <FAQSection />
-      </LazySection>
+     
  
      
     </main>

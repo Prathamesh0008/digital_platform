@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Cookie } from "next/font/google";
 
 const cookie = Cookie({
@@ -73,14 +73,7 @@ const steps = [
   },
 ];
 
-const circlePoints = [
-  { x: 175, y: 95 },
-  { x: 675, y: 95 },
-  { x: 1175, y: 95 },
-  { x: 1175, y: 480 },
-  { x: 675, y: 480 },
-  { x: 175, y: 480 },
-];
+const glowProgressStops = [0.03, 0.26, 0.49, 0.64, 0.82, 0.97];
 
 const arrowHints = [
   { x: 531, y: 112, rotate: 5 },
@@ -106,7 +99,7 @@ export default function WorkProcess() {
     height: 0,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const path = pathRef.current;
     if (!path) return;
 
@@ -120,28 +113,6 @@ export default function WorkProcess() {
     path.style.opacity = "1";
 
     setGlowStates(new Array(6).fill(false));
-
-    const lengthsAtPoints: number[] = [];
-
-    for (let i = 0; i < circlePoints.length; i++) {
-      const point = circlePoints[i];
-      let bestLength = 0;
-      let minDist = Infinity;
-
-      for (let len = 0; len <= totalLength; len += 1) {
-        const pt = path.getPointAtLength(len);
-        const dx = pt.x - point.x;
-        const dy = pt.y - point.y;
-        const d = dx * dx + dy * dy;
-
-        if (d < minDist) {
-          minDist = d;
-          bestLength = len;
-        }
-      }
-
-      lengthsAtPoints.push(bestLength);
-    }
 
     let animationFrame: number | null = null;
     let hasAnimated = false;
@@ -158,15 +129,14 @@ export default function WorkProcess() {
         const animate = (now: number) => {
           const elapsed = now - startTime;
           const progress = Math.min(1, elapsed / duration);
-          const currentLength = totalLength * progress;
 
-          path.style.strokeDashoffset = `${totalLength - currentLength}`;
+          path.style.strokeDashoffset = `${totalLength - totalLength * progress}`;
 
           setGlowStates((prev) => {
             let changed = false;
 
             const next = prev.map((state, i) => {
-              const isReached = state || currentLength >= lengthsAtPoints[i];
+              const isReached = state || progress >= glowProgressStops[i];
 
               if (isReached !== state) changed = true;
 
@@ -187,7 +157,7 @@ export default function WorkProcess() {
 
         animationFrame = requestAnimationFrame(animate);
       },
-      { threshold: 0.35, rootMargin: "0px" }
+      { threshold: 0.2, rootMargin: "200px 0px" }
     );
 
     observer.observe(section);
@@ -201,7 +171,7 @@ export default function WorkProcess() {
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const updateMobileLine = () => {
       const timeline = mobileTimelineRef.current;
       const firstDot = firstMobileDotRef.current;
@@ -222,7 +192,7 @@ export default function WorkProcess() {
 });
     };
 
-    updateMobileLine();
+    const initialFrame = window.requestAnimationFrame(updateMobileLine);
 
     window.addEventListener("resize", updateMobileLine);
 
@@ -234,6 +204,7 @@ export default function WorkProcess() {
     }
 
     return () => {
+      window.cancelAnimationFrame(initialFrame);
       window.removeEventListener("resize", updateMobileLine);
       resizeObserver?.disconnect();
     };

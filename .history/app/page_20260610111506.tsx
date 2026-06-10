@@ -113,7 +113,7 @@ export default function Home() {
       <LazySection minHeight={240}>
         <BlogSection />
       </LazySection>
-      <LazySection minHeight={220}>
+      
         <FAQSection />
       </LazySection>
  
