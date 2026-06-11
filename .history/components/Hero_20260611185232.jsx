@@ -97,7 +97,7 @@ export default function Hero() {
           <div className="relative">
 
             {/* Left Label */}
-            {/* <div className="absolute left-0 top-10 hidden lg:block">
+            <div className="absolute left-0 top-10 hidden lg:block">
               <p className="text-xl font-medium uppercase leading-relaxed text-white/90 text-center">
                 DIGITAL
                 <br />
@@ -105,7 +105,7 @@ export default function Hero() {
                 <br />
                 AGENCY
               </p>
-            </div> */}
+            </div>
 
             {/* Right Label */}
             {/* <div className="absolute right-0 top-10 hidden lg:block text-right">
@@ -127,7 +127,7 @@ export default function Hero() {
     THAT
   </span>
 
-  <span className="block text-[3rem] sm:text-[4rem] md:text-[5.8rem] lg:text-[7rem] xl:text-[6rem]">
+  <span className="block text-[3rem] sm:text-[4rem] md:text-[5.8rem] lg:text-[7rem] xl:text-[8rem]">
     CONVERTS
   </span>
 </h1>

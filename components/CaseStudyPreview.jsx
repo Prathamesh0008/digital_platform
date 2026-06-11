@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const previewModes = {
@@ -13,6 +13,8 @@ const previewModes = {
     hint: "Open the phone layout",
   },
 };
+
+const DESKTOP_PREVIEW_WIDTH = 1440;
 
 function PreviewModal({
   item,
@@ -100,10 +102,34 @@ export default function CaseStudyPreview({ item }) {
   const [activePreview, setActivePreview] = useState(null);
   const [desktopLoaded, setDesktopLoaded] = useState(false);
   const [mobileLoaded, setMobileLoaded] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [desktopScale, setDesktopScale] = useState(1);
+  const desktopFrameRef = useRef(null);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = desktopFrameRef.current;
+
+    if (!frame || typeof ResizeObserver === "undefined") {
+      return;
+    }
+
+    const updateDesktopScale = () => {
+      const nextScale = Math.min(frame.clientWidth / DESKTOP_PREVIEW_WIDTH, 1);
+      setDesktopScale(nextScale > 0 ? nextScale : 1);
+    };
+
+    updateDesktopScale();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateDesktopScale();
+    });
+
+    resizeObserver.observe(frame);
+    window.addEventListener("resize", updateDesktopScale);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateDesktopScale);
+    };
   }, []);
 
   useEffect(() => {
@@ -141,15 +167,15 @@ export default function CaseStudyPreview({ item }) {
     };
   }, [activePreview]);
 
-  useEffect(() => {
-    if (activePreview === "desktop") {
-      setDesktopLoaded(false);
-    }
+  const openDesktopPreview = () => {
+    setDesktopLoaded(false);
+    setActivePreview("desktop");
+  };
 
-    if (activePreview === "mobile") {
-      setMobileLoaded(false);
-    }
-  }, [activePreview]);
+  const openMobilePreview = () => {
+    setMobileLoaded(false);
+    setActivePreview("mobile");
+  };
 
   return (
     <>
@@ -158,27 +184,11 @@ export default function CaseStudyPreview({ item }) {
         <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/55 blur-3xl" />
 
         <div className="relative flex h-full flex-col justify-between gap-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#5A7EFF]">
-                Interactive Preview
-              </p>
-              <p className="mt-2 max-w-md text-sm leading-6 text-[#0d2d47]/68">
-                Click the desktop screen or phone mockup to inspect the matching
-                layout without leaving this page.
-              </p>
-            </div>
-
-            <div className="hidden rounded-full border border-white/65 bg-white/60 px-4 py-2 text-xs font-medium text-[#0d2d47]/72 shadow-[0_10px_30px_rgba(13,45,71,0.08)] sm:block">
-              Same-screen preview
-            </div>
-          </div>
-
           <div className="relative flex flex-1 items-center justify-center">
             <div className="relative w-full max-w-[920px]">
               <button
                 type="button"
-                onClick={() => setActivePreview("desktop")}
+                onClick={openDesktopPreview}
                 className="group relative z-10 hidden w-full cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/60 p-2 text-left shadow-[0_32px_90px_rgba(13,45,71,0.18)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_38px_100px_rgba(13,45,71,0.24)] lg:block"
                 aria-label={`Open ${item.name} desktop preview`}
               >
@@ -191,16 +201,21 @@ export default function CaseStudyPreview({ item }) {
                     <span className="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#ffd166]" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#06d6a0]" />
-                    <span className="ml-3 truncate text-xs font-medium text-[#0d2d47]/55">
-                      {item.url}
-                    </span>
                   </div>
 
-                  <div className="relative h-[360px] w-full overflow-hidden bg-white sm:h-[420px] lg:h-[460px]">
+                  <div
+                    ref={desktopFrameRef}
+                    className="relative h-[360px] w-full overflow-hidden bg-white sm:h-[420px] lg:h-[460px]"
+                  >
                     <iframe
                       src={item.url}
                       title={`${item.name} desktop website preview`}
-                      className="pointer-events-none h-full w-full origin-top-left border-0 bg-white transition duration-500 group-hover:scale-[1.015]"
+                      className="pointer-events-none origin-top-left border-0 bg-white"
+                      style={{
+                        width: `${DESKTOP_PREVIEW_WIDTH}px`,
+                        height: `${460 / desktopScale}px`,
+                        transform: `scale(${desktopScale})`,
+                      }}
                       tabIndex={-1}
                     />
                   </div>
@@ -209,7 +224,7 @@ export default function CaseStudyPreview({ item }) {
 
               <button
                 type="button"
-                onClick={() => setActivePreview("mobile")}
+                onClick={openMobilePreview}
                 className="group relative z-30 mx-auto block w-[min(100%,230px)] cursor-pointer overflow-hidden rounded-[30px] border-[6px] border-[#0d2d47] bg-white text-left shadow-[0_28px_70px_rgba(13,45,71,0.32)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_80px_rgba(13,45,71,0.38)] sm:w-[250px] md:w-[270px] lg:absolute lg:-bottom-10 lg:right-0 lg:mx-0 lg:w-[190px]"
                 aria-label={`Open ${item.name} mobile preview`}
               >
@@ -240,7 +255,7 @@ export default function CaseStudyPreview({ item }) {
               <button
                 key={mode}
                 type="button"
-                onClick={() => setActivePreview(mode)}
+                onClick={openMobilePreview}
                 className="flex cursor-pointer items-center justify-between rounded-[20px] border border-white/70 bg-white/72 px-4 py-3 text-left shadow-[0_12px_35px_rgba(13,45,71,0.08)] backdrop-blur-md transition hover:bg-white"
               >
                 <div>
@@ -260,7 +275,7 @@ export default function CaseStudyPreview({ item }) {
         </div>
       </div>
 
-      {mounted && activePreview && (
+      {typeof document !== "undefined" && activePreview && (
         <PreviewModal
           item={item}
           mode={activePreview}

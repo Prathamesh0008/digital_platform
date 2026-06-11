@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import InternalLinkSection from "@/components/InternalLinkSection";
+import HowSeoAndGeoWorkTogether from "@/components/HowSeoAndGeoWorkTogether";
 import { notFound } from "next/navigation";
 import { blogs } from "@/data/blog";
 import { getBlogRelatedLinks } from "@/lib/internalLinks";
@@ -71,6 +72,75 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
     },
     mainEntityOfPage: absoluteUrl(`/blog/${blog.slug}`),
   };
+
+  if (slug === "how-seo-and-geo-work-together") {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is the difference between SEO and GEO?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SEO focuses on improving visibility in traditional search engines like Google and Bing, while GEO focuses on increasing visibility within AI-powered platforms such as ChatGPT, Gemini, Perplexity, and Copilot. Together, SEO and GEO help businesses reach users through both search results and AI-generated answers.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why is GEO important for modern search visibility?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "GEO is important because more users are relying on AI assistants to find information and make decisions. GEO helps businesses become trusted sources that AI systems can understand, reference, and recommend in generated responses.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can GEO replace traditional SEO?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No, GEO cannot replace SEO. Traditional SEO remains essential for search engine rankings and organic traffic. GEO complements SEO by helping AI systems understand your expertise and brand authority.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do I implement an International GEO strategy?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "An International GEO strategy involves creating localized content, optimizing brand entities, building regional authority, implementing structured data, and publishing expert-led content that AI systems can easily understand and reference.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What industries benefit most from SEO and GEO?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Industries such as healthcare, legal services, SaaS, technology, finance, consulting, manufacturing, and eCommerce benefit significantly from combining SEO and GEO to improve visibility and authority.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How can a GEO agency help my business grow?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A GEO agency helps optimize content for AI-driven search experiences by improving entity recognition, authority signals, structured data, and AI-friendly content, increasing the chances of being cited by AI platforms.",
+          },
+        },
+      ],
+    };
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([articleSchema, faqSchema]),
+          }}
+        />
+        <HowSeoAndGeoWorkTogether />
+      </>
+    );
+  }
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#EAEBDB] text-[#0d2d47]">

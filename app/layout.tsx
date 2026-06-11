@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Great_Vibes, Manrope } from "next/font/google";
+import { Great_Vibes, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Crimson_Text } from "next/font/google";
@@ -28,8 +28,9 @@ const defaultKeywords = [
   "branding and marketing",
 ];
 
-const inter = Manrope({
+const inter = Poppins({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
 });
 

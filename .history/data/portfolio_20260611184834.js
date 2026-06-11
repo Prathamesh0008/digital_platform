@@ -1,110 +1,6 @@
 export const portfolioProjects = [
 
-  {
-    slug: "larksois-pharma",
-    name: "Larksois Pharma",
-    category: "Pharma Brand Site",
-    url: "https://www.larksoispharma.com/",
-    logo: "/larkosis.webp",
-    desktop: "/portfolio/larksois-pharma-desktop.png",
-    mobile: "/portfolio/larksois-pharma-mobile.png",
-    about:
-      "A pharma brand website created to communicate company credibility, product trust and professional identity.",
-    whatWeDid: [
-      "Pharma brand website",
-      "Visual brand presentation",
-      "Responsive page layout",
-      "Trust-focused sections",
-      "Clean company profile design",
-      "Professional homepage structure",
-      "Mobile-friendly company pages",
-      "Brand credibility content flow",
-    ],
-    challenge:
-      "Larksois Pharma needed a clean pharma brand website that could communicate credibility, professionalism and company value.",
-    solution:
-      "We created a trust-focused website with brand-led visuals, company sections and responsive design.",
-    outcome:
-      "The website gives the company a stronger brand presence and a cleaner way to communicate with visitors.",
-    services: [
-      "Brand Website",
-      "Pharma UI",
-      "Responsive Layout",
-      "Company Profile Design",
-      "Visual Presentation",
-      "Trust-Focused UX",
-    ],
-    metrics: [
-      { value: "Brand", label: "Focused Design" },
-      { value: "Trust", label: "Led Sections" },
-      { value: "Mobile", label: "Friendly Pages" },
-    ],
-    projectOverview: [
-      "Larksois Pharma needed a brand-focused website that could communicate credibility, professionalism and company value.",
-      "The goal was to create a clean pharma identity online while giving visitors a simple path to understand the company profile.",
-      "We focused on trust-building content, brand-led visuals and mobile-friendly pages to improve presentation and user confidence.",
-    ],
-    resultCards: [
-      { value: "+61%", label: "Brand Trust" },
-      { value: "+49%", label: "Company Clarity" },
-      { value: "+100%", label: "Mobile Friendly" },
-      { value: "-33%", label: "User Confusion" },
-    ],
-    resultText: [
-      "The website improved company presentation by creating a clearer brand story, stronger trust sections and smoother page flow.",
-      "A professional visual direction and responsive structure helped the pharma brand communicate with visitors more confidently.",
-    ],
-    execution: [
-      {
-        title: "Brand-Led Design",
-        text: "We created a visual style that feels professional, clean and suitable for the pharma industry.",
-      },
-      {
-        title: "Company Communication",
-        text: "The website structure helps users understand the company profile, values and business focus with less effort.",
-      },
-      {
-        title: "Trust-Focused UX",
-        text: "Important sections were arranged to support credibility, professional tone and clear user direction.",
-      },
-    ],
-    sections: [
-      {
-        title: "Brand-Led Design",
-        text: "We created a visual style that feels professional and suitable for the pharma industry.",
-      },
-      {
-        title: "Company Communication",
-        text: "The website structure helps users understand the company profile, values and business focus.",
-      },
-      {
-        title: "Mobile Experience",
-        text: "The layout adapts smoothly across screens for better accessibility.",
-      },
-      {
-        title: "Trust-Focused Sections",
-        text: "Important sections were arranged to support credibility, professionalism and clear company presentation.",
-      },
-      {
-        title: "Professional User Flow",
-        text: "The website guides visitors through the brand story, offering and contact path in a clean structure.",
-      },
-    ],
-    faqs: [
-      {
-        q: "What industry was this website for?",
-        a: "This project was created for a pharma brand.",
-      },
-      {
-        q: "What was the design direction?",
-        a: "The design direction was professional, clean and trust-focused.",
-      },
-      {
-        q: "Was the website designed for brand credibility?",
-        a: "Yes, the structure and content were created to improve company trust and presentation.",
-      },
-    ],
-  },
+
   {
     slug: "ivexia-pharma",
     name: "Ivexia Pharma",
@@ -316,111 +212,7 @@ export const portfolioProjects = [
       },
     ],
   },
-    {
-    slug: "nova-tech-sciences",
-    name: "Nova Tech Sciences",
-    category: "Corporate Website",
-    url: "https://www.novatechsciences.com/",
-    logo: "/www.novatechsciences.com.webp",
-    desktop: "/portfolio/nova-tech-sciences-desktop.png",
-    mobile: "/portfolio/nova-tech-sciences-mobile1.png",
-    about:
-      "A professional corporate website built for a science-focused brand with a clean, trustworthy and conversion-focused digital identity.",
-    whatWeDid: [
-      "Corporate website design",
-      "Responsive desktop and mobile layout",
-      "Premium brand presentation",
-      "Service-focused page structure",
-      "Fast and clean user experience",
-      "Conversion-focused content flow",
-      "SEO-ready page hierarchy",
-      "Professional call-to-action placement",
-    ],
-    challenge:
-      "Nova Tech Sciences needed a modern website that could explain its services clearly, build trust quickly, and present the brand as professional, reliable and future-ready.",
-    solution:
-      "We created a clean corporate website with strong visual hierarchy, service-focused sections, responsive layouts and a premium brand experience across desktop and mobile.",
-    outcome:
-      "The final website gives the brand a stronger online presence, clearer service communication and a smoother user journey for potential clients.",
-    services: [
-      "UI/UX Design",
-      "Next.js Development",
-      "Responsive Design",
-      "SEO Structure",
-      "Content Flow",
-      "Conversion Layout",
-    ],
-    metrics: [
-      { value: "100%", label: "Responsive Layout" },
-      { value: "SEO", label: "Ready Structure" },
-      { value: "Clean", label: "Corporate UX" },
-    ],
-    projectOverview: [
-      "Nova Tech Sciences required a modern website that could explain its service ecosystem in a clear, premium and conversion-focused way.",
-      "The brand needed a stronger digital identity that would build trust with visitors while keeping technical service information simple and easy to understand.",
-      "We focused on visual hierarchy, clean service communication and smooth user flow so visitors could move from awareness to enquiry without friction.",
-    ],
-    resultCards: [
-      { value: "+72%", label: "User Engagement" },
-      { value: "+58%", label: "Enquiry Flow" },
-      { value: "+100%", label: "Mobile Readiness" },
-      { value: "-35%", label: "Content Confusion" },
-    ],
-    resultText: [
-      "The improved website structure helped users understand the company offering faster and created a smoother journey across important service sections.",
-      "With clearer content flow, responsive design and stronger call-to-action placement, the website became more effective for trust-building and lead generation.",
-    ],
-    execution: [
-      {
-        title: "Content Strategy",
-        text: "We organized the website around services, credibility, process and conversion so visitors could quickly understand the company value.",
-      },
-      {
-        title: "Premium UI Design",
-        text: "The interface was designed with clean spacing, professional typography and strong brand presentation to create a trustworthy corporate experience.",
-      },
-      {
-        title: "Responsive Development",
-        text: "The website was developed with responsive reusable sections to maintain a consistent experience across desktop, tablet and mobile screens.",
-      },
-    ],
-    sections: [
-      {
-        title: "Brand Positioning",
-        text: "We designed the website to feel professional, science-led and trustworthy while keeping the interface clean and easy to understand.",
-      },
-      {
-        title: "Website Experience",
-        text: "The page structure was created around services, credibility, process and conversion so users can quickly understand what the company offers.",
-      },
-      {
-        title: "Development Approach",
-        text: "The website was built with responsive components, reusable sections and a smooth content flow for desktop, tablet and mobile users.",
-      },
-      {
-        title: "User Journey",
-        text: "The layout guides visitors from brand introduction to services, credibility and enquiry sections in a smooth and natural flow.",
-      },
-      {
-        title: "Conversion Strategy",
-        text: "Call-to-actions were placed across important sections to help visitors take action without making the page feel crowded.",
-      },
-    ],
-    faqs: [
-      {
-        q: "What was the main focus of this project?",
-        a: "The main focus was to create a professional corporate website that clearly explains services and builds brand credibility.",
-      },
-      {
-        q: "Was the website made responsive?",
-        a: "Yes, the website was designed and developed for desktop, tablet and mobile screens.",
-      },
-      {
-        q: "Was SEO structure included?",
-        a: "Yes, the website was planned with clean headings, readable sections and SEO-ready page structure.",
-      },
-    ],
-  },
+  
 
   {
     slug: "bio-peptides",
@@ -528,7 +320,111 @@ export const portfolioProjects = [
     ],
   },
 
-
+  {
+    slug: "larksois-pharma",
+    name: "Larksois Pharma",
+    category: "Pharma Brand Site",
+    url: "https://www.larksoispharma.com/",
+    logo: "/larkosis.webp",
+    desktop: "/portfolio/larksois-pharma-desktop.png",
+    mobile: "/portfolio/larksois-pharma-mobile.png",
+    about:
+      "A pharma brand website created to communicate company credibility, product trust and professional identity.",
+    whatWeDid: [
+      "Pharma brand website",
+      "Visual brand presentation",
+      "Responsive page layout",
+      "Trust-focused sections",
+      "Clean company profile design",
+      "Professional homepage structure",
+      "Mobile-friendly company pages",
+      "Brand credibility content flow",
+    ],
+    challenge:
+      "Larksois Pharma needed a clean pharma brand website that could communicate credibility, professionalism and company value.",
+    solution:
+      "We created a trust-focused website with brand-led visuals, company sections and responsive design.",
+    outcome:
+      "The website gives the company a stronger brand presence and a cleaner way to communicate with visitors.",
+    services: [
+      "Brand Website",
+      "Pharma UI",
+      "Responsive Layout",
+      "Company Profile Design",
+      "Visual Presentation",
+      "Trust-Focused UX",
+    ],
+    metrics: [
+      { value: "Brand", label: "Focused Design" },
+      { value: "Trust", label: "Led Sections" },
+      { value: "Mobile", label: "Friendly Pages" },
+    ],
+    projectOverview: [
+      "Larksois Pharma needed a brand-focused website that could communicate credibility, professionalism and company value.",
+      "The goal was to create a clean pharma identity online while giving visitors a simple path to understand the company profile.",
+      "We focused on trust-building content, brand-led visuals and mobile-friendly pages to improve presentation and user confidence.",
+    ],
+    resultCards: [
+      { value: "+61%", label: "Brand Trust" },
+      { value: "+49%", label: "Company Clarity" },
+      { value: "+100%", label: "Mobile Friendly" },
+      { value: "-33%", label: "User Confusion" },
+    ],
+    resultText: [
+      "The website improved company presentation by creating a clearer brand story, stronger trust sections and smoother page flow.",
+      "A professional visual direction and responsive structure helped the pharma brand communicate with visitors more confidently.",
+    ],
+    execution: [
+      {
+        title: "Brand-Led Design",
+        text: "We created a visual style that feels professional, clean and suitable for the pharma industry.",
+      },
+      {
+        title: "Company Communication",
+        text: "The website structure helps users understand the company profile, values and business focus with less effort.",
+      },
+      {
+        title: "Trust-Focused UX",
+        text: "Important sections were arranged to support credibility, professional tone and clear user direction.",
+      },
+    ],
+    sections: [
+      {
+        title: "Brand-Led Design",
+        text: "We created a visual style that feels professional and suitable for the pharma industry.",
+      },
+      {
+        title: "Company Communication",
+        text: "The website structure helps users understand the company profile, values and business focus.",
+      },
+      {
+        title: "Mobile Experience",
+        text: "The layout adapts smoothly across screens for better accessibility.",
+      },
+      {
+        title: "Trust-Focused Sections",
+        text: "Important sections were arranged to support credibility, professionalism and clear company presentation.",
+      },
+      {
+        title: "Professional User Flow",
+        text: "The website guides visitors through the brand story, offering and contact path in a clean structure.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What industry was this website for?",
+        a: "This project was created for a pharma brand.",
+      },
+      {
+        q: "What was the design direction?",
+        a: "The design direction was professional, clean and trust-focused.",
+      },
+      {
+        q: "Was the website designed for brand credibility?",
+        a: "Yes, the structure and content were created to improve company trust and presentation.",
+      },
+    ],
+  },
 
   {
     slug: "kva-logistics",
