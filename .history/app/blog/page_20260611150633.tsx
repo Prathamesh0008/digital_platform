@@ -1,4 +1,3 @@
-//app\blog\page.tsx
 import Link from "next/link";
 import Image from "next/image";
 import InternalLinkSection from "@/components/InternalLinkSection";
@@ -10,7 +9,7 @@ export const metadata = {
   description:
     "Read NovaTech insights on SEO, GEO, web design, branding, ads and digital growth.",
   alternates: {
-    canonical: "/blog",
+    canonical: "/services/blog",
   },
 };
 
