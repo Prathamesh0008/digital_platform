@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+//app\blog\[slug]\page.tsx
 import Link from "next/link";
 import Image from "next/image";
 import InternalLinkSection from "@/components/InternalLinkSection";
@@ -7,17 +7,11 @@ import { blogs } from "@/data/blog";
 import { getBlogRelatedLinks } from "@/lib/internalLinks";
 import { absoluteUrl, siteName } from "@/lib/site";
 
-type BlogPageProps = {
-  params: Promise<{ slug: string }>;
-};
-
 export async function generateStaticParams() {
   return blogs.map((blog) => ({ slug: blog.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: BlogPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }) {
   const { slug } = await params;
   const blog = blogs.find((item) => item.slug === slug);
 
@@ -47,7 +41,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogDetailPage({ params }: BlogPageProps) {
+export default async function BlogDetailPage({ params }) {
   const { slug } = await params;
   const blog = blogs.find((item) => item.slug === slug);
   const related = blogs.filter((item) => item.slug !== slug).slice(0, 3);
