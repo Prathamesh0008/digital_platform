@@ -43,7 +43,7 @@ const serviceLinks = [
     { name: "Services", href: "/services", hasDropdown: true },
     // { name: "Portfolio", href: "/portfolio" },
      { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/blog" },
+    { name: "Blog", href: "/services/blog" },
     { name: "Contact", href: "/contact" },
     
   ];
