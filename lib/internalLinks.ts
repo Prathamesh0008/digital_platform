@@ -1,3 +1,5 @@
+import { blogs } from "@/data/blog";
+
 export const serviceHubLinks = [
   {
     href: "/services/seo-services",
@@ -106,6 +108,53 @@ export function getBlogRelatedLinks(category: string) {
   }
 
   return [...serviceHubLinks];
+}
+
+const blogInterlinkMap: Record<string, string[]> = {
+  "how-seo-and-geo-work-together": [
+    "why-brand-strategy-matters-before-design",
+    "why-every-brand-needs-a-conversion-focused-website",
+    "ai-powered-lead-generation-for-service-businesses",
+  ],
+  "why-every-brand-needs-a-conversion-focused-website": [
+    "why-brand-strategy-matters-before-design",
+    "landing-page-tips-for-performance-ads",
+    "how-seo-and-geo-work-together",
+  ],
+  "ai-powered-lead-generation-for-service-businesses": [
+    "landing-page-tips-for-performance-ads",
+    "how-seo-and-geo-work-together",
+    "why-every-brand-needs-a-conversion-focused-website",
+  ],
+  "landing-page-tips-for-performance-ads": [
+    "ai-powered-lead-generation-for-service-businesses",
+    "why-every-brand-needs-a-conversion-focused-website",
+    "how-seo-and-geo-work-together",
+  ],
+  "why-brand-strategy-matters-before-design": [
+    "why-every-brand-needs-a-conversion-focused-website",
+    "how-seo-and-geo-work-together",
+    "landing-page-tips-for-performance-ads",
+  ],
+};
+
+export function getRelatedBlogArticles(currentSlug: string) {
+  const preferredSlugs = blogInterlinkMap[currentSlug] ?? [];
+  const preferredBlogs = preferredSlugs
+    .map((slug) => blogs.find((blog) => blog.slug === slug))
+    .filter(Boolean);
+
+  const fallbackBlogs = blogs.filter(
+    (blog) =>
+      blog.slug !== currentSlug &&
+      !preferredSlugs.includes(blog.slug)
+  );
+
+  return [...preferredBlogs, ...fallbackBlogs].slice(0, 3).map((blog) => ({
+    href: `/blog/${blog!.slug}`,
+    title: blog!.title,
+    description: blog!.excerpt,
+  }));
 }
 
 export const projectRelatedLinks = [

@@ -313,7 +313,7 @@ gtag('config', 'G-T3CMEYQ5DK');`}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
       </head>
- <body className={`${crimsonText.className} min-h-full flex flex-col`}>
+ <body className={`${inter.className} min-h-full flex flex-col`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NMQHTXRJ"

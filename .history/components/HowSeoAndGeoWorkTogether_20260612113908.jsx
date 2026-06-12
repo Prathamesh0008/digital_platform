@@ -1,12 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import BlogInterlinkSection from "@/components/BlogInterlinkSection";
-import BlogInlineLinkText from "@/components/BlogInlineLinkText";
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { getRelatedBlogArticles } from "@/lib/internalLinks";
 import {
   Bot,
   Brain,
@@ -192,7 +189,6 @@ function SectionHeading({ eyebrow, title, text, centered = true }) {
 
 export default function HowSeoAndGeoWorkTogether() {
   const [openFaq, setOpenFaq] = useState(0);
-  const relatedBlogs = getRelatedBlogArticles("how-seo-and-geo-work-together");
 
   return (
     <main className="min-h-screen bg-[#f7f8fb] text-[#102033]">
@@ -268,28 +264,14 @@ export default function HowSeoAndGeoWorkTogether() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 md:px-10 md:py-20">
-        <div className="mx-auto max-w-[1180px] rounded-[30px] border border-[#0d2d47]/8 bg-white p-8 shadow-[0_20px_60px_rgba(13,45,71,0.08)] md:p-10">
+      <section className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mx-auto max-w-[1180px] rounded-[30px] border-l-[6px] border-[#7392FB] bg-white p-8 shadow-[0_20px_60px_rgba(13,45,71,0.08)]">
           <h2 className="text-3xl font-semibold uppercase leading-tight text-[#0d2d47] md:text-4xl">
-            Modern Visibility Framework
+            AI Snapshot: Why Do Businesses Need Both SEO and GEO?
           </h2>
-
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {heroPoints.map(({ title, text, Icon }) => (
-              <div
-                key={title}
-                className="rounded-[24px] bg-[#f7f8fb] p-6 shadow-[0_10px_30px_rgba(13,45,71,0.05)]"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#edf1ff] text-[#7392FB]">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <p className="mt-4 font-semibold text-[#0d2d47]">{title}</p>
-                <p className="mt-2 text-sm leading-relaxed text-[#40536a]">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
+          <p className="mt-5 text-base leading-relaxed text-[#40536a] md:text-lg">
+            SEO and GEO are no longer separate digital marketing strategies. SEO helps websites rank in traditional search engines like Google, while GEO helps brands appear in AI-generated answers from platforms such as ChatGPT, Gemini, Perplexity, and Copilot. Businesses across Europe that combine SEO services with GEO strategies gain stronger rankings, better brand authority, higher AI visibility, and improved organic discovery. A professional SEO company or GEO agency can help businesses optimize content for both search engines and answer engines. The future of search belongs to brands that are visible in Google results and AI-generated recommendations at the same time.
+          </p>
         </div>
       </section>
 
@@ -302,30 +284,17 @@ export default function HowSeoAndGeoWorkTogether() {
             transition={{ duration: 0.5 }}
             className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_70px_rgba(13,45,71,0.08)]"
           >
-            <div className="relative aspect-[3/2] w-full bg-white">
+            <div className="relative h-[240px] w-full sm:h-[300px] md:h-[500px]">
               <Image
                 src="/blog/seo_img.jpg"
                 alt="SEO and GEO strategy illustration for modern search visibility"
                 fill
                 priority
-                className="object-contain"
+                className="object-cover"
                 sizes="(min-width: 1280px) 860px, (min-width: 768px) 80vw, calc(100vw - 32px)"
               />
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
-        <div className="mx-auto max-w-[1180px] rounded-[30px] border-l-[6px] border-[#7392FB] bg-white p-8 shadow-[0_20px_60px_rgba(13,45,71,0.08)]">
-          <h2 className="text-3xl font-semibold uppercase leading-tight text-[#0d2d47] md:text-4xl">
-            AI Snapshot: Why Do Businesses Need Both SEO and GEO?
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-[#40536a] md:text-lg">
-            <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
-              SEO and GEO are no longer separate digital marketing strategies. SEO helps websites rank in traditional search engines like Google, while GEO helps brands appear in AI-generated answers from platforms such as ChatGPT, Gemini, Perplexity, and Copilot. Businesses across Europe that combine SEO services with GEO strategies gain stronger rankings, better brand authority, higher AI visibility, and improved organic discovery. A professional SEO company or GEO agency can help businesses optimize content for both search engines and answer engines. The future of search belongs to brands that are visible in Google results and AI-generated recommendations at the same time.
-            </BlogInlineLinkText>
-          </p>
         </div>
       </section>
 
@@ -350,9 +319,7 @@ export default function HowSeoAndGeoWorkTogether() {
               "This is where Generative Engine Optimization, also called GEO, becomes important. At Nova Techscience, we view SEO and GEO as two sides of one strategy. SEO helps search engines understand your website. GEO helps artificial intelligence understand your expertise.",
             ].map((paragraph) => (
               <p key={paragraph} className="mb-5 text-base leading-relaxed text-[#40536a] last:mb-0 md:text-lg">
-                <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
-                  {paragraph}
-                </BlogInlineLinkText>
+                {paragraph}
               </p>
             ))}
           </motion.div>
@@ -380,11 +347,7 @@ export default function HowSeoAndGeoWorkTogether() {
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-2xl font-semibold text-[#0d2d47]">{title}</h3>
-                <p className="mt-4 text-base leading-relaxed text-[#40536a]">
-                  <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
-                    {text}
-                  </BlogInlineLinkText>
-                </p>
+                <p className="mt-4 text-base leading-relaxed text-[#40536a]">{text}</p>
               </motion.article>
             ))}
           </div>
@@ -424,9 +387,7 @@ export default function HowSeoAndGeoWorkTogether() {
               </h2>
               {block.text.map((item) => (
                 <p key={item} className="mt-5 text-base leading-relaxed text-[#40536a] md:text-lg">
-                  <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
-                    {item}
-                  </BlogInlineLinkText>
+                  {item}
                 </p>
               ))}
               <ul className="mt-6 space-y-3">
@@ -488,11 +449,7 @@ export default function HowSeoAndGeoWorkTogether() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold text-[#0d2d47]">{step.title}</h3>
-                  <p className="mt-3 text-base leading-relaxed text-[#40536a]">
-                    <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
-                      {step.text}
-                    </BlogInlineLinkText>
-                  </p>
+                  <p className="mt-3 text-base leading-relaxed text-[#40536a]">{step.text}</p>
                 </div>
               </motion.article>
             ))}
@@ -521,18 +478,12 @@ export default function HowSeoAndGeoWorkTogether() {
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-2xl font-semibold text-[#0d2d47]">{title}</h3>
-                <p className="mt-4 text-base leading-relaxed text-[#40536a]">
-                  <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
-                    {text}
-                  </BlogInlineLinkText>
-                </p>
+                <p className="mt-4 text-base leading-relaxed text-[#40536a]">{text}</p>
               </motion.article>
             ))}
           </div>
         </div>
       </section>
-
-      <BlogInterlinkSection items={relatedBlogs} />
 
       <section id="faq" className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
         <div className="mx-auto max-w-[1180px]">

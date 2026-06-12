@@ -57,20 +57,20 @@ export default function BlogPage() {
 
           <Link
             href={`/blog/${featured.slug}`}
-            className="group grid overflow-hidden rounded-[36px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_28px_90px_rgba(13,45,71,0.16)] backdrop-blur-md lg:grid-cols-[1.05fr_0.95fr]"
+            className="group grid overflow-hidden rounded-[36px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_28px_90px_rgba(13,45,71,0.16)] backdrop-blur-md lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
           >
-            <div className="relative min-h-[300px] overflow-hidden md:min-h-[520px]">
+            <div className="relative min-w-0 overflow-hidden bg-white lg:min-h-[520px]">
               <Image
                 src={featured.image}
                 alt={featured.title}
                 fill
-                className="object-cover transition duration-700 group-hover:scale-105"
+                className="object-cover object-left transition duration-700 group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
               />
             </div>
 
-            <div className="flex flex-col justify-center p-6 sm:p-8 md:p-12">
+            <div className="min-w-0 flex flex-col justify-center p-6 sm:p-8 md:p-12">
               <div className="mb-5 flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-[#0d2d47] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white">
                   Featured
@@ -102,12 +102,12 @@ export default function BlogPage() {
                 href={`/blog/${blog.slug}`}
                 className="group overflow-hidden rounded-[30px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_20px_65px_rgba(13,45,71,0.12)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/50"
               >
-                <div className="relative h-[240px] overflow-hidden">
+                <div className="relative aspect-[3/2] overflow-hidden bg-white">
                   <Image
                     src={blog.image}
                     alt={blog.title}
                     fill
-                    className="object-cover transition duration-700 group-hover:scale-105"
+                    className="object-contain transition duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </div>

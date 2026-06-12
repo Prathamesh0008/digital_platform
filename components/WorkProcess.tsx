@@ -3,12 +3,6 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Cookie } from "next/font/google";
-
-const cookie = Cookie({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const steps = [
   {
@@ -303,19 +297,19 @@ export default function WorkProcess() {
               </div>
 
               <div
-               className={`mt-5 flex min-h-[230px] flex-col justify-start rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 shadow-[0_18px_40px_rgba(13,45,71,0.14)] transition-all duration-700 ${
+                className={`mt-5 flex min-h-[230px] flex-col justify-start rounded-2xl border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 font-[family:var(--font-inter)] shadow-[0_18px_40px_rgba(13,45,71,0.14)] transition-all duration-700 ${
                   glowStates[idx]
                     ? "translate-y-0 opacity-100"
                     : "translate-y-6 opacity-0"
                 }`}
               >
                 <h3
-                  className={`${cookie.className} text-[28px] text-2xl font-normal leading-[1.1] text-[#0d2d47]`}
+                  className="text-[28px] text-2xl font-normal leading-[1.1] text-[#0d2d47]"
                 >
                   {step.title}
                 </h3>
 
-                <p className={`${cookie.className} mt-4 text-xl leading-relaxed text-[#0d2d47]/75`}>
+                <p className="mt-4 text-xl leading-relaxed text-[#0d2d47]/75">
                   {step.text}
                 </p>
               </div>
@@ -385,19 +379,15 @@ export default function WorkProcess() {
                     }`}
                   />
 
-                  <div className="ml-14 flex min-h-[240px] w-[calc(100%-56px)] flex-col items-center justify-center rounded-[24px] border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 text-center shadow-[0_18px_40px_rgba(13,45,71,0.14)] sm:ml-0 sm:min-h-[260px] sm:w-[calc(50%-48px)]">
-  <h3
-    className={`${cookie.className} text-2xl font-normal leading-[1.05] text-[#0d2d47] sm:text-[34px]`}
-  >
-    {step.title}
-  </h3>
+                  <div className="ml-14 flex min-h-[240px] w-[calc(100%-56px)] flex-col items-center justify-center rounded-[24px] border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 text-center font-[family:var(--font-inter)] shadow-[0_18px_40px_rgba(13,45,71,0.14)] sm:ml-0 sm:min-h-[260px] sm:w-[calc(50%-48px)]">
+                    <h3 className="text-2xl font-normal leading-[1.05] text-[#0d2d47] sm:text-[34px]">
+                      {step.title}
+                    </h3>
 
-  <p
-    className={`${cookie.className} mt-4 text-lg leading-relaxed text-[#0d2d47]/75`}
-  >
-    {step.text}
-  </p>
-</div>
+                    <p className="mt-4 text-lg leading-relaxed text-[#0d2d47]/75">
+                      {step.text}
+                    </p>
+                  </div>
                 </motion.div>
               );
             })}
