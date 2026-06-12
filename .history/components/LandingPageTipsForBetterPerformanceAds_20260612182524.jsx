@@ -246,7 +246,21 @@ export default function LandingPageTipsForBetterPerformanceAds() {
           </motion.div>
         </div>
       </section>
- <section className="px-4 pb-6 sm:px-6 md:px-10 md:pb-10">
+
+      <section className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mx-auto max-w-[1180px] rounded-[30px] border-l-[6px] border-[#7392FB] bg-white p-8 shadow-[0_20px_60px_rgba(13,45,71,0.08)]">
+          <h2 className="text-3xl font-semibold uppercase leading-tight text-[#0d2d47] md:text-4xl">
+            Quick Answer: What Makes A Landing Page Effective For Performance Ads?
+          </h2>
+          <p className="mt-5 text-base leading-relaxed text-[#40536a] md:text-lg">
+            <BlogInlineLinkText currentPath="/blog/landing-page-tips-for-performance-ads">
+              {articleSections[0].body}
+            </BlogInlineLinkText>
+          </p>
+        </div>
+      </section>
+
+      <section className="px-4 pb-6 sm:px-6 md:px-10 md:pb-10">
         <div className="mx-auto max-w-[860px]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -268,21 +282,6 @@ export default function LandingPageTipsForBetterPerformanceAds() {
           </motion.div>
         </div>
       </section>
-
-      <section className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
-        <div className="mx-auto max-w-[1180px] rounded-[30px] border-l-[6px] border-[#7392FB] bg-white p-8 shadow-[0_20px_60px_rgba(13,45,71,0.08)]">
-          <h2 className="text-3xl font-semibold uppercase leading-tight text-[#0d2d47] md:text-4xl">
-            Quick Answer: What Makes A Landing Page Effective For Performance Ads?
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-[#40536a] md:text-lg">
-            <BlogInlineLinkText currentPath="/blog/landing-page-tips-for-performance-ads">
-              {articleSections[0].body}
-            </BlogInlineLinkText>
-          </p>
-        </div>
-      </section>
-
-     
 
       <section id="article" className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
         <div className="mx-auto max-w-[1180px]">

@@ -59,12 +59,12 @@ export default function BlogPage() {
             href={`/blog/${featured.slug}`}
             className="group grid overflow-hidden rounded-[36px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_28px_90px_rgba(13,45,71,0.16)] backdrop-blur-md lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
           >
-            <div className=" min-w-0 overflow-hidden bg-white lg:min-h-[500px]">
+            <div className="relative min-w-0 overflow-hidden bg-white lg:min-h-[520px]">
               <Image
                 src={featured.image}
                 alt={featured.title}
                 fill
-                className="object-contain object-left transition duration-700 "
+                className="object-contain object-left transition duration-700 scale-100"
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
               />

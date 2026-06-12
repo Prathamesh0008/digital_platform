@@ -540,26 +540,14 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
         </div>
       </section>
 
-      <section className="px-4 pb-6 sm:px-6 md:px-10 md:pb-10">
-        <div className="mx-auto max-w-[860px]">
-          <div className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_70px_rgba(13,45,71,0.08)]">
-            <div className="relative aspect-[3/2] w-full bg-white">
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                fill
-                priority
-                className="object-contain"
-                sizes="(min-width: 1280px) 860px, (min-width: 768px) 80vw, calc(100vw - 32px)"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-16">
         <div className="mx-auto max-w-[1180px]">
-          <div className="grid gap-8 lg:mt-2 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="relative h-[260px] overflow-hidden rounded-[24px] border border-white/45 shadow-[0_20px_70px_rgba(13,45,71,0.12)] sm:h-[360px] md:h-[480px] md:rounded-[34px] lg:h-[560px]">
+           
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d2d47]/20 via-transparent to-transparent" />
+          </div>
+
+          <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[0.72fr_1.28fr]">
             <aside className="h-fit rounded-[24px] border border-[#0d2d47]/10 bg-white/45 p-5 shadow-[0_18px_50px_rgba(13,45,71,0.07)] backdrop-blur-md lg:sticky lg:top-28 lg:p-6">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#0d2d47]/50">
                 In This Article

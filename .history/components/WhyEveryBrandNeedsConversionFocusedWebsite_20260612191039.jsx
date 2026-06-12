@@ -225,7 +225,7 @@ export default function WhyEveryBrandNeedsConversionFocusedWebsite() {
                 alt="Why every brand needs a conversion-focused website"
                 fill
                 priority
-                className="object-center"
+                className="object-o"
                 sizes="(min-width: 1280px) 860px, (min-width: 768px) 80vw, calc(100vw - 32px)"
               />
             </div>

@@ -540,7 +540,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
         </div>
       </section>
 
-      <section className="px-4 pb-6 sm:px-6 md:px-10 md:pb-10">
+      {/* <section className="px-4 pb-6 sm:px-6 md:px-10 md:pb-10">
         <div className="mx-auto max-w-[860px]">
           <div className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_70px_rgba(13,45,71,0.08)]">
             <div className="relative aspect-[3/2] w-full bg-white">
@@ -555,7 +555,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-16">
         <div className="mx-auto max-w-[1180px]">

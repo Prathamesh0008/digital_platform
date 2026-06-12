@@ -209,29 +209,6 @@ export default function WhyEveryBrandNeedsConversionFocusedWebsite() {
           </motion.div>
         </div>
       </section>
-      
-      <section className="px-4 pb-6 sm:px-6 md:px-10 md:pb-10">
-        <div className="mx-auto max-w-[860px]">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_70px_rgba(13,45,71,0.08)]"
-          >
-            <div className="relative aspect-[3/2] w-full bg-white">
-              <Image
-                src="/blog/WhyEvery.jpg"
-                alt="Why every brand needs a conversion-focused website"
-                fill
-                priority
-                className="object-center"
-                sizes="(min-width: 1280px) 860px, (min-width: 768px) 80vw, calc(100vw - 32px)"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       <section className="px-4 py-16 sm:px-6 md:px-10 md:py-24">
         <div className="mx-auto max-w-[1180px] rounded-[30px] border-l-[6px] border-[#7392FB] bg-white p-8 shadow-[0_20px_60px_rgba(13,45,71,0.08)]">

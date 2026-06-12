@@ -64,7 +64,7 @@ export default function BlogPage() {
                 src={featured.image}
                 alt={featured.title}
                 fill
-                className="object-contain object-left transition duration-700 "
+                className="object-contain object-left transition duration-700 scale-104"
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
               />
