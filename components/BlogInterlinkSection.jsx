@@ -1,5 +1,20 @@
 import Link from "next/link";
 
+/**
+ * @typedef {{
+ *   href: string;
+ *   title: string;
+ *   description: string;
+ * }} InterlinkItem
+ *
+ * @typedef {{
+ *   title?: string;
+ *   intro?: string;
+ *   items?: InterlinkItem[];
+ * }} BlogInterlinkSectionProps
+ */
+
+/** @param {BlogInterlinkSectionProps} props */
 export default function BlogInterlinkSection({
   title = "Related Reading",
   intro = "Continue with closely related blog articles that expand on this topic.",

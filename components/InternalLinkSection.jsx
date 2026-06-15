@@ -1,5 +1,20 @@
 import Link from "next/link";
 
+/**
+ * @typedef {{
+ *   href: string;
+ *   title: string;
+ *   description: string;
+ * }} InternalLinkItem
+ *
+ * @typedef {{
+ *   title: string;
+ *   intro?: string;
+ *   items: InternalLinkItem[];
+ * }} InternalLinkSectionProps
+ */
+
+/** @param {InternalLinkSectionProps} props */
 export default function InternalLinkSection({ title, intro, items }) {
   return (
     <section className="px-4 py-12 sm:px-6 md:px-10 md:py-16">
