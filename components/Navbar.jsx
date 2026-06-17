@@ -293,9 +293,11 @@ const serviceLinks = [
           <div className="flex items-center gap-2">
             <Link
   href="/contact"
-  className="group relative hidden h-10 w-[168px] items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-3 text-sm font-bold text-white shadow-[0_12px_32px_rgba(13,45,71,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(115,146,251,0.35)] md:inline-flex"
+  className="group relative hidden h-11 w-[186px] items-center justify-between overflow-visible rounded-full border border-[#ffd2a8]/45 bg-[linear-gradient(135deg,#ff8b47_0%,#ff6a3d_32%,#0d2d47_100%)] px-3 text-sm font-bold text-white shadow-[0_18px_44px_rgba(13,45,71,0.28),0_0_28px_rgba(255,122,63,0.24),inset_0_0_0_1px_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_58px_rgba(13,45,71,0.34),0_0_38px_rgba(255,122,63,0.34)] md:inline-flex"
 >
-  <span className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.22)_38%,rgba(255,255,255,0.04)_62%,rgba(255,255,255,0)_100%)] opacity-100" />
+  <span className="absolute inset-[1px] rounded-full bg-[linear-gradient(135deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.06)_34%,rgba(255,255,255,0)_100%)] opacity-100" />
+  <span className="absolute -inset-[2px] rounded-full bg-[radial-gradient(circle_at_left,rgba(255,188,133,0.42),transparent_40%),radial-gradient(circle_at_right,rgba(255,255,255,0.18),transparent_34%)] opacity-90 blur-md transition duration-300 group-hover:opacity-100" />
+  <span className="absolute left-3 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-[#ffd0b0]/35 blur-md transition duration-300 group-hover:scale-125" />
 
 <span className="relative flex h-10 min-w-0 flex-1 items-center justify-center overflow-visible px-2 text-center">
     <AnimatePresence mode="wait">
@@ -305,13 +307,13 @@ const serviceLinks = [
         animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
         exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
         transition={{ duration: 0.28, ease: "easeOut" }}
-   className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] font-normal text-white"
+   className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[24px] font-normal text-white"
 style={{
   fontFamily: "var(--font-great-vibes), cursive",
   textShadow: `
-    0 0 8px rgba(230,79,14,0.55),
-    0 0 16px rgba(230,79,14,0.45),
-    0 0 28px rgba(230,79,14,0.35)
+    0 0 12px rgba(255,214,170,0.48),
+    0 0 24px rgba(255,122,63,0.24),
+    0 2px 10px rgba(8,26,43,0.36)
   `,
 }}
       >
@@ -320,7 +322,7 @@ style={{
     </AnimatePresence>
   </span>
 
-  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#0d2d47] transition group-hover:translate-x-0.5">
+  <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#fff3e8_0%,#ffffff_45%,#ffe0c7_100%)] text-[#ff6a3d] shadow-[0_10px_22px_rgba(255,255,255,0.28)] transition duration-300 group-hover:translate-x-1 group-hover:scale-105">
     →
   </span>
 </Link>
@@ -460,9 +462,10 @@ style={{
            <Link
   href="/contact"
   onClick={() => setIsOpen(false)}
- className="group relative mt-3 inline-flex h-10 w-full items-center justify-between overflow-visible rounded-full bg-[#0d2d47] px-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(13,45,71,0.28)]"
+ className="group relative mt-3 inline-flex h-11 w-full items-center justify-between overflow-visible rounded-full border border-[#ffd2a8]/45 bg-[linear-gradient(135deg,#ff8b47_0%,#ff6a3d_32%,#0d2d47_100%)] px-4 text-sm font-bold text-white shadow-[0_16px_38px_rgba(13,45,71,0.3),0_0_28px_rgba(255,122,63,0.24),inset_0_0_0_1px_rgba(255,255,255,0.08)]"
 >
-  <span className="absolute inset-0 bg-gradient-to-r from-[#7392FB]/0 via-[#7392FB]/30 to-[#7392FB]/0 opacity-70 animate-shimmer" />
+  <span className="absolute inset-[1px] rounded-full bg-gradient-to-r from-[#ffb07d]/0 via-white/14 to-[#ffb07d]/0 opacity-85 animate-shimmer" />
+  <span className="absolute -inset-[2px] rounded-full bg-[radial-gradient(circle_at_left,rgba(255,188,133,0.42),transparent_40%),radial-gradient(circle_at_right,rgba(255,255,255,0.18),transparent_34%)] opacity-90 blur-md" />
 <span className="relative flex h-10 flex-1 items-center justify-center overflow-visible text-center">
     <AnimatePresence mode="wait">
       <motion.span
@@ -471,8 +474,15 @@ style={{
         animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
         exit={{ y: -16, opacity: 0, filter: "blur(4px)" }}
         transition={{ duration: 0.28, ease: "easeOut" }}
-   className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[22px] font-normal"
-        style={{ fontFamily: "var(--font-great-vibes), cursive" }}
+   className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[24px] font-normal text-white"
+        style={{
+          fontFamily: "var(--font-great-vibes), cursive",
+          textShadow: `
+            0 0 12px rgba(255,214,170,0.48),
+            0 0 24px rgba(255,122,63,0.24),
+            0 2px 10px rgba(8,26,43,0.36)
+          `,
+        }}
       >
         {rotatingWords[currentWordIndex]}
       </motion.span>

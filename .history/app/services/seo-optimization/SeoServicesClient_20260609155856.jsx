@@ -225,7 +225,7 @@ export default function SeoServicesClient() {
                 </p>
               </div>
 
-              <p className=" border-[#0d2d47] pl-5 text-base font-semibold leading-relaxed text-[#0d2d47] md:text-lg">
+              <p className="border-l-4 border-[#0d2d47] pl-5 text-base font-semibold leading-relaxed text-[#0d2d47] md:text-lg">
                 Our SEO approach combines technical optimisation, content
                 strategy, AI SEO, local SEO, user experience improvements and
                 authority building across Google Search, AI Overviews, ChatGPT,

@@ -124,6 +124,13 @@ export default function HomeGrowthSection() {
     },
   ];
   const activeInfo = infoTabs[activeInfoTab];
+
+  useEffect(() => {
+    infoTabs.forEach((tab) => {
+      const img = new window.Image();
+      img.src = tab.image;
+    });
+  }, []);
  
   return (
     <section
@@ -234,7 +241,7 @@ export default function HomeGrowthSection() {
               ))}
             </div>
  
-            <div className="hidden lg:block">
+            <div className="hidden min-h-[360px] lg:block">
               <h3 className="text-2xl font-semibold uppercase text-[#0d2d47] sm:text-3xl">
                 {activeInfo.title}
               </h3>
@@ -252,6 +259,8 @@ export default function HomeGrowthSection() {
       alt={activeInfo.imageAlt}
       width={941}
       height={1672}
+      priority={activeInfoTab === 0}
+      loading="eager"
       className="h-full w-full object-cover object-center"
     />
   </div>

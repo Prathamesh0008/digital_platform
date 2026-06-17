@@ -192,12 +192,17 @@ export default function CaseStudyPreview({ item }) {
                 className="group relative z-10 hidden w-full cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/60 p-2 text-left shadow-[0_32px_90px_rgba(13,45,71,0.18)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_38px_100px_rgba(13,45,71,0.24)] lg:block"
                 aria-label={`Open ${item.name} desktop preview`}
               >
-                <div className="absolute left-2 top-9 z-10 inline-flex rounded-full bg-[#0d2d47] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg">
+                <div className="absolute left-5 top-5 z-10 inline-flex rounded-full bg-[#0d2d47] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg">
                   Desktop
                 </div>
 
                 <div className="overflow-hidden rounded-[24px] bg-[#eef2f7]">
-                 
+                  <div className="flex items-center gap-2 border-b border-[#d7dfef] px-4 py-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#ffd166]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#06d6a0]" />
+                  </div>
+
                   <div
                     ref={desktopFrameRef}
                     className="relative h-[360px] w-full overflow-hidden bg-white sm:h-[420px] lg:h-[460px]"

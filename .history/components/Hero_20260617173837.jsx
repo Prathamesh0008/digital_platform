@@ -73,7 +73,7 @@ export default function Hero() {
             SEO • GEO • AEO • Web Development
           </p>
 
-          <h1 className="mx-auto mt-6 max-w-5xl font-semibold uppercase leading-[0.92] tracking-[-0.04em] text-[#f7f1e4]">
+          <h1 className="mx-auto mt-6 max-w-5xl font-black uppercase leading-[0.9] tracking-[-0.06em] text-[#f7f1e4]">
             <span className="block text-[clamp(3.5rem,12vw,8rem)]">Make Search</span>
             <span className="block text-[clamp(3.5rem,12vw,8rem)] text-[#9db6ff]">
               Worth More
@@ -102,7 +102,34 @@ export default function Hero() {
             </Link>
           </div>
 
-          
+          <div className="mx-auto mt-14 grid max-w-4xl gap-4 border-t border-white/10 pt-6 text-left sm:grid-cols-3">
+            <div className="px-1">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/42">
+                Search
+              </p>
+              <p className="mt-2 text-base font-medium text-[#f7f1e4]">
+                Technical visibility with structure
+              </p>
+            </div>
+
+            <div className="px-1">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/42">
+                Conversion
+              </p>
+              <p className="mt-2 text-base font-medium text-[#f7f1e4]">
+                Messaging and journeys built to act
+              </p>
+            </div>
+
+            <div className="px-1">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/42">
+                Growth
+              </p>
+              <p className="mt-2 text-base font-medium text-[#f7f1e4]">
+                Clear systems tied to business outcomes
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

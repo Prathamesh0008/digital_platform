@@ -73,7 +73,7 @@ export default function Hero() {
             SEO • GEO • AEO • Web Development
           </p>
 
-          <h1 className="mx-auto mt-6 max-w-5xl font-semibold uppercase leading-[0.92] tracking-[-0.04em] text-[#f7f1e4]">
+          <h1 className="mx-auto mt-6 max-w-5xl font-black uppercase leading-[0.9] tracking-[-0.06em] text-[#f7f1e4]">
             <span className="block text-[clamp(3.5rem,12vw,8rem)]">Make Search</span>
             <span className="block text-[clamp(3.5rem,12vw,8rem)] text-[#9db6ff]">
               Worth More

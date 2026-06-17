@@ -10,7 +10,25 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
   overflow-x: hidden;
+}
+
+/* Soften the site's typography without rewriting every component. */
+.font-semibold {
+  font-weight: 500;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
+.font-extrabold {
+  font-weight: 700;
+}
+
+.font-black {
+  font-weight: 800;
 }
 
 body.preview-modal-open .app-navbar,

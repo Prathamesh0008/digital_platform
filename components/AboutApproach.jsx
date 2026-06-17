@@ -72,21 +72,23 @@ export default function AboutApproach() {
                 className="object-cover"
               />
 
-              {/* Dark overlay */}
-              {/* <div className="absolute inset-0 bg-black/10" /> */}
+              {/* Contrast layer for better readability */}
+              <div className="absolute inset-0 bg-[#0d2d47]/26" />
 
               {/* Soft color overlay */}
               <div
                 className={`absolute inset-0 ${
                   i === 0
-                    ? "bg-[#5A7EFF]/40"
+                    ? "bg-[#5A7EFF]/48"
                     : i === 1
-                    ? "bg-[#7392FB]/40"
+                    ? "bg-[#7392FB]/46"
                     : i === 2
-                    ? "bg-[#8EA5F1]/40"
-                    : "bg-[#C4CFE3]/40"
+                    ? "bg-[#8EA5F1]/46"
+                    : "bg-[#C4CFE3]/44"
                 }`}
               />
+
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,45,71,0.32),rgba(13,45,71,0.16)_42%,rgba(13,45,71,0.1))]" />
 
               {/* Content */}
               <div className="relative z-10 max-w-4xl text-center text-white md:text-left">
@@ -95,7 +97,7 @@ export default function AboutApproach() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: false, amount: 0.4 }}
-                  className="mb-6 text-4xl leading-[0.92] sm:text-6xl md:mb-8 md:text-[100px]"
+                  className="mb-6 text-4xl leading-[0.92] text-white drop-shadow-[0_8px_24px_rgba(13,45,71,0.28)] sm:text-6xl md:mb-8 md:text-[100px]"
                 >
                   {item.title}
                 </motion.h2>
@@ -105,7 +107,7 @@ export default function AboutApproach() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                   viewport={{ once: false, amount: 0.4 }}
-                  className="mx-auto mb-5 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg md:mx-0 md:mb-6 md:text-xl"
+                  className="mx-auto mb-5 max-w-2xl text-base leading-relaxed text-white sm:text-lg md:mx-0 md:mb-6 md:text-xl"
                 >
                   {item.description}
                 </motion.p>
@@ -115,12 +117,12 @@ export default function AboutApproach() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                   viewport={{ once: false, amount: 0.4 }}
-                  className="mx-auto max-w-xl text-sm leading-relaxed text-white/75 sm:text-base md:mx-0"
+                  className="mx-auto max-w-xl text-sm leading-relaxed text-white/88 sm:text-base md:mx-0"
                 >
                   {item.extra}
                 </motion.p>
 
-                <div className="mx-auto mt-8 h-[2px] w-24 bg-white/40 md:mx-0 md:mt-10" />
+                <div className="mx-auto mt-8 h-[2px] w-24 bg-white/70 md:mx-0 md:mt-10" />
               </div>
             </div>
           ))}

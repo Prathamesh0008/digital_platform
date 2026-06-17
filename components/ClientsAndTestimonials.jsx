@@ -8,37 +8,30 @@ export default function ClientsAndTestimonials() {
   const clientLogos = [
     {
       src: "/www.novatechsciences.com.webp",
-      url: "https://www.novatechsciences.com/",
       alt: "Nova Tech Sciences",
     },
     {
       src: "/Ivexia.svg",
-      url: "https://www.ivexiapharma.com/",
       alt: "Ivexia Pharma",
     },
     {
       src: "/kvs.png",
-      url: "https://www.kvalogistics.nl/",
       alt: "KVA Logistics",
     },
     {
       src: "/larkosis.webp",
-      url: "https://www.larksoispharma.com/",
       alt: "Larksois Pharma",
     },
     {
       src: "/edPharma.svg",
-      url: "https://www.edpharma.co/",
       alt: "ED Pharma",
     },
     {
       src: "/asblogi.png",
-      url: "https://asblogi.com/",
       alt: "AS Blogi",
     },
     {
       src: "/biopeptide.png",
-      url: "https://www.bio-peptides.com/",
       alt: "Bio Peptides",
     },
   ];
@@ -90,13 +83,10 @@ export default function ClientsAndTestimonials() {
               transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
             >
               {topLoopLogos.map((item, i) => (
-                <a
+                <div
                   key={`top-${item.alt}-${i}`}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-[56px] min-w-[120px] cursor-pointer items-center justify-center sm:h-[82px] sm:min-w-[170px]"
-                  aria-label={`Open ${item.alt}`}
+                  className="flex h-[56px] min-w-[120px] items-center justify-center sm:h-[82px] sm:min-w-[170px]"
+                  aria-label={item.alt}
                 >
                   <Image
                     src={item.src}
@@ -105,7 +95,7 @@ export default function ClientsAndTestimonials() {
                     height={88}
                     className="max-h-[34px] w-auto object-contain transition hover:opacity-100 sm:max-h-[54px]"
                   />
-                </a>
+                </div>
               ))}
             </motion.div>
 
@@ -115,13 +105,10 @@ export default function ClientsAndTestimonials() {
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
             >
               {bottomLoopLogos.map((item, i) => (
-                <a
+                <div
                   key={`bottom-${item.alt}-${i}`}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-[60px] min-w-[130px] cursor-pointer items-center justify-center sm:h-[88px] sm:min-w-[180px]"
-                  aria-label={`Open ${item.alt}`}
+                  className="flex h-[60px] min-w-[130px] items-center justify-center sm:h-[88px] sm:min-w-[180px]"
+                  aria-label={item.alt}
                 >
                   <Image
                     src={item.src}
@@ -130,7 +117,7 @@ export default function ClientsAndTestimonials() {
                     height={96}
                     className="max-h-[36px] w-auto object-contain transition duration-300 hover:scale-105 hover:grayscale-0 hover:opacity-100 sm:max-h-[58px] md:max-h-[64px]"
                   />
-                </a>
+                </div>
               ))}
             </motion.div>
           </div>

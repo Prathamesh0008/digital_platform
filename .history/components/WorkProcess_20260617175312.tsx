@@ -309,7 +309,7 @@ export default function WorkProcess() {
                   {step.title}
                 </h3>
 
-                <p className="mt-3 text-base leading-relaxed text-[#0d2d47]/75">
+                <p className="mt-3 text-lg leading-relaxed text-[#0d2d47]/75">
                   {step.text}
                 </p>
               </div>

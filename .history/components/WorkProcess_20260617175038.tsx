@@ -20,7 +20,7 @@ const steps = [
     color: "#3CF4FF",
     glow: "#FF0000",
     gradient: "linear-gradient(135deg, #FA6482 0%, #FA7880 100%)",
-    title: " Crafting a Roadmap for Digital Marketing Success",
+    title: "Strategy: Crafting a Roadmap for Digital Marketing Success",
     text: "At the strategy stage, we define the most effective approaches to engage your audience and achieve your marketing objectives.",
     left: "50%",
     top: "67px",
@@ -30,7 +30,7 @@ const steps = [
     color: "#2FA084",
     glow: "#6FCF97",
     gradient: "linear-gradient(135deg, #09509B 0%, #3273AF 100%)",
-    title: "Bringing Your Digital Marketing Plan to Life",
+    title: "Execution: Bringing Your Digital Marketing Plan to Life",
     text: "This is where strategy turns into action through campaigns across the most effective digital marketing channels.",
     left: "87%",
     top: "67px",
@@ -50,7 +50,7 @@ const steps = [
     color: "#740A03",
     glow: "#C3110C",
     gradient: "linear-gradient(135deg, #D24545 0%, #A94438 100%)",
-    title: " Optimizing Your Digital Marketing Strategy",
+    title: "Refinement: Optimizing Your Digital Marketing Strategy",
     text: "After analyzing results, we fine-tune your digital marketing plan to maximize performance and ROI.",
     left: "50%",
     top: "452px",
@@ -60,7 +60,7 @@ const steps = [
     color: "#982598",
     glow: "#E491C9",
     gradient: "linear-gradient(135deg, #982598 0%, #E491C9 100%)",
-    title: "Continuously Optimizing Your Digital Marketing Success",
+    title: "Repeat: Continuously Optimizing Your Digital Marketing Success",
     text: "After achieving results, we restart the process to further improve performance and growth.",
     left: "13%",
     top: "452px",
@@ -309,7 +309,7 @@ export default function WorkProcess() {
                   {step.title}
                 </h3>
 
-                <p className="mt-3 text-base leading-relaxed text-[#0d2d47]/75">
+                <p className="mt-3 text-lg leading-relaxed text-[#0d2d47]/75">
                   {step.text}
                 </p>
               </div>

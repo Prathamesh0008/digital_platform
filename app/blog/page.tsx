@@ -19,7 +19,7 @@ export default function BlogPage() {
   const categories = ["All", ...new Set(blogs.map((blog) => blog.category))];
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#EAEBDB] text-[#0d2d47]">
+    <main className="min-h-screen bg-[#EAEBDB] text-[#0d2d47]">
       <section
         className="relative px-4 pb-14 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40"
         style={{
@@ -31,11 +31,11 @@ export default function BlogPage() {
         <div className="pointer-events-none absolute bottom-[-160px] right-[-120px] h-[340px] w-[340px] rounded-full bg-[#0d2d47]/15 blur-3xl" />
 
         <div className="relative mx-auto max-w-[1400px]">
-          <h1 className="max-w-5xl text-[44px] font-semibold uppercase leading-[0.9] tracking-tight sm:text-6xl md:text-[88px] lg:text-[104px]">
+          <h1 className="max-w-5xl text-[clamp(2.5rem,10vw,6.5rem)] font-semibold uppercase leading-[0.92] tracking-tight">
             Digital Growth Insights
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#0d2d47]/75 md:text-lg">
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[#0d2d47]/75 sm:text-base md:text-lg">
             Practical ideas on SEO, GEO, web design, brand strategy,
             performance ads and conversion-focused digital growth.
           </p>
@@ -44,7 +44,7 @@ export default function BlogPage() {
 
       <section className="px-4 py-10 sm:px-6 md:px-10 md:py-16">
         <div className="mx-auto max-w-[1400px]">
-          <div className="mb-8 flex gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible">
+          <div className="mb-8 flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible">
             {categories.map((category) => (
               <span
                 key={category}
@@ -57,21 +57,21 @@ export default function BlogPage() {
 
           <Link
             href={`/blog/${featured.slug}`}
-            className="group grid overflow-hidden rounded-[36px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_28px_90px_rgba(13,45,71,0.16)] backdrop-blur-md lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
+            className="group grid overflow-hidden rounded-[28px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_28px_90px_rgba(13,45,71,0.16)] backdrop-blur-md lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:rounded-[36px]"
           >
-            <div className=" min-w-0 overflow-hidden bg-white lg:min-h-[500px]">
+            <div className="relative min-w-0 overflow-hidden bg-white min-h-[240px] sm:min-h-[320px] lg:min-h-[500px]">
               <Image
                 src={featured.image}
                 alt={featured.title}
                 fill
-                className="object-contain object-left transition duration-700 "
+                className="object-contain object-center transition duration-700"
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
               />
             </div>
 
             <div className="min-w-0 flex flex-col justify-center p-6 sm:p-8 md:p-12">
-              <div className="mb-5 flex flex-wrap items-center gap-3">
+              <div className="mb-5 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <span className="rounded-full bg-[#0d2d47] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white">
                   Featured
                 </span>
@@ -81,11 +81,11 @@ export default function BlogPage() {
                 </span>
               </div>
 
-              <h2 className="text-3xl font-semibold uppercase leading-tight sm:text-4xl md:text-5xl">
+              <h2 className="text-2xl font-semibold uppercase leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
                 {featured.title}
               </h2>
 
-              <p className="mt-5 text-sm leading-relaxed text-[#0d2d47]/70 md:text-base">
+              <p className="mt-5 text-sm leading-relaxed text-[#0d2d47]/70 sm:text-base">
                 {featured.excerpt}
               </p>
 
@@ -100,14 +100,14 @@ export default function BlogPage() {
               <Link
                 key={blog.slug}
                 href={`/blog/${blog.slug}`}
-                className="group overflow-hidden rounded-[30px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_20px_65px_rgba(13,45,71,0.12)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/50"
+                className="group overflow-hidden rounded-[24px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_20px_65px_rgba(13,45,71,0.12)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/50 sm:rounded-[30px]"
               >
                 <div className="relative aspect-[3/2] overflow-hidden bg-white">
                   <Image
                     src={blog.image}
                     alt={blog.title}
                     fill
-                    className="object-contain transition duration-700 group-hover:scale-105"
+                    className="object-contain object-center transition duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </div>
@@ -123,7 +123,7 @@ export default function BlogPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-semibold uppercase leading-tight">
+                  <h3 className="text-xl font-semibold uppercase leading-tight sm:text-2xl">
                     {blog.title}
                   </h3>
 

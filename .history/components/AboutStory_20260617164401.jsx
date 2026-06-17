@@ -77,7 +77,7 @@ export default function AboutStory() {
                 Founded
               </p>
               <p className="text-2xl font-medium text-[#5A7EFF]">
-                2025
+                2020
               </p>
             </motion.div>
           </motion.div>

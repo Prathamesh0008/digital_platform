@@ -192,7 +192,7 @@ export default function CaseStudyPreview({ item }) {
                 className="group relative z-10 hidden w-full cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/60 p-2 text-left shadow-[0_32px_90px_rgba(13,45,71,0.18)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_38px_100px_rgba(13,45,71,0.24)] lg:block"
                 aria-label={`Open ${item.name} desktop preview`}
               >
-                <div className="absolute left-2 top-9 z-10 inline-flex rounded-full bg-[#0d2d47] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg">
+                <div className="absolute left-5 top-1 z-10 inline-flex rounded-full bg-[#0d2d47] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg">
                   Desktop
                 </div>
 

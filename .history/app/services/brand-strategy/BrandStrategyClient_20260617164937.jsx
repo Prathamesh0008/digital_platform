@@ -539,9 +539,9 @@ export default function BrandStrategyPage() {
               initial={{ opacity: 0, x: 28 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-[26px] border border-[#7392FB]/35 bg-white/50 p-6 shadow-[0_25px_70px_rgba(13,45,71,0.12)] backdrop-blur-md"
+              className="relative overflow-hidden rounded-[26px] border  bg-white/50 p-6 shadow-[0_25px_70px_rgba(13,45,71,0.12)] backdrop-blur-md"
             >
-              <div className="absolute left-0 top-0 h-1 w-full " />
+              <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-[#7392FB] to-[#0d2d47]" />
               <div className="mb-5 flex items-center gap-3">
                 <span className="rounded-full bg-[#7392FB]/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[#0d2d47]">
                   2026
@@ -822,7 +822,7 @@ export default function BrandStrategyPage() {
                 whileHover={{ y: -8 }}
                 className="relative overflow-hidden rounded-[24px] border border-white/20 bg-white/12 p-5 backdrop-blur-md"
               >
-                <div className="absolute bottom-0 left-0 h-1 w-full " />
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-white/80 to-[#7392FB]" />
                 <span className="text-4xl">{(() => {
   const Icon = item.icon;
   return <Icon />;
@@ -873,7 +873,7 @@ export default function BrandStrategyPage() {
                   transition={{ delay: i * 0.06 }}
                   className="relative overflow-hidden rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-5 backdrop-blur-md transition hover:bg-white/65"
                 >
-                  <div className="absolute left-0 top-0 h-full w-1 " />
+                  <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#7392FB] to-[#0d2d47]" />
                   <div className="flex gap-4">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-2xl">
                       {(() => {

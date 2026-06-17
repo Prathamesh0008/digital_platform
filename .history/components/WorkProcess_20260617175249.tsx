@@ -50,7 +50,7 @@ const steps = [
     color: "#740A03",
     glow: "#C3110C",
     gradient: "linear-gradient(135deg, #D24545 0%, #A94438 100%)",
-    title: " Optimizing Your Digital Marketing Strategy",
+    title:  Optimizing Your Digital Marketing Strategy",
     text: "After analyzing results, we fine-tune your digital marketing plan to maximize performance and ROI.",
     left: "50%",
     top: "452px",
@@ -60,7 +60,7 @@ const steps = [
     color: "#982598",
     glow: "#E491C9",
     gradient: "linear-gradient(135deg, #982598 0%, #E491C9 100%)",
-    title: "Continuously Optimizing Your Digital Marketing Success",
+    title: "Repeat: Continuously Optimizing Your Digital Marketing Success",
     text: "After achieving results, we restart the process to further improve performance and growth.",
     left: "13%",
     top: "452px",
@@ -309,7 +309,7 @@ export default function WorkProcess() {
                   {step.title}
                 </h3>
 
-                <p className="mt-3 text-base leading-relaxed text-[#0d2d47]/75">
+                <p className="mt-3 text-lg leading-relaxed text-[#0d2d47]/75">
                   {step.text}
                 </p>
               </div>

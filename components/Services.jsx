@@ -27,13 +27,15 @@ export default function Services() {
                   key={service.slug}
                   className="group max-w-full sm:max-w-[360px]"
                 >
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-black text-lg font-semibold text-white transition-transform duration-300 group-hover:scale-110">
-                    {index + 1}
-                  </div>
+                  <div className="mb-3 flex items-center gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black text-lg font-semibold text-white transition-transform duration-300 group-hover:scale-110">
+                      {index + 1}
+                    </div>
 
-                  <h3 className="mb-2 text-xl font-medium uppercase leading-[1.2] tracking-tight text-black sm:text-[23px] md:text-[29px]">
-                    {service.title}
-                  </h3>
+                    <h3 className="text-xl font-medium uppercase leading-[1.2] tracking-tight text-black sm:text-[23px] md:text-[29px]">
+                      {service.title}
+                    </h3>
+                  </div>
 
                   <p className="text-base leading-relaxed text-black/75 sm:text-lg md:text-[19px]">
                     {service.desc}
