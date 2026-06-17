@@ -305,6 +305,7 @@ export default function WorkProcess() {
               >
                 <h3
                   className="text-[24px] text-2xl font-normal leading-[1.1] text-[#0d2d47]"
+                  style={{ fontFamily: "var(--font-great-vibes), cursive" }}
                 >
                   {step.title}
                 </h3>
@@ -380,7 +381,10 @@ export default function WorkProcess() {
                   />
 
                   <div className="ml-14 flex min-h-[240px] w-[calc(100%-56px)] flex-col items-center justify-center rounded-[24px] border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 text-center font-[family:var(--font-inter)] shadow-[0_18px_40px_rgba(13,45,71,0.14)] sm:ml-0 sm:min-h-[260px] sm:w-[calc(50%-48px)]">
-                    <h3 className="text-2xl font-normal leading-[1.05] text-[#0d2d47] sm:text-[34px]">
+                    <h3
+                      className="text-2xl font-normal leading-[1.05] text-[#0d2d47] sm:text-[34px]"
+                      style={{ fontFamily: "var(--font-great-vibes), cursive" }}
+                    >
                       {step.title}
                     </h3>
 
