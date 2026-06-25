@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 export default function AboutStory() {
   return (
     <section
-      id="story"
-      className="relative min-h-screen px-4 sm:px-6 md:px-10 py-20 sm:py-28 md:py-40 overflow-hidden bg-[#EAEBDB]"
+      className="relative min-h-screen overflow-hidden bg-[#EAEBDB] px-4 py-20 sm:px-6 sm:py-28 md:px-10 md:py-40"
     >
 
       {/* 🔥 SOFT GLOW */}

@@ -158,6 +158,18 @@ const serviceLinks = [
     });
   };
 
+  const isLinkActive = (link) => {
+    if (link.hasDropdown) {
+      return pathname.startsWith("/services");
+    }
+
+    if (link.href === "/blog") {
+      return pathname === "/blog" || pathname.startsWith("/blog/");
+    }
+
+    return pathname === link.href;
+  };
+
   return (
     <header
       className={`app-navbar fixed inset-x-0 top-0 z-50 px-3 pt-2 transition-transform duration-300 sm:px-5 sm:pt-3 ${
@@ -193,9 +205,7 @@ const serviceLinks = [
 
           <nav className="hidden items-center gap-2 lg:flex">
             {links.map((link) => {
-              const isActive =
-                pathname === link.href ||
-                (link.hasDropdown && pathname.startsWith("/services"));
+              const isActive = isLinkActive(link);
 
               if (link.hasDropdown) {
                 return (
@@ -364,9 +374,7 @@ style={{
               <div className="border-t border-black/10 p-4 pt-3">
                 <nav className="flex flex-col gap-2">
                   {links.map((link) => {
-                    const isActive =
-                      pathname === link.href ||
-                      (link.hasDropdown && pathname.startsWith("/services"));
+                    const isActive = isLinkActive(link);
 
                     if (link.hasDropdown) {
                       return (

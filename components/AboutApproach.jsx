@@ -50,11 +50,63 @@ export default function AboutApproach() {
   ];
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-[#EAEBDB]"
-      style={{ height: `${approaches.length * 100}vh` }}
-    >
+    <>
+      <section className="bg-[#EAEBDB] px-4 py-14 sm:px-6 md:hidden">
+        <div className="mx-auto max-w-6xl space-y-5">
+          {approaches.map((item, i) => (
+            <article
+              key={item.title}
+              className="relative overflow-hidden rounded-[30px] border border-[#0d2d47]/10"
+            >
+              <div className="relative min-h-[420px]">
+                <Image
+                  src={item.bg}
+                  alt={item.title}
+                  fill
+                  priority={i === 0}
+                  sizes="100vw"
+                  className="object-cover"
+                />
+
+                <div className="absolute inset-0 bg-[#0d2d47]/30" />
+                <div
+                  className={`absolute inset-0 ${
+                    i === 0
+                      ? "bg-[#5A7EFF]/48"
+                      : i === 1
+                      ? "bg-[#7392FB]/46"
+                      : i === 2
+                      ? "bg-[#8EA5F1]/46"
+                      : "bg-[#C4CFE3]/44"
+                  }`}
+                />
+
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,45,71,0.16),rgba(13,45,71,0.5))]" />
+
+                <div className="relative z-10 flex min-h-[420px] flex-col justify-end p-6 text-white">
+                  <h2 className="text-4xl leading-[0.95] drop-shadow-[0_8px_24px_rgba(13,45,71,0.28)]">
+                    {item.title}
+                  </h2>
+
+                  <p className="mt-4 text-base leading-7 text-white/92">
+                    {item.description}
+                  </p>
+
+                  <p className="mt-3 text-sm leading-6 text-white/82">
+                    {item.extra}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        ref={ref}
+        className="relative hidden bg-[#EAEBDB] md:block"
+        style={{ height: `${approaches.length * 100}vh` }}
+      >
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div style={{ x }} className="flex h-full w-[400vw]">
           {approaches.map((item, i) => (
@@ -129,5 +181,6 @@ export default function AboutApproach() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

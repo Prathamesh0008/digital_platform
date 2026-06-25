@@ -68,16 +68,6 @@ export default function CaseStudiesPage() {
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(90,126,255,0.08),transparent)]" />
 
                   <div>
-                    <div className="relative z-10 mb-6 flex flex-wrap items-center gap-3">
-                      <span className="rounded-full border border-[#0d2d47]/10 bg-white/75 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5A7EFF]">
-                        {item.category}
-                      </span>
-
-                      <span className="rounded-full bg-[#0d2d47]/6 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-[#0d2d47]/62">
-                        Responsive Website
-                      </span>
-                    </div>
-
                     <div className="relative z-10 mb-7 flex h-16 w-40 items-center px-4">
                       <Image
                         src={item.logo}

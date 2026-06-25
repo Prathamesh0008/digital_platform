@@ -2,7 +2,7 @@
 "use client";
  
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FaUsers, FaTrophy, FaClock, FaGlobe } from "react-icons/fa";
  
 const stats = [
@@ -100,7 +100,7 @@ function CountUpNumber({ target, suffix = "+" }) {
 export default function HomeGrowthSection() {
   const [activeInfoTab, setActiveInfoTab] = useState(0);
  
-  const infoTabs = [
+  const infoTabs = useMemo(() => [
     {
       title: "Improved Customer Reach",
       image: "/Customer reach 1.png",
@@ -122,7 +122,7 @@ export default function HomeGrowthSection() {
       description:
         "Enhanced customer trust in digital marketing refers to building strong credibility, reliability, and confidence in your brand through consistent, transparent, and value-driven digital experiences. By leveraging strategic branding, high-quality content, social proof, and data-backed digital marketing strategies, businesses can establish authority and foster long-term customer confidence. In today's competitive digital landscape, trust is a key driver of conversion, customer loyalty, and brand equity. Well-executed digital marketing initiatives ensure every interaction—across websites, campaigns, and digital channels—reinforces authenticity, professionalism, and dependability, guiding prospects smoothly through the sales funnel and strengthening enterprise-level brand perception.",
     },
-  ];
+  ], []);
   const activeInfo = infoTabs[activeInfoTab];
 
   useEffect(() => {
@@ -130,7 +130,7 @@ export default function HomeGrowthSection() {
       const img = new window.Image();
       img.src = tab.image;
     });
-  }, []);
+  }, [infoTabs]);
  
   return (
     <section
@@ -141,7 +141,7 @@ export default function HomeGrowthSection() {
       }}
     >
       <div className="mx-auto max-w-[1400px]">
-        <div className="mb-10 pl-4 sm:pl-6 md:pl-10">
+        <div className="mb-10">
           {/* <span className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
             Talk About Us
           </span> */}
@@ -230,7 +230,7 @@ export default function HomeGrowthSection() {
                 <button
                   key={tab.title}
                   onClick={() => setActiveInfoTab(idx)}
-                  className={`cursor-pointer rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wide transition ${
+                  className={`cursor-pointer rounded-full px-4 py-2 text-left text-xs font-medium uppercase tracking-wide transition sm:px-5 sm:text-sm ${
                     activeInfoTab === idx
                       ? "bg-[#0d2d47] text-white"
                       : "bg-white/30 text-[#0d2d47] hover:bg-white/50"

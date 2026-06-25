@@ -46,8 +46,8 @@ export default function SplitMarqueeSection() {
             "linear-gradient(to top, #EAEBDB, #C4CFE3, #8EA5F1, #7392FB)",
         }}
       >
-        <div className="mx-auto grid max-w-[1400px] items-center gap-8 md:grid-cols-2 md:gap-10">
-          <div className="flex flex-col items-center justify-center px-5 text-center text-[#0d2d47] sm:px-8 md:px-10">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-8 px-4 sm:px-6 md:grid-cols-2 md:gap-10 md:px-10">
+          <div className="flex flex-col items-start justify-center text-left text-[#0d2d47]">
             <motion.h2
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function SplitMarqueeSection() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mt-6 max-w-md text-sm text-[#0d2d47]/70 sm:text-base"
+              className="mt-6 max-w-md text-sm leading-7 text-[#0d2d47]/70 sm:text-base"
             >
               We help brands establish, strengthen, and scale their online
               presence with transparent, measurable, and performance-focused
@@ -82,12 +82,12 @@ export default function SplitMarqueeSection() {
             </motion.div>
           </div>
 
-          <div className="flex items-center justify-center px-5 sm:px-8 md:px-10">
+          <div className="flex items-center justify-start">
             <motion.p
               initial={{ opacity: 0, x: 80 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
-              className="max-w-xl text-center text-base leading-relaxed text-[#0d2d47] sm:text-lg md:text-xl"
+              className="max-w-xl text-left text-base leading-relaxed text-[#0d2d47] sm:text-lg md:text-xl"
             >
               Behind every great result is a seamless workflow: planning,
               strategy, execution, tracking, refinement, and repeat. This cycle

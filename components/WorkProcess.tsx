@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 const steps = [
   {
@@ -209,14 +209,14 @@ export default function WorkProcess() {
       className="w-full px-4 py-12 sm:px-6 md:px-10 md:py-16"
       style={{ background: "#E6E8DC" }}
     >
-      <div className="mx-auto max-w-[1500px] text-center">
-        <h2 className="text-4xl font-semibold uppercase leading-[0.98] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[58px]">
+      <div className="mx-auto max-w-[1500px]">
+        <h2 className="max-w-4xl text-4xl font-semibold uppercase leading-[0.98] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[58px]">
           Behind Every Great Result
           <br />
           Is Our Work Process
         </h2>
 
-        <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-[#0d2d47]/75 md:text-base">
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#0d2d47]/75 md:text-base">
           Smart, simple, and efficient solutions for every client project.
         </p>
 
@@ -324,7 +324,7 @@ export default function WorkProcess() {
           className="relative mx-auto mt-12 max-w-4xl lg:hidden"
         >
           <div
-            className="absolute left-5 w-[3px] rounded-full bg-[#0d2d47]/20 sm:left-1/2 sm:-translate-x-1/2"
+            className="absolute left-5 w-1 -translate-x-1/2 rounded-full bg-[#0d2d47]/20 sm:left-1/2"
             style={{
               top: mobileLine.top,
               height: mobileLine.height,
@@ -336,7 +336,7 @@ export default function WorkProcess() {
             whileInView={{ height: mobileLine.height }}
             transition={{ duration: 3.2, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.35 }}
-            className="absolute left-5 w-[3px] rounded-full bg-[#0d2d47] sm:left-1/2 sm:-translate-x-1/2"
+            className="absolute left-5 w-1 -translate-x-1/2 rounded-full bg-[#0d2d47] sm:left-1/2"
             style={{
               top: mobileLine.top,
             }}
@@ -345,54 +345,77 @@ export default function WorkProcess() {
           <div className="space-y-7 sm:space-y-10">
             {steps.map((step, idx) => {
               const isRight = idx % 2 === 0;
+              const showDownArrow = idx < steps.length - 1;
 
               return (
-                <motion.div
-                  key={step.no}
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.95, delay: 0.25 + idx * 0.16 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  className={`relative flex items-start ${
-                    isRight ? "sm:justify-end" : "sm:justify-start"
-                  }`}
-                >
-                  <div
-                    ref={
-                      idx === 0
-                        ? firstMobileDotRef
-                        : idx === steps.length - 1
-                        ? lastMobileDotRef
-                        : undefined
-                    }
-                    className="absolute left-5 top-4 z-20 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-base font-bold text-white sm:left-1/2"
-                    style={{
-                      background: step.gradient,
-                      boxShadow: `0 16px 24px rgba(13, 45, 71, 0.36), 0 0 22px ${step.glow}66`,
-                    }}
-                  >
-                    {step.no}
-                  </div>
-
-                  <div
-                    className={`absolute top-[36px] hidden h-[2px] w-[54px] bg-[#0d2d47]/25 sm:block ${
-                      isRight ? "left-1/2 ml-[22px]" : "right-1/2 mr-[22px]"
+                <Fragment key={step.no}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 35 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.95, delay: 0.25 + idx * 0.16 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    className={`relative flex items-start ${
+                      isRight ? "sm:justify-end" : "sm:justify-start"
                     }`}
-                  />
-
-                  <div className="ml-14 flex min-h-[240px] w-[calc(100%-56px)] flex-col items-center justify-center rounded-[24px] border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 text-center font-[family:var(--font-inter)] shadow-[0_18px_40px_rgba(13,45,71,0.14)] sm:ml-0 sm:min-h-[260px] sm:w-[calc(50%-48px)]">
-                    <h3
-                      className="text-2xl font-normal leading-[1.05] text-[#0d2d47] sm:text-[34px]"
-                      style={{ fontFamily: "var(--font-great-vibes), cursive" }}
+                  >
+                    <div
+                      ref={
+                        idx === 0
+                          ? firstMobileDotRef
+                          : idx === steps.length - 1
+                          ? lastMobileDotRef
+                          : undefined
+                      }
+                      className="absolute left-5 top-4 z-20 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-base font-bold text-white sm:left-1/2"
+                      style={{
+                        background: step.gradient,
+                        boxShadow: `0 16px 24px rgba(13, 45, 71, 0.36), 0 0 22px ${step.glow}66`,
+                      }}
                     >
-                      {step.title}
-                    </h3>
+                      {step.no}
+                    </div>
 
-                    <p className="mt-4 text-lg leading-relaxed text-[#0d2d47]/75">
-                      {step.text}
-                    </p>
-                  </div>
-                </motion.div>
+                    <div
+                      className={`absolute top-[36px] hidden h-[2px] w-[54px] bg-[#0d2d47]/25 sm:block ${
+                        isRight ? "left-1/2 ml-[22px]" : "right-1/2 mr-[22px]"
+                      }`}
+                    />
+
+                    <div className="ml-14 flex min-h-[240px] w-[calc(100%-56px)] flex-col justify-center rounded-[24px] border border-[#0d2d47]/10 bg-[#B6C4E7] p-5 text-left font-[family:var(--font-inter)] shadow-[0_18px_40px_rgba(13,45,71,0.14)] sm:ml-0 sm:min-h-[260px] sm:w-[calc(50%-48px)] sm:text-center">
+                      <h3
+                        className="text-2xl font-normal leading-[1.05] text-[#0d2d47] sm:text-[34px]"
+                        style={{ fontFamily: "var(--font-great-vibes), cursive" }}
+                      >
+                        {step.title}
+                      </h3>
+
+                      <p className="mt-4 text-lg leading-relaxed text-[#0d2d47]/75">
+                        {step.text}
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {showDownArrow ? (
+                    <div className="relative h-10 sm:h-12">
+                      <div className="absolute left-5 top-1/2 z-20 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-[#E6E8DC] sm:left-1/2">
+                        <svg
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          className="h-5 w-5"
+                          fill="none"
+                        >
+                          <path
+                            d="M7 10l5 5 5-5"
+                            stroke="#0d2d47"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  ) : null}
+                </Fragment>
               );
             })}
           </div>

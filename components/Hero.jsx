@@ -56,7 +56,6 @@
 
 
 
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -67,34 +66,62 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1200px] items-center px-4 pb-12 pt-28 sm:px-6 sm:pt-32 md:px-10 md:pb-16 md:pt-36">
-        <div className="w-full text-center">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1200px] items-center px-4 pb-12 pt-24 sm:px-6 sm:pt-28 md:px-10 md:pb-16 md:pt-36">
+        <div className="w-full text-left lg:max-w-[980px]">
        
 
-          <h1 className="mx-auto mt-6 max-w-5xl font-semibold uppercase leading-[0.92] tracking-[-0.04em] text-[#f7f1e4]">
-            <span className="block text-[clamp(3.5rem,12vw,8rem)]">Make Search</span>
-            <span className="block text-[clamp(3.5rem,12vw,8rem)] text-[#9db6ff]">
+          <h1 className="mt-4 max-w-5xl font-semibold uppercase leading-[0.92] tracking-[-0.04em] text-[#f7f1e4]">
+            <span className="block text-[clamp(2.7rem,14vw,8rem)]">Make Search</span>
+            <span className="block text-[clamp(2.7rem,14vw,8rem)] text-[#9db6ff]">
               Worth More
             </span>
           </h1>
 
-          <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/72 sm:text-lg md:text-[1.15rem]">
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-white/72 sm:text-base sm:leading-8 md:text-[1.1rem]">
             We build clean search and growth systems that help brands get
             discovered, earn trust, and convert visibility into qualified
             business.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <Link
-              href="/contact"
-              className="inline-flex min-w-[220px] items-center justify-center rounded-full bg-[linear-gradient(135deg,#ff8b47_0%,#ff6a3d_100%)] px-8 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] text-white shadow-[0_20px_48px_rgba(255,122,63,0.3)] transition hover:-translate-y-1 hover:shadow-[0_28px_56px_rgba(255,122,63,0.38)]"
+              href="/#digital-growth-form"
+              className="group relative inline-flex h-14 w-full items-center justify-between overflow-visible rounded-full border border-[#ffd2a8]/45 bg-[linear-gradient(135deg,#ff9e63_0%,#ff7d48_34%,#0d2d47_100%)] px-4 text-white shadow-[0_18px_44px_rgba(13,45,71,0.28),0_0_28px_rgba(255,122,63,0.24),inset_0_0_0_1px_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_58px_rgba(13,45,71,0.34),0_0_38px_rgba(255,122,63,0.34)] sm:hidden"
+            >
+              <span className="absolute inset-[1px] rounded-full bg-[linear-gradient(135deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.06)_34%,rgba(255,255,255,0)_100%)] opacity-100" />
+              <span className="absolute -inset-[2px] rounded-full bg-[radial-gradient(circle_at_left,rgba(255,188,133,0.42),transparent_40%),radial-gradient(circle_at_right,rgba(255,255,255,0.18),transparent_34%)] opacity-90 blur-md transition duration-300 group-hover:opacity-100" />
+              <span className="absolute left-3 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-[#ffd0b0]/35 blur-md transition duration-300 group-hover:scale-125" />
+              <span className="absolute inset-y-1 left-[-18%] w-[34%] rounded-full bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.28)_45%,transparent_100%)] opacity-70 blur-sm animate-[hero-pill-shimmer_2.8s_ease-in-out_infinite]" />
+              <span
+                className="relative flex flex-1 items-center justify-center text-center text-[24px] font-normal text-white"
+                style={{
+                  fontFamily: "var(--font-great-vibes), cursive",
+                  textShadow: `
+                    0 0 12px rgba(255,214,170,0.48),
+                    0 0 24px rgba(255,122,63,0.24),
+                    0 2px 10px rgba(8,26,43,0.36)
+                  `,
+                }}
+              >
+                <span className="animate-[hero-pill-text_2.4s_ease-in-out_infinite]">
+                  Start Project
+                </span>
+              </span>
+              <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#fff3e8_0%,#ffffff_45%,#ffe0c7_100%)] text-xl text-[#ff6a3d] shadow-[0_10px_22px_rgba(255,255,255,0.28)] transition duration-300 group-hover:translate-x-1 group-hover:scale-105 animate-[hero-pill-arrow_1.8s_ease-in-out_infinite]">
+                &rarr;
+              </span>
+            </Link>
+
+            <Link
+              href="/#digital-growth-form"
+              className="hidden items-center justify-center rounded-full bg-[linear-gradient(135deg,#ff8b47_0%,#ff6a3d_100%)] px-7 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] text-white shadow-[0_20px_48px_rgba(255,122,63,0.3)] transition hover:-translate-y-1 hover:shadow-[0_28px_56px_rgba(255,122,63,0.38)] sm:inline-flex sm:min-w-[220px]"
             >
               Start Your Project
             </Link>
 
             <Link
               href="/services"
-              className="inline-flex min-w-[220px] items-center justify-center rounded-full border border-white/16 bg-transparent px-8 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] text-[#f7f1e4] transition hover:bg-white hover:text-[#0d2d47]"
+              className="inline-flex w-full items-center justify-center rounded-full border border-white/16 bg-transparent px-7 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] text-[#f7f1e4] transition hover:bg-white hover:text-[#0d2d47] sm:w-auto sm:min-w-[220px]"
             >
               Explore Services
             </Link>
@@ -103,6 +130,7 @@ export default function Hero() {
           
         </div>
       </div>
+
     </section>
   );
 }

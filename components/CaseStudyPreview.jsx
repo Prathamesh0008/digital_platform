@@ -192,10 +192,6 @@ export default function CaseStudyPreview({ item }) {
                 className="group relative z-10 hidden w-full cursor-pointer overflow-hidden rounded-[30px] border border-white/70 bg-white/60 p-2 text-left shadow-[0_32px_90px_rgba(13,45,71,0.18)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_38px_100px_rgba(13,45,71,0.24)] lg:block"
                 aria-label={`Open ${item.name} desktop preview`}
               >
-                <div className="absolute left-2 top-9 z-10 inline-flex rounded-full bg-[#0d2d47] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white shadow-lg">
-                  Desktop
-                </div>
-
                 <div className="overflow-hidden rounded-[24px] bg-[#eef2f7]">
                  
                   <div
@@ -223,10 +219,6 @@ export default function CaseStudyPreview({ item }) {
                 className="group relative z-30 mx-auto block w-[min(100%,230px)] cursor-pointer overflow-hidden rounded-[30px] border-[6px] border-[#0d2d47] bg-white text-left shadow-[0_28px_70px_rgba(13,45,71,0.32)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_80px_rgba(13,45,71,0.38)] sm:w-[250px] md:w-[270px] lg:absolute lg:-bottom-10 lg:right-0 lg:mx-0 lg:w-[190px]"
                 aria-label={`Open ${item.name} mobile preview`}
               >
-                <div className="absolute left-3 top-3 z-10 rounded-full bg-[#0d2d47] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
-                  Mobile
-                </div>
-
                 <div className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-[#0d2d47]/25" />
                 <div className="relative mt-2 h-[420px] w-full overflow-hidden bg-white sm:h-[460px] md:h-[500px] lg:h-[370px]">
                   <iframe

@@ -1,9 +1,8 @@
-// digital_platform/components/ClientReviewSlider.jsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { FaStar, FaQuoteLeft } from "react-icons/fa";
+import { FaQuoteLeft, FaStar } from "react-icons/fa";
 
 const reviews = [
   {
@@ -14,7 +13,7 @@ const reviews = [
   {
     name: "Nirankar Security",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
-    text: "We’re very happy with our new website. The team understood our requirements and delivered a clean, functional site.",
+    text: "We're very happy with our new website. The team understood our requirements and delivered a clean, functional site.",
   },
   {
     name: "Pankaj Walzade",
@@ -43,9 +42,35 @@ export default function ClientReviewSlider() {
 
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [mobileDragX, setMobileDragX] = useState(0);
+  const [isMobileDragging, setIsMobileDragging] = useState(false);
+
+  const mobileDragRef = useRef({
+    active: false,
+    startX: 0,
+  });
 
   useEffect(() => {
-    const speed = 0.6;
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    const syncViewport = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener("change", syncViewport);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
+    const speed = 0.8;
 
     const animate = () => {
       if (!dragRef.current.active) {
@@ -74,28 +99,40 @@ export default function ClientReviewSlider() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
-  const handlePointerDown = (e) => {
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const intervalId = window.setInterval(() => {
+      setMobileIndex((current) => (current + 1) % reviews.length);
+    }, 3200);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [isMobile]);
+
+  const handlePointerDown = (event) => {
     dragRef.current.active = true;
-    dragRef.current.startX = e.clientX;
-    dragRef.current.lastX = e.clientX;
+    dragRef.current.startX = event.clientX;
+    dragRef.current.lastX = event.clientX;
     setIsDragging(true);
 
-    e.currentTarget.setPointerCapture?.(e.pointerId);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
   };
 
-  const handlePointerMove = (e) => {
+  const handlePointerMove = (event) => {
     if (!dragRef.current.active) return;
 
-    const deltaX = e.clientX - dragRef.current.lastX;
-    dragRef.current.lastX = e.clientX;
+    const deltaX = event.clientX - dragRef.current.lastX;
+    dragRef.current.lastX = event.clientX;
     dragRef.current.offset += deltaX;
 
     const track = trackRef.current;
 
     if (track) {
-        const resetWidth = track.scrollWidth / 2;
+      const resetWidth = track.scrollWidth / 2;
 
       if (dragRef.current.offset > 0) {
         dragRef.current.offset = -resetWidth + dragRef.current.offset;
@@ -109,10 +146,42 @@ export default function ClientReviewSlider() {
     setOffset(dragRef.current.offset);
   };
 
-  const handlePointerUp = (e) => {
+  const handlePointerUp = (event) => {
     dragRef.current.active = false;
     setIsDragging(false);
-    e.currentTarget.releasePointerCapture?.(e.pointerId);
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+  };
+
+  const handleMobilePointerDown = (event) => {
+    mobileDragRef.current.active = true;
+    mobileDragRef.current.startX = event.clientX;
+    setMobileDragX(0);
+    setIsMobileDragging(true);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+
+  const handleMobilePointerMove = (event) => {
+    if (!mobileDragRef.current.active) return;
+    setMobileDragX(event.clientX - mobileDragRef.current.startX);
+  };
+
+  const handleMobilePointerUp = (event) => {
+    if (!mobileDragRef.current.active) return;
+
+    const deltaX = mobileDragX;
+    mobileDragRef.current.active = false;
+    setMobileDragX(0);
+    setIsMobileDragging(false);
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+
+    if (Math.abs(deltaX) < 50) return;
+
+    if (deltaX < 0) {
+      setMobileIndex((current) => (current + 1) % reviews.length);
+      return;
+    }
+
+    setMobileIndex((current) => (current - 1 + reviews.length) % reviews.length);
   };
 
   return (
@@ -134,12 +203,85 @@ export default function ClientReviewSlider() {
         </div>
 
         <div
+          className="relative overflow-hidden py-4 md:hidden"
+          onPointerDown={handleMobilePointerDown}
+          onPointerMove={handleMobilePointerMove}
+          onPointerUp={handleMobilePointerUp}
+          onPointerCancel={handleMobilePointerUp}
+          style={{ touchAction: "pan-y" }}
+        >
+          <div
+            className="flex"
+            style={{
+              transform: `translateX(calc(-${mobileIndex * 100}% + ${mobileDragX}px))`,
+              transition: isMobileDragging ? "none" : "transform 0.55s ease",
+            }}
+          >
+            {reviews.map((review) => (
+              <article
+                key={review.name}
+                className="relative h-[280px] w-full shrink-0 overflow-hidden rounded-[30px] border border-white/15 bg-white/[0.08] p-5 text-left backdrop-blur-md"
+              >
+                <div className="absolute right-5 top-5 text-white/35 drop-shadow-[0_8px_20px_rgba(255,255,255,0.25)]">
+                  <FaQuoteLeft className="text-5xl" />
+                </div>
+
+                <div className="mb-6 flex items-center gap-4">
+                  <Image
+                    src={review.image}
+                    alt={review.name}
+                    width={56}
+                    height={56}
+                    sizes="56px"
+                    draggable={false}
+                    className="h-14 w-14 rounded-full border border-white/20 object-cover"
+                  />
+
+                  <div>
+                    <h3 className="text-base font-semibold text-white">
+                      {review.name}
+                    </h3>
+                    <p className="text-xs uppercase tracking-wide text-white/55">
+                      Verified Client
+                    </p>
+                  </div>
+                </div>
+
+                <p className="relative z-10 text-sm leading-7 text-white/80">
+                  &ldquo;{review.text}&rdquo;
+                </p>
+
+                <div className="absolute bottom-6 left-6 flex gap-1 text-[#EAEBDB]">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <FaStar key={star} className="text-sm" />
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-5 flex justify-center gap-2">
+            {reviews.map((review, index) => (
+              <button
+                key={review.name}
+                type="button"
+                onClick={() => setMobileIndex(index)}
+                className={`h-2.5 rounded-full transition ${
+                  mobileIndex === index ? "w-7 bg-white" : "w-2.5 bg-white/40"
+                }`}
+                aria-label={`Show review ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
           onPointerLeave={handlePointerUp}
-          className={`relative overflow-hidden select-none py-4 ${
+          className={`relative hidden overflow-hidden select-none py-4 md:block ${
             isDragging ? "cursor-grabbing" : "cursor-grab"
           }`}
           style={{ touchAction: "pan-y" }}
@@ -183,7 +325,7 @@ export default function ClientReviewSlider() {
                 </div>
 
                 <p className="relative z-10 text-sm leading-7 text-white/80 sm:text-base">
-                  “{review.text}”
+                  &ldquo;{review.text}&rdquo;
                 </p>
 
                 <div className="absolute bottom-6 left-6 flex gap-1 text-[#EAEBDB]">

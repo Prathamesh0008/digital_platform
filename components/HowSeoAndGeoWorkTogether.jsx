@@ -267,7 +267,7 @@ export default function HowSeoAndGeoWorkTogether() {
           </motion.div>
         </div>
       </section>
-        <section className="px-4 pb-4 sm:px-6 md:px-10 md:pb-10">
+      <section className="px-4 pb-4 pt-6 sm:px-6 sm:pt-8 md:px-10 md:pb-10 md:pt-10">
         <div className="mx-auto max-w-[860px]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
