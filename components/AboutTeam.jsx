@@ -8,13 +8,18 @@ import { useEffect, useRef, useState } from "react";
 export default function AboutTeam() {
   const teamMembers = [
     {
+      name: "Prathamesh Shinde",
+      role: "Manager",
+      image: "/teams/manager1.png",
+    },
+    {
       name: "Adarsh Singh",
-      role: "Senior Creative Designer",
+      role: "Designer",
       image: "/teams/adarshsingh.png",
     },
     {
       name: "Rushikesh Andhale",
-      role: "Full Stack Developer",
+      role: "Developer",
       image: "/teams/rushikeshandhale.jpg",
     },
     {
@@ -22,11 +27,7 @@ export default function AboutTeam() {
       role: "SEO Specialist",
       image: "/teams/chotelalsingh.png",
     },
-    {
-      name: "Prathamesh Shinde",
-      role: "Senior Manager",
-      image: "/teams/manager.png",
-    },
+    
   ];
 
   const repeatedMembers = [...teamMembers, ...teamMembers, ...teamMembers];

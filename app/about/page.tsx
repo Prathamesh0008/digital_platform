@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 
 import AboutHero from "@/components/AboutHero";
 import AboutStory from "@/components/AboutStory";
-import LazySection from "@/components/LazySection";
 const AboutTeam = dynamic(() => import("@/components/AboutTeam"));
 const AboutApproach = dynamic(() => import("@/components/AboutApproach"));
 const AboutCTA = dynamic(() => import("@/components/AboutCTA"));
@@ -15,28 +14,22 @@ export default function AboutPage() {
     <main>
       <AboutHero />
 
-      <section id="story">
+      <section id="story" className="scroll-mt-24">
         <AboutStory />
       </section>
-      <LazySection minHeight={620}>
+      <section className="scroll-mt-24">
         <HomeWhyChooseSection />
-      </LazySection>
-      <section id="team">
-        <LazySection minHeight={720}>
-          <AboutTeam />
-        </LazySection>
+      </section>
+      <section id="team" className="scroll-mt-24">
+        <AboutTeam />
       </section>
 
-      <section id="approach">
-        <LazySection minHeight={760}>
-          <AboutApproach />
-        </LazySection>
+      <section id="approach" className="scroll-mt-24">
+        <AboutApproach />
       </section>
 
-      <section id="cta">
-        <LazySection minHeight={420}>
-          <AboutCTA />
-        </LazySection>
+      <section id="cta" className="scroll-mt-24">
+        <AboutCTA />
       </section>
     </main>
   );

@@ -15,12 +15,9 @@ export default function AboutHero() {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const offset = 80;
-    const top = el.getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top,
+    el.scrollIntoView({
       behavior: "smooth",
+      block: "start",
     });
   };
 
