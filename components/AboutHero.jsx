@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const items = [
   { label: "Story", img: "/about1.jpg", id: "story" },
   { label: "Team", img: "/about2.jpg", id: "team" },
-  { label: "Contact", img: "/about3.jpg", id: "cta" },
+  { label: "Impact", img: "/about3.jpg", id: "impact" },
   { label: "Approach", img: "/about4.jpg", id: "approach" },
 ];
 

@@ -193,7 +193,7 @@ export default function ClientReviewSlider() {
         <div className="mb-10 max-w-3xl">
           <h2 className="text-4xl font-semibold uppercase leading-[0.98] tracking-tight text-white sm:text-5xl md:text-[58px]">
             Stories From
-            <br />
+            
             Our Clients
           </h2>
 

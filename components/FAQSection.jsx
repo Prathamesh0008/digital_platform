@@ -69,6 +69,73 @@ const faqs = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(-1);
+  const leftFaqs = faqs.filter((_, index) => index % 2 === 0);
+  const rightFaqs = faqs.filter((_, index) => index % 2 === 1);
+
+  const renderFaqItem = (faq, index) => {
+    const isOpen = openIndex === index;
+
+    return (
+      <div
+        key={faq.question}
+        className={`overflow-hidden rounded-[26px] border transition-all duration-300 ${
+          isOpen
+            ? "border-black/20 bg-black text-white shadow-[0_18px_45px_rgba(0,0,0,0.14)]"
+            : "border-black/10 bg-white/35 text-black hover:bg-white/55"
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => setOpenIndex(isOpen ? -1 : index)}
+          className="flex w-full cursor-pointer items-start justify-between gap-5 px-5 py-5 text-left sm:px-6"
+        >
+          <div className="flex gap-4">
+            <span
+              className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                isOpen
+                  ? "bg-white text-black"
+                  : "bg-black text-white"
+              }`}
+            >
+              Q
+            </span>
+
+            <h3 className="text-sm font-semibold leading-6 md:text-base">
+              {faq.question}
+            </h3>
+          </div>
+
+          <span
+            className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-xs ${
+              isOpen
+                ? "border-white/25 text-white"
+                : "border-black/15 text-black"
+            }`}
+          >
+            {isOpen ? <FaMinus /> : <FaPlus />}
+          </span>
+        </button>
+
+        <div
+          className={`grid transition-all duration-300 ${
+            isOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <p
+              className={`px-5 pb-6 pl-[68px] text-sm leading-7 md:text-base ${
+                isOpen ? "text-white/75" : "text-black/65"
+              }`}
+            >
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
    <section
@@ -79,93 +146,28 @@ export default function FAQSection() {
   }}
 >
       <div className="mx-auto max-w-[1400px]">
-        <div className="mb-12 grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-          <div className=" pl-4 sm:pl-6 md:pl-10">
-            {/* <span className="mb-5 inline-flex rounded-full bg-black px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
-              FAQ
-            </span> */}
-
-            <h2 className="text-4xl font-semibold uppercase leading-[0.92] tracking-tight text-black sm:text-5xl md:text-[56px]">
-              Frequently
-              <br />
-              Asked
-              <br />
-              Questions
+        <div className="mb-12 grid gap-8 ">
+          <div className=" pl-2">
+            <h2 className="text-4xl font-semibold uppercase text-black sm:text-5xl md:text-[56px]">
+              Frequently Asked Questions
             </h2>
           </div>
 
-          <p className="max-w-2xl text-sm leading-relaxed text-black/65 md:text-base">
-            Find clear answers about Nova Techscience services, global digital
-            marketing support, SEO, branding, creative work, and online growth
-            solutions.
-          </p>
+         
         </div>
 
         <div className="grid items-start gap-4 lg:grid-cols-2">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+          <div className="space-y-4">
+            {leftFaqs.map((faq, columnIndex) =>
+              renderFaqItem(faq, columnIndex * 2)
+            )}
+          </div>
 
-            return (
-              <div
-                key={faq.question}
-                className={`overflow-hidden rounded-[26px] border transition-all duration-300 ${
-                  isOpen
-                    ? "border-black/20 bg-black text-white shadow-[0_18px_45px_rgba(0,0,0,0.14)]"
-                    : "border-black/10 bg-white/35 text-black hover:bg-white/55"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full cursor-pointer items-start justify-between gap-5 px-5 py-5 text-left sm:px-6"
-                >
-                  <div className="flex gap-4">
-                   <span
-  className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
-    isOpen
-      ? "bg-white text-black"
-      : "bg-black text-white"
-  }`}
->
-  Q
-</span>
-
-                    <h3 className="text-sm font-semibold leading-6 md:text-base">
-                      {faq.question}
-                    </h3>
-                  </div>
-
-                  <span
-                    className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-xs ${
-                      isOpen
-                        ? "border-white/25 text-white"
-                        : "border-black/15 text-black"
-                    }`}
-                  >
-                    {isOpen ? <FaMinus /> : <FaPlus />}
-                  </span>
-                </button>
-
-                <div
-                  className={`grid transition-all duration-300 ${
-                    isOpen
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p
-                      className={`px-5 pb-6 pl-[68px] text-sm leading-7 md:text-base ${
-                        isOpen ? "text-white/75" : "text-black/65"
-                      }`}
-                    >
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          <div className="space-y-4">
+            {rightFaqs.map((faq, columnIndex) =>
+              renderFaqItem(faq, columnIndex * 2 + 1)
+            )}
+          </div>
         </div>
       </div>
     </section>

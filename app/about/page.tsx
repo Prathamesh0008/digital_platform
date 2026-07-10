@@ -17,7 +17,7 @@ export default function AboutPage() {
       <section id="story" className="scroll-mt-24">
         <AboutStory />
       </section>
-      <section className="scroll-mt-24">
+      <section id="impact" className="scroll-mt-24">
         <HomeWhyChooseSection />
       </section>
       <section id="team" className="scroll-mt-24">

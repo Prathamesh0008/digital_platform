@@ -1,0 +1,31 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="20" x2="1470" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BFD2DE"/>
+      <stop offset="0.48" stop-color="#9AB3C8"/>
+      <stop offset="1" stop-color="#708DA8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 756) rotate(90) scale(180 180)">
+      <stop stop-color="#69D7DA" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#69D7DA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="260" cy="756" r="180" fill="url(#glow)"/>
+  <circle cx="1328" cy="180" r="200" fill="white" fill-opacity="0.14"/>
+  <path d="M156 754C286 651 390 588 507 536C632 480 752 446 907 436C1063 426 1183 440 1428 492" stroke="white" stroke-opacity="0.14" stroke-width="3"/>
+  <circle cx="332" cy="640" r="68" fill="white" fill-opacity="0.14"/>
+  <circle cx="332" cy="640" r="22" fill="white" fill-opacity="0.28"/>
+  <circle cx="646" cy="498" r="68" fill="white" fill-opacity="0.14"/>
+  <path d="M646 462V534" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <path d="M610 498H682" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="966" cy="448" r="68" fill="white" fill-opacity="0.14"/>
+  <path d="M938 420L994 476" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <path d="M994 420L938 476" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="1264" cy="522" r="68" fill="white" fill-opacity="0.14"/>
+  <path d="M1236 524L1258 546L1292 504" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M332 640L646 498L966 448L1264 522" stroke="#F7F3DE" stroke-opacity="0.44" stroke-width="5" stroke-linecap="round"/>
+  <rect x="1060" y="640" width="274" height="120" rx="28" fill="white" fill-opacity="0.12" stroke="white" stroke-opacity="0.14"/>
+  <path d="M1110 688H1278" stroke="white" stroke-opacity="0.3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1110 730H1234" stroke="white" stroke-opacity="0.16" stroke-width="4" stroke-linecap="round"/>
+</svg>

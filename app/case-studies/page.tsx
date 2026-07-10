@@ -22,9 +22,7 @@ export default function CaseStudiesPage() {
         <div className="mb-14 px-2 sm:px-4 md:px-2">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:items-end">
             <div className="max-w-4xl">
-              <span className="inline-flex px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#5A7EFF]">
-                Case Studies
-              </span>
+              
 
               <h1 className="mt-3 text-4xl font-semibold uppercase leading-[0.94] text-[#0d2d47] sm:text-5xl md:text-7xl">
                 Website Work Built For Trust, Clarity And Growth

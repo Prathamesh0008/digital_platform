@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function AboutStory() {
   return (
     <section
-      className="relative min-h-screen overflow-hidden bg-[#EAEBDB] px-4 py-20 sm:px-6 sm:py-28 md:px-10 md:py-40"
+      className="relative overflow-hidden bg-[#EAEBDB] px-4 py-14 sm:px-6 sm:py-18 md:px-10 md:py-24"
     >
 
       {/* 🔥 SOFT GLOW */}
@@ -21,21 +21,15 @@ export default function AboutStory() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ amount: 0.4 }}
-          className="mb-16 sm:mb-24 md:mb-32 max-w-4xl"
+          className="mb-10 sm:mb-14 md:mb-16"
         >
-          {/* <p className="uppercase text-black/50 text-sm tracking-[0.3em] mb-6">
-            Our Story
-          </p> */}
-
-          <h1 className="uppercase leading-[0.9]
-            text-4xl sm:text-6xl md:text-[100px] lg:text-[120px] font-medium">
-            From Vision <br />
-            To Impact
+          <h1 className="text-[clamp(2.75rem,7vw,6.3rem)] font-medium uppercase leading-[0.92] tracking-tight md:whitespace-nowrap">
+            From Vision To Impact
           </h1>
         </motion.div>
 
         {/* 🔥 MAIN GRID */}
-        <div className="grid md:grid-cols-2 gap-10 sm:gap-14 md:gap-20 items-center">
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-16">
 
           {/* 🔥 IMAGE (SLIDE FROM LEFT) */}
           <motion.div

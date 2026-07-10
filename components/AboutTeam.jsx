@@ -148,9 +148,8 @@ export default function AboutTeam() {
           viewport={{ once: true }}
           className="mb-10 sm:mb-14 md:mb-16"
         >
-          <h2 className="text-4xl font-medium uppercase leading-[0.9] tracking-tight sm:text-6xl md:text-[100px] lg:text-[120px]">
-            Meet Our <br />
-            <span className="text-[#5A7EFF]">Team</span>
+          <h2 className="text-4xl font-medium uppercase  tracking-tight sm:text-6xl md:text-[100px] lg:text-[120px]">
+            Meet Our <span className="text-[#5A7EFF]">Team</span>
           </h2>
         </motion.div>
 

@@ -1,0 +1,29 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="30" x2="1460" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#AABAF0"/>
+      <stop offset="0.46" stop-color="#8CA2E8"/>
+      <stop offset="1" stop-color="#6E83CF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="#0D2D47" fill-opacity="0.06"/>
+  <circle cx="1235" cy="184" r="220" fill="white" fill-opacity="0.12"/>
+  <circle cx="224" cy="760" r="160" fill="#F7F3DE" fill-opacity="0.1"/>
+  <path d="M0 782H1600" stroke="white" stroke-opacity="0.14" stroke-width="2"/>
+  <path d="M0 718H1600" stroke="white" stroke-opacity="0.08" stroke-width="2"/>
+  <path d="M0 654H1600" stroke="white" stroke-opacity="0.08" stroke-width="2"/>
+  <path d="M170 750V490" stroke="white" stroke-opacity="0.18" stroke-width="28" stroke-linecap="round"/>
+  <path d="M336 750V406" stroke="white" stroke-opacity="0.22" stroke-width="28" stroke-linecap="round"/>
+  <path d="M502 750V540" stroke="white" stroke-opacity="0.14" stroke-width="28" stroke-linecap="round"/>
+  <path d="M668 750V338" stroke="white" stroke-opacity="0.24" stroke-width="28" stroke-linecap="round"/>
+  <path d="M834 750V446" stroke="white" stroke-opacity="0.16" stroke-width="28" stroke-linecap="round"/>
+  <path d="M1000 750V280" stroke="white" stroke-opacity="0.3" stroke-width="28" stroke-linecap="round"/>
+  <path d="M1166 750V382" stroke="white" stroke-opacity="0.18" stroke-width="28" stroke-linecap="round"/>
+  <path d="M1332 750V212" stroke="white" stroke-opacity="0.34" stroke-width="28" stroke-linecap="round"/>
+  <path d="M110 616C246 560 346 522 458 500C586 475 669 497 780 456C890 415 961 327 1088 280C1183 245 1274 231 1450 238" stroke="#F6A66A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="458" cy="500" r="14" fill="#F7F3DE"/>
+  <circle cx="780" cy="456" r="16" fill="white"/>
+  <circle cx="1088" cy="280" r="18" fill="#F6A66A"/>
+  <circle cx="1332" cy="238" r="16" fill="white"/>
+</svg>

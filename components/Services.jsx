@@ -2,6 +2,12 @@ import Link from "next/link";
 import { services } from "@/data/servicesData";
 
 export default function Services() {
+  const featuredPoints = [
+    "Strategy-first planning",
+    "Creative + performance execution",
+    "Tracking built into every rollout",
+  ];
+
   return (
     <section
       className="relative py-7 md:py-8"
@@ -18,6 +24,38 @@ export default function Services() {
               <br />
               Services
             </h2>
+
+            <p className="mt-6 max-w-[320px] text-base leading-7 text-black/70 sm:text-lg">
+              A connected growth stack for brands that want sharper strategy,
+              stronger visibility, and cleaner conversion paths across every
+              major digital touchpoint.
+            </p>
+
+           
+
+            <div className="mt-8 max-w-[360px] rounded-[28px] border border-black/12 bg-black px-5 py-5 text-white shadow-[0_18px_50px_rgba(0,0,0,0.12)]">
+              <div className="text-xs font-semibold uppercase tracking-[0.24em] text-white/55">
+                Built For Growth
+              </div>
+              <p className="mt-3 text-lg leading-7 text-white/86">
+                From discovery to reporting, each service is designed to work
+                together so growth feels measurable, not scattered.
+              </p>
+              <div className="mt-5 flex items-end gap-6 border-t border-white/12 pt-4">
+                <div>
+                  <div className="text-3xl font-semibold">08</div>
+                  <div className="text-xs uppercase tracking-[0.18em] text-white/55">
+                    Core Offers
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl font-semibold">360</div>
+                  <div className="text-xs uppercase tracking-[0.18em] text-white/55">
+                    Growth View
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="lg:border-l lg:border-black/15 lg:pl-10">

@@ -17,7 +17,7 @@ export default function AboutApproach() {
   const approaches = [
     {
       title: "Strategy First",
-      bg: "/Strategy First.jpg",
+      bg: "/approach-strategy.svg",
       description:
         "Every campaign begins with deep research, clear goals, and a roadmap tailored to your unique challenges.",
       extra:
@@ -25,7 +25,7 @@ export default function AboutApproach() {
     },
     {
       title: "Creative Excellence",
-      bg: "/Creative Excellence.jpg",
+      bg: "/approach-creative.svg",
       description:
         "We craft compelling visuals and narratives that capture attention and leave lasting impressions.",
       extra:
@@ -33,7 +33,7 @@ export default function AboutApproach() {
     },
     {
       title: "Data-Driven Execution",
-      bg: "/Data Driven Execution.jpg",
+      bg: "/approach-data.svg",
       description:
         "Real-time analytics guide our decisions, ensuring every dollar spent delivers maximum ROI.",
       extra:
@@ -41,7 +41,7 @@ export default function AboutApproach() {
     },
     {
       title: "Continuous Optimization",
-      bg: "/Continuous Optimization.jpg",
+      bg: "/approach-optimization.svg",
       description:
         "We never stop improving. Constant testing and iteration keep your campaigns ahead of the curve.",
       extra:

@@ -142,37 +142,35 @@ export default function HomeGrowthSection() {
     >
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-10">
-          {/* <span className="mb-5 inline-flex rounded-full bg-[#0d2d47] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white">
-            Talk About Us
-          </span> */}
+          
  
           <h2 className="text-4xl font-semibold uppercase leading-[0.98] tracking-tight text-[#0d2d47] sm:text-5xl md:text-[58px]">
-            Our Impact
-            <br />
-            In Numbers
+            Our Impact In Numbers
           </h2>
         </div>
  
-       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-  {stats.map((item) => (
-    <article
-      key={item.label}
-      className="group rounded-[22px] border border-white/30 bg-white/20 p-4 backdrop-blur-md transition hover:bg-white/30 sm:rounded-[28px] sm:p-6"
-    >
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#0d2d47] text-lg text-white transition group-hover:scale-110 sm:mb-6 sm:h-12 sm:w-12 sm:text-xl">
-        <item.icon />
-      </div>
- 
-      <h3 className="text-3xl font-semibold text-[#0d2d47] sm:text-4xl md:text-[48px]">
-        <CountUpNumber target={item.target} suffix={item.suffix} />
-      </h3>
- 
-      <p className="mt-3 text-xs font-medium uppercase tracking-wide text-[#0d2d47]/75 sm:mt-4 sm:text-sm">
-        {item.label}
-      </p>
-    </article>
-  ))}
-</div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          {stats.map((item) => (
+            <article
+              key={item.label}
+              className="group rounded-[22px] border border-white/30 bg-white/20 p-4 backdrop-blur-md transition hover:bg-white/30 sm:rounded-[28px] sm:p-6"
+            >
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#0d2d47] text-[22px] text-white transition group-hover:scale-110 sm:h-16 sm:w-16 sm:text-[26px]">
+                  <item.icon />
+                </div>
+
+                <h3 className="text-right text-3xl font-semibold leading-none text-[#0d2d47] sm:text-4xl md:text-[48px]">
+                  <CountUpNumber target={item.target} suffix={item.suffix} />
+                </h3>
+              </div>
+
+              <p className="mt-4 ml-2 text-xs font-medium uppercase tracking-wide text-[#0d2d47]/75 sm:text-sm">
+                {item.label}
+              </p>
+            </article>
+          ))}
+        </div>
         <div className="mt-10 grid items-center gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-[36px] border border-white/30 bg-white/20 p-3 backdrop-blur-md">
 <div className="flex h-[320px] items-center justify-center overflow-hidden rounded-[28px] bg-white/20 sm:h-[380px] lg:h-[430px]">
