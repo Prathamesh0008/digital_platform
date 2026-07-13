@@ -19,7 +19,7 @@ export default function BlogPage() {
   const categories = ["All", ...new Set(blogs.map((blog) => blog.category))];
 
   return (
-    <main className="min-h-screen bg-[#EAEBDB] text-[#0d2d47]">
+    <main className="min-h-screen overflow-x-hidden bg-[#EAEBDB] text-[#0d2d47]">
       <section
         className="relative px-4 pb-14 pt-32 sm:px-6 md:px-10 md:pb-20 md:pt-40"
         style={{
@@ -100,7 +100,7 @@ export default function BlogPage() {
               <Link
                 key={blog.slug}
                 href={`/blog/${blog.slug}`}
-                className="group overflow-hidden rounded-[24px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_20px_65px_rgba(13,45,71,0.12)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/50 sm:rounded-[30px]"
+                className="group min-w-0 overflow-hidden rounded-[24px] border border-[#0d2d47]/10 bg-white/35 shadow-[0_20px_65px_rgba(13,45,71,0.12)] backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/50 sm:rounded-[30px]"
               >
                 <div className="relative aspect-[3/2] overflow-hidden bg-white">
                   <Image
@@ -112,7 +112,7 @@ export default function BlogPage() {
                   />
                 </div>
 
-                <div className="p-6">
+                <div className="min-w-0 p-6">
                   <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-[#0d2d47] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
                       {blog.category}
@@ -123,7 +123,7 @@ export default function BlogPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold uppercase leading-tight sm:text-2xl">
+                  <h3 className="break-words text-xl font-semibold uppercase leading-tight sm:text-2xl">
                     {blog.title}
                   </h3>
 
