@@ -85,7 +85,7 @@ export default function Hero() {
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <Link
-              href="/#digital-growth-form"
+              href="/contact"
               className="group relative inline-flex h-14 w-full items-center justify-between overflow-visible rounded-full border border-[#ffd2a8]/45 bg-[linear-gradient(135deg,#ff9e63_0%,#ff7d48_34%,#0d2d47_100%)] px-4 text-white shadow-[0_18px_44px_rgba(13,45,71,0.28),0_0_28px_rgba(255,122,63,0.24),inset_0_0_0_1px_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_58px_rgba(13,45,71,0.34),0_0_38px_rgba(255,122,63,0.34)] sm:hidden"
             >
               <span className="absolute inset-[1px] rounded-full bg-[linear-gradient(135deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.06)_34%,rgba(255,255,255,0)_100%)] opacity-100" />
@@ -113,7 +113,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/#digital-growth-form"
+              href="/contact"
               className="hidden items-center justify-center rounded-full bg-[linear-gradient(135deg,#ff8b47_0%,#ff6a3d_100%)] px-7 py-4 text-center text-sm font-semibold uppercase tracking-[0.1em] text-white shadow-[0_20px_48px_rgba(255,122,63,0.3)] transition hover:-translate-y-1 hover:shadow-[0_28px_56px_rgba(255,122,63,0.38)] sm:inline-flex sm:min-w-[220px]"
             >
               Start Your Project

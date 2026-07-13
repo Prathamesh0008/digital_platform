@@ -615,15 +615,12 @@ export default function EcommerceGrowthPage() {
                   whileHover={{ y: -6 }}
                   className="group rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-5 shadow-[0_18px_45px_rgba(13,45,71,0.08)] backdrop-blur-md transition hover:bg-white/70"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-xl text-[#7392FB] transition group-hover:bg-[#0d2d47] group-hover:text-white">
-                    <Icon />
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-xl text-[#7392FB] transition group-hover:bg-[#0d2d47] group-hover:text-white"><Icon /></div>
+                    <h3 className="text-base font-semibold uppercase">
+                      <ServiceInternalLinkText currentHref="/services/ecommerce-growth">{item.title}</ServiceInternalLinkText>
+                    </h3>
                   </div>
-
-                  <h3 className="text-base font-semibold uppercase">
-                    <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
-                      {item.title}
-                    </ServiceInternalLinkText>
-                  </h3>
                 </motion.div>
               );
             })}
@@ -666,15 +663,14 @@ export default function EcommerceGrowthPage() {
                   whileHover={{ y: -7 }}
                   className="group rounded-[24px] border border-white/20 bg-white/12 p-6 shadow-[0_22px_65px_rgba(13,45,71,0.18)] backdrop-blur-md transition hover:bg-white/18"
                 >
-                  <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-xl text-white ring-1 ring-white/20">
-                    <Icon />
-                  </span>
-
-                  <h3 className="text-lg font-semibold uppercase">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-xl text-white ring-1 ring-white/20"><Icon /></span>
+                    <h3 className="text-lg font-semibold uppercase">
                     <ServiceInternalLinkText currentHref="/services/ecommerce-growth">
                       {item.title}
                     </ServiceInternalLinkText>
-                  </h3>
+                    </h3>
+                  </div>
 
                   <p className="mt-3 text-sm leading-relaxed text-white/75">
                     <ServiceInternalLinkText currentHref="/services/ecommerce-growth">

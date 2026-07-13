@@ -74,14 +74,12 @@ export default function ServicesSlider() {
           >
 
             {/* ICON */}
-            <div className="text-3xl text-[#5A7EFF] mb-6">
-              {item.icon}
+            <div className="mb-4 flex items-center gap-4">
+              <div className="shrink-0 text-3xl text-[#5A7EFF]">{item.icon}</div>
+              <h3 className="text-2xl font-semibold text-[#0d2d47]">
+                {item.title}
+              </h3>
             </div>
-
-            {/* TITLE */}
-            <h3 className="text-2xl font-semibold text-[#0d2d47] mb-4">
-              {item.title}
-            </h3>
 
             {/* DESC */}
             <p className="text-[#0d2d47]/70 leading-relaxed mb-6">

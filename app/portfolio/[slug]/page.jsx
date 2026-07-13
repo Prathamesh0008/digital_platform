@@ -247,12 +247,10 @@ export default async function PortfolioDetailPage({ params }) {
                   key={item.label}
                   className="rounded-[26px] border border-[#0d2d47]/10 bg-white/50 p-6 shadow-[0_18px_55px_rgba(13,45,71,0.08)] backdrop-blur-md"
                 >
-                  <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-xl text-[#7392FB]">
-                    <Icon />
-                  </span>
-                  <h3 className="text-2xl font-black uppercase">
-                    {item.label}
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7392FB]/15 text-xl text-[#7392FB]"><Icon /></span>
+                    <h3 className="text-2xl font-black uppercase">{item.label}</h3>
+                  </div>
                   <p className="mt-4 text-base leading-8 text-[#0d2d47]/72">
                     {item.text}
                   </p>

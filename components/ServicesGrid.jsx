@@ -84,13 +84,14 @@ export default function ServicesGrid() {
                 {(i + 1).toString().padStart(2, "0")}
               </div> */}
 
-              <div className="mb-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0d2d47] text-white shadow-[0_16px_40px_rgba(13,45,71,0.22)] transition group-hover:scale-105">
-                {item.icon}
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#0d2d47] text-white shadow-[0_16px_40px_rgba(13,45,71,0.22)] transition group-hover:scale-105">
+                  {item.icon}
+                </div>
+                <h3 className="max-w-xs text-2xl font-semibold uppercase leading-tight text-[#0d2d47]">
+                  {item.title}
+                </h3>
               </div>
-
-              <h3 className="max-w-xs text-2xl font-semibold uppercase leading-tight text-[#0d2d47]">
-                {item.title}
-              </h3>
 
               <p className="mt-5 text-sm leading-relaxed text-[#0d2d47]/72">
                 {item.desc}

@@ -594,15 +594,15 @@ export default function BrandStrategyPage() {
                 whileHover={{ y: -7 }}
                 className="rounded-[26px] border border-white/20 bg-white/12 p-6 shadow-[0_24px_70px_rgba(13,45,71,0.22)] backdrop-blur-md transition hover:bg-white/18"
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 text-2xl">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-2xl">
                   {(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}
+                  </div>
+                  <h3 className="text-xl font-bold uppercase">{item.title}</h3>
                 </div>
-                <h3 className="text-xl font-bold uppercase">
-                    {item.title}
-                </h3>
                 <p className="mt-3 text-sm leading-7 text-white/74 md:text-base">
                     {item.text}
                 </p>
@@ -652,13 +652,15 @@ export default function BrandStrategyPage() {
                 transition={{ delay: i * 0.04 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-white/45 p-4 transition hover:-translate-y-1 hover:bg-white/65"
               >
-                <span className="text-2xl">{(() => {
+                <div className="flex items-center gap-3">
+                  <span className="shrink-0 text-2xl">{(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}</span>
-                <h3 className="mt-3 text-base font-bold uppercase">
+                  <h3 className="text-base font-bold uppercase">
                     {item.title}
-                </h3>
+                  </h3>
+                </div>
                 <p className="mt-2 text-sm leading-6 text-[#0d2d47]/68">
                     {item.text}
                 </p>
@@ -823,13 +825,13 @@ export default function BrandStrategyPage() {
                 className="relative overflow-hidden rounded-[24px] border border-white/20 bg-white/12 p-5 backdrop-blur-md"
               >
                 <div className="absolute bottom-0 left-0 h-1 w-full " />
-                <span className="text-4xl">{(() => {
+                <div className="flex items-center gap-3">
+                  <span className="shrink-0 text-4xl">{(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}</span>
-                <h3 className="mt-4 text-lg font-bold uppercase">
-                    {item.title}
-                </h3>
+                  <h3 className="text-lg font-bold uppercase">{item.title}</h3>
+                </div>
                 <p className="mt-3 text-sm leading-7 text-white/70">
                     {item.text}
                 </p>

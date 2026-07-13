@@ -353,10 +353,12 @@ export default function WhyBrandStrategyMattersBeforeWebsiteDesign() {
                 transition={{ duration: 0.45, delay: index * 0.05 }}
                 className="rounded-[24px] border border-[#0d2d47]/6 bg-white p-7 shadow-[0_16px_50px_rgba(13,45,71,0.07)]"
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-[18px] bg-[#edf1ff] text-[#7392FB]">
-                  <Icon className="h-6 w-6" />
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-[#edf1ff] text-[#7392FB]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0d2d47]">{title}</h3>
                 </div>
-                <h3 className="text-xl font-semibold text-[#0d2d47]">{title}</h3>
                 <p className="mt-4 text-base leading-relaxed text-[#40536a]">{text}</p>
               </motion.article>
             ))}

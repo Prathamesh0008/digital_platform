@@ -377,10 +377,12 @@ export default function HowSeoAndGeoWorkTogether() {
                 transition={{ duration: 0.45, delay: i * 0.05 }}
                 className="rounded-[24px] border border-[#0d2d47]/6 bg-white p-8 shadow-[0_16px_50px_rgba(13,45,71,0.07)] transition hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(13,45,71,0.12)]"
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-[18px] bg-[#edf1ff] text-[#7392FB]">
-                  <Icon className="h-6 w-6" />
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-[#edf1ff] text-[#7392FB]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-[#0d2d47]">{title}</h3>
                 </div>
-                <h3 className="text-2xl font-semibold text-[#0d2d47]">{title}</h3>
                 <p className="mt-4 text-base leading-relaxed text-[#40536a]">
                   <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
                     {text}
@@ -518,10 +520,12 @@ export default function HowSeoAndGeoWorkTogether() {
                 transition={{ duration: 0.45, delay: i * 0.04 }}
                 className="rounded-[24px] border border-[#0d2d47]/6 bg-white p-8 shadow-[0_16px_50px_rgba(13,45,71,0.07)]"
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-[18px] bg-[#edf1ff] text-[#7392FB]">
-                  <Icon className="h-6 w-6" />
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-[#edf1ff] text-[#7392FB]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-[#0d2d47]">{title}</h3>
                 </div>
-                <h3 className="text-2xl font-semibold text-[#0d2d47]">{title}</h3>
                 <p className="mt-4 text-base leading-relaxed text-[#40536a]">
                   <BlogInlineLinkText currentPath="/blog/how-seo-and-geo-work-together">
                     {text}

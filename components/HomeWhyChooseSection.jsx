@@ -214,13 +214,14 @@ export default function HomeWhyChooseSection() {
                 key={item.label}
                 className="group border-l border-black/15 bg-white/15 px-5 py-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/25 sm:px-6 md:px-8 md:py-8"
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-black text-xl text-white transition-transform duration-300 group-hover:scale-110">
-                 <item.icon />
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-xl text-white transition-transform duration-300 group-hover:scale-110">
+                    <item.icon />
+                  </div>
+                  <h3 className="text-5xl font-semibold leading-none tracking-tight text-black md:text-[64px]">
+                    <CountUpNumber target={item.target} suffix={item.suffix} />
+                  </h3>
                 </div>
- 
-                <h3 className="text-5xl font-semibold leading-none tracking-tight text-black md:text-[64px]">
-                  <CountUpNumber target={item.target} suffix={item.suffix} />
-                </h3>
  
                 <p className="mt-4 text-sm font-medium uppercase tracking-wide text-black/70 md:text-base">
                   {item.label}
@@ -302,7 +303,7 @@ export default function HomeWhyChooseSection() {
                   {block.title}
                 </h4>
  
-                <span className="text-3xl text-black">→</span>
+                
               </header>
  
               <div className="px-5 py-6 sm:px-7">

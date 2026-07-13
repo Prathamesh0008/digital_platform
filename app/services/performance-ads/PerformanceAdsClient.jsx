@@ -1156,18 +1156,19 @@ export default function PerformanceAdsPage() {
               >
                 <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-[#7392FB] transition group-hover:scale-x-100" />
 
-                <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C4CFE3] text-3xl">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#C4CFE3] text-3xl">
                   {(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}
-                </span>
-
-                <h3 className="text-2xl font-black uppercase">
+                  </span>
+                  <h3 className="text-2xl font-black uppercase">
                  
                     {item.title}
              
-                </h3>
+                  </h3>
+                </div>
 
                 <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70">
                   <ServiceInternalLinkText currentHref="/services/performance-ads">
@@ -1223,16 +1224,17 @@ export default function PerformanceAdsPage() {
                   {(i + 1).toString().padStart(2, "0")}
                 </p>
 
-                <span className="mt-4 block text-3xl">{(() => {
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="shrink-0 text-3xl">{(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}</span>
-
-                <h3 className="mt-4 text-xl font-black uppercase">
+                  <h3 className="text-xl font-black uppercase">
                   <ServiceInternalLinkText currentHref="/services/performance-ads">
                     {item.title}
                   </ServiceInternalLinkText>
-                </h3>
+                  </h3>
+                </div>
 
                 <p className="mt-3 text-sm leading-7 text-white/62">
                   <ServiceInternalLinkText currentHref="/services/performance-ads">

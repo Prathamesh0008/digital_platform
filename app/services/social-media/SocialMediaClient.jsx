@@ -510,18 +510,19 @@ export default function SocialMediaClient() {
               >
                 <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-[#7392FB] transition group-hover:scale-x-100" />
 
-                <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C4CFE3] text-3xl">
+                <div className="flex items-center gap-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#C4CFE3] text-3xl">
                   {(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}
-                </span>
-
-                <h3 className="text-2xl font-black uppercase [&_a]:no-underline">
+                  </span>
+                  <h3 className="text-2xl font-black uppercase [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
                     {item.title}
                   </ServiceInternalLinkText>
-                </h3>
+                  </h3>
+                </div>
 
                 <p className="mt-3 text-sm leading-7 text-[#0d2d47]/70 [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
@@ -577,16 +578,17 @@ export default function SocialMediaClient() {
                   {(i + 1).toString().padStart(2, "0")}
                 </p>
 
-                <span className="mt-4 block text-3xl">{(() => {
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="shrink-0 text-3xl">{(() => {
   const Icon = item.icon;
   return <Icon />;
 })()}</span>
-
-                <h3 className="mt-4 text-xl font-black uppercase [&_a]:no-underline">
+                  <h3 className="text-xl font-black uppercase [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
                     {item.title}
                   </ServiceInternalLinkText>
-                </h3>
+                  </h3>
+                </div>
 
                 <p className="mt-3 text-sm leading-7 text-white/62 [&_a]:no-underline">
                   <ServiceInternalLinkText currentHref="/services/social-media">
@@ -841,10 +843,10 @@ export default function SocialMediaClient() {
                 transition={{ delay: i * 0.035 }}
                 className="rounded-2xl border border-[#0d2d47]/10 bg-white/50 p-4 text-center shadow-[4px_4px_0_rgba(13,45,71,0.08)] backdrop-blur-md"
               >
-               <span className="text-2xl">
-  <Icon />
-</span>
-                <p className="mt-2 text-sm font-black uppercase">{title}</p>
+                <div className="flex items-center justify-center gap-2">
+                  <span className="shrink-0 text-2xl"><Icon /></span>
+                  <p className="text-sm font-black uppercase">{title}</p>
+                </div>
                 <p className="mt-1 text-xs leading-snug text-[#0d2d47]/55">
                   {sub}
                 </p>

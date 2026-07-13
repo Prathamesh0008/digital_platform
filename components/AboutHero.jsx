@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const items = [
   { label: "Story", img: "/about1.jpg", id: "story" },
-  { label: "Team", img: "/about2.jpg", id: "team" },
+  { label: "Connect", img: "/about2.jpg", id: "cta" },
   { label: "Impact", img: "/about3.jpg", id: "impact" },
   { label: "Approach", img: "/about4.jpg", id: "approach" },
 ];
@@ -23,14 +23,23 @@ export default function AboutHero() {
 
   return (
 <section className="relative min-h-[78svh] w-full overflow-hidden md:h-screen">
-      <div className="absolute inset-0 md:hidden">
+      <div className="absolute inset-0 bg-[#0d2d47] md:hidden">
+        <Image
+          src="/about-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          aria-hidden="true"
+          className="scale-110 object-cover opacity-45 blur-xl"
+        />
         <Image
           src="/about-hero.jpg"
           alt="About Nova Techscience"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-contain"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,45,71,0.5),rgba(13,45,71,0.58),rgba(13,45,71,0.84))]" />
       </div>
