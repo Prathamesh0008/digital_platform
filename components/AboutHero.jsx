@@ -22,10 +22,10 @@ export default function AboutHero() {
   };
 
   return (
-<section className="relative min-h-[78svh] w-full overflow-hidden md:h-screen">
+<section className="relative min-h-[86svh] w-full overflow-hidden md:h-screen">
       <div className="absolute inset-0 bg-[#0d2d47] md:hidden">
         <Image
-          src="/about-hero.jpg"
+          src="/about-hero-mobile.png"
           alt=""
           fill
           priority
@@ -34,12 +34,12 @@ export default function AboutHero() {
           className="scale-110 object-cover opacity-45 blur-xl"
         />
         <Image
-          src="/about-hero.jpg"
+          src="/about-hero-mobile.png"
           alt="About Nova Techscience"
           fill
           priority
           sizes="100vw"
-          className="object-contain"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,45,71,0.5),rgba(13,45,71,0.58),rgba(13,45,71,0.84))]" />
       </div>
@@ -119,7 +119,7 @@ export default function AboutHero() {
 
       <div className="pointer-events-none absolute inset-0 z-10 bg-black/40 " />
 
-      <div className="pointer-events-none top-6 relative z-40 flex h-full flex-col items-center justify-center px-5 py-20 text-center text-white sm:px-6 md:px-6 md:py-0">
+      <div className="pointer-events-none relative z-40 flex h-full flex-col items-center justify-center px-5 py-25 text-center text-white sm:px-6 md:px-6 md:py-0">
         <div className="rounded-[28px] border border-white/12 bg-white/8 px-5 py-6 shadow-[0_24px_70px_rgba(13,45,71,0.18)] backdrop-blur-[6px] md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0">
         <motion.h1
           initial={{ opacity: 0, y: 36 }}
