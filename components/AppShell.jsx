@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,7 +18,6 @@ const EMPTY_SUBSCRIBE = () => () => {};
 
 export default function AppShell({ children }) {
   const pathname = usePathname();
-  const [showAssistant, setShowAssistant] = useState(false);
   const [preloaderDismissed, setPreloaderDismissed] = useState(false);
   const isAgentPortal = pathname.startsWith("/agent");
   const assistantEligible = !isAgentPortal;
@@ -33,45 +32,6 @@ export default function AppShell({ children }) {
 
   const shouldShowPreloader =
     !isAgentPortal && !hasSeenPreloader && !preloaderDismissed;
-  const preloaderResolved =
-    isAgentPortal || hasSeenPreloader || preloaderDismissed;
-
-  useEffect(() => {
-    if (
-      isAgentPortal ||
-      !preloaderResolved ||
-      !assistantEligible ||
-      showAssistant
-    ) {
-      return;
-    }
-
-    const revealAssistant = () => {
-      setShowAssistant(true);
-    };
-
-    const onScroll = () => {
-      if (window.scrollY > 320) {
-        revealAssistant();
-      }
-    };
-
-    const fallbackTimer = setTimeout(revealAssistant, 9000);
-
-    window.addEventListener("pointerdown", revealAssistant, { passive: true });
-    window.addEventListener("keydown", revealAssistant);
-    window.addEventListener("touchstart", revealAssistant, { passive: true });
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      clearTimeout(fallbackTimer);
-      window.removeEventListener("pointerdown", revealAssistant);
-      window.removeEventListener("keydown", revealAssistant);
-      window.removeEventListener("touchstart", revealAssistant);
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [assistantEligible, isAgentPortal, preloaderResolved, showAssistant]);
-
   const handlePreloaderComplete = () => {
     window.sessionStorage.setItem(PRELOADER_SESSION_KEY, "1");
     setPreloaderDismissed(true);
@@ -94,7 +54,7 @@ export default function AppShell({ children }) {
           {children}
         </main>
 
-        {assistantEligible && showAssistant && (
+        {assistantEligible && (
           <div className="app-assistant">
             <NovaTechAssistant />
           </div>
