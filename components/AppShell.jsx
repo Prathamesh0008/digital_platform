@@ -16,26 +16,12 @@ const NovaTechAssistant = dynamic(() => import("@/components/NovaTechAssistant")
 const PRELOADER_SESSION_KEY = "nova_preloader_seen";
 const EMPTY_SUBSCRIBE = () => () => {};
 
-function isAssistantEligiblePath(pathname) {
-  return [
-    "/contact",
-    "/services",
-    "/case-studies",
-    "/portfolio",
-    "/website-development-company",
-    "/performance-marketing-agency",
-    "/seo-agency",
-    "/local-seo-services",
-    "/freelance-website-developer",
-  ].some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
-}
-
 export default function AppShell({ children }) {
   const pathname = usePathname();
   const [showAssistant, setShowAssistant] = useState(false);
   const [preloaderDismissed, setPreloaderDismissed] = useState(false);
   const isAgentPortal = pathname.startsWith("/agent");
-  const assistantEligible = isAssistantEligiblePath(pathname);
+  const assistantEligible = !isAgentPortal;
 
   const hasSeenPreloader = useSyncExternalStore(
     EMPTY_SUBSCRIBE,
