@@ -115,10 +115,7 @@ export default function Footer() {
               <MapPin size={18} className="mt-1 shrink-0 text-[#5A7EFF]" />
               <span>{contactDetails.office}</span>
             </p>
-            <p className="mb-2 flex items-center gap-2">
-              <Phone size={18} className="text-[#5A7EFF]" />
-              <span>{contactDetails.phone}</span>
-            </p>
+           
             <p className="flex items-center gap-2">
               <Mail size={18} className="text-[#5A7EFF]" />
               <span>{contactDetails.email}</span>

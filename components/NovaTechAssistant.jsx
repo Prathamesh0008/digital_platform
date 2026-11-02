@@ -28,7 +28,7 @@ import {
 } from "@/data/chatbotKnowledge";
 
 const AGENCY_WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9004483655";
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ;
 
 const BOT_LOGO = "/N.png";
 
